@@ -31,4 +31,8 @@ setup(
     license='LICENSE',
     description='IIIF Presentation v3 API implementation',
     install_requires=REQUIREMENTS,
+    test_suite="tests",
+    tests_require=[
+        "testfixtures"
+    ],
 )
