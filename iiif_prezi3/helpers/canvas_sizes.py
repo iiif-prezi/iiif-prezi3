@@ -1,5 +1,5 @@
-from ..prezi3_skeletons import Manifest
-from ..prezi3_loader import monkeypatch_schema
+from ..skeleton import Manifest
+from ..loader import monkeypatch_schema
 
 
 class MaxHelper:
@@ -19,8 +19,3 @@ class MinHelper:
 
 
 monkeypatch_schema(Manifest, [MaxHelper, MinHelper])
-
-# manifest_bases = list(Manifest.__bases__)
-# manifest_bases.append(MaxHelper)
-# manifest_bases.append(MinHelper)
-# Manifest.__bases__ = tuple(manifest_bases)

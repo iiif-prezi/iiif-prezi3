@@ -10,7 +10,7 @@ setup(
     name='iiif-prezi3',
     version=VERSION,
     author='IIIF Prezi3 Team',
-    packages=['iiif_prezi3'],w
+    packages=['iiif_prezi3'],
     classifiers=["Development Status :: 4 - Beta",
                  "Intended Audience :: Developers",
                  "License :: OSI Approved :: Apache Software License",

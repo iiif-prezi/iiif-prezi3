@@ -1,5 +1,5 @@
-from ..prezi3_skeletons import Manifest
-from ..prezi3_loader import monkeypatch_schema
+from ..skeleton import Manifest
+from ..loader import monkeypatch_schema
 
 
 class MyExtension():

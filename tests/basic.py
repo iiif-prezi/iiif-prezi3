@@ -3,7 +3,7 @@ sys.path.insert(1,'.')
 import json
 import unittest
 
-from iiif_prezi3.prezi3 import Manifest, Canvas 
+from iiif_prezi3 import Manifest, Canvas
 
 
 class BasicTest(unittest.TestCase):
