@@ -30,11 +30,5 @@ setup(
     url='https://github.com/IIIF/iiif-prezi3',
     license='LICENSE',
     description='IIIF Presentation v3 API implementation',
-    install_requires=REQUIREMENTS,
-    test_suite="tests",
-    tests_require=[
-        "testfixtures",
-        "pytest",
-        "freezegun"
-    ],
+    install_requires=REQUIREMENTS
 )
