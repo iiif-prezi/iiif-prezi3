@@ -2,7 +2,9 @@ from setuptools import setup
 
 VERSION = '0.0.1'
 REQUIREMENTS = [
-    "pydantic"
+    "pydantic",
+    "pytest",
+    "freezegun"
 ]
 
 # Setting up
