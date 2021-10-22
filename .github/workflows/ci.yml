@@ -30,7 +30,7 @@ jobs:
         run: python setup.py install
 
       - name: Test
-        run: python setup.py test
+        run: python -m unittest discover -s tests
 
       - name: install coveralls
         run: pip install coveralls
