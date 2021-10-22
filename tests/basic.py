@@ -4,6 +4,7 @@ import json
 import unittest
 
 from iiif_prezi3 import Manifest, Canvas
+from iiif_prezi3.helpers import canvas_sizes
 
 
 class BasicTest(unittest.TestCase):
@@ -19,7 +20,7 @@ class BasicTest(unittest.TestCase):
             print("Manifest class:", m.__class__)
             print("Manifest helper:", m.widest_canvas())
             print("Canvas class:", c.__class__)
-            print("Canvas helper:", c.helper_function())
+            self.assertEqual(m.widest_canvas(), "Maximum canvas width: 640")
 
 if __name__ == '__main__':
     unittest.main()
