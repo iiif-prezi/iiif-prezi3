@@ -27,7 +27,7 @@ setup(
                  "Topic :: Multimedia :: Graphics :: Graphics Conversion",
                  "Topic :: Software Development :: Libraries :: Python Modules",
                  "Environment :: Web Environment"],
-    url='https://github.com/IIIF/iiif-prezi3',
+    url='https://github.com/iiif-prezi/iiif-prezi3',
     license='LICENSE',
     description='IIIF Presentation v3 API implementation',
     install_requires=REQUIREMENTS
