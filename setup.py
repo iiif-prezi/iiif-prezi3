@@ -12,7 +12,7 @@ setup(
     author='IIIF Prezi3 Team',
     packages=['iiif_prezi3'],
     package_data = {
-        'iiif_prezi3': ['config/extensions.json']
+        'iiif_prezi3': ['config/extensions.json', 'iiif_prezi3.helpers', 'iiif_prezi3.extensions']
     },
     classifiers=["Development Status :: 4 - Beta",
                  "Intended Audience :: Developers",
