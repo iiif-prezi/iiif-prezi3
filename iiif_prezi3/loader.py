@@ -1,9 +1,12 @@
 import json
+import os
 
 
-def load_extensions_from_json():
+def load_bundled_extensions(extension_file=None):
+    if not extension_file:
+        extension_file =  os.path.join(os.path.dirname(__file__), 'config', 'extensions.json')
     try:
-        extensions = json.load(open("extensions.json"))
+        extensions = json.load(open(extension_file))
     except FileNotFoundError:
         return
 
