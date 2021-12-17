@@ -11,6 +11,9 @@ setup(
     version=VERSION,
     author='IIIF Prezi3 Team',
     packages=['iiif_prezi3'],
+    package_data = {
+        'iiif_prezi3': ['config/extensions.json']
+    },
     classifiers=["Development Status :: 4 - Beta",
                  "Intended Audience :: Developers",
                  "License :: OSI Approved :: Apache Software License",
