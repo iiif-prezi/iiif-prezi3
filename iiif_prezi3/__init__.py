@@ -1,6 +1,5 @@
 from .skeleton import *
-from .loader import load_extensions_from_json
+from .loader import load_bundled_extensions
 from iiif_prezi3.helpers import *
 
-load_extensions_from_json()
-
+__version__ = '0.0.2.1'
