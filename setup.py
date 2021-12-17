@@ -1,6 +1,6 @@
 from setuptools import setup
 
-VERSION = '0.0.2.1'
+VERSION = '0.0.2.2'
 REQUIREMENTS = [
     "pydantic"
 ]
@@ -10,9 +10,9 @@ setup(
     name='iiif-prezi3',
     version=VERSION,
     author='IIIF Prezi3 Team',
-    packages=['iiif_prezi3'],
+    packages=['iiif_prezi3', 'iiif_prezi3.helpers', 'iiif_prezi3.extensions'],
     package_data = {
-        'iiif_prezi3': ['config/extensions.json', 'iiif_prezi3.helpers', 'iiif_prezi3.extensions']
+        'iiif_prezi3': ['config/extensions.json']
     },
     classifiers=["Development Status :: 4 - Beta",
                  "Intended Audience :: Developers",
