@@ -43,12 +43,12 @@ class BasicTest(unittest.TestCase):
         print ('id prop: {}'.format(manifest.id))
         print ('Label: {}'.format(manifest.label))
         print ('Type: {}'.format(manifest.type))
-        self.assertEqual("Unexpected Manifest id ", manifest.id, 'http://iiif.example.org/prezi/Manifest/0')
-        self.assertEqual("Unexpected Canvas id", canvas.id, 'http://iiif.example.org/prezi/Canvas/1')
+        self.assertEqual(manifest.id, 'http://iiif.example.org/prezi/Manifest/0', "Unexpected Manifest id ")
+        self.assertEqual(canvas.id, 'http://iiif.example.org/prezi/Canvas/0', "Unexpected Canvas id")
 
 
-        self.assertEqual("Unexpected Manifest id in json", data["id"], 'http://iiif.example.org/prezi/Manifest/0')
-        self.assertEqual("Unexpected Canvas id", data["items"][0]["id"], 'http://iiif.example.org/prezi/Canvas/1')
+        self.assertEqual(data["id"], 'http://iiif.example.org/prezi/Manifest/0', "Unexpected Manifest id in json")
+        self.assertEqual('http://iiif.example.org/prezi/Canvas/0', data["items"][0]["id"],  "Unexpected Canvas id", )
         
     def testOverloadCanvas(self):
         manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': 'default label'})
