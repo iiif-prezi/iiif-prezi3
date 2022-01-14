@@ -1,5 +1,5 @@
 from setuptools import setup
-from . import __version__
+from iiif_prezi3 import __version__
 
 VERSION = __version__
 REQUIREMENTS = [
