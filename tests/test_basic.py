@@ -74,8 +74,15 @@ class BasicTest(unittest.TestCase):
             manifest.id = 'invalid_id'
 
     def testLabel(self):
+        '''
+            Test setting up a label
+        '''
         manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': 'default label'})
-        print ('Label: {}'.format(manifest.label))
+
+        print ('Manifest label using dict: "{}"'.format(manifest.label))
+
+        #self.assertTrue('en' in manifest.label, 'Manifest seems to be missing English label')
+        #self.assertEqual(manifest.label['en'], 'default label', 'Unexpected label for manifest')
 
 if __name__ == '__main__':
     unittest.main()
