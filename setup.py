@@ -1,7 +1,7 @@
 from setuptools import setup
 from iiif_prezi3 import __version__
 
-VERSION = __version__
+VERSION = '0.0.2.3'
 REQUIREMENTS = [
     "pydantic"
 ]
