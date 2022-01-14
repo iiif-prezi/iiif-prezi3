@@ -1,9 +1,7 @@
-name: Publish Python 🐍 distributions 📦 to PyPI and TestPyPI
+name: Publish Python 🐍 distributions 📦 to TestPyPI on Tag creation
 
 on:
   push:
-    branches:
-      - main
     tags:
       - '*'
 
@@ -26,14 +24,7 @@ jobs:
 
 
     - name: Publish distribution 📦 to Test PyPI
-      if: startsWith(github.ref, 'refs/heads')
       uses: pypa/gh-action-pypi-publish@master
       with:
         password: ${{ secrets.TEST_PYPI_API_TOKEN }}
         repository_url: https://test.pypi.org/legacy/
-
-    - name: Publish distribution 📦 to PyPI
-      if: startsWith(github.ref, 'refs/tags')
-      uses: pypa/gh-action-pypi-publish@master
-      with:
-        password: ${{ secrets.PYPI_API_TOKEN }}  

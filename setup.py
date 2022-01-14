@@ -1,5 +1,10 @@
 from setuptools import setup
 
+# read the contents of your README file
+from pathlib import Path
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
+
 VERSION = '0.0.2.3'
 REQUIREMENTS = [
     "pydantic"
@@ -10,6 +15,9 @@ setup(
     name='iiif-prezi3',
     version=VERSION,
     author='IIIF Prezi3 Team',
+    description='IIIF Presentation v3 API implementation',
+    long_description=long_description,
+    long_description_content_type='text/markdown',
     packages=['iiif_prezi3', 'iiif_prezi3.helpers', 'iiif_prezi3.extensions'],
     package_data = {
         'iiif_prezi3': ['config/extensions.json']
@@ -28,8 +36,8 @@ setup(
                  "Topic :: Multimedia :: Graphics :: Graphics Conversion",
                  "Topic :: Software Development :: Libraries :: Python Modules",
                  "Environment :: Web Environment"],
+    python_requires='>=3',
     url='https://github.com/iiif-prezi/iiif-prezi3',
     license='LICENSE',
-    description='IIIF Presentation v3 API implementation',
     install_requires=REQUIREMENTS
 )
