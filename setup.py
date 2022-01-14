@@ -17,7 +17,7 @@ setup(
     author='IIIF Prezi3 Team',
     description='IIIF Presentation v3 API implementation',
     long_description=long_description,
-    long_description_content_type='text/markdown'
+    long_description_content_type='text/markdown',
     packages=['iiif_prezi3', 'iiif_prezi3.helpers', 'iiif_prezi3.extensions'],
     package_data = {
         'iiif_prezi3': ['config/extensions.json']
