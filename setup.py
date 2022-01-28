@@ -2,10 +2,15 @@ from setuptools import setup
 
 # read the contents of your README file
 from pathlib import Path
+import os
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 
-VERSION = '0.0.2.4'
+if os.path.exists("version.txt"):
+    VERSION = (this_directory / "version.txt").read_text().strip()
+else:
+    VERSION = "local_test_version"
+
 REQUIREMENTS = [
     "pydantic"
 ]
