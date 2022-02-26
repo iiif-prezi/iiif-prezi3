@@ -59,7 +59,6 @@ class Id(Base):
     __root__: AnyUrl = Field(..., title='Id must be presesnt and must be a URI')
 
 
-
 class LngString(Base):
     pass
 
