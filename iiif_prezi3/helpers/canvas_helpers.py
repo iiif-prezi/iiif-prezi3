@@ -5,7 +5,7 @@ from ..loader import monkeypatch_schema
 class AddImageToCanvas:
     def add_image(self, image_url, anno_id, anno_page_id=None):
         body = ResourceItem(id=image_url, type='Image')
-        annotation = Annotation(id=anno_id, body=body, target=self.id, motivation='painting', type='Annotation')
+        annotation = Annotation(id=anno_id, body=body, target=image_url, motivation='painting', type='Annotation')
         anno_page = AnnotationPage(id=anno_page_id, type='AnnotationPage', items=[annotation])
         if not self.items:
             self.items = list()
