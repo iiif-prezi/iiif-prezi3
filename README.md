@@ -93,8 +93,12 @@ If you have an existing IIIF Presentation v3 Manifest, you can load it via the b
 
 Published extensions from the [IIIF Registry of Extensions](https://iiif.io/api/extension/) are included with the package, and can be loaded using the `iiif_prezi3.load_bundled_extensions()` method.
 
-Called without argument, this method will load all bundled extensions listed in the [iiif_prezi3/config/extensions.json](iiif_prezi3/config/extensions.json) file. If you wish to only load selected extensions from those available bundled with the library, you can pass the path to a JSON file as an argument to the function:
+Called without argument, this method will load all bundled extensions listed in the [iiif_prezi3/config/extensions.json](iiif_prezi3/config/extensions.json) file. If you wish to only load selected extensions from those available bundled with the library, you can pass either the path to a JSON file, or a list of extension names as an argument to the function:
 ```
 >>> import iiif_prezi3
->>> iiif_prezi3.load_bundled_extensions(extension_file="/path/to/chosen_extensions.json")
+>>> iiif_prezi3.load_bundled_extensions(extensions="/path/to/chosen_extensions.json")
+```
+```
+>>> import iiif_prezi3
+>>> iiif_prezi3.load_bundled_extensions(extensions=['example_extension'])
 ```
