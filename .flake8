@@ -1,0 +1,16 @@
+[flake8]
+exclude =
+	.tox,
+	build,
+	dist,
+	docs,
+	iiif_prezi3/skeleton.py # file is automatically generated
+application-import-names = flake8
+docstring-convention = google
+import-order-style = pep8
+max-complexity = 10
+ignore =
+	D100 # Missing docstring in public module
+	D104 # Missing docstring in public function
+	E501 # Line too long
+  F722 # syntax error in forward annotation
