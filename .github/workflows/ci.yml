@@ -26,11 +26,8 @@ jobs:
           path: ${{ env.pythonLocation }}
           key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('dev-requirements.txt') }}
 
-      - name: Install
-        run: python setup.py install
-
       - name: Test
-        run: python -m unittest discover -s tests
+        run: tox
 
       - name: install coveralls
         run: pip install coveralls
