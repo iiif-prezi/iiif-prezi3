@@ -27,7 +27,9 @@ jobs:
           key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('dev-requirements.txt') }}
 
       - name: Test
-        run: tox
+        run: |
+          python -m pip install tox
+          tox
 
       - name: install coveralls
         run: pip install coveralls
