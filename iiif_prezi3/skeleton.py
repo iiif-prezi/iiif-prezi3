@@ -60,7 +60,7 @@ class Id(Base):
 
 
 class LngString(Base):
-    pass
+     __root__: Dict[str, List[str]]
 
 
 class Choice(Base):
