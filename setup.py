@@ -1,8 +1,9 @@
-from setuptools import setup
-
+import os
 # read the contents of your README file
 from pathlib import Path
-import os
+
+from setuptools import setup
+
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text()
 
@@ -24,7 +25,7 @@ setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages=['iiif_prezi3', 'iiif_prezi3.helpers', 'iiif_prezi3.extensions'],
-    package_data = {
+    package_data={
         'iiif_prezi3': ['config/extensions.json']
     },
     classifiers=["Development Status :: 4 - Beta",
