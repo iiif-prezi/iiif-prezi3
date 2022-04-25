@@ -25,7 +25,7 @@ class BasicTest(unittest.TestCase):
             # Manifest not over written so should still be the skeleton Manifest
             self.assertEqual(str(m.__class__), "<class 'iiif_prezi3.skeleton.Manifest'>")
 
-            # Method from canvas_sizes.MaxHelper.widest_canvas should be avilable 
+            # Method from canvas_sizes.MaxHelper.widest_canvas should be avilable
             self.assertEqual(m.widest_canvas(), "Maximum canvas width: 640")
 
     def testNewManifest(self):
@@ -33,7 +33,7 @@ class BasicTest(unittest.TestCase):
             Testing if the creation of a Manifest in python carries through to the JSON output
         '''
         manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': ['default label']})
-        
+
         canvas = Canvas(id='http://iiif.example.org/prezi/Canvas/0')
         canvas.height = 100
         canvas.width = 200
@@ -48,21 +48,21 @@ class BasicTest(unittest.TestCase):
         self.assertEqual(manifest.widest_canvas(), "Maximum canvas width: 200")
 
         data =  json.loads(manifest.json(exclude_unset=True))
-        
+
         self.assertEqual(manifest.id, 'http://iiif.example.org/prezi/Manifest/0', "Unexpected Manifest id ")
         self.assertEqual(canvas.id, 'http://iiif.example.org/prezi/Canvas/0', "Unexpected Canvas id")
 
         self.assertEqual(data["id"], 'http://iiif.example.org/prezi/Manifest/0', "Unexpected Manifest id in json")
         self.assertEqual('http://iiif.example.org/prezi/Canvas/0', data["items"][0]["id"],  "Unexpected Canvas id", )
-        
+
 
     def testReadAndSetId(self):
         '''
-            Test setting and changing the ID of 
-            a manifest including exception raised if 
+            Test setting and changing the ID of
+            a manifest including exception raised if
             set with an invalid value.
         '''
-        manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': 'label'})
+        manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': ['label']})
         self.assertEqual(manifest.id, 'http://iiif.example.org/prezi/Manifest/0', "Unexpected Manifest id ")
 
         manifest.id = 'http://iiif.example.org/prezi/Manifest/new'
@@ -77,7 +77,7 @@ class BasicTest(unittest.TestCase):
         '''
             Test setting up a label
         '''
-        manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': 'default label'})
+        manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': ['default label']})
 
         print ('Manifest label using dict: "{}"'.format(manifest.label))
 
