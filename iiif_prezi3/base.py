@@ -4,11 +4,11 @@ from pydantic import BaseModel
 class Base(BaseModel):
 
     class Config:
-         validate_assignment = True
+        validate_assignment = True
 
     def __getattribute__(self, prop):
         val = super(Base, self).__getattribute__(prop)
-        # __root__ is a custom pydantic thing 
+        # __root__ is a custom pydantic thing
         if hasattr(val, '__root__'):
             return str(val.__root__)
         else:
@@ -24,11 +24,3 @@ class Base(BaseModel):
         else:
             self.__class__._defaulters = []
         super().__init__(**kw)
-
-
-    def __getattribute__(self, prop):
-        val = super(Base, self).__getattribute__(prop)
-        if hasattr(val, '__root__'):
-            return str(val.__root__)
-        else:
-            return val
