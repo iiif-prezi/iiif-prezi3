@@ -2,6 +2,7 @@
 
 configs = {}
 
+
 # FIXME: Can this just be configs.__setitem__ ?
 def register_config(what, name, config):
     m = what.__class__.__module__
@@ -20,6 +21,7 @@ def register_config(what, name, config):
             raise ValueError("Cannot replace config with a different class")
     else:
         configs[whatname] = config
+
 
 class Config(object):
 
