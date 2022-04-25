@@ -1,5 +1,5 @@
-from ..skeleton import Manifest
 from ..loader import monkeypatch_schema
+from ..skeleton import Manifest
 
 
 class MaxHelper:
