@@ -102,3 +102,6 @@ Called without argument, this method will load all bundled extensions listed in 
 >>> import iiif_prezi3
 >>> iiif_prezi3.load_bundled_extensions(extensions=['example_extension'])
 ```
+
+## Running Tests
+Tests (including linting) can be run using [tox](https://tox.wiki/en/latest/). First, install tox with `pip install tox`, then type `tox`.
