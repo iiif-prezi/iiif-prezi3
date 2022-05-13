@@ -5,6 +5,7 @@ class Base(BaseModel):
 
     class Config:
         validate_assignment = True
+        copy_on_model_validation = False
 
     def __getattribute__(self, prop):
         val = super(Base, self).__getattribute__(prop)
