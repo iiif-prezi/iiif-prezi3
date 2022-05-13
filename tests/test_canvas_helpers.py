@@ -1,5 +1,5 @@
-import json
 import unittest
+
 from iiif_prezi3 import AnnotationPage, Canvas
 
 

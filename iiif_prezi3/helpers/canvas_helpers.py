@@ -1,6 +1,5 @@
-from .auto_fields import AutoId
-from ..skeleton import Annotation, AnnoTarget, AnnotationPage, Canvas, ResourceItem
 from ..loader import monkeypatch_schema
+from ..skeleton import Annotation, AnnotationPage, Canvas, ResourceItem
 
 
 class AddImageToCanvas:
@@ -25,5 +24,6 @@ class AddImageToCanvas:
             self.items = list()
         self.items.append(anno_page)
         return anno_page
+
 
 monkeypatch_schema(Canvas, AddImageToCanvas)
