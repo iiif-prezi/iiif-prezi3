@@ -11,6 +11,24 @@ sys.path.insert(1, '.')
 
 class BasicTest(unittest.TestCase):
 
+    def test_copy_on_model_validation(self):
+        """Test if the copy_on_model_validation is working.
+
+        Test if the user can change the values of the IIIF object after it has
+        been instantiated using the reference to the original object.
+        """
+        originalID = 'http://iiif.example.org/TESTORIGINAL'
+        amanifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': ['default label']})
+        acanvas = Canvas(id='http://iiif.example.org/prezi/Manifest/0/canvas/01', type='Canvas', label={'en': ['default label']})
+        asecondcanvas = Canvas(id=originalID, type='Canvas', label={'en': ['second label']})
+        changedID = 'http://iiif.example.org/TESTCHANGED'
+        amanifest.items = [acanvas, asecondcanvas]
+        # we change the id of the first canvas
+        acanvas.id = changedID
+        self.assertEqual(amanifest.items[0].id, changedID)
+        # we check that the second canvas has not been changed
+        self.assertEqual(amanifest.items[1].id, originalID)
+
     def testLoadManifest(self):
         """Tests JSON file opening, extension is picked up, and the fields are correct."""
         with open('tests/fixtures/0003-mvm-video.json') as json_file:
