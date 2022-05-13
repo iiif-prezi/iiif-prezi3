@@ -46,13 +46,14 @@ class Auto(object):
             else:
                 # Not present, but might still generate from scratch
                 val = self.manipulate_value(what)
-            if val: 
+            if val:
                 updated[p] = val
         return updated
 
     def manipulate_value(self, what, value=None):
         # Default to noop
         return None
+
 
 class AutoIdConfig(AutoConfig):
     def __init__(self, auto_type="int", base="http://example.org/iiif/"):
@@ -109,6 +110,7 @@ class AutoLangConfig(Config):
         self.properties = ['label', 'value', 'summary']
         self.auto_lang = auto_lang
 
+
 class AutoLang(Auto):
     def __init__(self, cfg, name=""):
         super().__init__(cfg, name)
@@ -119,7 +121,7 @@ class AutoLang(Auto):
         elif type(value) == str:
             return {self.config.auto_lang: [value]}
         elif type(value) == list:
-            return {self.config.auto_lang: value}        
+            return {self.config.auto_lang: value}
         else:
             return None
 

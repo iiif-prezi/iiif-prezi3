@@ -25,7 +25,6 @@ class Base(BaseModel):
             self.__class__._defaulters = []
         super().__init__(**kw)
 
-
     def __setattr__(self, key, value):
         # look for a defaulter to manipulate the value
         if hasattr(self.__class__, '_defaulters'):
