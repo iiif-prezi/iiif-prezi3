@@ -12,6 +12,14 @@ assignees: ''
 ## Description
 <!-- Provide a short description of the helper method -->
 
+## Function name / Parameters / Return
+<!-- Suggest a name for the helper's function, the parameters it should accept, and what it should return (if anything) -->
+Function name:
+
+Parameters:
+
+Returns:
+
 ## Objects
 <!-- Which objects should this helper apply to? -->
 - [ ] Base Object (all Prezi3 Classes)
