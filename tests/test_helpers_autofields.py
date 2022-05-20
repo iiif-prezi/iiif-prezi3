@@ -1,7 +1,6 @@
 import unittest
 
-from iiif_prezi3 import Manifest
-from iiif_prezi3 import config
+from iiif_prezi3 import Manifest, config
 
 
 class CanvasHelpersTests(unittest.TestCase):
@@ -14,7 +13,7 @@ class CanvasHelpersTests(unittest.TestCase):
         m = Manifest(label="string")
         self.assertEqual(m.label, str({"none": ["string"]}))
         m = Manifest(label=["string", "string2"])
-        self.assertEqual(m.label, str({"none": ["string", "string2"]}))        
+        self.assertEqual(m.label, str({"none": ["string", "string2"]}))
 
     def test_lang_setattr(self):
         m = Manifest(label="string")
