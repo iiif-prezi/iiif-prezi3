@@ -1,3 +1,5 @@
+import json
+
 from pydantic import BaseModel
 
 
@@ -5,6 +7,7 @@ class Base(BaseModel):
 
     class Config:
         validate_assignment = True
+        copy_on_model_validation = False
 
     def __getattribute__(self, prop):
         val = super(Base, self).__getattribute__(prop)
@@ -37,3 +40,18 @@ class Base(BaseModel):
 
         # and now pass upwards for pydantic to validate and set
         super().__setattr__(key, value)
+
+    def json(self, **kwargs):
+        return self.jsonld(**kwargs)
+
+    def jsonld(self, **kwargs):
+        # approach 6- use the pydantic .dict() function to get the dict with pydantic options, add the context at the top and dump to json with modified kwargs
+        pydantic_args = ["include", "exclude", "by_alias", "exclude_defaults", "encoder"]
+        dict_kwargs = dict([(arg, kwargs[arg]) for arg in kwargs.keys() if arg in pydantic_args])
+        json_kwargs = dict([(arg, kwargs[arg]) for arg in kwargs.keys() if arg not in pydantic_args])
+        return json.dumps({"@context": "http://iiif.io/api/presentation/3/context.json", **self.dict(exclude_unset=True, exclude_none=True, **dict_kwargs)}, **json_kwargs)
+
+    def jsonld_dict(self, **kwargs):
+        pydantic_args = ["include", "exclude", "by_alias", "exclude_defaults", "encoder"]
+        dict_kwargs = dict([(arg, kwargs[arg]) for arg in kwargs.keys() if arg in pydantic_args])
+        return {"@context": "http://iiif.io/api/presentation/3/context.json", **self.dict(exclude_unset=True, exclude_none=True, **dict_kwargs)}
