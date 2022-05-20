@@ -1,10 +1,16 @@
 import uuid
 
 from ..config.config import Config, register_config
-from ..skeleton import Annotation, Canvas, Collection, Manifest, Range
+from ..skeleton import (Annotation, Canvas, Collection, KeyValueString,
+                        Manifest, Range)
 
 
 class AutoConfig(Config):
+
+    def __init__(self, **kw):
+        self.properties = []
+        Config.__init__(self, **kw)
+
     def register_on_class(self, *classes):
         self.helper.register_on_class(*classes)
 
@@ -30,9 +36,29 @@ class Auto(object):
             if hasattr(c, '_defaulters') and self in c._defaulters:
                 c._defaulters.remove(self)
 
+    def manipulates(self, property):
+        return property in self.config.properties
+
+    def generate_defaults(self, what, **kw):
+        updated = {}
+        for p in self.config.properties:
+            if p in kw:
+                val = self.manipulate_value(what, kw[p])
+            else:
+                # Not present, but might still generate from scratch
+                val = self.manipulate_value(what)
+            if val:
+                updated[p] = val
+        return updated
+
+    def manipulate_value(self, what, value=None):
+        # Default to noop
+        return None
+
 
 class AutoIdConfig(AutoConfig):
     def __init__(self, auto_type="int", base="http://example.org/iiif/"):
+        self.properties = ['id']
         self.auto_type = auto_type
         self.base_url = base
         self.translation = {}
@@ -71,31 +97,41 @@ class AutoId(Auto):
             raise ValueError(f"Unknown auto-id type: {auto_type}")
         return self.config.base_url + str(slug)
 
-    def generate_defaults(self, what, **kw):
-        if 'id' not in kw:
-            new_id = self.generate_id(what)
-            return {'id': new_id}
+    def manipulate_value(self, what, value=None):
+        if value:
+            # Currently only generate from scratch
+            # Future versions might allow passing the slug to be turned into a URI
+            return None
+        else:
+            return self.generate_id(what)
 
 
-class AutoLabelLangConfig(Config):
-    def __init__(self, auto_lang="en"):
+class AutoLangConfig(Config):
+    def __init__(self, auto_lang="none"):
+        self.properties = ['label', 'value', 'summary']
         self.auto_lang = auto_lang
 
 
-class AutoLabelLang(Auto):
+class AutoLang(Auto):
     def __init__(self, cfg, name=""):
         super().__init__(cfg, name)
 
-    def generate_defaults(self, what, **kw):
-        if 'label' in kw and type(kw['label']) == str:
-            return {'label': {self.config.auto_lang: [kw['label']]}}
+    def manipulate_value(self, what, value=None):
+        if not value:
+            return None
+        elif type(value) == str:
+            return {self.config.auto_lang: [value]}
+        elif type(value) == list:
+            return {self.config.auto_lang: value}
+        else:
+            return None
 
 
 aicfg = AutoIdConfig()
-alcfg = AutoLabelLangConfig()
+alcfg = AutoLangConfig()
 ai = AutoId(aicfg)
-al = AutoLabelLang(alcfg)
+al = AutoLang(alcfg)
 
 # Set up some obvious defaults
 ai.register_on_class(Collection, Manifest, Canvas, Range, Annotation)
-al.register_on_class(Collection, Manifest, Canvas, Range)
+al.register_on_class(Collection, Manifest, Canvas, Range, KeyValueString)

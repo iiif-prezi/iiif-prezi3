@@ -28,6 +28,19 @@ class Base(BaseModel):
             self.__class__._defaulters = []
         super().__init__(**kw)
 
+    def __setattr__(self, key, value):
+        # look for a defaulter to manipulate the value
+        if hasattr(self.__class__, '_defaulters'):
+            for df in self.__class__._defaulters:
+                if df.manipulates(key):
+                    new = df.manipulate_value(self, value)
+                    if new:
+                        value = new
+                        break
+
+        # and now pass upwards for pydantic to validate and set
+        super().__setattr__(key, value)
+
     def json(self, **kwargs):
         return self.jsonld(**kwargs)
 
