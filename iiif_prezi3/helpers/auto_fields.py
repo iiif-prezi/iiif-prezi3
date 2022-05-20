@@ -107,7 +107,7 @@ class AutoId(Auto):
 
 
 class AutoLangConfig(Config):
-    def __init__(self, auto_lang="en"):
+    def __init__(self, auto_lang="none"):
         self.properties = ['label', 'value', 'summary']
         self.auto_lang = auto_lang
 
