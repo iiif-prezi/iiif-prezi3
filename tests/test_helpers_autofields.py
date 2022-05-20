@@ -9,7 +9,7 @@ class CanvasHelpersTests(unittest.TestCase):
         pass
 
     def test_lang_constructor(self):
-        """ Test that label is manipulated during object construction """
+        """Test that label is manipulated during object construction."""
         m = Manifest(label="string")
         self.assertEqual(m.label, str({"none": ["string"]}))
         m = Manifest(label=["string", "string2"])
