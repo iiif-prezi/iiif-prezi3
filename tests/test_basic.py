@@ -41,7 +41,7 @@ class BasicTest(unittest.TestCase):
         # test manifest has the helper method
         self.assertEqual(manifest.widest_canvas(), "Maximum canvas width: 200")
 
-        data = json.loads(manifest.json(exclude_unset=True))
+        data = json.loads(manifest.json())
 
         self.assertEqual(manifest.id, 'http://iiif.example.org/prezi/Manifest/0', "Unexpected Manifest id ")
         self.assertEqual(canvas.id, 'http://iiif.example.org/prezi/Canvas/0', "Unexpected Canvas id")
