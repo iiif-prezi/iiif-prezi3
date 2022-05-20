@@ -16,6 +16,7 @@ class CanvasHelpersTests(unittest.TestCase):
         self.assertEqual(m.label, str({"none": ["string", "string2"]}))
 
     def test_lang_setattr(self):
+        """Test that label is manipulated during property setting."""
         m = Manifest(label="string")
         m.label = "another string"
         self.assertEqual(m.label, str({"none": ["another string"]}))
@@ -23,10 +24,12 @@ class CanvasHelpersTests(unittest.TestCase):
         self.assertEqual(m.label, str({"none": ["string3", "string4"]}))
 
     def test_id_constructor(self):
+        """Test that id is added during object construction."""
         m = Manifest(label="a")
         self.assertEqual(m.id, 'http://example.org/iiif/1')
 
     def test_lang_config(self):
+        """Test that lang config is respected."""
         curr = config.configs['helpers.auto_fields.AutoLang'].auto_lang
         config.configs['helpers.auto_fields.AutoLang'].auto_lang = "de"
         m = Manifest(label="german")
@@ -34,6 +37,7 @@ class CanvasHelpersTests(unittest.TestCase):
         config.configs['helpers.auto_fields.AutoLang'].auto_lang = curr
 
     def test_id_config(self):
+        """Test that id config is respected."""
         curr = config.configs['helpers.auto_fields.AutoId'].auto_type
         config.configs['helpers.auto_fields.AutoId'].auto_type = "uuid"
         m = Manifest(label="string")
