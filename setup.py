@@ -16,6 +16,15 @@ REQUIREMENTS = [
     "pydantic"
 ]
 
+SETUP_REQUIREMENTS = [
+    "tox",
+    "autopep8",
+    "isort",
+    "flake8-docstrings",
+    "flake8-isort",
+    "flake8"
+]
+
 # Setting up
 setup(
     name='iiif-prezi3',
@@ -45,5 +54,6 @@ setup(
     python_requires='>=3',
     url='https://github.com/iiif-prezi/iiif-prezi3',
     license='LICENSE',
-    install_requires=REQUIREMENTS
+    install_requires=REQUIREMENTS,
+    setup_requires=SETUP_REQUIREMENTS
 )
