@@ -10,8 +10,7 @@ def load_bundled_extensions(extensions=None):
         extensions_to_load = extensions
     elif not extensions or (extensions and type(extensions) == str):
         if not extensions:
-            extension_file = os.path.join(os.path.dirname(
-                __file__), 'config', 'extensions.json')
+            extension_file = os.path.join(os.path.dirname(__file__), 'config', 'extensions.json')
         else:
             extension_file = extensions
         try:
