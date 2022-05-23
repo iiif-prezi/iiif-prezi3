@@ -3,7 +3,7 @@ import unittest
 from iiif_prezi3 import Manifest, config
 
 
-class CanvasHelpersTests(unittest.TestCase):
+class AutoFieldsHelpersTests(unittest.TestCase):
 
     def setUp(self):
         pass
