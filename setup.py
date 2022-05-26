@@ -45,5 +45,5 @@ setup(
     python_requires='>=3',
     url='https://github.com/iiif-prezi/iiif-prezi3',
     license='LICENSE',
-    install_requires=REQUIREMENTS
+    install_requires=REQUIREMENTS,
 )
