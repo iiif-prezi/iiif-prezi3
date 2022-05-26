@@ -88,7 +88,7 @@ class AutoId(Auto):
             self._auto_id_types[t] = curr
             slug = f"{t}/{self._auto_id_types[t]}"
         elif auto_type == "uuid":
-            return "urn:uuid:%s" % uuid.uuid4()
+            slug = str(uuid.uuid4())
         elif auto_type == "uuid-per-type":
             t = type(what).__name__
             t = self._type_translation.get(t, t)
