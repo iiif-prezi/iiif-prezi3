@@ -13,7 +13,7 @@ if os.path.exists("version.txt"):
 else:
     VERSION = "local_test_version"
 
-REQUIREMENTS = ["pydantic"]
+REQUIREMENTS = ["pydantic", "Pillow"]
 
 # Setting up
 setup(
