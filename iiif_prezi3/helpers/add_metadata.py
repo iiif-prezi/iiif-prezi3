@@ -1,6 +1,5 @@
-from ..skeleton import Collection, Manifest, Canvas, Range
+from ..skeleton import Collection, Manifest, Canvas, Range, KeyValueString
 from ..loader import monkeypatch_schema
-from iiif_prezi3 import KeyValueString
 
 class AddMetadata:
     def add_metadata(self, label, value):
