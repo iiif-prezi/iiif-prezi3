@@ -3,7 +3,7 @@ from ..skeleton import Canvas, ResourceItem
 
 
 class SetHwd:
-    def set_hwd(self, height, width, duration):
+    def set_hwd(self, height=None, width=None, duration=None):
         """Set the height, width, and duration properties allowing nulls.
 
         Args:
