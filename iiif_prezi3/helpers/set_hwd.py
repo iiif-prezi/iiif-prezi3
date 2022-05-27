@@ -14,11 +14,11 @@ class SetHwd:
         Returns:
             None
         """
-        if duration is None and height is None and width is None:
+        if not (duration or height or width):
             raise TypeError("At least one of height, width, or duration must be set")
-        if height is not None and width is None:
+        if height and not width:
             raise TypeError("width must be set if height is set")
-        if width is not None and height is None:
+        if width and not height:
             raise TypeError("height must be set if width is set")
         self.height = height
         self.width = width
