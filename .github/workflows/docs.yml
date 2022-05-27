@@ -16,7 +16,7 @@ jobs:
 
       - uses: actions/cache@v2
         with:
-          path: ${{ env.pythonLocation }}
+          path: ~/.cache/pip-docs
           key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.dev.txt') }}
 
       - name: Install dependencies
