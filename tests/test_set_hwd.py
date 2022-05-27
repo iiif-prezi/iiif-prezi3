@@ -19,8 +19,7 @@ class Set_hwd(unittest.TestCase):
         """Test if the assignment of height, width, and duration works."""
         height = 100
         width = 200
-        #TODO: duration is not yet supported as float I pass it as string
-        duration = '300.23'
+        duration = 300.23
         self.acanvas.set_hwd(height=height, width=width, duration=duration)
         self.assertEqual(height, self.acanvas.height)
         self.assertEqual(width, self.acanvas.width)
