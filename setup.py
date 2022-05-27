@@ -19,7 +19,7 @@ REQUIREMENTS = [
 DOCS_REQUIREMENTS = [
     "mkdocs",
     "mkdocs-material",
-    "mkdocstrings",
+    "mkdocstrings-python",
 ]
 
 # Setting up
