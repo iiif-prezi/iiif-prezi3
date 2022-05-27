@@ -16,6 +16,12 @@ REQUIREMENTS = [
     "pydantic"
 ]
 
+DOCS_REQUIREMENTS = [
+    "mkdocs",
+    "mkdocs-material",
+    "mkdocstrings",
+]
+
 # Setting up
 setup(
     name='iiif-prezi3',
@@ -46,4 +52,7 @@ setup(
     url='https://github.com/iiif-prezi/iiif-prezi3',
     license='LICENSE',
     install_requires=REQUIREMENTS,
+     extras_require={
+        "docs": DOCS_REQUIREMENTS,
+    },
 )
