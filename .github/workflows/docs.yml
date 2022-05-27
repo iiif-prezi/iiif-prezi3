@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+  pull_request:
+
 
 jobs:
   build:
@@ -23,9 +25,15 @@ jobs:
           pip install -e .
           pip install -e '.[docs]'
 
+      # build docs in strict mode as a check for pull requests
+      - name: Build docs (strict mode)
+        if: ${{ github.event_name == 'pull_request' }}
+        run: mkdocs build --strict
+
+      # build docs and publish on push to main
       - name: Deploy docs
+        if: ${{ github.event_name == 'push' }}
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CONFIG_FILE: mkdocs.yml
-          EXTRA_PACKAGES: build-base
