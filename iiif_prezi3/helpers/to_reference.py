@@ -1,5 +1,5 @@
-from ..skeleton import Manifest, Reference
 from ..loader import monkeypatch_schema
+from ..skeleton import Manifest, Reference
 
 
 class ToReference:

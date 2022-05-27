@@ -1,5 +1,5 @@
-from ..skeleton import Collection, Manifest
 from ..loader import monkeypatch_schema
+from ..skeleton import Collection, Manifest
 
 
 class MakeManifest:
