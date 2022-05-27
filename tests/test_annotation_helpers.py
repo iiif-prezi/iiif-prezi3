@@ -1,6 +1,6 @@
 import unittest
 
-from iiif_prezi3 import Manifest, Annotation, AnnotationPage
+from iiif_prezi3 import Annotation, AnnotationPage, Manifest
 
 
 class AnnotationHelpersTests(unittest.TestCase):
