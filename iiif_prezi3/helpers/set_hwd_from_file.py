@@ -1,6 +1,7 @@
 from ..loader import monkeypatch_schema
 from ..skeleton import Canvas, ResourceItem
 from PIL import Image
+import mimetypes
 
 
 class SetHeightWidthDurationFileHelper:
@@ -15,6 +16,11 @@ class SetHeightWidthDurationFileHelper:
     """
 
     def set_hwd_from_file(self, file_path_or_object):
+        if isinstance(file_path_or_object, str):
+            filetype, _ = mimetypes.guess_type(file_path_or_object)
+            if not filetype.startswith("image/"):
+                raise NotImplementedError
+
         tmp_image = Image.open(file_path_or_object)
         w, h = tmp_image.size
         self.set_hwd(h, w, None)

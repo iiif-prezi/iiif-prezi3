@@ -7,6 +7,9 @@ class SetHeightWidthDurationFileHelperTests(unittest.TestCase):
         self.canvas = Canvas(id="http://iiif.example.org/prezi/Canvas/0")
         self.test_image = "tests/fixtures/resources/page1-full.png"
 
+    def test_set_hwd_from_filepath_notimage(self):
+        self.assertRaises(NotImplementedError, self.canvas.set_hwd_from_file, "foo.mp3")
+
     def test_set_hwd_from_filepath(self):
         self.canvas.set_hwd_from_file(self.test_image)
         self.assertEqual(self.canvas.width, 1200)  # width
