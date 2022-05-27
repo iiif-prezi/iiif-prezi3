@@ -7,8 +7,8 @@ on:
 
 
 jobs:
-  build:
-    name: Deploy docs
+  docs:
+    name: docs
     runs-on: ubuntu-latest
     steps:
       - name: Checkout main
