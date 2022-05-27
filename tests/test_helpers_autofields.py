@@ -11,29 +11,29 @@ class AutoFieldsHelpersTests(unittest.TestCase):
     def test_lang_constructor(self):
         """Test that label is manipulated during object construction."""
         m = Manifest(label="string")
-        self.assertEqual(m.label, str({"none": ["string"]}))
+        self.assertEqual(m.label, {"none": ["string"]})
         m = Manifest(label=["string", "string2"])
-        self.assertEqual(m.label, str({"none": ["string", "string2"]}))
+        self.assertEqual(m.label, {"none": ["string", "string2"]})
 
     def test_lang_setattr(self):
         """Test that label is manipulated during property setting."""
         m = Manifest(label="string")
         m.label = "another string"
-        self.assertEqual(m.label, str({"none": ["another string"]}))
+        self.assertEqual(m.label, {"none": ["another string"]})
         m.label = ["string3", "string4"]
-        self.assertEqual(m.label, str({"none": ["string3", "string4"]}))
+        self.assertEqual(m.label, {"none": ["string3", "string4"]})
 
     def test_id_constructor(self):
         """Test that id is added during object construction."""
         m = Manifest(label="a")
-        self.assertEqual(m.id, 'http://example.org/iiif/1')
+        self.assertTrue(m.id.startswith('http://example.org/iiif/'))
 
     def test_lang_config(self):
         """Test that lang config is respected."""
         curr = config.configs['helpers.auto_fields.AutoLang'].auto_lang
         config.configs['helpers.auto_fields.AutoLang'].auto_lang = "de"
         m = Manifest(label="german")
-        self.assertEqual(m.label, str({"de": ["german"]}))
+        self.assertEqual(m.label, {"de": ["german"]})
         config.configs['helpers.auto_fields.AutoLang'].auto_lang = curr
 
     def test_id_config(self):
