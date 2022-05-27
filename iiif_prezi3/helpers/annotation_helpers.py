@@ -4,13 +4,9 @@ from ..skeleton import (Annotation, AnnotationPage, Canvas, Collection,
 
 
 class AnnotationHelpers:
-    """
-    Adds an Annotation to a Collection, Manifest, Canvas, Range,...
-    """
 
     def add_annotation(self, annotation):
-        """
-        Adds the annotation object to the (AnnotationPage object in the) annotations property.
+        """Adds the annotation object to the (AnnotationPage object in the) annotations property.
 
         Args:
           annotation (iiif-prezi3.skeleton.Annotation): the Annotation to add
@@ -21,21 +17,20 @@ class AnnotationHelpers:
             self.annotations = list()
 
         if len(self.annotations) == 0:
+            # add empty AnnotationPage
             anno_page = AnnotationPage(items=[])
             self.annotations.append(anno_page)
-
         else:
-            anno_page = self.annotations[0]  # TODO: use first anno page?
+            anno_page = self.annotations[0]
 
         anno_page.items.append(annotation)
 
         return annotation
 
     def make_annotation(self, **kwargs):
-        """
-        Creates an annotation object and adds it to the annotations property (using .add_annotation)
+        """Creates an annotation object and adds it to the annotations property using .add_annotation.
 
-        Args: tbd
+        Args: (see Annotation)
         """
         annotation = Annotation(**kwargs)
         self.add_annotation(annotation)
