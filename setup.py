@@ -44,6 +44,6 @@ setup(
                  "Environment :: Web Environment"],
     python_requires='>=3',
     url='https://github.com/iiif-prezi/iiif-prezi3',
-    license='LICENSE',
+    license='Apache License, Version 2.0',
     install_requires=REQUIREMENTS,
 )
