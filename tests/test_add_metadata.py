@@ -10,5 +10,5 @@ class AddMetadataTest(unittest.TestCase):
     def test_add_metadata(self):
         self.collection.add_metadata("label", "value");
         assert isinstance(self.collection.metadata, list)
-        assert self.collection.metadata[-1].label == LngString(__root__={'none': ['label']})
-        assert self.collection.metadata[-1].value == LngString(__root__={'none': ['value']})
+        assert self.collection.metadata[-1].label == {'none': ['label']}
+        assert self.collection.metadata[-1].value == {'none': ['value']}
