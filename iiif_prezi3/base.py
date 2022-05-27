@@ -13,7 +13,11 @@ class Base(BaseModel):
         val = super(Base, self).__getattribute__(prop)
         # __root__ is a custom pydantic thing
         if hasattr(val, '__root__'):
-            return str(val.__root__)
+            if type(val.__root__) in [dict, list, float, int]:
+                return val.__root__
+            else:
+                # cast it to a string
+                return str(val.__root__)
         else:
             return val
 
