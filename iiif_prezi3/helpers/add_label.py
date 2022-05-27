@@ -7,6 +7,16 @@ from ..skeleton import (Annotation, AnnotationPage, Canvas, Collection,
 class AddLabel:
 
     def add_label(self, value, language=None):
+        """Adds a label to an existing resource.
+
+        Args:
+            value (str or list): The label or labels to be added
+            language (str): An optional language for the labels. If not provided
+                it will default using the AutoLang configuration.
+
+        Returns:
+            None
+        """
         if not self.label:
             if not language:
                 self.label = value
