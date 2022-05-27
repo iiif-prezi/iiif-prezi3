@@ -1,5 +1,4 @@
 import os
-
 # read the contents of your README file
 from pathlib import Path
 

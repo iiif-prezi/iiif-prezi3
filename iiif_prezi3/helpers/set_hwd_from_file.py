@@ -1,12 +1,13 @@
-from ..loader import monkeypatch_schema
-from ..skeleton import Canvas, ResourceItem
-from PIL import Image
 import mimetypes
+
+from PIL import Image
+
+from ..loader import monkeypatch_schema
+from ..skeleton import Canvas
 
 
 class SetHeightWidthDurationFileHelper:
-    """Introspect a file and set the height, width, and duration properties
-    of a Canvas or Content Resource object, allowing nulls
+    """Introspect a file and set the height, width, and duration properties.
 
     Args:
         file_path_or_object (filepath or fileobject): the file path or file object to introspect
