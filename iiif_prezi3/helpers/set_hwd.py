@@ -23,7 +23,6 @@ class SetHwd:
         self.height = height
         self.width = width
         self.duration = duration
-        return None
 
 
 monkeypatch_schema([Canvas, ResourceItem], [SetHwd])
