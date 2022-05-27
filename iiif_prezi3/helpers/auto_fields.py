@@ -1,8 +1,8 @@
 import uuid
 
 from ..config.config import Config, register_config
-from ..skeleton import (Annotation, Canvas, Collection, KeyValueString,
-                        Manifest, Range)
+from ..skeleton import (Annotation, AnnotationCollection, AnnotationPage,
+                        Canvas, Collection, KeyValueString, Manifest, Range)
 
 
 class AutoConfig(Config):
@@ -133,5 +133,5 @@ ai = AutoId(aicfg)
 al = AutoLang(alcfg)
 
 # Set up some obvious defaults
-ai.register_on_class(Collection, Manifest, Canvas, Range, Annotation)
-al.register_on_class(Collection, Manifest, Canvas, Range, KeyValueString)
+ai.register_on_class(Collection, Manifest, Canvas, Range, Annotation, AnnotationPage, AnnotationCollection)
+al.register_on_class(Collection, Manifest, Canvas, Range, AnnotationCollection, KeyValueString)
