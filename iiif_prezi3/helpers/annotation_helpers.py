@@ -9,7 +9,7 @@ class AnnotationHelpers:
         """Adds the annotation object to the (AnnotationPage object in the) annotations property.
 
         Args:
-          annotation (iiif-prezi3.skeleton.Annotation): the Annotation to add
+          annotation (iiif-prezi3.Annotation): the Annotation to add
 
         Creates an AnnotationPage object if it doesn't exist.
         """
@@ -28,9 +28,9 @@ class AnnotationHelpers:
         return annotation
 
     def make_annotation(self, **kwargs):
-        """Creates an annotation object and adds it to the annotations property using .add_annotation.
+        """Creates an annotation object and adds it to the annotations property using .add_annotation().
 
-        Args: (see Annotation)
+        Args: (see iiif-prezi3.Annotation)
         """
         annotation = Annotation(**kwargs)
         self.add_annotation(annotation)
