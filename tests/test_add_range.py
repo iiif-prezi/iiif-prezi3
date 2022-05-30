@@ -10,5 +10,4 @@ class AddRangeTest(unittest.TestCase):
     def test_add_range(self):
         self.manifest.add_range(self.range)
         assert isinstance(self.manifest.structures, list)
-        assert self.manifest.structures[-1].label == self.range
-        assert self.manifest.structures[-1].value == self.range
+        assert self.manifest.structures[-1] == self.range
