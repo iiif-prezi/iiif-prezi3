@@ -12,8 +12,7 @@ class MakeManifest:
         """
 
         manifest = Manifest(**kwargs)
-        reference = manifest.to_reference()
-        self.add_item(reference)
+        self.add_item(manifest)
         return manifest
 
 
