@@ -30,10 +30,15 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         run: mkdocs build --strict
 
-      # build docs and publish on push to main
-      - name: Deploy docs
+      # build docs for publication
+      - name: Build docs
         if: ${{ github.event_name == 'push' }}
-        uses: mhausenblas/mkdocs-deploy-gh-pages@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CONFIG_FILE: mkdocs.yml
+        run: mkdocs build
+
+      # when building on push to main, publish the compiled documentation
+      - name: Deploy built docs to github pages
+        if: ${{ github.event_name == 'push' }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
