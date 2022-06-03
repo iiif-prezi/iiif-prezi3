@@ -13,7 +13,8 @@ else:
     VERSION = "local_test_version"
 
 REQUIREMENTS = [
-    "pydantic"
+    "pydantic",
+    "requests",
 ]
 
 DOCS_REQUIREMENTS = [
