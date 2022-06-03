@@ -12,6 +12,9 @@ class SetHwdFromIIIF:
 
         Requests IIIF Image information remotely for an
         image resource and sets resulting height and width.
+
+        Args:
+            url (str): An HTTP URL for the IIIF image endpoint.
         """
         # resource url may or may not end with info.json;
         # add if not present
