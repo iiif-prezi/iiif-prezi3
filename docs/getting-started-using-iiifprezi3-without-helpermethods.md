@@ -6,12 +6,12 @@ In the following lines of code we will create a manifest and two canvases:
 
 ```python
 import iiif_prezi3
-amanifest = iiif_prezi3.Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': 'default label'})
-acanvas = iiif_prezi3.Canvas(id='http://iiif.example.org/prezi/Manifest/0/canvas/01',type='Canvas',label={'en': 'default label'})
-asecondcanvas = iiif_prezi3.Canvas(id='http://iiif.example.org/prezi/Manifest/0/canvas/02',type='Canvas',label={'en': 'second label'})
+amanifest = iiif_prezi3.Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': ['default label']})
+acanvas = iiif_prezi3.Canvas(id='http://iiif.example.org/prezi/Manifest/0/canvas/01',type='Canvas',label={'en': ['default label']})
+asecondcanvas = iiif_prezi3.Canvas(id='http://iiif.example.org/prezi/Manifest/0/canvas/02',type='Canvas',label={'en': ['second label']})
 ```
 
-For constructing nested object we have to assign to the items property a list containing the valid IIIF objects accepted by the class:
+For constructing nested objects we have to assign to the items property a list containing the valid IIIF objects accepted by the class:
 
 
 ```python
@@ -25,7 +25,7 @@ If we try to set the items property of the manifest items to a string we will ri
 amanifest.items = ["this shouldn't be here"]
 ```
 
-However be aware that appending to the items list after that the items property has been assigned will not raise any error regarding the input:
+However, be aware that appending to the items list after that the items property has been assigned will not raise any error regarding the input:
 
 
 ```python
@@ -85,8 +85,3 @@ amanifest.items = canvases
 Notice that the canvases list is created at the beginning but is assigned to the items property of the manifest only once at the end, in this way pydantic will validate the list.
 
 Furthermore, keep in mind that objects contained in the `canvases` list are copied in the manifest items, hence any modification on the original object won't affect the object inside the manifest. This holds true for any object added to the model.
-
-
-```python
-
-```
