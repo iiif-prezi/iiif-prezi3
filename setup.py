@@ -13,7 +13,9 @@ else:
     VERSION = "local_test_version"
 
 REQUIREMENTS = [
-    "pydantic"
+    "pydantic",
+    "requests",
+    "Pillow"
 ]
 
 DOCS_REQUIREMENTS = [
@@ -24,10 +26,10 @@ DOCS_REQUIREMENTS = [
 
 # Setting up
 setup(
-    name='iiif-prezi3',
+    name="iiif-prezi3",
     version=VERSION,
-    author='IIIF Prezi3 Team',
-    description='IIIF Presentation v3 API implementation',
+    author="IIIF Prezi3 Team",
+    description="IIIF Presentation v3 API implementation",
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages=['iiif_prezi3', 'iiif_prezi3.helpers', 'iiif_prezi3.extensions'],
@@ -52,7 +54,7 @@ setup(
     url='https://github.com/iiif-prezi/iiif-prezi3',
     license='Apache License, Version 2.0',
     install_requires=REQUIREMENTS,
-     extras_require={
+    extras_require={
         "docs": DOCS_REQUIREMENTS,
     },
 )
