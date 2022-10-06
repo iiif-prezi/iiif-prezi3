@@ -27,11 +27,5 @@ class SetHeightWidthDurationFileHelper:
         self.set_hwd(h, w, None)
         tmp_image.close()
 
-    def set_hwd(self, h, w, d):
-        # stub preparing for Issue #54
-        self.width = w
-        self.height = h
-        self.duration = d
-
 
 monkeypatch_schema(Canvas, SetHeightWidthDurationFileHelper)

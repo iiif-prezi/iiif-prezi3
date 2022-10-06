@@ -31,9 +31,5 @@ class SetHwdFromIIIF:
         resource_info = response.json()
         self.set_hwd(resource_info.get("height"), resource_info.get("width"))
 
-    def set_hwd(self, height=None, width=None, duration=None):
-        # placeholder for other helper
-        pass
-
 
 monkeypatch_schema(Canvas, [SetHwdFromIIIF])
