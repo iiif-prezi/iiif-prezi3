@@ -31,14 +31,19 @@ class SetHwdFromIIIFTests(unittest.TestCase):
 
         # non-200 response
         mockresponse = Mock(status_code=404)
+        # This is necessary otherwise the mocked response correctly calls raise_for_status, but doesn't terminate the
+        # code flow like it would in normal usage (because there's not actually an exception) so it would try and call
+        # set_hwd with non-existent values and error out incorrectly.
+        mockresponse.raise_for_status.side_effect = requests.exceptions.HTTPError
         mockrequest_get.return_value = mockresponse
-        self.canvas.set_hwd_from_iiif(image_id)
-        # non-200 should raise exception for status
-        mockresponse.raise_for_status.assert_called_once()
+        with self.assertRaises(requests.exceptions.HTTPError):
+            self.canvas.set_hwd_from_iiif(image_id)
+            # non-200 should raise exception for status
+            mockresponse.raise_for_status.assert_called_once()
 
         # 200 response but not valid json should raise exception
         mockresponse.status_code = 200
-        mockresponse.json.side_effect = requests.exceptions.JSONDecodeError
+        mockresponse.json.side_effect = requests.exceptions.JSONDecodeError("", "", 0)  # JSONDecodeError needs arguments
         with self.assertRaises(requests.exceptions.JSONDecodeError):
             self.canvas.set_hwd_from_iiif(image_id)
 
