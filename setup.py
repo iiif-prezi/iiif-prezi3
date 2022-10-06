@@ -15,20 +15,20 @@ else:
 REQUIREMENTS = [
     "pydantic",
     "requests",
+    "Pillow"
 ]
 
 DOCS_REQUIREMENTS = [
     "mkdocs",
     "mkdocs-material",
     "mkdocstrings-python",
-]
 
 # Setting up
 setup(
-    name='iiif-prezi3',
+    name="iiif-prezi3",
     version=VERSION,
-    author='IIIF Prezi3 Team',
-    description='IIIF Presentation v3 API implementation',
+    author="IIIF Prezi3 Team",
+    description="IIIF Presentation v3 API implementation",
     long_description=long_description,
     long_description_content_type='text/markdown',
     packages=['iiif_prezi3', 'iiif_prezi3.helpers', 'iiif_prezi3.extensions'],
