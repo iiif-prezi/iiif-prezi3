@@ -1,4 +1,5 @@
 import mimetypes
+import os
 
 from PIL import Image
 
@@ -17,7 +18,7 @@ class SetHeightWidthDurationFileHelper:
     """
 
     def set_hwd_from_file(self, file_path_or_object):
-        if isinstance(file_path_or_object, str):
+        if isinstance(file_path_or_object, str) or isinstance(file_path_or_object, os.PathLike):
             filetype, _ = mimetypes.guess_type(file_path_or_object)
             if not filetype.startswith("image/"):
                 raise NotImplementedError
