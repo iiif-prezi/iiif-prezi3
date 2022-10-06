@@ -8,7 +8,7 @@ class ToReference:
     def to_reference(self):
         """Returns a Reference object that points to the calling object."""
         # Only try to set thumbnail if it's a Class that can have one
-        if isinstance(self, (Collection, Manifest, Canvas)):
+        if isinstance(self, (Collection, Manifest, Canvas, AnnotationPage, Annotation, AnnotationCollection, Range)):
             thumbnail = self.thumbnail
         else:
             thumbnail = None
