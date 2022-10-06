@@ -1,6 +1,11 @@
 # iiif-prezi3
 IIIF Presentation API 3 Python Library
 
+[![PyPI version](https://badge.fury.io/py/iiif-prezi3.svg)](https://badge.fury.io/py/iiif-prezi3)
+![PyPi — Python versions](https://img.shields.io/pypi/pyversions/iiif-prezi3)
+![PyPI - License](https://img.shields.io/pypi/l/iiif-prezi3)
+[![CI](https://github.com/iiif-prezi/iiif-prezi3/actions/workflows/ci.yml/badge.svg)](https://github.com/iiif-prezi/iiif-prezi3/actions/workflows/ci.yml)
+
 ## Installation
 ### PyPi
 The easiest way to install the `iiif-prezi3` library is directly from PyPi:
@@ -93,7 +98,7 @@ If you have an existing IIIF Presentation v3 Manifest, you can load it via the b
 
 Published extensions from the [IIIF Registry of Extensions](https://iiif.io/api/extension/) are included with the package, and can be loaded using the `iiif_prezi3.load_bundled_extensions()` method.
 
-Called without argument, this method will load all bundled extensions listed in the [iiif_prezi3/config/extensions.json](iiif_prezi3/config/extensions.json) file. If you wish to only load selected extensions from those available bundled with the library, you can pass either the path to a JSON file, or a list of extension names as an argument to the function:
+Called without argument, this method will load all bundled extensions listed in the  [iiif_prezi3/config/extensions.json](https://github.com/iiif-prezi/iiif-prezi3/blob/main/iiif_prezi3/config/extensions.json) file. If you wish to only load selected extensions from those available bundled with the library, you can pass either the path to a JSON file, or a list of extension names as an argument to the function:
 ```
 >>> import iiif_prezi3
 >>> iiif_prezi3.load_bundled_extensions(extensions="/path/to/chosen_extensions.json")
