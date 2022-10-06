@@ -2,6 +2,7 @@ import unittest
 
 from iiif_prezi3 import Manifest, Range
 
+
 class AddRangeTest(unittest.TestCase):
     def setUp(self):
         self.manifest = Manifest(label="manifest")

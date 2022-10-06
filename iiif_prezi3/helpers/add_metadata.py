@@ -1,11 +1,12 @@
-from ..skeleton import Canvas, Collection, KeyValueString, LngString, Manifest, Range
 from ..loader import monkeypatch_schema
+from ..skeleton import (Canvas, Collection, KeyValueString, LngString,
+                        Manifest, Range)
 
 
 class AddMetadata:
 
     def add_metadata(self, label, value):
-        #Validate incoming data
+        # Validate incoming data
         criteria = [
             label and value,
             type(label) is type(value),
