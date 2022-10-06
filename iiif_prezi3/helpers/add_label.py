@@ -14,8 +14,6 @@ class AddLabel:
             language (str): An optional language for the labels. If not provided
                 it will default using the AutoLang configuration.
 
-        Returns:
-            None
         """
         if not self.label:
             if not language:

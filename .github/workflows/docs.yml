@@ -1,0 +1,44 @@
+name: docs
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+
+jobs:
+  docs:
+    name: docs
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v2
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip-docs
+          key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}-${{ hashFiles('requirements.dev.txt') }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+          pip install -e '.[docs]'
+
+      # build docs in strict mode as a check for pull requests
+      - name: Build docs (strict mode)
+        if: ${{ github.event_name == 'pull_request' }}
+        run: mkdocs build --strict
+
+      # build docs for publication
+      - name: Build docs
+        if: ${{ github.event_name == 'push' }}
+        run: mkdocs build
+
+      # when building on push to main, publish the compiled documentation
+      - name: Deploy built docs to github pages
+        if: ${{ github.event_name == 'push' }}
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
