@@ -1,6 +1,6 @@
 from ..loader import monkeypatch_schema
-from ..skeleton import (AnnotationCollection, AnnotationPage, Canvas,
-                        Collection, Manifest, Reference)
+from ..skeleton import (Annotation, AnnotationCollection, AnnotationPage,
+                        Canvas, Collection, Manifest, Range, Reference)
 
 
 class ToReference:
@@ -21,4 +21,4 @@ class ToReference:
         return Reference(id=self.id, label=self.label, type=self.type, thumbnail=thumbnail)
 
 
-monkeypatch_schema([Manifest, AnnotationPage, Collection, AnnotationCollection, Canvas], ToReference)
+monkeypatch_schema([Manifest, AnnotationPage, Collection, AnnotationCollection, Canvas, Range], ToReference)
