@@ -16,6 +16,7 @@ If submitting a pull request:
    * Follow [PEP8](https://www.python.org/dev/peps/pep-0008/) and [PEP257](https://www.python.org/dev/peps/pep-0257/). These will be required in the CI builds.
    * Don't repeat code.
    * Cover the code with tests.
+   * Use [Google style docstrings](https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings) for any code documentation you add.
 
 ## Developing helpers
 
@@ -27,3 +28,8 @@ To develop a helper you should follow the documentation [here](https://github.co
  * A fixture which demonstrates your use case in the [fixtures directory](https://github.com/iiif-prezi/iiif-prezi3/tree/main/tests/fixtures).
 
 Please submit your pull request to this repository and one of the library committers will merge it into the main if it fits these requirements.
+
+
+## Docs
+
+To build and view the documentation locally, install requirements with `pip install -e '.[docs]'` and then run `mkdocs serve`.

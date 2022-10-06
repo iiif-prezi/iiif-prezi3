@@ -1,0 +1,18 @@
+site_name: iiif-prezi3
+
+nav:
+    - 'README': README.md
+    - 'Getting started':
+        - 'Using iiifprezi3 without helper methods': 'getting-started-using-iiifprezi3-without-helpermethods.md'
+        - 'add-reference-to-manifest-inside-a-collection.md'
+    - Technical:
+        - 'generate-schema.md'
+        - 'write-helper-method.md'
+        - code.md
+
+theme:
+  name: material
+
+plugins:
+  - search
+  - mkdocstrings
