@@ -47,7 +47,7 @@ class Auto(object):
             else:
                 # Not present, but might still generate from scratch
                 val = self.manipulate_value(what)
-            if val:
+            if val is not None:
                 updated[p] = val
         return updated
 
@@ -127,11 +127,30 @@ class AutoLang(Auto):
             return None
 
 
+class AutoItemsConfig(Config):
+    def __init__(self):
+        self.properties = ['items']
+
+
+class AutoItems(Auto):
+    def __init__(self, cfg, name=""):
+        super().__init__(cfg, name)
+
+    def manipulate_value(self, what, value=None):
+        if not value:
+            return []
+        else:
+            return value
+
+
 aicfg = AutoIdConfig()
 alcfg = AutoLangConfig()
+aitcfg = AutoItemsConfig()
 ai = AutoId(aicfg)
 al = AutoLang(alcfg)
+ait = AutoItems(aitcfg)
 
 # Set up some obvious defaults
 ai.register_on_class(Collection, Manifest, Canvas, Range, Annotation, AnnotationPage, AnnotationCollection)
 al.register_on_class(Collection, Manifest, Canvas, Range, AnnotationCollection, KeyValueString)
+ait.register_on_class(Canvas, Range)
