@@ -2,8 +2,8 @@ import unittest
 
 from pydantic import ValidationError
 
-from iiif_prezi3 import (Annotation, AnnotationPage, Canvas, Collection, CollectionRef,
-                         Manifest, ManifestRef, Reference, ResourceItem)
+from iiif_prezi3 import (Annotation, AnnotationPage, Canvas, Collection,
+                         CollectionRef, Manifest, ManifestRef, ResourceItem)
 
 
 class AddItemTests(unittest.TestCase):
@@ -71,6 +71,6 @@ class AddItemTests(unittest.TestCase):
             self.c.add_item(self.ca)
 
     def test_add_invalid_reference(self):
-        """Test that adding an invalid reference type fails"""
+        """Test that adding an invalid reference type fails."""
         with self.assertRaises(ValidationError):
             self.c2.add_item_by_reference(self.ca)

@@ -7,8 +7,9 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Union
 
-from .base import Base
 from pydantic import AnyUrl, Extra, Field, PositiveFloat, PositiveInt, constr
+
+from .base import Base
 
 
 class Behavior(Base):
