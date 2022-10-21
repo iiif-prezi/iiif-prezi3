@@ -1,5 +1,5 @@
 from ..loader import monkeypatch_schema
-from ..skeleton import Manifest, Canvas
+from ..skeleton import Canvas, Manifest
 
 
 class MakeCanvas:
