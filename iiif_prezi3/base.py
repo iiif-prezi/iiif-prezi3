@@ -7,7 +7,9 @@ class Base(BaseModel):
 
     class Config:
         validate_assignment = True
+        validate_all = True
         copy_on_model_validation = False
+        smart_union = True
 
     def __getattribute__(self, prop):
         val = super(Base, self).__getattribute__(prop)
