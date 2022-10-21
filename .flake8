@@ -4,7 +4,8 @@ exclude =
 	build,
 	dist,
 	docs,
-	iiif_prezi3/skeleton.py # file is automatically generated
+	iiif_prezi3/skeleton.py, # file is automatically generated
+        .venv
 application-import-names = flake8
 docstring-convention = google
 import-order-style = pep8
