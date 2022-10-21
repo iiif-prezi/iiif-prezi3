@@ -8,6 +8,7 @@ from .canvas_helpers import AddImageToCanvas  # noqa: F401
 from .canvas_sizes import MaxHelper, MinHelper  # noqa: F401
 from .make_collection import MakeCollection  # noqa: F401
 from .make_manifest import MakeManifest  # noqa: F401
+from .make_range import MakeRange  # noqa: F401
 from .set_hwd import SetHwd  # noqa: F401
 from .set_hwd_from_file import SetHeightWidthDurationFileHelper  # noqa: F401
 from .set_hwd_from_iiif import SetHwdFromIIIF  # noqa: F401
