@@ -1,7 +1,6 @@
 import json
 
-from pydantic import BaseModel
-
+from pydantic import AnyUrl, BaseModel
 
 class Base(BaseModel):
 
@@ -10,16 +9,18 @@ class Base(BaseModel):
         validate_all = True
         copy_on_model_validation = False
         smart_union = True
+        # Allow us to use the field name like service.id rather than service.@id
+        allow_population_by_field_name = True 
 
     def __getattribute__(self, prop):
         val = super(Base, self).__getattribute__(prop)
         # __root__ is a custom pydantic thing
         if hasattr(val, '__root__'):
-            if type(val.__root__) in [dict, list, float, int]:
-                return val.__root__
-            else:
+            if type(val.__root__) in [AnyUrl]:
                 # cast it to a string
                 return str(val.__root__)
+            else:
+                return val.__root__
         else:
             return val
 
@@ -55,6 +56,7 @@ class Base(BaseModel):
         excluded_args = ["exclude_unset", "exclude_defaults", "exclude_none", "by_alias"]
         pydantic_args = ["include", "exclude", "encoder"]
         dict_kwargs = dict([(arg, kwargs[arg]) for arg in kwargs.keys() if arg in pydantic_args])
+
         json_kwargs = dict([(arg, kwargs[arg]) for arg in kwargs.keys() if arg not in pydantic_args + excluded_args])
         return json.dumps({"@context": "http://iiif.io/api/presentation/3/context.json",
                            **self.dict(exclude_unset=False, exclude_defaults=False, exclude_none=True, by_alias=True, **dict_kwargs)}, **json_kwargs)
@@ -62,5 +64,6 @@ class Base(BaseModel):
     def jsonld_dict(self, **kwargs):
         pydantic_args = ["include", "exclude", "encoder"]
         dict_kwargs = dict([(arg, kwargs[arg]) for arg in kwargs.keys() if arg in pydantic_args])
+
         return {"@context": "http://iiif.io/api/presentation/3/context.json",
                 **self.dict(exclude_unset=False, exclude_defaults=False, exclude_none=True, by_alias=True, **dict_kwargs)}

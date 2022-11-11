@@ -1,7 +1,7 @@
 import requests
 
 from ..loader import monkeypatch_schema
-from ..skeleton import Canvas
+from ..skeleton import Canvas, Resource, ResourceItem
 
 
 class SetHwdFromIIIF:
@@ -12,6 +12,7 @@ class SetHwdFromIIIF:
 
         Requests IIIF Image information remotely for an
         image resource and sets resulting height and width.
+        This method will return the info.json
 
         Args:
             url (str): An HTTP URL for the IIIF image endpoint.
@@ -31,5 +32,7 @@ class SetHwdFromIIIF:
         resource_info = response.json()
         self.set_hwd(resource_info.get("height"), resource_info.get("width"))
 
+        return resource_info
 
-monkeypatch_schema(Canvas, [SetHwdFromIIIF])
+
+monkeypatch_schema([Canvas, Resource, ResourceItem], SetHwdFromIIIF)

@@ -320,8 +320,8 @@ class ServiceItem(Class):
 
 
 class ServiceItem1(Base):
-    _id: Id = Field(..., alias='@id')
-    _type: str = Field(..., alias='@type')
+    id: Id = Field(..., alias='@id')
+    type: str = Field(..., alias='@type')
     profile: Optional[str] = None
     service: Optional[Service] = None
 

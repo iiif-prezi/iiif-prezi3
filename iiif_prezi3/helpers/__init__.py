@@ -6,6 +6,7 @@ from .annotation_helpers import AnnotationHelpers  # noqa: F401
 from .auto_fields import *  # noqa: F401,F403
 from .canvas_helpers import AddImageToCanvas  # noqa: F401
 from .canvas_sizes import MaxHelper, MinHelper  # noqa: F401
+from .create_canvas_from_iiif import CreateCanvasFromIIIF  # noqa: F401
 from .make_canvas import MakeCanvas  # noqa: F401
 from .make_collection import MakeCollection  # noqa: F401
 from .make_manifest import MakeManifest  # noqa: F401
