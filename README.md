@@ -1,10 +1,10 @@
 # iiif-prezi3
 IIIF Presentation API 3 Python Library
 
-[![PyPI version](https://badge.fury.io/py/iiif-prezi3.svg)](https://badge.fury.io/py/iiif-prezi3)
-![PyPi — Python versions](https://img.shields.io/pypi/pyversions/iiif-prezi3)
-![PyPI - License](https://img.shields.io/pypi/l/iiif-prezi3)
-[![CI](https://github.com/iiif-prezi/iiif-prezi3/actions/workflows/ci.yml/badge.svg)](https://github.com/iiif-prezi/iiif-prezi3/actions/workflows/ci.yml)
+[![PyPI version](https://badge.fury.io/py/iiif-prezi3.svg?)](https://badge.fury.io/py/iiif-prezi3)
+![PyPi — Python versions](https://img.shields.io/pypi/pyversions/iiif-prezi3?)
+![PyPI - License](https://img.shields.io/pypi/l/iiif-prezi3?)
+[![CI](https://github.com/iiif-prezi/iiif-prezi3/actions/workflows/ci.yml/badge.svg?)](https://github.com/iiif-prezi/iiif-prezi3/actions/workflows/ci.yml)
 
 ## Installation
 ### PyPi
@@ -30,21 +30,21 @@ python setup.py install
 
 ## Basic Usage
 You can now import the library or individual classes from within Python and start creating your IIIF Presentation 3 objects:
-```
->>> import iiif_prezi3
->>> iiif_prezi3.__version__
-'0.0.2.1'
-```
 
 ### Directly creating a Manifest
 ```
 >>> from iiif_prezi3 import Manifest
 >>> m = Manifest(id="https://example.com/iiif/manifest.json", type="Manifest", label={"en":["Example Manifest"]})
->>> print(m.json(exclude_unset=True, indent=2))
+>>> print(m.json(indent=2))
 {
+  "@context": "http://iiif.io/api/presentation/3/context.json",
   "id": "https://example.com/iiif/manifest.json",
   "type": "Manifest",
-  "label": {}
+  "label": {
+    "en": [
+      "Example Manifest"
+    ]
+  }
 }
 ```
 ### Importing an existing IIIF Manifest
@@ -54,42 +54,16 @@ If you have an existing IIIF Presentation v3 Manifest, you can load it via the b
 >>> import json
 >>> manifest_json = json.load(open("example.json"))
 >>> m = Manifest(**manifest_json)
->>> print(m.json(exclude_unset=True, indent=2))
+>>> print(m.json(indent=2))
 {
-  "id": "https://iiif.io/api/cookbook/recipe/0003-mvm-video/manifest.json",
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://example.com/iiif/manifest.json",
   "type": "Manifest",
-  "label": {},
-  "items": [
-    {
-      "id": "https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas",
-      "type": "Canvas",
-      "height": 360,
-      "width": 640,
-      "duration": 572.034,
-      "items": [
-        {
-          "id": "https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas/page",
-          "type": "AnnotationPage",
-          "items": [
-            {
-              "id": "https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas/page/annotation",
-              "type": "Annotation",
-              "motivation": "painting",
-              "body": {
-                "id": "https://fixtures.iiif.io/video/indiana/lunchroom_manners/high/lunchroom_manners_1024kb.mp4",
-                "type": "Video",
-                "height": 360,
-                "width": 480,
-                "duration": 572.034,
-                "format": "video/mp4"
-              },
-              "target": "https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas"
-            }
-          ]
-        }
-      ]
-    }
-  ]
+  "label": {
+    "en": [
+      "Example Manifest"
+    ]
+  }
 }
 ```
 
