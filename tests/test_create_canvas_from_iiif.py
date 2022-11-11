@@ -124,7 +124,7 @@ class CreateCanvasFromIIIFTests(unittest.TestCase):
         # Check service
         service = resource.service[0]
 
-        self.assertEqual(service._id, image_id)
+        self.assertEqual(service.id, image_id)
         self.assertEqual(service.profile, "http://iiif.io/api/image/2/level1.json")
-        self.assertEqual(service._type, "ImageService2")
+        self.assertEqual(service.type, "ImageService2")
 
