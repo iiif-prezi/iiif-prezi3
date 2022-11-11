@@ -10,10 +10,10 @@ class CreateCanvasFromIIIF:
     def create_canvas_from_iiif(self, url, **kwargs):
         """Create a canvas from a IIIF Image URL.
 
-        Creates a canvas from a IIIF Image service passing any 
+        Creates a canvas from a IIIF Image service passing any
         kwargs to the Canvas. Returns a Canvas object
-        """
 
+        """
         canvas = Canvas(**kwargs)
 
         body = ResourceItem(id="http://example.com", type="Image")

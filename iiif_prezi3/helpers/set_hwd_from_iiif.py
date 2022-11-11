@@ -11,8 +11,8 @@ class SetHwdFromIIIF:
         """Set height and width on a Canvas object.
 
         Requests IIIF Image information remotely for an
-        image resource and sets resulting height and width. 
-        This method will return the info.json 
+        image resource and sets resulting height and width.
+        This method will return the info.json
 
         Args:
             url (str): An HTTP URL for the IIIF image endpoint.

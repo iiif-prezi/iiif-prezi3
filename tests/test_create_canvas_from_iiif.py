@@ -1,9 +1,7 @@
 import unittest
 from unittest.mock import Mock, patch
 
-import requests
-
-from iiif_prezi3 import Canvas, Manifest
+from iiif_prezi3 import Manifest
 
 
 class CreateCanvasFromIIIFTests(unittest.TestCase):
