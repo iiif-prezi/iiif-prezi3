@@ -33,6 +33,7 @@ class CreateCanvasFromIIIF:
             service = ServiceItem1(_id=infoJson['@id'], profile=profile, _type="ImageService2")
             print ('Id type:')
             print (type(service._id))
+            print (service._id.alias)
             body.service = [service]
             body.id = f'{infoJson["@id"]}/full/full/0/default.jpg'
             body.format = "image/jpeg"
