@@ -30,21 +30,21 @@ python setup.py install
 
 ## Basic Usage
 You can now import the library or individual classes from within Python and start creating your IIIF Presentation 3 objects:
-```
->>> import iiif_prezi3
->>> iiif_prezi3.__version__
-'0.0.2.1'
-```
 
 ### Directly creating a Manifest
 ```
 >>> from iiif_prezi3 import Manifest
 >>> m = Manifest(id="https://example.com/iiif/manifest.json", type="Manifest", label={"en":["Example Manifest"]})
->>> print(m.json(exclude_unset=True, indent=2))
+>>> print(m.json(indent=2))
 {
+  "@context": "http://iiif.io/api/presentation/3/context.json",
   "id": "https://example.com/iiif/manifest.json",
   "type": "Manifest",
-  "label": {}
+  "label": {
+    "en": [
+      "Example Manifest"
+    ]
+  }
 }
 ```
 ### Importing an existing IIIF Manifest
@@ -54,11 +54,16 @@ If you have an existing IIIF Presentation v3 Manifest, you can load it via the b
 >>> import json
 >>> manifest_json = json.load(open("example.json"))
 >>> m = Manifest(**manifest_json)
->>> print(m.json(exclude_unset=True, indent=2))
+>>> print(m.json(indent=2))
 {
+  "@context": "http://iiif.io/api/presentation/3/context.json",
   "id": "https://iiif.io/api/cookbook/recipe/0003-mvm-video/manifest.json",
   "type": "Manifest",
-  "label": {},
+  "label": {
+    "en": [
+      "Video Example 3"
+    ]
+  },
   "items": [
     {
       "id": "https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas",

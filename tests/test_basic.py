@@ -88,5 +88,6 @@ class BasicTest(unittest.TestCase):
         self.assertEqual(manifest.label['en'][0], 'default label', 'Unexpected label for manifest')
 
 
+
 if __name__ == '__main__':
     unittest.main()

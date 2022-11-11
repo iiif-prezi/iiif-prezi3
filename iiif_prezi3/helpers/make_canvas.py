@@ -7,7 +7,7 @@ class MakeCanvas:
     def make_canvas(self, **kwargs):
         """Add a Canvas to a Manifest.
 
-        Creates a new Canvas, adds a Reference to it to the
+        Creates a new Canvas, appends it to the
         calling Manifest items and returns the newly created Canvas.
         Accepts keyword arguments to customize the resulting instance.
         """
