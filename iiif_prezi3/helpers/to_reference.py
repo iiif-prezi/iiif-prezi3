@@ -1,6 +1,7 @@
 from ..loader import monkeypatch_schema
-from ..skeleton import (AnnotationCollection, AnnotationPage, Canvas,
-                        Collection, Manifest, Reference)
+from ..skeleton import (Annotation, AnnotationCollection, AnnotationPage,
+                        Canvas, CanvasRef, Collection, CollectionRef, Manifest,
+                        ManifestRef, Range, RangeRef, Reference)
 
 
 class ToReference:
@@ -8,7 +9,7 @@ class ToReference:
     def to_reference(self):
         """Returns a Reference object that points to the calling object."""
         # Only try to set thumbnail if it's a Class that can have one
-        if isinstance(self, (Collection, Manifest, Canvas)):
+        if isinstance(self, (Collection, Manifest, Canvas, AnnotationPage, Annotation, AnnotationCollection, Range)):
             thumbnail = self.thumbnail
         else:
             thumbnail = None
@@ -18,7 +19,19 @@ class ToReference:
         if not self.label:
             self.label = ""
 
-        return Reference(id=self.id, label=self.label, type=self.type, thumbnail=thumbnail)
+        # Ensure that we use a specific Reference type if it exists
+        if isinstance(self, Manifest):
+            target_type = ManifestRef
+        elif isinstance(self, Collection):
+            target_type = CollectionRef
+        elif isinstance(self, Canvas):
+            target_type = CanvasRef
+        elif isinstance(self, Range):
+            target_type = RangeRef
+        else:
+            target_type = Reference
+
+        return target_type(id=self.id, label=self.label, type=self.type, thumbnail=thumbnail)
 
 
-monkeypatch_schema([Manifest, AnnotationPage, Collection, AnnotationCollection, Canvas], ToReference)
+monkeypatch_schema([Manifest, AnnotationPage, Collection, AnnotationCollection, Canvas, Range], ToReference)

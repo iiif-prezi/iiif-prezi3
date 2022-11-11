@@ -30,7 +30,6 @@ class AddMetadata:
                 kv = KeyValueString(
                     label=label, value=value
                 )
-                print(kv)
                 self.metadata.append(kv)
 
             elif type(label) is LngString and type(value) is LngString:
