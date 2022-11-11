@@ -563,18 +563,19 @@ python setup.py install
 </code></pre>
 <h2 id="basic-usage">Basic Usage</h2>
 <p>You can now import the library or individual classes from within Python and start creating your IIIF Presentation 3 objects:</p>
-<pre><code>&gt;&gt;&gt; import iiif_prezi3
-&gt;&gt;&gt; iiif_prezi3.__version__
-'0.0.2.1'
-</code></pre>
 <h3 id="directly-creating-a-manifest">Directly creating a Manifest</h3>
 <pre><code>&gt;&gt;&gt; from iiif_prezi3 import Manifest
 &gt;&gt;&gt; m = Manifest(id=&quot;https://example.com/iiif/manifest.json&quot;, type=&quot;Manifest&quot;, label={&quot;en&quot;:[&quot;Example Manifest&quot;]})
-&gt;&gt;&gt; print(m.json(exclude_unset=True, indent=2))
+&gt;&gt;&gt; print(m.json(indent=2))
 {
+  &quot;@context&quot;: &quot;http://iiif.io/api/presentation/3/context.json&quot;,
   &quot;id&quot;: &quot;https://example.com/iiif/manifest.json&quot;,
   &quot;type&quot;: &quot;Manifest&quot;,
-  &quot;label&quot;: {}
+  &quot;label&quot;: {
+    &quot;en&quot;: [
+      &quot;Example Manifest&quot;
+    ]
+  }
 }
 </code></pre>
 <h3 id="importing-an-existing-iiif-manifest">Importing an existing IIIF Manifest</h3>
@@ -583,11 +584,16 @@ python setup.py install
 &gt;&gt;&gt; import json
 &gt;&gt;&gt; manifest_json = json.load(open(&quot;example.json&quot;))
 &gt;&gt;&gt; m = Manifest(**manifest_json)
-&gt;&gt;&gt; print(m.json(exclude_unset=True, indent=2))
+&gt;&gt;&gt; print(m.json(indent=2))
 {
+  &quot;@context&quot;: &quot;http://iiif.io/api/presentation/3/context.json&quot;,
   &quot;id&quot;: &quot;https://iiif.io/api/cookbook/recipe/0003-mvm-video/manifest.json&quot;,
   &quot;type&quot;: &quot;Manifest&quot;,
-  &quot;label&quot;: {},
+  &quot;label&quot;: {
+    &quot;en&quot;: [
+      &quot;Video Example 3&quot;
+    ]
+  },
   &quot;items&quot;: [
     {
       &quot;id&quot;: &quot;https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas&quot;,
