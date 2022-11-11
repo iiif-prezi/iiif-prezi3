@@ -13,15 +13,25 @@ else:
     VERSION = "local_test_version"
 
 REQUIREMENTS = [
-    "pydantic",
-    "requests",
-    "Pillow"
+    "pydantic >= 1.9.0, <2.0.0",
+    "requests >=2.28.0, <3.0.0",
+    "Pillow >=9.1.1, <10.0.0"
 ]
 
 DOCS_REQUIREMENTS = [
-    "mkdocs",
-    "mkdocs-material",
-    "mkdocstrings-python",
+    "mkdocs >=1.4.0, <2.0.0",
+    "mkdocs-material >=8.0.0, <9.0.0",
+    "mkdocstrings-python >=0.7.0, <1.0.0",
+]
+
+DEV_REQUIREMENTS = [
+    "autopep8 >=1.6.0, <2.0.0",
+    "isort >=5.10.1, <6.0.0",
+    "flake8 >=4.0.1, <5.0.0",
+    "flake8-docstrings >=1.6.0, <2.0.0",
+    "flake8-isort >=4.1.1, <5.0.0",
+    "tox >=3.25.0, <4.0.0",
+    "Pillow >=9.1.1, <10.0.0"
 ]
 
 # Setting up
@@ -56,5 +66,6 @@ setup(
     install_requires=REQUIREMENTS,
     extras_require={
         "docs": DOCS_REQUIREMENTS,
+        "dev": DEV_REQUIREMENTS,
     },
 )
