@@ -13,7 +13,7 @@ else:
     VERSION = "local_test_version"
 
 REQUIREMENTS = [
-    "pydantic >= 1.9.0, <2.0.0",
+    "pydantic >= 1.9.2, <2.0.0",
     "requests >=2.28.0, <3.0.0",
     "Pillow >=9.1.1, <10.0.0"
 ]
