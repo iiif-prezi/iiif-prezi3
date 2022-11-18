@@ -14,14 +14,14 @@ jobs:
         python-version: [ '3.7', '3.8', '3.9', '3.10', '3.11' ]
     name: Python ${{ matrix.python-version }} sample
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
 
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ${{ env.pythonLocation }}
           key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}
@@ -36,26 +36,3 @@ jobs:
 
       - name: install coveralls
         run: pip install coveralls
-
-
-     # - name: Generate coverage
-     #   run: coverage run --include=iiif-presentation-validator.py setup.py test
-
-      #- name: Upload coverage data to coveralls.io
-      #  run: coveralls --service=github
-      #  env:
-      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #    COVERALLS_FLAG_NAME: ${{ matrix.python-version }}
-      #    COVERALLS_PARALLEL: true
-
- # Coveralls:
- #   needs: build
- #   runs-on: ubuntu-latest
- #   container: python:3-slim
- #   steps:
- #   - name: Coveralls Finished
- #     run: |
- #       pip3 install --upgrade coveralls
- #       coveralls --service=github --finish
- #     env:
- #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
