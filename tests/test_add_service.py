@@ -1,7 +1,5 @@
 import unittest
 
-from pydantic import ValidationError
-
 from iiif_prezi3 import (Annotation, AnnotationCollection, AnnotationPage,
                          Canvas, Collection, Manifest, Range, ResourceItem,
                          ServiceItem, ServiceItem1)
@@ -58,5 +56,5 @@ class AddServiceTest(unittest.TestCase):
         self.assertEqual(self.canvas.service[0], self.service3)
 
     def test_add_wrong_object_to_service(self):
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(TypeError):
             self.canvas.add_service(self.manifest)

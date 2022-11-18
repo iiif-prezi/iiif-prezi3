@@ -1,7 +1,7 @@
 from ..loader import monkeypatch_schema
 from ..skeleton import (Annotation, AnnotationCollection, AnnotationPage,
                         Canvas, Collection, Manifest, Range, Resource,
-                        ResourceItem)
+                        ResourceItem, ServiceItem, ServiceItem1)
 
 
 class AddService:
@@ -14,10 +14,13 @@ class AddService:
         Returns:
            None
         """
-        if not self.service:
-            self.service = []
-        self.service.append(service)
-        self.service = self.service
+        if isinstance(service, (ServiceItem, ServiceItem1)):
+            if not self.service:
+                self.service = []
+            self.service.append(service)
+            self.service = self.service
+        else:
+            raise TypeError("Not a valid IIIF service.")
 
 
 monkeypatch_schema([Collection, Manifest, Canvas, Range, Annotation, AnnotationPage, AnnotationCollection, Resource, ResourceItem], AddService)
