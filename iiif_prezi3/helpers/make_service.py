@@ -6,7 +6,7 @@ from ..skeleton import (Annotation, AnnotationCollection, AnnotationPage,
 
 class MakeService:
     def make_service(self, id, type, version=3, **kwargs):
-        """Make a IIIF Prezi service of the desired IIIF API version.
+        """Make a IIIF Prezi service of the desired IIIF API version and adds it to the service list.
 
         Args:
             id (AnyUrl): The id of the service.
@@ -27,6 +27,7 @@ class MakeService:
         if version not in serviceversions:
             raise ValueError(f"Version: {version} is not a valid IIIF API service version.")
         service = serviceversions[version](id=id, type=type, **kwargs)
+        self.add_service(service)
         return service
 
 
