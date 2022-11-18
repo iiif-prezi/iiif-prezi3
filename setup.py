@@ -42,7 +42,7 @@ setup(
     description="IIIF Presentation v3 API implementation",
     long_description=long_description,
     long_description_content_type='text/markdown',
-    packages=['iiif_prezi3', 'iiif_prezi3.helpers', 'iiif_prezi3.extensions'],
+    packages=['iiif_prezi3', 'iiif_prezi3.helpers', 'iiif_prezi3.extensions', 'iiif_prezi3.config'],
     package_data={
         'iiif_prezi3': ['config/extensions.json']
     },
