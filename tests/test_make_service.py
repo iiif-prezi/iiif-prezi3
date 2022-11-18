@@ -58,3 +58,12 @@ class MakeServiceTest(unittest.TestCase):
     def test_wrong_version(self):
         with self.assertRaises(ValueError):
             self.canvas.make_service(self.serviceID, self.serviceType, version=0)
+
+    def test_make_also_add(self):
+        service = self.canvas.make_service(self.serviceID, self.serviceType)
+        self.assertIn(service, self.canvas.service)
+
+    def test_service_reference_is_working(self):
+        service = self.canvas.make_service(self.serviceID, self.serviceType)
+        service.profile = 'test'
+        self.assertEqual(service, self.canvas.service[0])
