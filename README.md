@@ -112,6 +112,12 @@ Called without argument, this method will load all bundled extensions listed in 
 >>> import iiif_prezi3
 >>> iiif_prezi3.load_bundled_extensions(extensions=['example_extension'])
 ```
-
+## Local Development
+For developing `iiif-prezi3` locally, clone the repo and then install it and the development dependencies using pip's "editable mode":
+```bash
+git clone git@github.com:iiif-prezi/iiif-prezi3.git
+cd iiif-prezi3
+pip install -e .[dev]
+```
 ## Running Tests
 Tests (including linting) can be run using [tox](https://tox.wiki/en/latest/). First, install tox with `pip install tox`, then type `tox`.
