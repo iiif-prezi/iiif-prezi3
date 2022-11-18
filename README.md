@@ -112,6 +112,9 @@ Called without argument, this method will load all bundled extensions listed in 
 >>> import iiif_prezi3
 >>> iiif_prezi3.load_bundled_extensions(extensions=['example_extension'])
 ```
+
+Extensions work in much the same way as helper methods, and are monkeypatched into the relevant objects in the `iiif_prezi3.skeleton` class, from which everything is loaded.
+For a simple example, please see the `extensions/example_extension.py` file, and the [documentation on writing a helper method](https://github.com/iiif-prezi/iiif-prezi3/blob/main/docs/write-helper-method.md).
 ## Local Development
 For developing `iiif-prezi3` locally, clone the repo and then install it and the development dependencies using pip's "editable mode":
 ```bash
