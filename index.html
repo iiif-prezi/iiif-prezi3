@@ -278,6 +278,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#local-development" class="md-nav__link">
+    Local Development
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#running-tests" class="md-nav__link">
     Running Tests
   </a>
@@ -518,6 +525,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#local-development" class="md-nav__link">
+    Local Development
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#running-tests" class="md-nav__link">
     Running Tests
   </a>
@@ -636,6 +650,14 @@ python setup.py install
 </code></pre>
 <pre><code>&gt;&gt;&gt; import iiif_prezi3
 &gt;&gt;&gt; iiif_prezi3.load_bundled_extensions(extensions=['example_extension'])
+</code></pre>
+<p>Extensions work in much the same way as helper methods, and are monkeypatched into the relevant objects in the <code>iiif_prezi3.skeleton</code> class, from which everything is loaded.
+For a simple example, please see the <code>extensions/example_extension.py</code> file, and the <a href="https://github.com/iiif-prezi/iiif-prezi3/blob/main/docs/write-helper-method.md">documentation on writing a helper method</a>.</p>
+<h2 id="local-development">Local Development</h2>
+<p>For developing <code>iiif-prezi3</code> locally, clone the repo and then install it and the development dependencies using pip's "editable mode":</p>
+<pre><code class="language-bash">git clone git@github.com:iiif-prezi/iiif-prezi3.git
+cd iiif-prezi3
+pip install -e .[dev]
 </code></pre>
 <h2 id="running-tests">Running Tests</h2>
 <p>Tests (including linting) can be run using <a href="https://tox.wiki/en/latest/">tox</a>. First, install tox with <code>pip install tox</code>, then type <code>tox</code>.</p>
