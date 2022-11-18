@@ -46,7 +46,7 @@ setup(
     package_data={
         'iiif_prezi3': ['config/extensions.json']
     },
-    classifiers=["Development Status :: 4 - Beta",
+    classifiers=["Development Status :: 5 - Production/Stable",
                  "Intended Audience :: Developers",
                  "License :: OSI Approved :: Apache Software License",
                  "Operating System :: OS Independent",  # is this true? know Linux & OS X ok
