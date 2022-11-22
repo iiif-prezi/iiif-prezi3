@@ -19,7 +19,7 @@ class AddImageToCanvas:
                 an Annotation and ResourceItem attached.
         """
         body = ResourceItem(id=image_url, type='Image')
-        annotation = Annotation(id=anno_id, body=body, target=image_url, motivation='painting', type='Annotation')
+        annotation = Annotation(id=anno_id, body=body, target=self.id, motivation='painting', type='Annotation')
         anno_page = AnnotationPage(id=anno_page_id, type='AnnotationPage', items=[annotation])
         if not self.items:
             self.items = list()

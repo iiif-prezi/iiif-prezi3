@@ -12,5 +12,5 @@ class CanvasHelpersTests(unittest.TestCase):
         self.assertTrue(isinstance(anno_page, AnnotationPage), '`add_image` should return an AnnotationPage')
         self.assertEqual(len(self.canvas.items), 1)
         self.assertEqual(anno_page.items[0].id, 'http://iiif.example.org/prezi/Annotation/0')
-        self.assertEqual(anno_page.items[0].target, 'http://iiif.example.org/prezi/Image/0')
+        self.assertEqual(anno_page.items[0].target, 'http://iiif.example.org/prezi/Canvas/0')
         self.assertEqual(anno_page.items[0].dict()["body"]["id"], 'http://iiif.example.org/prezi/Image/0')
