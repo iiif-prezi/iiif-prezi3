@@ -18,7 +18,7 @@ class AddImageToCanvas:
             anno_page (iiif-prezi3.skeleton.AnnotationPage): the AnnotationPage with
                 an Annotation and ResourceItem attached.
         """
-        body = ResourceItem(id=image_url, type='Image' **kwargs)
+        body = ResourceItem(id=image_url, type='Image', **kwargs)
         annotation = Annotation(id=anno_id, body=body, target=self.id, motivation='painting', type='Annotation')
         anno_page = AnnotationPage(id=anno_page_id, type='AnnotationPage', items=[annotation])
         if not self.items:
