@@ -4,7 +4,7 @@ from ..skeleton import Annotation, AnnotationPage, Canvas, ResourceItem
 
 class AddImageToCanvas:
 
-    def add_image(self, image_url, anno_id=None, anno_page_id=None):
+    def add_image(self, image_url, anno_id=None, anno_page_id=None, **kwargs):
         """Adds an image to an existing canvas.
 
         Args:
@@ -18,7 +18,7 @@ class AddImageToCanvas:
             anno_page (iiif-prezi3.skeleton.AnnotationPage): the AnnotationPage with
                 an Annotation and ResourceItem attached.
         """
-        body = ResourceItem(id=image_url, type='Image')
+        body = ResourceItem(id=image_url, type='Image', **kwargs)
         annotation = Annotation(id=anno_id, body=body, target=image_url, motivation='painting', type='Annotation')
         anno_page = AnnotationPage(id=anno_page_id, type='AnnotationPage', items=[annotation])
         if not self.items:
