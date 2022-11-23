@@ -126,4 +126,4 @@ pip install -e .[dev]
 Tests (including linting) can be run using [tox](https://tox.wiki/en/latest/). First, install tox with `pip install tox`, then type `tox`.
 
 ## Versioning
-`iiif-prezi3` broadly follows [Semantic Versioning](https://semver.org/). Patch releases are used for bug fixes, minor releases add new functionality andd maintain backwards compatibility and major versions contain breaking changes to the public API of the library. Links to the changes between individual versions can be found on the [releases](https://github.com/iiif-prezi/iiif-prezi3/releases) page.
+`iiif-prezi3` broadly follows [Semantic Versioning](https://semver.org/). Patch releases are used for bug fixes, minor releases add new functionality and maintain backwards compatibility, and major versions contain breaking changes to the public API of the library. Links to the changes between individual versions can be found on the [releases](https://github.com/iiif-prezi/iiif-prezi3/releases) page.
