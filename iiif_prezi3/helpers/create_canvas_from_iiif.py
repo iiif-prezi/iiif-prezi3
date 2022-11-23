@@ -51,7 +51,7 @@ class CreateCanvasFromIIIF:
         return canvas
 
     def make_canvas_from_iiif(self, url, **kwargs):
-        canvas = self.create_canvas_from_IIIF(url, **kwargs)
+        canvas = self.create_canvas_from_iiif(url, **kwargs)
 
         self.add_item(canvas)
 
