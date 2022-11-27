@@ -54,6 +54,7 @@ class CreateCanvasFromIIIF:
         canvas = self.create_canvas_from_iiif(url, **kwargs)
 
         self.add_item(canvas)
+        return canvas
 
 
 monkeypatch_schema(Manifest, [CreateCanvasFromIIIF])
