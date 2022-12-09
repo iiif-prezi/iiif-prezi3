@@ -1,6 +1,6 @@
 import unittest
 
-from iiif_prezi3 import Manifest, Collection, config
+from iiif_prezi3 import Collection, Manifest, config
 
 
 class AutoFieldsHelpersTests(unittest.TestCase):
@@ -58,11 +58,10 @@ class AutoFieldsHelpersTests(unittest.TestCase):
 
     def test_custom_slug(self):
         """Test that setting a custom slug for a specific type works."""
-        curr = config.configs['helpers.auto_fields.AutoId'].auto_type
+        curr_type = config.configs['helpers.auto_fields.AutoId'].auto_type
         config.configs['helpers.auto_fields.AutoId'].auto_type = "int-per-type"
         config.configs['helpers.auto_fields.AutoId'].translation["Manifest"] = "mani"
         m = Manifest(label="custom slug")
         self.assertEqual('http://example.org/iiif/mani/0', m.id)
-        config.configs['helpers.auto_fields.AutoId'].auto_type = curr
-
-
+        config.configs['helpers.auto_fields.AutoId'].auto_type = curr_type
+        del (config.configs['helpers.auto_fields.AutoId'].translation["Manifest"])
