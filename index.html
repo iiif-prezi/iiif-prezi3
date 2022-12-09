@@ -576,23 +576,23 @@
 <h2 id="installation">Installation</h2>
 <h3 id="pypi">PyPi</h3>
 <p>The easiest way to install the <code>iiif-prezi3</code> library is directly from PyPi:</p>
-<pre><code>pip install iiif-prezi3
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip install iiif-prezi3
+</code></pre></div>
 <h3 id="manual-installation">Manual installation</h3>
-<p>Alternatively, you can clone the repository and run <code>setup.py</code> locally:</p>
-<pre><code>git clone https://github.com/iiif-prezi/iiif-prezi3.git
-</code></pre>
-<p>or</p>
-<pre><code>git clone git@github.com:iiif-prezi/iiif-prezi3.git
-</code></pre>
-<p>followed by:</p>
-<pre><code>cd iiif-prezi3
+<p>Alternatively, you can clone the repository and run <code>setup.py</code> locally:
+<div class="highlight"><pre><span></span><code>git clone https://github.com/iiif-prezi/iiif-prezi3.git
+</code></pre></div>
+or
+<div class="highlight"><pre><span></span><code>git clone git@github.com:iiif-prezi/iiif-prezi3.git
+</code></pre></div>
+followed by:
+<div class="highlight"><pre><span></span><code>cd iiif-prezi3
 python setup.py install
-</code></pre>
+</code></pre></div></p>
 <h2 id="basic-usage">Basic Usage</h2>
 <p>You can now import the library or individual classes from within Python and start creating your IIIF Presentation 3 objects:</p>
 <h3 id="directly-creating-a-manifest">Directly creating a Manifest</h3>
-<pre><code>&gt;&gt;&gt; from iiif_prezi3 import Manifest
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; from iiif_prezi3 import Manifest
 &gt;&gt;&gt; m = Manifest(id=&quot;https://example.com/iiif/manifest.json&quot;, type=&quot;Manifest&quot;, label={&quot;en&quot;:[&quot;Example Manifest&quot;]})
 &gt;&gt;&gt; print(m.json(indent=2))
 {
@@ -605,10 +605,10 @@ python setup.py install
     ]
   }
 }
-</code></pre>
+</code></pre></div>
 <h3 id="importing-an-existing-iiif-manifest">Importing an existing IIIF Manifest</h3>
-<p>If you have an existing IIIF Presentation v3 Manifest, you can load it via the built-in <code>json</code> module and create the objects:</p>
-<pre><code>&gt;&gt;&gt; from iiif_prezi3 import Manifest
+<p>If you have an existing IIIF Presentation v3 Manifest, you can load it via the built-in <code>json</code> module and create the objects:
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; from iiif_prezi3 import Manifest
 &gt;&gt;&gt; import json
 &gt;&gt;&gt; manifest_json = json.load(open(&quot;example.json&quot;))
 &gt;&gt;&gt; m = Manifest(**manifest_json)
@@ -654,25 +654,25 @@ python setup.py install
     }
   ]
 }
-</code></pre>
+</code></pre></div></p>
 <h2 id="extensions">Extensions</h2>
 <p><code>iiif-prezi3</code> includes the capability to load extensions to the IIIF Presentation schema (e.g <a href="https://iiif.io/api/extension/navplace/">navPlace</a>) and modify the library's Python classes to include extra properties, validation, helper methods, etc.</p>
 <p>Published extensions from the <a href="https://iiif.io/api/extension/">IIIF Registry of Extensions</a> are included with the package, and can be loaded using the <code>iiif_prezi3.load_bundled_extensions()</code> method.</p>
-<p>Called without argument, this method will load all bundled extensions listed in the  <a href="https://github.com/iiif-prezi/iiif-prezi3/blob/main/iiif_prezi3/config/extensions.json">iiif_prezi3/config/extensions.json</a> file. If you wish to only load selected extensions from those available bundled with the library, you can pass either the path to a JSON file, or a list of extension names as an argument to the function:</p>
-<pre><code>&gt;&gt;&gt; import iiif_prezi3
+<p>Called without argument, this method will load all bundled extensions listed in the  <a href="https://github.com/iiif-prezi/iiif-prezi3/blob/main/iiif_prezi3/config/extensions.json">iiif_prezi3/config/extensions.json</a> file. If you wish to only load selected extensions from those available bundled with the library, you can pass either the path to a JSON file, or a list of extension names as an argument to the function:
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; import iiif_prezi3
 &gt;&gt;&gt; iiif_prezi3.load_bundled_extensions(extensions=&quot;/path/to/chosen_extensions.json&quot;)
-</code></pre>
-<pre><code>&gt;&gt;&gt; import iiif_prezi3
-&gt;&gt;&gt; iiif_prezi3.load_bundled_extensions(extensions=['example_extension'])
-</code></pre>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; import iiif_prezi3
+&gt;&gt;&gt; iiif_prezi3.load_bundled_extensions(extensions=[&#39;example_extension&#39;])
+</code></pre></div></p>
 <p>Extensions work in much the same way as helper methods, and are monkeypatched into the relevant objects in the <code>iiif_prezi3.skeleton</code> class, from which everything is loaded.
 For a simple example, please see the <code>extensions/example_extension.py</code> file, and the <a href="https://github.com/iiif-prezi/iiif-prezi3/blob/main/docs/write-helper-method.md">documentation on writing a helper method</a>.</p>
 <h2 id="local-development">Local Development</h2>
-<p>For developing <code>iiif-prezi3</code> locally, clone the repo and then install it and the development dependencies using pip's "editable mode":</p>
-<pre><code class="language-bash">git clone git@github.com:iiif-prezi/iiif-prezi3.git
-cd iiif-prezi3
-pip install -e .[dev]
-</code></pre>
+<p>For developing <code>iiif-prezi3</code> locally, clone the repo and then install it and the development dependencies using pip's "editable mode":
+<div class="highlight"><pre><span></span><code>git clone git@github.com:iiif-prezi/iiif-prezi3.git
+<span class="nb">cd</span> iiif-prezi3
+pip install -e .<span class="o">[</span>dev<span class="o">]</span>
+</code></pre></div></p>
 <h2 id="running-tests">Running Tests</h2>
 <p>Tests (including linting) can be run using <a href="https://tox.wiki/en/latest/">tox</a>. First, install tox with <code>pip install tox</code>, then type <code>tox</code>.</p>
 <h2 id="versioning">Versioning</h2>

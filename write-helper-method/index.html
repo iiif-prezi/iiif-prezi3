@@ -466,33 +466,33 @@
 <h2 id="location-and-structure">Location and structure</h2>
 <p>Helper methods should be located in Python files inside the <code>helpers/</code> directory. Direct helper methods that take schema objects as arguments can be singular functions, whereas those which are designed to add new functions or properties to existing schema classes must themselves be containing inside a class, to enable them to be monkeypatched in correctly.</p>
 <h2 id="accessing-schema-objects">Accessing Schema Objects</h2>
-<p>Relevant schema classes can be loaded from the <code>skeleton.py</code> file in the main <code>iiif-prezi3</code> package by using a relative import:</p>
-<pre><code class="language-python">from ..skeleton import Manifest
-</code></pre>
+<p>Relevant schema classes can be loaded from the <code>skeleton.py</code> file in the main <code>iiif-prezi3</code> package by using a relative import:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">..skeleton</span> <span class="kn">import</span> <span class="n">Manifest</span>
+</code></pre></div></p>
 <h2 id="monkeypatching-onto-schema-classes">Monkeypatching onto Schema classes</h2>
 <p>If the helper targets a class from the main IIIF Presentation 3 schema, then it can be monkeypatched onto that class at runtime using the <code>iiif_prezi3.loader.monkeypatch_schema()</code> method.
 This function takes two arguments: the class to target, and the class(es) containing the helper methods, either as a single object or a list. Add the monkeypatch function call at the end of your helper file, and it will be run when the helper file is imported by the main package (as detailed below).</p>
-<pre><code class="language-python">from ..skeleton import Manifest
-from ..loader import monkeypatch_schema
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">..skeleton</span> <span class="kn">import</span> <span class="n">Manifest</span>
+<span class="kn">from</span> <span class="nn">..loader</span> <span class="kn">import</span> <span class="n">monkeypatch_schema</span>
 
 
-class MyHelper:
-    def helper_function(self):
-        return &quot;I am a Manifest helper&quot;
+<span class="k">class</span> <span class="nc">MyHelper</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">helper_function</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;I am a Manifest helper&quot;</span>
 
-monkeypatch_schema(Manifest, MyHelper)
-</code></pre>
+<span class="n">monkeypatch_schema</span><span class="p">(</span><span class="n">Manifest</span><span class="p">,</span> <span class="n">MyHelper</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="including-helpers-in-the-main-package">Including helpers in the main package</h2>
 <p>To enable a helper, import it via relative import in the <code>helpers/__init__.py</code> file. This will include the functions directly in the namespace of <code>iiif_prezi3.helpers</code>, which in turn is imported in its entirety by the <code>__init__.py</code> file of the main package.</p>
-<p>In <code>helpers/__init__.py</code>:</p>
-<pre><code class="language-python">from .example_helper import MyHelper
-</code></pre>
-<p>Allowing:</p>
-<pre><code>&gt;&gt;&gt; from iiif_prezi3 import Manifest
+<p>In <code>helpers/__init__.py</code>:
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">.example_helper</span> <span class="kn">import</span> <span class="n">MyHelper</span>
+</code></pre></div></p>
+<p>Allowing:
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; from iiif_prezi3 import Manifest
 &gt;&gt;&gt; m = Manifest(id=&quot;https://example.com/manifest&quot;, type=&quot;Manifest&quot;, label={&quot;en&quot;:&quot;Example Manifest&quot;})
 &gt;&gt;&gt; m.helper_function()
-'I am a Manifest helper'
-</code></pre>
+&#39;I am a Manifest helper&#39;
+</code></pre></div></p>
 
 
 

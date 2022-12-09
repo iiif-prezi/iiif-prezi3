@@ -418,30 +418,30 @@
 <h2 id="how-to-add-references-to-manifest-inside-a-collection">How to add references to manifest inside a collection</h2>
 <p>iif-prezi3 offer some helper methods for adding a reference to manifests and collection inside collections. Reference to manifests inside collections can not contain the items property while label, id and type are required (see <a href="https://iiif.io/api/presentation/3.0/#51-collection">APIs</a> for more).</p>
 <p>Using <code>iiif_prezi3</code> this can be done as follows:</p>
-<pre><code class="language-python">import iiif_prezi3
-mycollection = iiif_prezi3.Collection(id='http://iiif.example.org/prezi/Collection/0', type='Collection')
-</code></pre>
-<pre><code class="language-python">myrefmanifest = mycollection.add_manifest_reference_to_items(manifest_id='http://iiif.example.org/prezi/Manifest/0',label={'en': 'default label'})
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">iiif_prezi3</span>
+<span class="n">mycollection</span> <span class="o">=</span> <span class="n">iiif_prezi3</span><span class="o">.</span><span class="n">Collection</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;http://iiif.example.org/prezi/Collection/0&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Collection&#39;</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">myrefmanifest</span> <span class="o">=</span> <span class="n">mycollection</span><span class="o">.</span><span class="n">add_manifest_reference_to_items</span><span class="p">(</span><span class="n">manifest_id</span><span class="o">=</span><span class="s1">&#39;http://iiif.example.org/prezi/Manifest/0&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;en&#39;</span><span class="p">:</span> <span class="s1">&#39;default label&#39;</span><span class="p">})</span>
+</code></pre></div>
 <p>This will return a a collection object with a reference to a manifest inside the <code>items</code> property:</p>
-<pre><code class="language-python">print(mycollection.json(exclude_unset=True,indent=2))
-</code></pre>
-<pre><code>{
-  "id": "http://iiif.example.org/prezi/Collection/0",
-  "type": "Collection",
-  "items": [
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">mycollection</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">exclude_unset</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>{
+  &quot;id&quot;: &quot;http://iiif.example.org/prezi/Collection/0&quot;,
+  &quot;type&quot;: &quot;Collection&quot;,
+  &quot;items&quot;: [
     {
-      "id": "http://iiif.example.org/prezi/Manifest/0",
-      "label": {},
-      "type": "Manifest"
+      &quot;id&quot;: &quot;http://iiif.example.org/prezi/Manifest/0&quot;,
+      &quot;label&quot;: {},
+      &quot;type&quot;: &quot;Manifest&quot;
     }
   ]
 }
-</code></pre>
-<pre><code class="language-python">
-</code></pre>
-<pre><code class="language-python">
-</code></pre>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
 
 
 
