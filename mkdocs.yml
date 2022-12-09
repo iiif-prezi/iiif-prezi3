@@ -8,6 +8,8 @@ nav:
         - 'generate-schema.md'
         - 'write-helper-method.md'
         - code.md
+    - Cookbook recipes:
+        - 'recipes/0118-multivalue.md'
 
 theme:
   name: material
@@ -17,6 +19,7 @@ markdown_extensions:
   - pymdownx.highlight:
       use_pygments: true
   - pymdownx.superfences
+  - pymdownx.snippets
 
 plugins:
   - search
