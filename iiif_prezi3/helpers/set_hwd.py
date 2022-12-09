@@ -10,9 +10,6 @@ class SetHwd:
             height (int): The height of the resource or the canvas
             width (int): The width of the resource or the canvas
             duration (float): The duration of the resource
-
-        Returns:
-            None
         """
         if not (duration or height or width):
             raise TypeError("At least one of height, width, or duration must be set")

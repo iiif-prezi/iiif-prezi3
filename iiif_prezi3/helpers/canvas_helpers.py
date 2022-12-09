@@ -9,14 +9,11 @@ class AddImageToCanvas:
 
         Args:
             image_url (str): An HTTP URL which points to the image.
-            anno_id (str): An HTTP URL for the annotation to which the image will be
-                attached.
-            anno_page_id (str): An HTTP URL for the annotation page to which the
-                annotation will be attached.
+            anno_id (str): An HTTP URL for the annotation to which the image will be attached.
+            anno_page_id (str): An HTTP URL for the annotation page to which the annotation will be attached.
 
         Returns:
-            anno_page (iiif-prezi3.skeleton.AnnotationPage): the AnnotationPage with
-                an Annotation and ResourceItem attached.
+            anno_page (AnnotationPage): the AnnotationPage with an Annotation and ResourceItem attached.
         """
         body = ResourceItem(id=image_url, type='Image', **kwargs)
         annotation = Annotation(id=anno_id, body=body, target=self.id, motivation='painting', type='Annotation')
