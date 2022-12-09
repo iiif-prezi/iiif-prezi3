@@ -34,7 +34,7 @@ You can now import the library or individual classes from within Python and star
 ### Directly creating a Manifest
 ```
 >>> from iiif_prezi3 import Manifest
->>> m = Manifest(id="https://example.com/iiif/manifest.json", type="Manifest", label={"en":["Example Manifest"]})
+>>> m = Manifest(id="https://example.com/iiif/manifest.json", label={"en":["Example Manifest"]})
 >>> print(m.json(indent=2))
 {
   "@context": "http://iiif.io/api/presentation/3/context.json",
