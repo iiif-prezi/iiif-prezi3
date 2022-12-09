@@ -1,6 +1,6 @@
 import unittest
 
-from iiif_prezi3 import Manifest, config
+from iiif_prezi3 import Collection, Manifest, config
 
 
 class AutoFieldsHelpersTests(unittest.TestCase):
@@ -43,3 +43,25 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         m = Manifest(label="string")
         self.assertEqual(len(m.id), 60)
         config.configs['helpers.auto_fields.AutoId'].auto_type = curr
+
+    def test_int_per_type(self):
+        """Test that the int-per-type helper works."""
+        curr = config.configs['helpers.auto_fields.AutoId'].auto_type
+        config.configs['helpers.auto_fields.AutoId'].auto_type = "int-per-type"
+        m = Manifest(label="autoint")
+        self.assertEqual('http://example.org/iiif/Manifest/0', m.id)
+        m2 = Manifest(label="autoint2")
+        self.assertEqual('http://example.org/iiif/Manifest/1', m2.id)
+        c = Collection()
+        self.assertEqual('http://example.org/iiif/Collection/0', c.id)
+        config.configs['helpers.auto_fields.AutoId'].auto_type = curr
+
+    def test_custom_slug(self):
+        """Test that setting a custom slug for a specific type works."""
+        curr_type = config.configs['helpers.auto_fields.AutoId'].auto_type
+        config.configs['helpers.auto_fields.AutoId'].auto_type = "int-per-type"
+        config.configs['helpers.auto_fields.AutoId'].translation["Manifest"] = "mani"
+        m = Manifest(label="custom slug")
+        self.assertEqual('http://example.org/iiif/mani/0', m.id)
+        config.configs['helpers.auto_fields.AutoId'].auto_type = curr_type
+        del (config.configs['helpers.auto_fields.AutoId'].translation["Manifest"])
