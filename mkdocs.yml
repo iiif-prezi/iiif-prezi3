@@ -13,6 +13,12 @@ nav:
 theme:
   name: material
 
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      use_pygments: true
+  - pymdownx.superfences
+
 plugins:
   - search
   - mkdocstrings:
