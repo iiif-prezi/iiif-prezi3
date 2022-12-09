@@ -94,11 +94,3 @@ Notice that the canvases list is created at the beginning but is assigned to the
 !!! warning
 
     Keep in mind that objects contained in the `canvases` list are references in the manifest items, hence any modification on the original object will affect the object inside the manifest. This holds true for any object added to the model.
-
-
-
-!!! note
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et euismod
-    nulla. Curabitur feugiat, tortor non consequat finibus, justo purus auctor
-    massa, nec semper lorem quam in massa.
