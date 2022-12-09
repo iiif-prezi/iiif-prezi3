@@ -82,7 +82,7 @@ class AutoId(Auto):
             slug = self._auto_id_int
         elif auto_type == "int-per-type":
             t = type(what).__name__
-            t = self._type_translation.get(t, t)
+            t = self.config.translation.get(t, t)
             curr = self._auto_id_types.get(t, -1)
             curr += 1
             self._auto_id_types[t] = curr
@@ -91,7 +91,7 @@ class AutoId(Auto):
             slug = str(uuid.uuid4())
         elif auto_type == "uuid-per-type":
             t = type(what).__name__
-            t = self._type_translation.get(t, t)
+            t = self.config.translation.get(t, t)
             slug = f"{t}/{uuid.uuid4()}"
         else:
             raise ValueError(f"Unknown auto-id type: {auto_type}")
