@@ -593,7 +593,7 @@ python setup.py install
 <p>You can now import the library or individual classes from within Python and start creating your IIIF Presentation 3 objects:</p>
 <h3 id="directly-creating-a-manifest">Directly creating a Manifest</h3>
 <div class="highlight"><pre><span></span><code>&gt;&gt;&gt; from iiif_prezi3 import Manifest
-&gt;&gt;&gt; m = Manifest(id=&quot;https://example.com/iiif/manifest.json&quot;, type=&quot;Manifest&quot;, label={&quot;en&quot;:[&quot;Example Manifest&quot;]})
+&gt;&gt;&gt; m = Manifest(id=&quot;https://example.com/iiif/manifest.json&quot;, label={&quot;en&quot;:[&quot;Example Manifest&quot;]})
 &gt;&gt;&gt; print(m.json(indent=2))
 {
   &quot;@context&quot;: &quot;http://iiif.io/api/presentation/3/context.json&quot;,
