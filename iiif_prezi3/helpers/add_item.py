@@ -9,8 +9,6 @@ class AddItem:
 
         Args:
             item (Union[Collection, Manifest, Canvas, AnnotationPage, Annotation, Range, Reference, SpecificResource, Item])): The object to be added
-        Returns:
-            None
         """
         if not self.items:
             self.items = []
@@ -29,8 +27,6 @@ class AddItemByReference:
 
         Args:
             item (Union[Manifest, AnnotationPage, Collection, AnnotationCollection, Canvas])): The object to be added
-        Returns:
-            None
         """
         if not self.items:
             self.items = []

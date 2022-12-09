@@ -10,9 +10,6 @@ class AddService:
 
         Args:
             service (ServiceItem,ServiceItem1,Service): A iiif-prezi ServiceItem.
-
-        Returns:
-           None
         """
         if isinstance(service, (ServiceItem, ServiceItem1)):
             if not self.service:

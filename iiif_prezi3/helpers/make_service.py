@@ -12,13 +12,13 @@ class MakeService:
             id (AnyUrl): The id of the service.
             type (str): The type of the service.
             version (int): The API version of the service. Defaults to 3.
-            **kwargs: Arbitrary keyword arguments.
+            **kwargs (): Arbitrary keyword arguments.
 
         Raises:
-            ValueError: If the an invalid IIIF API version is provided.
+            ValueError: If an invalid IIIF API version is provided.
 
         Returns:
-           ServiceItem or ServiceItem1: A service instance of the selected version.
+           service (Union[ServiceItem, ServiceItem1]): A service instance of the selected version.
         """
         serviceversions = {
             2: ServiceItem1,
