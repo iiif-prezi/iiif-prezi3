@@ -15,7 +15,7 @@ class AnnotationHelpers:
             anno_page_id (str): An HTTP URL for the annotation page to which the annotation will be attached.
 
         Returns:
-            annotation (Annotation)
+            annotation (Annotation): the Annotation attached to the AnnotationPage.
 
         """
         if not self.annotations:

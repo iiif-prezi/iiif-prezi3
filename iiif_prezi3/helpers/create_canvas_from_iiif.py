@@ -19,7 +19,7 @@ class CreateCanvasFromIIIF:
             **kwargs (): see Canvas
 
         Returns:
-            canvas (Canvas)
+            canvas (Canvas): the Canvas created from the IIIF Image.
 
         """
         canvas = Canvas(**kwargs)
