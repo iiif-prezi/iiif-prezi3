@@ -1,7 +1,8 @@
-import requests
-import subprocess
-import shlex
 import os
+import shlex
+import subprocess
+
+import requests
 from modify_skeleton import modify_skeleton
 
 SCHEMA_LOCATION = "https://raw.githubusercontent.com/IIIF/presentation-validator/main/schema/iiif_3_0.json"
