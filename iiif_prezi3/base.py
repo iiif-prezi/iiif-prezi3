@@ -2,6 +2,7 @@ import json
 
 from pydantic import AnyUrl, BaseModel
 
+
 class Base(BaseModel):
 
     class Config:
@@ -10,7 +11,7 @@ class Base(BaseModel):
         copy_on_model_validation = False
         smart_union = True
         # Allow us to use the field name like service.id rather than service.@id
-        allow_population_by_field_name = True 
+        allow_population_by_field_name = True
 
     def __getattribute__(self, prop):
         val = super(Base, self).__getattribute__(prop)
