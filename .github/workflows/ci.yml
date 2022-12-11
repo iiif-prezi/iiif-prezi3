@@ -20,6 +20,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
           architecture: x64
+          check-latest: true
 
       - uses: actions/cache@v3
         with:
