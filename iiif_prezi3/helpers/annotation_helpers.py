@@ -32,14 +32,14 @@ class AnnotationHelpers:
 
         return annotation
 
-    def make_annotation(self, anno_id=None, **kwargs):
+    def make_annotation(self, anno_page_id=None, **kwargs):
         """Creates an annotation object and adds it to the annotations property using .add_annotation().
 
         Args:
             **kwargs (): see Annotation.
         """
-        annotation = Annotation(id=anno_id, **kwargs)
-        self.add_annotation(annotation)
+        annotation = Annotation(**kwargs)
+        self.add_annotation(annotation, anno_page_id=anno_page_id)
         return annotation
 
 
