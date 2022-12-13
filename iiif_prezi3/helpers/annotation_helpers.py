@@ -36,6 +36,7 @@ class AnnotationHelpers:
         """Creates an annotation object and adds it to the annotations property using .add_annotation().
 
         Args:
+            anno_page_id (str): An HTTP URL for the annotation page to which the annotation will be attached. 
             **kwargs (): see Annotation.
         """
         annotation = Annotation(**kwargs)
