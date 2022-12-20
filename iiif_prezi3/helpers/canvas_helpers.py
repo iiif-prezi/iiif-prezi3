@@ -28,7 +28,7 @@ class CanvasHelpers:
 
         Args:
             image_url (str): An HTTP URL which points to the thumbnail.
-            type (str): the resource type.
+            **kwargs (): see ResourceItem.
 
         Returns:
             anno_page (AnnotationPage): the AnnotationPage with an Annotation and ResourceItem attached.
