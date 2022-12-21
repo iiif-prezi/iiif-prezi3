@@ -33,11 +33,11 @@ class CanvasHelpers:
         Returns:
             thumbnail (ResourceItem): the newly-created thumbnail.
         """
-        thumbnail = ResourceItem(id=image_url, type='Image', **kwargs)
+        new_thumbnail = ResourceItem(id=image_url, type='Image', **kwargs)
         if not self.thumbnail:
             self.thumbnail = list()
-        self.thumbnail.append(thumbnail)
-        return thumbnail
+        self.thumbnail.append(new_thumbnail)
+        return new_thumbnail
 
 
 monkeypatch_schema(Canvas, CanvasHelpers)
