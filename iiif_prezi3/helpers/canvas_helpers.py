@@ -31,7 +31,7 @@ class CanvasHelpers:
             **kwargs (): see ResourceItem.
 
         Returns:
-            thumbnail (ResourceItem): the newly-created thumbnail.
+            new_thumbnail (ResourceItem): the newly-created thumbnail.
         """
         new_thumbnail = ResourceItem(id=image_url, type='Image', **kwargs)
         if not self.thumbnail:
