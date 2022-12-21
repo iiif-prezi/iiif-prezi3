@@ -31,13 +31,13 @@ class CanvasHelpers:
             **kwargs (): see ResourceItem.
 
         Returns:
-            anno_page (AnnotationPage): the AnnotationPage with an Annotation and ResourceItem attached.
+            thumbnail (ResourceItem): the newly-created thumbnail.
         """
         thumbnail = ResourceItem(id=image_url, type='Image', **kwargs)
         if not self.thumbnail:
             self.thumbnail = list()
         self.thumbnail.append(thumbnail)
-        return self
+        return thumbnail
 
 
 monkeypatch_schema(Canvas, CanvasHelpers)
