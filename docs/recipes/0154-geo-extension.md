@@ -1,5 +1,7 @@
 # id: 154
-### Recipe: [https://iiif.io/api/cookbook/recipe/0154-geo-extension/](https://iiif.io/api/cookbook/recipe/0154-geo-extension/)
-### JSON-LD: [https://iiif.io/api/cookbook/recipe/0154-geo-extension/manifest.json](https://iiif.io/api/cookbook/recipe/0154-geo-extension/manifest.json)
+|              | **Cookbook URLs** |
+|--------------|-------------------|
+| **Recipe:**  | [https://iiif.io/api/cookbook/recipe/0154-geo-extension/](https://iiif.io/api/cookbook/recipe/0154-geo-extension/) |
+| **JSON-LD:** | [https://iiif.io/api/cookbook/recipe/0154-geo-extension/manifest.json](https://iiif.io/api/cookbook/recipe/0154-geo-extension/manifest.json) |
 
-## Method 1 - 
+### Method 1 - 

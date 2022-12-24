@@ -1,5 +1,7 @@
 # Multi-volume Work with Individually-bound Volumes
-### Recipe: [https://iiif.io/api/cookbook/recipe/0030-multi-volume/](https://iiif.io/api/cookbook/recipe/0030-multi-volume/)
-### JSON-LD: [https://iiif.io/api/cookbook/recipe/0030-multi-volume/manifest.json](https://iiif.io/api/cookbook/recipe/0030-multi-volume/manifest.json)
+|              | **Cookbook URLs** |
+|--------------|-------------------|
+| **Recipe:**  | [https://iiif.io/api/cookbook/recipe/0030-multi-volume/](https://iiif.io/api/cookbook/recipe/0030-multi-volume/) |
+| **JSON-LD:** | [https://iiif.io/api/cookbook/recipe/0030-multi-volume/manifest.json](https://iiif.io/api/cookbook/recipe/0030-multi-volume/manifest.json) |
 
-## Method 1 - 
+### Method 1 - 
