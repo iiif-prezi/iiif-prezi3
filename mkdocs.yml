@@ -8,6 +8,8 @@ nav:
         - 'generate-schema.md'
         - 'write-helper-method.md'
         - code.md
+    - Cookbook Recipes:
+        - ... | flat | recipes/*.md
 
 theme:
   name: material
@@ -20,6 +22,7 @@ markdown_extensions:
 
 plugins:
   - search
+  - awesome-pages
   - mkdocstrings:
       default_handler: python
       handlers:

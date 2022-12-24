@@ -22,7 +22,8 @@ DOCS_REQUIREMENTS = [
     "mkdocs >=1.4.0, <2.0.0",
     "mkdocs-material >=8.0.0, <9.0.0",
     "mkdocstrings-python >=0.7.0, <1.0.0",
-    "griffe >=0.25.2, <1.0.0"
+    "griffe >=0.25.2, <1.0.0",
+    "mkdocs-awesome-pages-plugin >=2.8.0, <3.0.0"
 ]
 
 DEV_REQUIREMENTS = [
