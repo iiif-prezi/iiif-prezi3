@@ -28,7 +28,7 @@ jobs:
       # build docs in strict mode as a check for pull requests
       - name: Build docs (strict mode)
         if: ${{ github.event_name == 'pull_request' }}
-        run: mkdocs build -v --strict
+        run: mkdocs build --strict
 
       # build docs for publication
       - name: Build docs
