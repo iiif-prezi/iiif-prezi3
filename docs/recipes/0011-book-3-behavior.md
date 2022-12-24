@@ -1,10 +1,12 @@
 # Book 'behavior' Variations (continuous, individuals)
-### Recipe: [https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/](https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/)
-### JSON-LD Use Case 1: [https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/manifest-continuous.json](https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/manifest-continuous.json)
-### JSON-LD Use Case 2: [https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/manifest-individuals.json](https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/manifest-individuals.json)
+|                         | **Cookbook URLs**                                                                                                                                                        |
+|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Recipe:**             | [https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/](https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/)                                                   |
+| **JSON-LD Use Case 1:** | [https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/manifest-continuous.json](https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/manifest-continuous.json)   |
+| **JSON-LD Use Case 2:** | [https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/manifest-individuals.json](https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/manifest-individuals.json) |
 
-## Method 1 - Setting the `behaviour` property during object construction
-### Use Case 1
+### Method 1 - Setting the `behaviour` property during object construction
+#### Use Case 1
 ```python
 from iiif_prezi3 import Manifest, config
 
@@ -39,7 +41,7 @@ canvas4.items[0].items[0].id = "https://iiif.io/api/cookbook/recipe/0011-book-3-
 print(manifest.json(indent=2))
 ```
 
-### Use Case 2
+#### Use Case 2
 ```python
 from iiif_prezi3 import Manifest, config
 

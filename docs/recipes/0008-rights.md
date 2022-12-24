@@ -1,8 +1,10 @@
 # Rights statement
-### Recipe: [https://iiif.io/api/cookbook/recipe/0008-rights/](https://iiif.io/api/cookbook/recipe/0008-rights/)
-### JSON-LD: [https://iiif.io/api/cookbook/recipe/0008-rights/manifest.json](https://iiif.io/api/cookbook/recipe/0008-rights/manifest.json)
+|              | **Cookbook URLs**                                                                                                              |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------|
+| **Recipe:**  | [https://iiif.io/api/cookbook/recipe/0008-rights/](https://iiif.io/api/cookbook/recipe/0008-rights/)                           |
+| **JSON-LD:** | [https://iiif.io/api/cookbook/recipe/0008-rights/manifest.json](https://iiif.io/api/cookbook/recipe/0008-rights/manifest.json) |
 
-## Method 1 - Building the object directly and making use of the AutoLang config
+### Method 1 - Building the object directly and making use of the AutoLang config
 ```python
 from iiif_prezi3 import Manifest, KeyValueString, config
 

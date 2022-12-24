@@ -1,8 +1,10 @@
 # HTML in Annotations
-### Recipe: [https://iiif.io/api/cookbook/recipe/0019-html-in-annotations/](https://iiif.io/api/cookbook/recipe/0019-html-in-annotations/)
-### JSON-LD: [https://iiif.io/api/cookbook/recipe/0019-html-in-annotations/manifest.json](https://iiif.io/api/cookbook/recipe/0019-html-in-annotations/manifest.json)
+|              | **Cookbook URLs**                                                                                                                                        |
+|--------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Recipe:**  | [https://iiif.io/api/cookbook/recipe/0019-html-in-annotations/](https://iiif.io/api/cookbook/recipe/0019-html-in-annotations/)                           |
+| **JSON-LD:** | [https://iiif.io/api/cookbook/recipe/0019-html-in-annotations/manifest.json](https://iiif.io/api/cookbook/recipe/0019-html-in-annotations/manifest.json) |
 
-## Method 1 - Construct an Annotation using the `make_annotation` helper and a dictionary of the `body` properties
+### Method 1 - Construct an Annotation using the `make_annotation` helper and a dictionary of the `body` properties
 ```python
 from iiif_prezi3 import Manifest
 

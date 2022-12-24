@@ -1,8 +1,11 @@
 # Simplest Manifest - Single Image File
-### Recipe: [https://iiif.io/api/cookbook/recipe/0001-mvm-image/](https://iiif.io/api/cookbook/recipe/0001-mvm-image/)
-### JSON-LD: [https://iiif.io/api/cookbook/recipe/0001-mvm-image/manifest.json](https://iiif.io/api/cookbook/recipe/0001-mvm-image/manifest.json)
+|              | **Cookbook URLs**                                                    | 
+|--------------|----------------------------------------------------------------------|
+| **Recipe:**  | [https://iiif.io/api/cookbook/recipe/0001-mvm-image/](https://iiif.io/api/cookbook/recipe/0001-mvm-image/)              |
+| **JSON-LD:** | [https://iiif.io/api/cookbook/recipe/0001-mvm-image/manifest.json](https://iiif.io/api/cookbook/recipe/0001-mvm-image/manifest.json) |
 
-## Method 1 - Using the `make_canvas` and `add_image` helpers
+
+### Method 1 - Using the `make_canvas` and `add_image` helpers
 ```python
 from iiif_prezi3 import Manifest, config
 
@@ -21,7 +24,7 @@ anno_page = canvas.add_image(image_url="http://iiif.io/api/presentation/2.1/exam
 print(manifest.json(indent=2))
 ```
 
-## Method 2 - Building the structure manually and using the `add_item` helper
+### Method 2 - Building the structure manually and using the `add_item` helper
 ```python
 from iiif_prezi3 import Manifest, Canvas, AnnotationPage, Annotation, ResourceItem, config
 

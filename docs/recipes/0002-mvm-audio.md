@@ -1,8 +1,10 @@
 # Simplest Manifest - Audio
-### Recipe: [https://iiif.io/api/cookbook/recipe/0002-mvm-audio/](https://iiif.io/api/cookbook/recipe/0002-mvm-audio/)
-### JSON-LD: [https://iiif.io/api/cookbook/recipe/0002-mvm-audio/manifest.json](https://iiif.io/api/cookbook/recipe/0002-mvm-audio/manifest.json)
+|              | **Cookbook URLs**                                                                                                                    |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| **Recipe:**  | [https://iiif.io/api/cookbook/recipe/0002-mvm-audio/](https://iiif.io/api/cookbook/recipe/0002-mvm-audio/)                           |
+| **JSON-LD:** | [https://iiif.io/api/cookbook/recipe/0002-mvm-audio/manifest.json](https://iiif.io/api/cookbook/recipe/0002-mvm-audio/manifest.json) |
 
-## Method 1 - Building the structure and using the `add_item` helper
+### Method 1 - Building the structure and using the `add_item` helper
 ```python
 from iiif_prezi3 import Manifest, AnnotationPage, Annotation, ResourceItem, config
 

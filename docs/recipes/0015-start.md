@@ -1,8 +1,10 @@
 # Begin playback at a specific point - Time-based media
-### Recipe: [https://iiif.io/api/cookbook/recipe/0015-start/](https://iiif.io/api/cookbook/recipe/0015-start/)
-### JSON-LD: [https://iiif.io/api/cookbook/recipe/0015-start/manifest.json](https://iiif.io/api/cookbook/recipe/0015-start/manifest.json)
+|              | **Cookbook URLs**                                                                                                            |
+|--------------|------------------------------------------------------------------------------------------------------------------------------|
+| **Recipe:**  | [https://iiif.io/api/cookbook/recipe/0015-start/](https://iiif.io/api/cookbook/recipe/0015-start/)                           |
+| **JSON-LD:** | [https://iiif.io/api/cookbook/recipe/0015-start/manifest.json](https://iiif.io/api/cookbook/recipe/0015-start/manifest.json) |
 
-## Method 1 - Building the `start` structure using the `SpecificResource` class
+### Method 1 - Building the `start` structure using the `SpecificResource` class
 ```python
 from iiif_prezi3 import Manifest, KeyValueString, ResourceItem, AnnotationPage, Annotation, SpecificResource, config
 
