@@ -9,7 +9,8 @@ nav:
         - 'write-helper-method.md'
         - code.md
     - Cookbook Recipes:
-        - ... | flat | recipes/*.md
+        - 'Introduction': 'recipes/index.md'
+        - ... | flat | recipes/0*.md
 
 theme:
   name: material
