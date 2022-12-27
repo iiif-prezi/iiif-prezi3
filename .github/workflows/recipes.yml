@@ -32,4 +32,4 @@ jobs:
       - name: Run the Recipe Check script
         run: |
           cd utils
-          python test_cookbook.py -y -v --fail-fast ../docs/recipes/*.md
+          python test_cookbook.py -y -v --fail-fast --fail-missing ../docs/recipes/*.md
