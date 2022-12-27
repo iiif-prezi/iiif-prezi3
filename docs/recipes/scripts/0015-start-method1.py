@@ -12,7 +12,7 @@ canvas = manifest.make_canvas(id="https://iiif.io/api/cookbook/recipe/0015-start
 anno_body = ResourceItem(id="https://fixtures.iiif.io/video/indiana/30-minute-clock/medium/30-minute-clock.mp4",
                          type="Video",
                          format="video/mp4",
-                         duration= 1801.055)
+                         duration=1801.055)
 anno_page = AnnotationPage(id="https://iiif.io/api/cookbook/recipe/0015-start/annotation/segment1/page")
 anno = Annotation(id="https://iiif.io/api/cookbook/recipe/0015-start/annotation/segment1-video",
                   motivation="painting",

@@ -5,8 +5,8 @@ config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 manifest = Manifest(id="https://iiif.io/api/cookbook/recipe/0003-mvm-video/manifest.json", label="Video Example 3")
 canvas = manifest.make_canvas(id="https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas")
 anno_body = ResourceItem(id="https://fixtures.iiif.io/video/indiana/lunchroom_manners/high/lunchroom_manners_1024kb.mp4",
-                    type="Video",
-                    format="video/mp4")
+                         type="Video",
+                         format="video/mp4")
 anno_page = AnnotationPage(id="https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas/page")
 anno = Annotation(id="https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas/page/annotation",
                   motivation="painting",
