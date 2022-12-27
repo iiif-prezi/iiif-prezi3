@@ -1,16 +1,16 @@
+import argparse
+import json
 import os
 import re
-import subprocess
 import shlex
-import json
+import subprocess
+
 import requests
 from deepdiff import DeepDiff
-import argparse
-
 
 # Recipe file regular expressions
-JSON_RE = re.compile("\*\*JSON-LD:? ?(?P<type>[A-Za-z ]*) ?(?P<number>\d*)?:?\*\* \| \[(?P<url>.*)\]")
-PYTHON_RE = re.compile('--8<-- "(?P<loc>.*-(?P<method>method\d+)-?(?P<type>.*)?\.py)"')
+JSON_RE = re.compile(r"\*\*JSON-LD:? ?(?P<type>[A-Za-z ]*) ?(?P<number>\d*)?:?\*\* \| \[(?P<url>.*)\]")
+PYTHON_RE = re.compile(r'--8<-- "(?P<loc>.*-(?P<method>method\d+)-?(?P<type>.*)?\.py)"')
 
 
 def build_json_dict(matches):
@@ -82,7 +82,7 @@ def run_test(python_file, json_file):
         return False
 
 
-def process_recipe(file):
+def process_recipe(file):  # noqa: C901
     results = []
 
     # Sanity check the file
@@ -185,5 +185,3 @@ if __name__ == "__main__":
         exit(1)
     else:
         exit(0)
-
-
