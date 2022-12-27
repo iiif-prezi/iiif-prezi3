@@ -7,7 +7,7 @@ canvas = manifest.make_canvas(id="https://iiif.io/api/cookbook/recipe/0004-canva
 anno_body = ResourceItem(id="https://fixtures.iiif.io/video/indiana/donizetti-elixir/act1-thumbnail.png",
                          type="Image",
                          format="image/png")
-anno_page = AnnotationPage(id="https://iiif.io/api/cookbook/recipe/0004-canvas-size/canvas/page/p1/1")
+anno_page = AnnotationPage(id="https://iiif.io/api/cookbook/recipe/0004-canvas-size/page/p1/1")
 anno = Annotation(id="https://iiif.io/api/cookbook/recipe/0004-canvas-size/annotation/p0001-image",
                   motivation="painting",
                   body=anno_body,

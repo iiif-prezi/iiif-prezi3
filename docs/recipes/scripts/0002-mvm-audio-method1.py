@@ -2,7 +2,7 @@ from iiif_prezi3 import Manifest, AnnotationPage, Annotation, ResourceItem, conf
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 
-manifest = Manifest(id="https://iiif.io/api/cookbook/recipe/0002-mvm-audio/manifest.json", label="Simplest Audio Example")
+manifest = Manifest(id="https://iiif.io/api/cookbook/recipe/0002-mvm-audio/manifest.json", label="Simplest Audio Example 1")
 canvas = manifest.make_canvas(id="https://iiif.io/api/cookbook/recipe/0002-mvm-audio/canvas", duration=1985.024)
 anno_body = ResourceItem(id="https://fixtures.iiif.io/audio/indiana/mahler-symphony-3/CD1/medium/128Kbps.mp4",
                          type="Sound",

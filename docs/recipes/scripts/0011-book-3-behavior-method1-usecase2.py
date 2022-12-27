@@ -3,7 +3,7 @@ from iiif_prezi3 import Manifest, config
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 manifest = Manifest(id="https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/manifest-individuals.json",
                     label={"ca": ["[Conoximent de las orines] Ihesus, Ihesus. En nom de Deu et dela beneyeta sa mare e de tots los angels i archangels e de tots los sants e santes de paradis yo micer Johannes comense aquest libre de reseptes en l’ayn Mi 466."]},
-                    behaviour=["individuals"])
+                    behavior=["individuals"])
 
 canvas1 = manifest.make_canvas_from_iiif(url="https://iiif.io/api/image/3.0/example/reference/85a96c630f077e6ac6cb984f1b752bbf-0-21198-zz00022840-1-master",
                                          id="https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/canvas/v1",

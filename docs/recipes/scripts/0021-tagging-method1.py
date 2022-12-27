@@ -7,7 +7,7 @@ canvas = manifest.make_canvas_from_iiif(url="https://iiif.io/api/image/3.0/examp
 canvas.items[0].id = "https://iiif.io/api/cookbook/recipe/0021-tagging/page/p1/1"
 canvas.items[0].items[0].id = "https://iiif.io/api/cookbook/recipe/0021-tagging/annotation/p0001-image"
 
-anno = canvas.make_annotation(id="https://iiif.io/api/cookbook/recipe/0021-tagging/annotation/p0002-ta",
+anno = canvas.make_annotation(id="https://iiif.io/api/cookbook/recipe/0021-tagging/annotation/p0002-tag",
                               motivation="tagging",
                               body={"type": "TextualBody",
                                     "language": "de",

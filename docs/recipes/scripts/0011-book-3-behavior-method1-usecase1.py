@@ -3,7 +3,7 @@ from iiif_prezi3 import Manifest, config
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 manifest = Manifest(id="https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/manifest-continuous.json",
                     label={"gez": ["Ms. 21 Māzemurā Dāwit, Asmat [መዝሙረ ዳዊት]"]},
-                    behaviour=["continuous"])
+                    behavior=["continuous"])
 canvas1 = manifest.make_canvas_from_iiif(url="https://iiif.io/api/image/3.0/example/reference/8c169124171e6b2253b698a22a938f07-21198-zz001hbmd9_1300412_master",
                                          id="https://iiif.io/api/cookbook/recipe/0011-book-3-behavior/canvas/s1",
                                          label="Section 1 [Recto]")
