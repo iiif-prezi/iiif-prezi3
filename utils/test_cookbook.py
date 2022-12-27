@@ -170,7 +170,7 @@ if __name__ == "__main__":
     results = []
 
     # Make the cache directory if it does not exist
-    os.makedirs(args.cache_path, exist_ok=True)
+    os.makedirs(args.cache_directory, exist_ok=True)
 
     # Check the validity of the input files and call the runner
     for file in args.recipe_file:
