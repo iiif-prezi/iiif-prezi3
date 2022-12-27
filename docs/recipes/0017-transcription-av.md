@@ -6,5 +6,5 @@
 
 ### Method 1 - Building the `rendering` structure using the `External` class
 ```python
---8<-- "docs/recipes/scripts/0017-transcription-av-method1.py"
+--8<-- "docs/recipes/scripts/0017-transcription-av-method1-usecase1.py"
 ```
