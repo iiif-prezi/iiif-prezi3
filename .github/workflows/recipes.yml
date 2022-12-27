@@ -1,0 +1,35 @@
+name: recipes
+
+on: [pull_request, workflow_dispatch]
+
+permissions:
+  contents: read
+
+jobs:
+  test-recipes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+          architecture: x64
+
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ${{ env.pythonLocation }}
+            iiif-prezi3/iiif-prezi3/utils/.cache
+          key: ${{ env.pythonLocation }}-${{ hashFiles('setup.py') }}
+
+      - name: Install dev dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+          pip install -e .[dev]
+
+      - name: Run the Recipe Check script
+        run: |
+          cd utils
+          python test_cookbook.py -y -v --fail-fast ../docs/recipes/*.md
