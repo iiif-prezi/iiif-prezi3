@@ -154,7 +154,7 @@ if __name__ == "__main__":
     parser.add_argument('-v', "--verbose", action="count", default=0, help="Increase output verbosity")
     parser.add_argument("-y", action="store_true", help="Bypass 'Are you sure?' question")
     parser.add_argument("--ignore-cache", action="store_true", help="Always download Cookbook JSON files")
-    parser.add_argument("--no-cache", action="store_true", help="Remove Cookbook JSON files after use")
+    # parser.add_argument("--no-cache", action="store_true", help="Remove Cookbook JSON files after use")
     parser.add_argument("--fail-fast", action="store_true", help="Fail the whole run as soon as one test fails")
     parser.add_argument("--fail-missing", action="store_true", help="Fail an individual recipe if any of the JSON files are missing implementations in code or any of the Python files can't be matched to a Cookbook JSON")
     parser.add_argument("--cache-directory", type=str, help="Cache directory for Cookbook JSON files (default: .cache)", default=".cache")
@@ -168,6 +168,9 @@ if __name__ == "__main__":
             exit()
 
     results = []
+
+    # Make the cache directory if it does not exist
+    os.makedirs(args.cache_path, exist_ok=True)
 
     # Check the validity of the input files and call the runner
     for file in args.recipe_file:
