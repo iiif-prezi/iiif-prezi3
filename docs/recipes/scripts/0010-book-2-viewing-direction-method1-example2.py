@@ -8,26 +8,26 @@ manifest = Manifest(id="https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-
                     viewingDirection="top-to-bottom")
 canvas1 = manifest.make_canvas_from_iiif(url="https://iiif.io/api/image/3.0/example/reference/9ee11092dfd2782634f5e8e2c87c16d5-uclamss_1841_diary_07_02",
                                          id="https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/canvas/v1",
-                                         label="image 1")
-canvas1.items[0].id = "https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/page/v1/1"
-canvas1.items[0].items[0].id = "https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/annotation/v0001-image"
+                                         label="image 1",
+                                         anno_id="https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/annotation/v0001-image",
+                                         anno_page_id="https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/page/v1/1")
 
 canvas2 = manifest.make_canvas_from_iiif(url="https://iiif.io/api/image/3.0/example/reference/9ee11092dfd2782634f5e8e2c87c16d5-uclamss_1841_diary_07_03",
                                          id="https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/canvas/v2",
-                                         label="image 2")
-canvas2.items[0].id = "https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/page/v2/1"
-canvas2.items[0].items[0].id = "https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/annotation/v0002-image"
+                                         label="image 2",
+                                         anno_id="https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/annotation/v0002-image",
+                                         anno_page_id="https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/page/v2/1")
 
 canvas3 = manifest.make_canvas_from_iiif(url="https://iiif.io/api/image/3.0/example/reference/9ee11092dfd2782634f5e8e2c87c16d5-uclamss_1841_diary_07_04",
                                          id="https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/canvas/v3",
-                                         label="image 3")
-canvas3.items[0].id = "https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/page/v3/1"
-canvas3.items[0].items[0].id = "https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/annotation/v0003-image"
+                                         label="image 3",
+                                         anno_id="https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/annotation/v0003-image",
+                                         anno_page_id="https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/page/v3/1")
 
 canvas4 = manifest.make_canvas_from_iiif(url="https://iiif.io/api/image/3.0/example/reference/9ee11092dfd2782634f5e8e2c87c16d5-uclamss_1841_diary_07_05",
                                          id="https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/canvas/v4",
-                                         label="image 4")
-canvas4.items[0].id = "https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/page/v4/1"
-canvas4.items[0].items[0].id = "https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/annotation/v0004-image"
+                                         label="image 4",
+                                         anno_id="https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/annotation/v0004-image",
+                                         anno_page_id="https://iiif.io/api/cookbook/recipe/0010-book-2-viewing-direction/page/v4/1")
 
 print(manifest.json(indent=2))
