@@ -33,7 +33,7 @@ def process_change(skeleton, change):
             if after == -1:
                 print("After string not found - skipping change")
             else:
-                skeleton = skeleton[:start] + change["data"] + skeleton[after:]
+                skeleton = skeleton[:start+len(change["before"])] + change["data"] + skeleton[after:]
 
     return skeleton
 
