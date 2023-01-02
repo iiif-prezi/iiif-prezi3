@@ -9,8 +9,8 @@ import requests
 from deepdiff import DeepDiff
 
 # Recipe file regular expressions
-JSON_RE = re.compile(r"\*\*JSON-LD:? ?(?P<type>[A-Za-z ]*) ?(?P<number>\d*)?:?\*\* \| \[(?P<url>.*)\]")
-PYTHON_RE = re.compile(r'--8<-- "(?P<loc>.*-(?P<method>method\d+)-?(?P<type>.*)?\.py)"')
+JSON_RE = re.compile(r"\*\*JSON-LD:? ?(?P<type>[A-Za-z ]*) ?(?P<number>\d*)?.*:?\*\* *\| \[(?P<url>.*)\]")
+PYTHON_RE = re.compile(r'--8<-- "(?P<loc>.*-(?P<method>method\d+)-?(?P<type>\w*)?.*\.py)"')
 
 
 def build_json_dict(matches):
