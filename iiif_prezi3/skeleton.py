@@ -418,6 +418,9 @@ class CollectionRef(Reference):
 class ManifestRef(Reference):
     type: Optional[constr(regex=r'^Manifest$')] = None
 
+    class Config:
+        extra = Extra.allow
+
 
 class CanvasRef(Reference):
     type: Optional[constr(regex=r'^Canvas$')] = None
