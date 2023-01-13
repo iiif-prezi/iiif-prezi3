@@ -22,7 +22,8 @@ DOCS_REQUIREMENTS = [
     "mkdocs >=1.4.0, <2.0.0",
     "mkdocs-material >=8.0.0, <9.0.0",
     "mkdocstrings-python >=0.7.0, <1.0.0",
-    "griffe >=0.25.2, <1.0.0"
+    "griffe >=0.25.2, <1.0.0",
+    "mkdocs-awesome-pages-plugin >=2.8.0, <3.0.0"
 ]
 
 DEV_REQUIREMENTS = [
@@ -32,7 +33,8 @@ DEV_REQUIREMENTS = [
     "flake8-docstrings >=1.6.0, <2.0.0",
     "flake8-isort >=4.1.1, <5.0.0",
     "tox >=3.25.0, <4.0.0",
-    "Pillow >=9.1.1, <10.0.0"
+    "Pillow >=9.1.1, <10.0.0",
+    "deepdiff >=6.2.2, <7.0.0"
 ]
 
 # Setting up
