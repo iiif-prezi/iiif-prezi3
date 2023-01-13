@@ -608,11 +608,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#method-1-setting-the-navdate-property-during-object-construction-using-a-datetime-object-and-building-the-collection-from-existing-manifest-objects" class="md-nav__link">
-    Method 1 - Setting the navDate property during object construction using a datetime object and building the Collection from existing Manifest objects
+  <a href="#method-1-setting-the-navdate-property-during-object-construction-using-a-datetime-object" class="md-nav__link">
+    Method 1 - Setting the navDate property during object construction using a datetime object
   </a>
   
-    <nav class="md-nav" aria-label="Method 1 - Setting the navDate property during object construction using a datetime object and building the Collection from existing Manifest objects">
+    <nav class="md-nav" aria-label="Method 1 - Setting the navDate property during object construction using a datetime object">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -631,6 +631,40 @@
         
           <li class="md-nav__item">
   <a href="#example-3-collection" class="md-nav__link">
+    Example 3 - Collection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-2-setting-the-navdate-property-with-a-string" class="md-nav__link">
+    Method 2 - Setting the navDate property with a string
+  </a>
+  
+    <nav class="md-nav" aria-label="Method 2 - Setting the navDate property with a string">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-1986-map_1" class="md-nav__link">
+    Example 1 - 1986 Map
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-1987-map_1" class="md-nav__link">
+    Example 2 - 1987 Map
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-collection_1" class="md-nav__link">
     Example 3 - Collection
   </a>
   
@@ -683,11 +717,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#method-1-setting-the-navdate-property-during-object-construction-using-a-datetime-object-and-building-the-collection-from-existing-manifest-objects" class="md-nav__link">
-    Method 1 - Setting the navDate property during object construction using a datetime object and building the Collection from existing Manifest objects
+  <a href="#method-1-setting-the-navdate-property-during-object-construction-using-a-datetime-object" class="md-nav__link">
+    Method 1 - Setting the navDate property during object construction using a datetime object
   </a>
   
-    <nav class="md-nav" aria-label="Method 1 - Setting the navDate property during object construction using a datetime object and building the Collection from existing Manifest objects">
+    <nav class="md-nav" aria-label="Method 1 - Setting the navDate property during object construction using a datetime object">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -706,6 +740,40 @@
         
           <li class="md-nav__item">
   <a href="#example-3-collection" class="md-nav__link">
+    Example 3 - Collection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-2-setting-the-navdate-property-with-a-string" class="md-nav__link">
+    Method 2 - Setting the navDate property with a string
+  </a>
+  
+    <nav class="md-nav" aria-label="Method 2 - Setting the navDate property with a string">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-1-1986-map_1" class="md-nav__link">
+    Example 1 - 1986 Map
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-2-1987-map_1" class="md-nav__link">
+    Example 2 - 1987 Map
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-3-collection_1" class="md-nav__link">
     Example 3 - Collection
   </a>
   
@@ -758,7 +826,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="method-1-setting-the-navdate-property-during-object-construction-using-a-datetime-object-and-building-the-collection-from-existing-manifest-objects">Method 1 - Setting the <code>navDate</code> property during object construction using a <code>datetime</code> object and building the Collection from existing Manifest objects</h3>
+<h3 id="method-1-setting-the-navdate-property-during-object-construction-using-a-datetime-object">Method 1 - Setting the <code>navDate</code> property during object construction using a <code>datetime</code> object</h3>
 <h4 id="example-1-1986-map">Example 1 - 1986 Map</h4>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">config</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
@@ -843,6 +911,79 @@
 <span class="n">collection</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">manifest1987</span><span class="p">)</span>
 <span class="n">collection</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">navDate</span> <span class="o">=</span> <span class="n">manifest1986</span><span class="o">.</span><span class="n">navDate</span>
 <span class="n">collection</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">navDate</span> <span class="o">=</span> <span class="n">manifest1987</span><span class="o">.</span><span class="n">navDate</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div></p>
+<h3 id="method-2-setting-the-navdate-property-with-a-string">Method 2 - Setting the <code>navDate</code> property with a string</h3>
+<h4 id="example-1-1986-map_1">Example 1 - 1986 Map</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">config</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
+
+<span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0230-navdate/navdate_map_2-manifest.json&quot;</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1986 Chesapeake and Ohio Canal, Washington, D.C., Maryland, West Virginia, official map and guide&quot;</span><span class="p">,</span>
+                    <span class="n">navDate</span><span class="o">=</span><span class="s2">&quot;1986-01-01T00:00:00Z&quot;</span><span class="p">)</span>
+
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-87691274-1986&quot;</span><span class="p">,</span>
+                                        <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0230-navdate/canvas/p1&quot;</span><span class="p">,</span>
+                                        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1986 Map, recto and verso, with a date of publication&quot;</span><span class="p">,</span>
+                                        <span class="n">anno_id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0230-navdate/annotation/p0001-image&quot;</span><span class="p">,</span>
+                                        <span class="n">anno_page_id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0230-navdate/page/p1/1&quot;</span><span class="p">)</span>
+
+<span class="c1"># This is a workaround for an inconsistency in the Cookbook JSON - see https://github.com/IIIF/cookbook-recipes/issues/376</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">service</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-87691274-1986/&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">manifest</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<h4 id="example-2-1987-map_1">Example 2 - 1987 Map</h4>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">config</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
+
+<span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0230-navdate/navdate_map_1-manifest.json&quot;</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1987 Chesapeake and Ohio Canal, Washington, D.C., Maryland, West Virginia, official map and guide&quot;</span><span class="p">,</span>
+                    <span class="n">navDate</span><span class="o">=</span><span class="s2">&quot;1987-01-01T00:00:00Z&quot;</span><span class="p">)</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-88695674&quot;</span><span class="p">,</span>
+                                        <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0230-navdate/canvas/p1&quot;</span><span class="p">,</span>
+                                        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1987 Map, recto and verso, with a date of publication&quot;</span><span class="p">,</span>
+                                        <span class="n">anno_id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0230-navdate/annotation/p0001-image&quot;</span><span class="p">,</span>
+                                        <span class="n">anno_page_id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0230-navdate/page/p1/1&quot;</span><span class="p">)</span>
+
+<span class="c1"># This is a workaround for an inconsistency in the Cookbook JSON - see https://github.com/IIIF/cookbook-recipes/issues/376</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">body</span><span class="o">.</span><span class="n">service</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-88695674/&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">manifest</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</code></pre></div>
+<h4 id="example-3-collection_1">Example 3 - Collection</h4>
+<p>To show the different possible approaches, here we will build the Collection object manually using the <code>ManifestRef</code> class.
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Collection</span><span class="p">,</span> <span class="n">ManifestRef</span><span class="p">,</span> <span class="n">ResourceItem</span><span class="p">,</span> <span class="n">config</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
+
+<span class="n">collection</span> <span class="o">=</span> <span class="n">Collection</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0230-navdate/navdate-collection.json&quot;</span><span class="p">,</span>
+                        <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Chesapeake and Ohio Canal map and guide pamphlets&quot;</span><span class="p">)</span>
+<span class="n">thumbnail</span> <span class="o">=</span> <span class="n">ResourceItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-88695674/full/max/0/default.jpg&quot;</span><span class="p">,</span>
+                         <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span>
+                         <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span>
+                         <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+                         <span class="n">width</span><span class="o">=</span><span class="mi">221</span><span class="p">)</span>
+<span class="n">thumbnail</span><span class="o">.</span><span class="n">make_service</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-88695674&quot;</span><span class="p">,</span>
+                       <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;ImageService3&quot;</span><span class="p">,</span>
+                       <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;level1&quot;</span><span class="p">)</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">thumbnail</span> <span class="o">=</span> <span class="p">[</span><span class="n">thumbnail</span><span class="p">]</span>
+
+<span class="n">manifest1986</span> <span class="o">=</span> <span class="n">ManifestRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0230-navdate/navdate_map_2-manifest.json&quot;</span><span class="p">,</span>
+                           <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Manifest&quot;</span><span class="p">,</span>
+                           <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1986 Chesapeake and Ohio Canal, Washington, D.C., Maryland, West Virginia, official map and guide&quot;</span><span class="p">,</span>
+                           <span class="n">navDate</span><span class="o">=</span><span class="s2">&quot;1986-01-01T00:00:00+00:00&quot;</span><span class="p">)</span>
+
+<span class="n">manifest1987</span> <span class="o">=</span> <span class="n">ManifestRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0230-navdate/navdate_map_1-manifest.json&quot;</span><span class="p">,</span>
+                           <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Manifest&quot;</span><span class="p">,</span>
+                           <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1987 Chesapeake and Ohio Canal, Washington, D.C., Maryland, West Virginia, official map and guide&quot;</span><span class="p">,</span>
+                           <span class="n">navDate</span><span class="o">=</span><span class="s2">&quot;1987-01-01T00:00:00+00:00&quot;</span><span class="p">)</span>
+
+<span class="n">collection</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">manifest1986</span><span class="p">)</span>
+<span class="n">collection</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">manifest1987</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">collection</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 </code></pre></div></p>
