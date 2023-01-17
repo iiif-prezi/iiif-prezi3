@@ -5,7 +5,7 @@ from ..skeleton import (AnnotationPage, Canvas, Collection, Manifest, Range,
 
 class AddItem:
     def add_item(self, item):
-        """Add an IIIF Prezi3 object to the items list, creating it if it doesn't exist.
+        """Add a IIIF Prezi3 object to the items list, creating it if it doesn't exist.
 
         Args:
             item (Union[Collection, Manifest, Canvas, AnnotationPage, Annotation, Range, Reference, SpecificResource, Item])): The object to be added
@@ -23,7 +23,7 @@ class AddItem:
 
 class AddItemByReference:
     def add_item_by_reference(self, item):
-        """Add an IIIF Prezi3 object by reference to the items list, creating it if it doesn't exist.
+        """Add a IIIF Prezi3 object by reference to the items list, creating it if it doesn't exist.
 
         Args:
             item (Union[Manifest, AnnotationPage, Collection, AnnotationCollection, Canvas])): The object to be added
