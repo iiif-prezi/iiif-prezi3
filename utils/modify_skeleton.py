@@ -6,12 +6,6 @@ CHANGES = [
         "replace": "class LngString(Base):\n    __root__: Dict[str, List[str]]"
     },
     {
-        "description": "Rename v2 Service properties so they are not private",
-        "type": "replace",
-        "find": "class ServiceItem1(Base):\n    _id: Id = Field(..., alias='@id')\n    _type: str = Field(..., alias='@type')",
-        "replace": "class ServiceItem1(Base):\n    id: Id = Field(..., alias='@id')\n    type: str = Field(..., alias='@type')"
-    },
-    {
         "description": "Allow extra properties on ManifestRef",
         "type": "insert",
         "before": "class ManifestRef(Reference):\n    type: Optional[constr(regex=r'^Manifest$')] = None\n",
@@ -40,7 +34,7 @@ def process_change(skeleton, change):
             if after == -1:
                 print("After string not found - skipping change")
             else:
-                skeleton = skeleton[:start+len(change["before"])] + change["data"] + skeleton[after:]
+                skeleton = skeleton[:start + len(change["before"])] + change["data"] + skeleton[after:]
 
     return skeleton
 
