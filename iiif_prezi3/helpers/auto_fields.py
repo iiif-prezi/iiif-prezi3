@@ -152,6 +152,6 @@ al = AutoLang(alcfg)
 ait = AutoItems(aitcfg)
 
 # Set up some obvious defaults
-ai.register_on_class(Collection, Manifest, Canvas, Range, Annotation, AnnotationPage, AnnotationCollection, Class)
-al.register_on_class(Collection, Manifest, Canvas, Range, AnnotationCollection, KeyValueString, Class, Reference)
+ai.register_on_class(AnnotationPage, Class)
+al.register_on_class(KeyValueString, Class, Reference)
 ait.register_on_class(Canvas, Range)
