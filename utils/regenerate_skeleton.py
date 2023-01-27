@@ -6,7 +6,7 @@ import requests
 from modify_skeleton import modify_skeleton
 
 SCHEMA_LOCATION = "https://raw.githubusercontent.com/IIIF/presentation-validator/main/schema/iiif_3_0.json"
-DATAMODEL_COMMAND = "datamodel-codegen --input iiif_3_0.json --input-file-type jsonschema --use-default --base-class .base.Base  --output ../iiif_prezi3/skeleton.py"
+DATAMODEL_COMMAND = "datamodel-codegen --input iiif_3_0.json --input-file-type jsonschema --use-default --remove-special-field-name-prefix --base-class .base.Base  --output ../iiif_prezi3/skeleton.py"
 
 if __name__ == "__main__":
     print("== Prezi3 Skeleton Regenerator ==")
