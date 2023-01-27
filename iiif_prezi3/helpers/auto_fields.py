@@ -1,9 +1,8 @@
 import uuid
 
 from ..config.config import Config, register_config
-from ..skeleton import (AnnotationPage,
-                        Canvas, Class, KeyValueString,
-                        Range, Reference)
+from ..skeleton import (AnnotationPage, Canvas, Class, KeyValueString, Range,
+                        Reference)
 
 
 class AutoConfig(Config):
