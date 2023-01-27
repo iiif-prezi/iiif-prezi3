@@ -1,8 +1,8 @@
 import uuid
 
 from ..config.config import Config, register_config
-from ..skeleton import (Annotation, AnnotationCollection, AnnotationPage,
-                        Canvas, Class, Collection, KeyValueString, Manifest,
+from ..skeleton import (AnnotationPage,
+                        Canvas, Class, KeyValueString,
                         Range, Reference)
 
 
