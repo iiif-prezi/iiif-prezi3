@@ -10,7 +10,7 @@ long_description = (this_directory / "README.md").read_text()
 if os.path.exists("version.txt"):
     VERSION = (this_directory / "version.txt").read_text().strip()
 else:
-    VERSION = "local_test_version"
+    VERSION = "0.0.0.dev0"
 
 REQUIREMENTS = [
     "pydantic >= 1.9.2, <2.0.0",
