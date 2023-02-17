@@ -6,5 +6,5 @@
 
 ### Method 1 - Use a `KeyValueString` object and a dictionary to create language maps.
 ```python
---8<-- "docs/recipes/scripts/0118-multivalue.py"
+--8<-- "docs/recipes/scripts/0118-multivalue-method1.py"
 ```
