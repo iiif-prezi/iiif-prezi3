@@ -2,7 +2,7 @@ import uuid
 
 from ..config.config import Config, register_config
 from ..skeleton import (AnnotationPage, Canvas, Class, KeyValueString, Range,
-                        Reference)
+                        Reference, Manifest)
 
 
 class AutoConfig(Config):
@@ -143,14 +143,32 @@ class AutoItems(Auto):
             return value
 
 
+class AutoListConfig(Config):
+    def __init__(self):
+        self.properties = ['behavior']
+
+
+class AutoList(Auto):
+    def __init__(self, cfg, name=""):
+        super().__init__(cfg, name)
+
+    def manipulate_value(self, what, value=None):
+        if not isinstance(value, list):
+            return [value]
+        else:
+            return value
+
+
 aicfg = AutoIdConfig()
 alcfg = AutoLangConfig()
 aitcfg = AutoItemsConfig()
+alstcfg = AutoListConfig()
 ai = AutoId(aicfg)
 al = AutoLang(alcfg)
 ait = AutoItems(aitcfg)
-
+alst = AutoList(alstcfg)
 # Set up some obvious defaults
 ai.register_on_class(AnnotationPage, Class)
 al.register_on_class(KeyValueString, Class, Reference)
 ait.register_on_class(Canvas, Range)
+alst.register_on_class(Manifest)
