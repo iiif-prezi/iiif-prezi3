@@ -65,3 +65,17 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         self.assertEqual('http://example.org/iiif/mani/0', m.id)
         config.configs['helpers.auto_fields.AutoId'].auto_type = curr_type
         del (config.configs['helpers.auto_fields.AutoId'].translation["Manifest"])
+
+    def test_autolist_constructor(self):
+        """Test that list properties are set correctly during construction."""
+        m = Manifest(label="AutoList Test", behavior="paged")
+        self.assertEqual(m.behavior, ["paged"])
+        m2 = Manifest(label="AutoList Test", behavior=["continuous"])
+        self.assertEqual(m2.behavior, ["continuous"])
+
+    def test_autolist_setattr(self):
+        """Test that list properties are set correctly during manipulation."""
+        m = Manifest(label="AutoList Test", behavior="paged")
+        self.assertEqual(m.behavior, ["paged"])
+        m.behavior = "continuous"
+        self.assertEqual(m.behavior, ["continuous"])
