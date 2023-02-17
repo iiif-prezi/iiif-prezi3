@@ -1,8 +1,8 @@
 import uuid
 
 from ..config.config import Config, register_config
-from ..skeleton import (AnnotationPage, Canvas, Class, KeyValueString, Range,
-                        Reference, Manifest)
+from ..skeleton import (AnnotationPage, Canvas, Class, KeyValueString,
+                        Manifest, Range, Reference)
 
 
 class AutoConfig(Config):
@@ -153,6 +153,8 @@ class AutoList(Auto):
         super().__init__(cfg, name)
 
     def manipulate_value(self, what, value=None):
+        if not value:
+            return None
         if not isinstance(value, list):
             return [value]
         else:
