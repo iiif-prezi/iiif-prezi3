@@ -1,11 +1,5 @@
 CHANGES = [
     {
-        "description": "Fix LngString's missing __root__",
-        "type": "replace",
-        "find": "class LngString(Base):\n    pass",
-        "replace": "class LngString(Base):\n    __root__: Dict[str, List[str]]"
-    },
-    {
         "description": "Allow extra properties on ManifestRef",
         "type": "insert",
         "before": "class ManifestRef(Reference):\n    type: Optional[constr(regex=r'^Manifest$')] = None\n",
