@@ -55,13 +55,20 @@ class Base(BaseModel):
 
     def jsonld(self, **kwargs):
         # approach 6- use the pydantic .dict() function to get the dict with pydantic options, add the context at the top and dump to json with modified kwargs
-        excluded_args = ["exclude_unset", "exclude_defaults", "exclude_none", "by_alias"]
+        excluded_args = ["exclude_unset", "exclude_defaults", "exclude_none", "by_alias", "ensure_ascii", "default"]
         pydantic_args = ["include", "exclude", "encoder"]
         dict_kwargs = dict([(arg, kwargs[arg]) for arg in kwargs.keys() if arg in pydantic_args])
 
         json_kwargs = dict([(arg, kwargs[arg]) for arg in kwargs.keys() if arg not in pydantic_args + excluded_args])
         return json.dumps({"@context": "http://iiif.io/api/presentation/3/context.json",
-                           **self.dict(exclude_unset=False, exclude_defaults=False, exclude_none=True, by_alias=True, **dict_kwargs)}, default=pydantic_encoder, **json_kwargs)
+                           **self.dict(exclude_unset=False,
+                                       exclude_defaults=False,
+                                       exclude_none=True,
+                                       by_alias=True,
+                                       **dict_kwargs)},
+                          ensure_ascii=False,
+                          default=pydantic_encoder,
+                          **json_kwargs)
 
     def jsonld_dict(self, **kwargs):
         pydantic_args = ["include", "exclude", "encoder"]
