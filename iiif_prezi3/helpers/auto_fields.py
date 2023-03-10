@@ -146,7 +146,7 @@ class AutoItems(Auto):
 
 class AutoListConfig(Config):
     def __init__(self):
-        self.properties = ['behavior', 'service', 'services', 'features', 'language', 'thumbnail', 'logo', 'rendering', 'homepage', 'metadata',
+        self.properties = ['behavior', 'service', 'services', 'features', 'thumbnail', 'logo', 'rendering', 'homepage', 'metadata',
                            'partOf', 'provider', 'seeAlso']
 
 
@@ -175,4 +175,4 @@ alst = AutoList(alstcfg)
 ai.register_on_class(AnnotationPage, Class)
 al.register_on_class(KeyValueString, Class, Reference)
 ait.register_on_class(Canvas, Range)
-alst.register_on_class(Class, AnnotationPage, ResourceItem, ResourceItem1, ServiceItem1, NavPlace, Reference, ProviderItem)
+alst.register_on_class(Class, AnnotationPage, ResourceItem, ServiceItem1, NavPlace, Reference, ProviderItem)
