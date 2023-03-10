@@ -79,3 +79,28 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         self.assertEqual(m.behavior, ["paged"])
         m.behavior = "continuous"
         self.assertEqual(m.behavior, ["continuous"])
+
+    def test_autolist_object_constructor(self):
+        """Test that list properties are set during construction, when the list contains objects."""
+        m = Manifest(label="AutoList Test", rendering={"type": "Text", "label": "Download OCR", "format": "text/plain"})
+        self.assertIsInstance(m.rendering, list)
+        self.assertEqual(m.rendering[0].format, "text/plain")
+        m = Manifest(label="AutoList Test", rendering=[{"type": "Text", "label": "Download OCR", "format": "text/plain"}])
+        self.assertIsInstance(m.rendering, list)
+        self.assertEqual(m.rendering[0].format, "text/plain")
+
+    def test_autolist_object_setattr(self):
+        """Test that list properties are set correctly during manipulation, when the list contains objects."""
+        m = Manifest(label="AutoList Test", rendering={"type": "Text", "label": "Download OCR", "format": "text/plain"})
+        self.assertIsInstance(m.rendering, list)
+        self.assertEqual(m.rendering[0].format, "text/plain")
+        m.rendering = {"type": "Text", "label": "Download OCR", "format": "application/pdf"}
+        self.assertIsInstance(m.rendering, list)
+        self.assertEqual(m.rendering[0].format, "application/pdf")
+
+    def test_autolist_nested(self):
+        """Test that autolist properties are set correctly when the list is nested."""
+        m = Manifest(label="Nested Autolist Test", provider={"homepage": {"type": "Text", "format": "text/html", "language": "en"}})
+        self.assertIsInstance(m.provider, list)
+        self.assertIsInstance(m.provider[0].homepage, list)
+        self.assertIsInstance(m.provider[0].homepage[0].language, list)
