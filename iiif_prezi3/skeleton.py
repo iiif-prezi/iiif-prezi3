@@ -7,7 +7,8 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Union
 
-from pydantic import AnyUrl, Extra, Field, PositiveFloat, PositiveInt, constr
+from pydantic import (AnyUrl, Extra, Field, PositiveFloat, PositiveInt, constr,
+                      root_validator)
 
 from .base import Base
 
@@ -288,9 +289,9 @@ class Annotation(Class):
 
 class Canvas(Class):
     type: constr(regex=r'^Canvas$') = 'Canvas'
-    height: Optional[Dimension] = None
-    width: Optional[Dimension] = None
-    duration: Optional[Duration] = None
+    height: Optional[Dimension]
+    width: Optional[Dimension]
+    duration: Optional[Duration]
     metadata: Optional[Metadata] = None
     summary: Optional[LngString] = None
     requiredStatement: Optional[KeyValueString] = None
@@ -309,6 +310,21 @@ class Canvas(Class):
     partOf: Optional[PartOf] = None
     items: List[AnnotationPage]
     annotations: Optional[List[AnnotationPage]] = None
+
+    @root_validator
+    def hw_andor_d(cls, values):
+        """Validates that height/width and/or duration are set"""
+        assert (values['height'] is not None or values['width'] is not None or values['duration'] is not None), 'height/width and/or duration must be present'
+        return values
+
+    @root_validator
+    def both_hw(cls, values):
+        """Validates that height and width are both set if one is"""
+        if values['height'] is not None:
+            assert values['width'] is not None, 'width must be present if height is present'
+        if values['width'] is not None:
+            assert values['height'] is not None, 'height must be present if width is present'
+        return values
 
 
 class PlaceholderCanvas(Class):
