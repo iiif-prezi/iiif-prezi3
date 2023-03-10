@@ -16,3 +16,5 @@ from .set_hwd import SetHwd  # noqa: F401
 from .set_hwd_from_file import SetHeightWidthDurationFileHelper  # noqa: F401
 from .set_hwd_from_iiif import SetHwdFromIIIF  # noqa: F401
 from .to_reference import ToReference  # noqa: F401
+from .add_image import AddImage  # noqa: F401
+from .add_thumbnail import AddThumbnail  # noqa: F401
