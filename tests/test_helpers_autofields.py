@@ -104,3 +104,11 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         self.assertIsInstance(m.provider, list)
         self.assertIsInstance(m.provider[0].homepage, list)
         self.assertIsInstance(m.provider[0].homepage[0].language, list)
+
+    def test_autolist_nested(self):
+        """Test that autolist properties are set correctly when the list is nested."""
+        m = Manifest(label="Nested Autolist Test", provider={"logo": {"id": "https://example.org/logo", "type": "Image", "format": "image/png", "service": {"type": "ImageService3", "profile": "level2"}}})
+        self.assertIsInstance(m.provider, list)
+        self.assertIsInstance(m.provider[0].logo, list)
+        x = m.provider[0].logo
+        self.assertIsInstance(x[0].service, list)
