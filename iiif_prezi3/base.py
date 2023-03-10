@@ -55,7 +55,7 @@ class Base(BaseModel):
 
     def jsonld(self, **kwargs):
         # approach 6- use the pydantic .dict() function to get the dict with pydantic options, add the context at the top and dump to json with modified kwargs
-        excluded_args = ["exclude_unset", "exclude_defaults", "exclude_none", "by_alias"]
+        excluded_args = ["exclude_unset", "exclude_defaults", "exclude_none", "by_alias", "ensure_ascii", "default"]
         pydantic_args = ["include", "exclude", "encoder"]
         dict_kwargs = dict([(arg, kwargs[arg]) for arg in kwargs.keys() if arg in pydantic_args])
 
