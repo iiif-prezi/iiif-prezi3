@@ -3,7 +3,7 @@ import uuid
 from ..config.config import Config, register_config
 from ..skeleton import (AnnotationPage, Canvas, Class, HomepageItem,
                         KeyValueString, NavPlace, ProviderItem, Range,
-                        Reference, ResourceItem, ResourceItem1, ServiceItem1)
+                        Reference, ResourceItem, ServiceItem1)
 
 
 class AutoConfig(Config):
