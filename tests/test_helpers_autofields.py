@@ -98,8 +98,8 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         self.assertIsInstance(m.rendering, list)
         self.assertEqual(m.rendering[0].format, "application/pdf")
 
-    def test_autolist_nested(self):
-        """Test that autolist properties are set correctly when the list is nested."""
+    def test_autolist_nested_homepage(self):
+        """Test that autolist properties are set correctly when the list is nested for homepage items."""
         m = Manifest(label="Nested Autolist Test", provider={"homepage": {"type": "Text", "format": "text/html", "language": "en"}})
         self.assertIsInstance(m.provider, list)
         self.assertIsInstance(m.provider[0].homepage, list)
