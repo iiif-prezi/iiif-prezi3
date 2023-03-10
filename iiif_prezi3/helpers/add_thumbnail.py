@@ -1,5 +1,5 @@
 from ..loader import monkeypatch_schema
-from ..skeleton import Canvas, ResourceItem, AccompanyingCanvas, PlaceholderCanvas
+from ..skeleton import Canvas, ResourceItem, AccompanyingCanvas, PlaceholderCanvas, AnnotationPage, Collection, Manifest, Annotation, Range, AnnotationCollection, Reference
 
 
 class AddThumbnail:
@@ -19,4 +19,5 @@ class AddThumbnail:
         self.thumbnail.append(new_thumbnail)
         return new_thumbnail
 
-monkeypatch_schema([Canvas, PlaceholderCanvas, AccompanyingCanvas], AddThumbnail)
+
+monkeypatch_schema([Canvas, PlaceholderCanvas, AccompanyingCanvas, AnnotationPage, Collection, Manifest, Annotation, Range, ResourceItem, AnnotationCollection, Reference], AddThumbnail)
