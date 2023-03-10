@@ -61,7 +61,14 @@ class Base(BaseModel):
 
         json_kwargs = dict([(arg, kwargs[arg]) for arg in kwargs.keys() if arg not in pydantic_args + excluded_args])
         return json.dumps({"@context": "http://iiif.io/api/presentation/3/context.json",
-                           **self.dict(exclude_unset=False, exclude_defaults=False, exclude_none=True, by_alias=True, **dict_kwargs)}, default=pydantic_encoder, **json_kwargs)
+                           **self.dict(exclude_unset=False,
+                                       exclude_defaults=False,
+                                       exclude_none=True,
+                                       by_alias=True,
+                                       **dict_kwargs)},
+                          ensure_ascii=False,
+                          default=pydantic_encoder,
+                          **json_kwargs)
 
     def jsonld_dict(self, **kwargs):
         pydantic_args = ["include", "exclude", "encoder"]
