@@ -1,8 +1,9 @@
 from ..loader import monkeypatch_schema
-from ..skeleton import Annotation, AnnotationPage, Canvas, ResourceItem
+from ..skeleton import (AccompanyingCanvas, Annotation, AnnotationPage, Canvas,
+                        PlaceholderCanvas, ResourceItem)
 
 
-class CanvasHelpers:
+class AddImage:
 
     def add_image(self, image_url, anno_id=None, anno_page_id=None, **kwargs):
         """Adds an image to an existing canvas.
@@ -23,21 +24,5 @@ class CanvasHelpers:
         self.items.append(anno_page)
         return anno_page
 
-    def add_thumbnail(self, image_url, **kwargs):
-        """Adds a thumbnail to an existing canvas.
 
-        Args:
-            image_url (str): An HTTP URL which points to the thumbnail.
-            **kwargs (): see ResourceItem.
-
-        Returns:
-            new_thumbnail (ResourceItem): the newly-created thumbnail.
-        """
-        new_thumbnail = ResourceItem(id=image_url, type='Image', **kwargs)
-        if not self.thumbnail:
-            self.thumbnail = list()
-        self.thumbnail.append(new_thumbnail)
-        return new_thumbnail
-
-
-monkeypatch_schema(Canvas, CanvasHelpers)
+monkeypatch_schema([Canvas, AccompanyingCanvas, PlaceholderCanvas], AddImage)
