@@ -2,7 +2,8 @@ import uuid
 
 from ..config.config import Config, register_config
 from ..skeleton import (AnnotationPage, Canvas, Class, KeyValueString,
-                        Manifest, Range, Reference)
+                        NavPlace, ProviderItem, Range, Reference, ResourceItem,
+                        ResourceItem1, ServiceItem1)
 
 
 class AutoConfig(Config):
@@ -145,7 +146,8 @@ class AutoItems(Auto):
 
 class AutoListConfig(Config):
     def __init__(self):
-        self.properties = ['behavior']
+        self.properties = ['behavior', 'service', 'services', 'features', 'language', 'thumbnail', 'logo', 'rendering', 'homepage', 'metadata',
+                           'partOf', 'provider', 'seeAlso']
 
 
 class AutoList(Auto):
@@ -173,4 +175,4 @@ alst = AutoList(alstcfg)
 ai.register_on_class(AnnotationPage, Class)
 al.register_on_class(KeyValueString, Class, Reference)
 ait.register_on_class(Canvas, Range)
-alst.register_on_class(Manifest)
+alst.register_on_class(Class, AnnotationPage, ResourceItem, ResourceItem1, ServiceItem1, NavPlace, Reference, ProviderItem)
