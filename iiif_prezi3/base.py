@@ -15,7 +15,16 @@ class Base(BaseModel):
         allow_population_by_field_name = True
 
     def __getattribute__(self, prop):
-        val = super(Base, self).__getattribute__(prop)
+        try:
+            val = super(Base, self).__getattribute__(prop)
+        except AttributeError:
+            super_fields = super(Base, self).__getattribute__("__fields__")
+            if "__root__" in super_fields:
+                obj = super(Base, self).__getattribute__("__root__")
+                val = super(Base, obj).__getattribute__(prop)
+            else:
+                raise
+
         # __root__ is a custom pydantic thing
         if hasattr(val, '__root__'):
             if type(val.__root__) in [AnyUrl]:
