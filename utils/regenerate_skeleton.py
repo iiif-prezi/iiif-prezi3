@@ -13,12 +13,25 @@ DATAMODEL_COMMAND = "datamodel-codegen --input {} --input-file-type jsonschema -
 def downgradeSchema(schema, filename):
     runSubstitute(schema)
 
-    print(json.dumps(schema, indent=4))
+    #print(json.dumps(schema, indent=4))
+    with open(SCHEMA_FILENAME, "w") as out:
+            out.write(json.dumps(schema, indent=4))
 
 def runSubstitute(schema):    
     if isinstance(schema, list):
-        for item in schema:
-            runSubstitute(item)
+        for index, item in enumerate(schema):
+            if isinstance(item, dict) and 'if' in item:
+                if 'else' in item:
+                    schema[index] = { 'oneOf': [
+                        item['then'],
+                        item['else']
+                    ]}
+                else:
+                    schema[index] = item['then']
+
+            #print ('recursive on list item ')
+            #print(schema[index])
+            runSubstitute(schema[index])
 
     if isinstance(schema,dict):        
         if 'allOf' in schema and "if" in schema['allOf'][0]:
@@ -41,7 +54,8 @@ def runSubstitute(schema):
                     schema[key] = schema[key]['then']
 
             if isinstance(schema[key],dict) or isinstance(schema[key],list):
-                print ('recusrive on ' + key)
+                #print ('recursive on ' + key)
+                #print (schema[key])
                 runSubstitute(schema[key])
 
 if __name__ == "__main__":
@@ -51,17 +65,15 @@ if __name__ == "__main__":
     if safety.lower() != "y":
         exit()
 
-    print("Downloading latest JSON Schema...")
+    print("Downloading latest JSON Schema..." + SCHEMA_LOCATION)
     js = requests.get(SCHEMA_LOCATION)
-    if js.status_code == 200:
-        with open(SCHEMA_FILENAME, "wb") as out:
-            out.write(js.content)
-    else:
+    if js.status_code != 200:
         print(f"Error retrieving JSON Schema - Status {js.status_code}")
         exit()
 
     downgradeSchema(json.loads(js.content),SCHEMA_FILENAME)
-    exit(-1)
+   # with open('test.json') as tst_file:
+    #    downgradeSchema(json.loads(tst_file.read()),SCHEMA_FILENAME)
 
     print("Generating Skeleton file...")
     subprocess.run(shlex.split(DATAMODEL_COMMAND), check=True)
