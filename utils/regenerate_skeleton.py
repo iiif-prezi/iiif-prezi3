@@ -19,19 +19,8 @@ def downgradeSchema(schema, filename):
 
 def runSubstitute(schema):    
     if isinstance(schema, list):
-        for index, item in enumerate(schema):
-            if isinstance(item, dict) and 'if' in item:
-                if 'else' in item:
-                    schema[index] = { 'oneOf': [
-                        item['then'],
-                        item['else']
-                    ]}
-                else:
-                    schema[index] = item['then']
-
-            #print ('recursive on list item ')
-            #print(schema[index])
-            runSubstitute(schema[index])
+        for item in schema:
+            runSubstitute(item)
 
     if isinstance(schema,dict):        
         if 'allOf' in schema and "if" in schema['allOf'][0]:
@@ -50,6 +39,25 @@ def runSubstitute(schema):
                         schema[key]['then'],
                         schema[key]['else']
                     ]}
+                    # Handle nested if statements 
+                    while True:
+                        containsIf = False
+                        for index,item in enumerate(schema[key]['oneOf']):
+                            if 'if' in item:
+                                # Nested if is in the else block
+                                containsIf = True
+                                # Add the nested if/then part
+                                schema[key]['oneOf'].append(item['then'])
+                                if 'else' in item:
+                                    # Add the nested else part
+                                    schema[key]['oneOf'].append(item['else'])
+                                # Delete the item in the list that contained the if/then/else as constituent parts
+                                # are now part of the list of oneOfs    
+                                del schema[key]['oneOf'][index]
+                                break    
+
+                        if not containsIf:
+                            break
                 else:
                     schema[key] = schema[key]['then']
 
@@ -72,9 +80,9 @@ if __name__ == "__main__":
         exit()
 
     downgradeSchema(json.loads(js.content),SCHEMA_FILENAME)
-   # with open('test.json') as tst_file:
+    #with open('test.json') as tst_file:
     #    downgradeSchema(json.loads(tst_file.read()),SCHEMA_FILENAME)
-
+    #exit(-1)
     print("Generating Skeleton file...")
     subprocess.run(shlex.split(DATAMODEL_COMMAND), check=True)
 
