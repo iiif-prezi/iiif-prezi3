@@ -110,4 +110,4 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         m = Manifest(label="Nested Autolist Test", provider={"logo": {"id": "https://example.org/logo", "type": "Image", "format": "image/png", "service": {"type": "ImageService3", "profile": "level2"}}})
         self.assertIsInstance(m.provider, list)
         self.assertIsInstance(m.provider[0].logo, list)
-        self.assertIsInstance(m.provider[0].logo[0].__root__.service, list)
+        self.assertIsInstance(m.provider[0].logo[0].service, list)
