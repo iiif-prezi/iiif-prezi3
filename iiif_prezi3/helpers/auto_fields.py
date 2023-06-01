@@ -1,8 +1,9 @@
 import uuid
 
 from ..config.config import Config, register_config
-from ..skeleton import (AnnotationPage, Canvas, Class, KeyValueString, Range,
-                        Reference)
+from ..skeleton import (AnnotationPage, Canvas, Class, HomepageItem,
+                        KeyValueString, NavPlace, ProviderItem, Range,
+                        Reference, ResourceItem, ServiceItem1)
 
 
 class AutoConfig(Config):
@@ -143,14 +144,43 @@ class AutoItems(Auto):
             return value
 
 
+class AutoListConfig(Config):
+    def __init__(self):
+        self.properties = ['behavior', 'service', 'services', 'features', 'thumbnail', 'logo', 'rendering', 'homepage', 'metadata',
+                           'partOf', 'provider', 'seeAlso']
+
+
+class AutoList(Auto):
+    def __init__(self, cfg, name=""):
+        super().__init__(cfg, name)
+
+    def manipulate_value(self, what, value=None):
+        if not value:
+            return None
+        if not isinstance(value, list):
+            return [value]
+        else:
+            return value
+
+
+class AutoLanguageListConfig(Config):
+    def __init__(self):
+        self.properties = ['language']
+
+
 aicfg = AutoIdConfig()
 alcfg = AutoLangConfig()
 aitcfg = AutoItemsConfig()
+alstcfg = AutoListConfig()
+allstcfg = AutoLanguageListConfig()
 ai = AutoId(aicfg)
 al = AutoLang(alcfg)
 ait = AutoItems(aitcfg)
-
+alst = AutoList(alstcfg, name="General")
+allst = AutoList(allstcfg, name="Language")
 # Set up some obvious defaults
 ai.register_on_class(AnnotationPage, Class)
 al.register_on_class(KeyValueString, Class, Reference)
 ait.register_on_class(Canvas, Range)
+alst.register_on_class(Class, AnnotationPage, ResourceItem, ServiceItem1, NavPlace, Reference, ProviderItem)
+allst.register_on_class(HomepageItem)

@@ -65,3 +65,49 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         self.assertEqual('http://example.org/iiif/mani/0', m.id)
         config.configs['helpers.auto_fields.AutoId'].auto_type = curr_type
         del (config.configs['helpers.auto_fields.AutoId'].translation["Manifest"])
+
+    def test_autolist_constructor(self):
+        """Test that list properties are set correctly during construction."""
+        m = Manifest(label="AutoList Test", behavior="paged")
+        self.assertEqual(m.behavior, ["paged"])
+        m2 = Manifest(label="AutoList Test", behavior=["continuous"])
+        self.assertEqual(m2.behavior, ["continuous"])
+
+    def test_autolist_setattr(self):
+        """Test that list properties are set correctly during manipulation."""
+        m = Manifest(label="AutoList Test", behavior="paged")
+        self.assertEqual(m.behavior, ["paged"])
+        m.behavior = "continuous"
+        self.assertEqual(m.behavior, ["continuous"])
+
+    def test_autolist_object_constructor(self):
+        """Test that list properties are set during construction, when the list contains objects."""
+        m = Manifest(label="AutoList Test", rendering={"type": "Text", "label": "Download OCR", "format": "text/plain"})
+        self.assertIsInstance(m.rendering, list)
+        self.assertEqual(m.rendering[0].format, "text/plain")
+        m = Manifest(label="AutoList Test", rendering=[{"type": "Text", "label": "Download OCR", "format": "text/plain"}])
+        self.assertIsInstance(m.rendering, list)
+        self.assertEqual(m.rendering[0].format, "text/plain")
+
+    def test_autolist_object_setattr(self):
+        """Test that list properties are set correctly during manipulation, when the list contains objects."""
+        m = Manifest(label="AutoList Test", rendering={"type": "Text", "label": "Download OCR", "format": "text/plain"})
+        self.assertIsInstance(m.rendering, list)
+        self.assertEqual(m.rendering[0].format, "text/plain")
+        m.rendering = {"type": "Text", "label": "Download OCR", "format": "application/pdf"}
+        self.assertIsInstance(m.rendering, list)
+        self.assertEqual(m.rendering[0].format, "application/pdf")
+
+    def test_autolist_nested_homepage(self):
+        """Test that autolist properties are set correctly when the list is nested for homepage items."""
+        m = Manifest(label="Nested Autolist Test", provider={"homepage": {"type": "Text", "format": "text/html", "language": "en"}})
+        self.assertIsInstance(m.provider, list)
+        self.assertIsInstance(m.provider[0].homepage, list)
+        self.assertIsInstance(m.provider[0].homepage[0].language, list)
+
+    def test_autolist_nested(self):
+        """Test that autolist properties are set correctly when the list is nested."""
+        m = Manifest(label="Nested Autolist Test", provider={"logo": {"id": "https://example.org/logo", "type": "Image", "format": "image/png", "service": {"type": "ImageService3", "profile": "level2"}}})
+        self.assertIsInstance(m.provider, list)
+        self.assertIsInstance(m.provider[0].logo, list)
+        self.assertIsInstance(m.provider[0].logo[0].service, list)
