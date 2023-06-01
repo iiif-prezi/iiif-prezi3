@@ -2,7 +2,7 @@ CHANGES = [
     {
         "description": "Allow extra properties on ManifestRef",
         "type": "insert",
-        "before": "class ManifestRef(Reference):\n    type: Optional[constr(regex=r'^Manifest$')] = None\n",
+        "before": "class ManifestRef(Reference):\n    type: constr(regex=r'^Manifest$') = 'Manifest'\n",
         "after": "\n\nclass CanvasRef(Reference):",
         "data": "\n    class Config:\n        extra = Extra.allow\n"
     },
@@ -10,7 +10,7 @@ CHANGES = [
         "description": "Re-add RangeRef",
         "type": "insert",
         "before": "class CanvasRef(Reference):\n    type: Optional[constr(regex=r'^Canvas$')] = None\n",
-        "after": "\n\n",
+        "after": "\n\nModel.update_forward_refs()",
         "data": "\n\nclass RangeRef(Reference):\n    type: Optional[constr(regex=r'^Range$')] = None\n"
     }
 ]
