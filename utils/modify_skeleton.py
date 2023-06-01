@@ -5,6 +5,13 @@ CHANGES = [
         "before": "class ManifestRef(Reference):\n    type: Optional[constr(regex=r'^Manifest$')] = None\n",
         "after": "\n\nclass CanvasRef(Reference):",
         "data": "\n    class Config:\n        extra = Extra.allow\n"
+    },
+    {
+        "description": "Re-add RangeRef",
+        "type": "insert",
+        "before": "class CanvasRef(Reference):\n    type: Optional[constr(regex=r'^Canvas$')] = None\n",
+        "after": "\n\n",
+        "data": "\n\nclass RangeRef(Reference):\n    type: Optional[constr(regex=r'^Range$')] = None\n"
     }
 ]
 
