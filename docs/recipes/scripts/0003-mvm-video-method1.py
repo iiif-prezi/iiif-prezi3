@@ -1,14 +1,15 @@
 from iiif_prezi3 import Manifest, AnnotationPage, Annotation, ResourceItem, config
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
+base_url = "https://iiif.io/api/cookbook/recipe/0003-mvm-video"
 
-manifest = Manifest(id="https://iiif.io/api/cookbook/recipe/0003-mvm-video/manifest.json", label="Video Example 3")
-canvas = manifest.make_canvas(id="https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas")
+manifest = Manifest(id=f"{base_url}/manifest.json", label="Video Example 3")
+canvas = manifest.make_canvas(id=f"{base_url}/canvas")
 anno_body = ResourceItem(id="https://fixtures.iiif.io/video/indiana/lunchroom_manners/high/lunchroom_manners_1024kb.mp4",
                          type="Video",
                          format="video/mp4")
-anno_page = AnnotationPage(id="https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas/page")
-anno = Annotation(id="https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas/page/annotation",
+anno_page = AnnotationPage(id=f"{base_url}/canvas/page")
+anno = Annotation(id=f"{base_url}/canvas/page/annotation",
                   motivation="painting",
                   body=anno_body,
                   target=canvas.id)
