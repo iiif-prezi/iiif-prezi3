@@ -1,5 +1,7 @@
 from iiif_prezi3 import Manifest, KeyValueString
 
+base_url = "https://iiif.io/api/cookbook/recipe/0118-multivalue"
+
 manifest = Manifest(id="https://iiif.io/api/cookbook/recipe/0118_multivalue/manifest.json",
                     label={"fr": ["Arrangement en gris et noir no 1"]})
 manifest.metadata = [
