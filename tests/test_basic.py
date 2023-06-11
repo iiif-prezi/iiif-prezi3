@@ -108,6 +108,13 @@ class BasicTest(unittest.TestCase):
 
         self.assertEqual(manifest_json[:49], '{"id": "http://iiif.example.org/prezi/Manifest/0"')
 
+    def text_jsonld_context_excluded(self):
+        """Test that @context is not excluded from .jsonld() calls, even when requested."""
+        manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': ['default label']})
+        manifest_json = manifest.jsonld(exclude_context=True)
+
+        self.assertEqual(manifest_json[:61], '{"@context": "http://iiif.io/api/presentation/3/context.json"')
+
 
 if __name__ == '__main__':
     unittest.main()
