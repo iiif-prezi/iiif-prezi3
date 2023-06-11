@@ -5,7 +5,6 @@ from pydantic.json import pydantic_encoder
 
 
 class Base(BaseModel):
-
     class Config:
         validate_assignment = True
         validate_all = True
@@ -59,25 +58,31 @@ class Base(BaseModel):
         # and now pass upwards for pydantic to validate and set
         super().__setattr__(key, value)
 
-    def json(self, **kwargs):
-        return self.jsonld(**kwargs)
-
-    def jsonld(self, **kwargs):
+    def json(self, exclude_context=False, **kwargs):
         # approach 6- use the pydantic .dict() function to get the dict with pydantic options, add the context at the top and dump to json with modified kwargs
         excluded_args = ["exclude_unset", "exclude_defaults", "exclude_none", "by_alias", "ensure_ascii", "default"]
         pydantic_args = ["include", "exclude", "encoder"]
         dict_kwargs = dict([(arg, kwargs[arg]) for arg in kwargs.keys() if arg in pydantic_args])
 
         json_kwargs = dict([(arg, kwargs[arg]) for arg in kwargs.keys() if arg not in pydantic_args + excluded_args])
-        return json.dumps({"@context": "http://iiif.io/api/presentation/3/context.json",
-                           **self.dict(exclude_unset=False,
-                                       exclude_defaults=False,
-                                       exclude_none=True,
-                                       by_alias=True,
-                                       **dict_kwargs)},
+
+        dict_out = self.dict(exclude_unset=False,
+                             exclude_defaults=False,
+                             exclude_none=True,
+                             by_alias=True,
+                             **dict_kwargs)
+
+        if not exclude_context:
+            dict_out = {"@context": "http://iiif.io/api/presentation/3/context.json",
+                        **dict_out}
+
+        return json.dumps(dict_out,
                           ensure_ascii=False,
                           default=pydantic_encoder,
                           **json_kwargs)
+
+    def jsonld(self, **kwargs):
+        return self.json(exclude_context=False, **kwargs)
 
     def jsonld_dict(self, **kwargs):
         pydantic_args = ["include", "exclude", "encoder"]
