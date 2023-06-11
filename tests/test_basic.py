@@ -87,6 +87,27 @@ class BasicTest(unittest.TestCase):
         self.assertTrue('en' in manifest.label, 'Manifest seems to be missing English label')
         self.assertEqual(manifest.label['en'][0], 'default label', 'Unexpected label for manifest')
 
+    def test_context_default(self):
+        """Test that @context is included by default for .json() calls."""
+        manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': ['default label']})
+        manifest_json = manifest.json()
+
+        self.assertEqual(manifest_json[:61], '{"@context": "http://iiif.io/api/presentation/3/context.json"')
+
+    def test_context_jsonld(self):
+        """Test that @context is included by default for .jsonld() calls."""
+        manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': ['default label']})
+        manifest_json = manifest.jsonld()
+
+        self.assertEqual(manifest_json[:61], '{"@context": "http://iiif.io/api/presentation/3/context.json"')
+
+    def test_context_excluded(self):
+        """Test that @context is excluded when requested."""
+        manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': ['default label']})
+        manifest_json = manifest.json(exclude_context=True)
+
+        self.assertEqual(manifest_json[:49], '{"id": "http://iiif.example.org/prezi/Manifest/0"')
+
 
 if __name__ == '__main__':
     unittest.main()
