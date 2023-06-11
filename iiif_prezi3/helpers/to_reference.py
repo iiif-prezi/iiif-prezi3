@@ -1,7 +1,8 @@
 from ..loader import monkeypatch_schema
 from ..skeleton import (Annotation, AnnotationCollection, AnnotationPage,
-                        Canvas, CanvasRef, Collection, CollectionRef, Manifest,
-                        ManifestRef, Range, RangeRef, Reference)
+                        AnnotationPageRef, Canvas, CanvasRef, Collection,
+                        CollectionRef, Manifest, ManifestRef, Range, RangeRef,
+                        Reference)
 
 
 class ToReference:
@@ -17,7 +18,9 @@ class ToReference:
         # Currently the skeleton Reference requires a label, but some Referenceable objects may not have one (e.g AnnotationPage)
         # TODO: Remove this when the Schema is updated to have different reference types
         if not self.label:
-            self.label = ""
+            label = None
+        else:
+            label = self.label
 
         # Ensure that we use a specific Reference type if it exists
         if isinstance(self, Manifest):
@@ -28,10 +31,12 @@ class ToReference:
             target_type = CanvasRef
         elif isinstance(self, Range):
             target_type = RangeRef
+        elif isinstance(self, AnnotationPage):
+            target_type = AnnotationPageRef
         else:
             target_type = Reference
 
-        return target_type(id=self.id, label=self.label, type=self.type, thumbnail=thumbnail)
+        return target_type(id=self.id, label=label, type=self.type, thumbnail=thumbnail)
 
 
 monkeypatch_schema([Manifest, AnnotationPage, Collection, AnnotationCollection, Canvas, Range], ToReference)
