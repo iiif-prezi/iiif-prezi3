@@ -2,8 +2,9 @@ import unittest
 
 from pydantic import ValidationError
 
-from iiif_prezi3 import (Annotation, AnnotationPage, Canvas, Collection,
-                         CollectionRef, Manifest, ManifestRef, ResourceItem)
+from iiif_prezi3 import (Annotation, AnnotationPage, AnnotationPageRef, Canvas,
+                         Collection, CollectionRef, Manifest, ManifestRef,
+                         Reference, ResourceItem)
 
 
 class AddItemTests(unittest.TestCase):
@@ -36,18 +37,17 @@ class AddItemTests(unittest.TestCase):
         self.c.add_item(self.m)
         self.assertIsInstance(self.c.items[0], ManifestRef)
 
-    # THIS TEST DISABLED UNTIL AnnotationPageRef added to the schema + skeleton
-    # def test_add_by_reference(self):
-    #     """Test that an item can be added by Reference."""
-    #     self.ap.add_item(self.a)
-    #     self.assertEqual(len(self.ap.items), 1)
-    #     self.c.add_item_by_reference(self.ap)
-    #     self.assertNotEqual(self.ca.items[-1], self.ap)
-    #     self.assertIsInstance(self.ca.items[-1], Reference)
-    #     self.assertEqual(self.ca.items[-1].id, self.ap.id)
-
     def test_add_by_reference(self):
-        """Test that an item can be added by Reference."""
+        """Test that an AnnotationPage can be added to a Canvas by Reference."""
+        self.ap.add_item(self.a)
+        self.assertEqual(len(self.ap.items), 1)
+        self.ca.add_item_by_reference(self.ap)
+        self.assertNotEqual(self.ca.items[-1], self.ap)
+        self.assertIsInstance(self.ca.items[-1], AnnotationPageRef)
+        self.assertEqual(self.ca.items[-1].id, self.ap.id)
+
+    def test_add_collection_by_reference(self):
+        """Test that a Collection can be added to another Collection by Reference."""
         self.c.add_item_by_reference(self.c2)
         self.assertNotEqual(self.c.items[-1], self.c2)
         self.assertIsInstance(self.c.items[-1], CollectionRef)
