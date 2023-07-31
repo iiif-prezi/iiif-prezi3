@@ -15,7 +15,7 @@ else:
 REQUIREMENTS = [
     "pydantic >= 1.9.2, <2.0.0",
     "requests >=2.28.0, <3.0.0",
-    "Pillow >=9.1.1, <10.0.0"
+    "Pillow >=9.1.1, <11.0.0"
 ]
 
 DOCS_REQUIREMENTS = [
@@ -33,7 +33,7 @@ DEV_REQUIREMENTS = [
     "flake8-docstrings >=1.6.0, <2.0.0",
     "flake8-isort >=4.1.1, <5.0.0",
     "tox >=3.25.0, <4.0.0",
-    "Pillow >=9.1.1, <10.0.0",
+    "Pillow >=9.1.1, <11.0.0",
     "deepdiff >=6.2.2, <7.0.0",
     "datamodel-code-generator >=0.17.1, <1.0.0"
 ]
