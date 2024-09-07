@@ -29,7 +29,7 @@ captions = canvas.make_annotation(
     id="https://iiif.io/api/cookbook/recipe/0219-using-caption-file/canvas/page2/a1",
     motivation="supplementing",
     body={
-        "id": f"https://fixtures.iiif.io/video/indiana/lunchroom_manners/lunchroom_manners.vtt",
+        "id": "https://fixtures.iiif.io/video/indiana/lunchroom_manners/lunchroom_manners.vtt",
         "type": "Text",
         "language": "en",
         "format": "text/vtt",
