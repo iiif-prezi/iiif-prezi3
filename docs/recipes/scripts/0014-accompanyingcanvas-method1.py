@@ -37,8 +37,6 @@ accompanying_canvas.add_item(ac_anno_page)
 canvas = manifest.make_canvas(
     id="https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas/canvas/p1",
     label="Gustav Mahler, Symphony No. 3, CD 1",
-    height=998,
-    width=772,
     duration=1985.024,
     accompanyingCanvas=accompanying_canvas
 )
