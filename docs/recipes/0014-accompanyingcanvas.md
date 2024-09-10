@@ -6,5 +6,5 @@
 
 ### Method 1 - Use AccompanyingCanvas and add_item() helper
 ```python
---8<-- "docs/recipes/scripts/0014-accompanyingcanvas.py"
+--8<-- "docs/recipes/scripts/0014-accompanyingcanvas-method1.py"
 ```
