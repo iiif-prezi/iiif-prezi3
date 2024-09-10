@@ -1,6 +1,6 @@
 from ..loader import monkeypatch_schema
-from ..skeleton import (AnnotationPage, Canvas, Collection, Manifest, Range,
-                        Reference)
+from ..skeleton import (AccompanyingCanvas, AnnotationPage, Canvas, Collection,
+                        Manifest, Range, Reference)
 
 
 class AddItem:
@@ -10,6 +10,7 @@ class AddItem:
         Args:
             item (Union[Collection, Manifest, Canvas, AnnotationPage, Annotation, Range, Reference, SpecificResource, Item])): The object to be added
         """
+        print(item)
         if not self.items:
             self.items = []
 
@@ -37,5 +38,5 @@ class AddItemByReference:
         self.items = self.items  # Force Pydantic to validate?
 
 
-monkeypatch_schema([Collection, Manifest, Canvas, Range, AnnotationPage, Reference], AddItem)
-monkeypatch_schema([Collection, Range, Canvas, AnnotationPage], AddItemByReference)
+monkeypatch_schema([Collection, Manifest, Canvas, Range, AnnotationPage, Reference, AccompanyingCanvas], AddItem)
+monkeypatch_schema([Collection, Range, Canvas, AnnotationPage, AccompanyingCanvas], AddItemByReference)
