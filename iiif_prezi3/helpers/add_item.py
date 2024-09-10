@@ -10,7 +10,6 @@ class AddItem:
         Args:
             item (Union[Collection, Manifest, Canvas, AnnotationPage, Annotation, Range, Reference, SpecificResource, Item])): The object to be added
         """
-        print(item)
         if not self.items:
             self.items = []
 
