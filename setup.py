@@ -27,12 +27,12 @@ DOCS_REQUIREMENTS = [
 ]
 
 DEV_REQUIREMENTS = [
-    "autopep8 >=1.6.0, <2.0.0", # Potentially update to 2.3.1 https://pypi.org/project/autopep8/
+    "autopep8 >=1.6.0, <3.0.0",
     "isort >=5.10.1, <6.0.0",
-    "flake8 >=4.0.1, <5.0.0", # Potentially update to 7.1.1 https://pypi.org/project/flake8/#history
+    "flake8 >=4.0.1, <8.0.0",
     "flake8-docstrings >=1.6.0, <2.0.0",
-    "flake8-isort >=4.1.1, <5.0.0", # Potentially update to 6.1.1 https://pypi.org/project/flake8-isort/#history
-    "tox >=3.25.0, <4.0.0", # Potentially update to 4.23.2 https://pypi.org/project/tox/#history
+    "flake8-isort >=4.1.1, <7.0.0",
+    "tox >=3.25.0, <5.0.0",
     "Pillow >=9.1.1, <=12.0.0",  
     "deepdiff >=6.2.2, <9.0.0",
     "datamodel-code-generator >=0.17.1, <1.0.0"
