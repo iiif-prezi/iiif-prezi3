@@ -2,8 +2,9 @@ import unittest
 
 from pydantic import ValidationError
 
-from iiif_prezi3 import (Annotation, AnnotationPage, Canvas, Collection,
-                         CollectionRef, Manifest, ManifestRef, ResourceItem)
+from iiif_prezi3 import (AccompanyingCanvas, Annotation, AnnotationPage,
+                         Canvas, Collection, CollectionRef, Manifest,
+                         ManifestRef, ResourceItem)
 
 
 class AddItemTests(unittest.TestCase):
@@ -16,6 +17,7 @@ class AddItemTests(unittest.TestCase):
         self.ca2 = Canvas(label="second canvas", type="Canvas")
         self.ap = AnnotationPage()
         self.a = Annotation(target=self.c.id)
+        self.ac = AccompanyingCanvas()
 
     def test_add_item(self):
         """Test that a Canvas added to an empty Manifest creates and populates items."""
@@ -74,3 +76,8 @@ class AddItemTests(unittest.TestCase):
         """Test that adding an invalid reference type fails."""
         with self.assertRaises(ValidationError):
             self.c2.add_item_by_reference(self.ca)
+
+    def test_add_item_to_accompanying_canvas(self):
+        """Test that an item can be added to an items list in Accompanying Canvas."""
+        self.ac.add_item(self.ap)
+        self.assertIsInstance(self.ac.items[0], AnnotationPage)
