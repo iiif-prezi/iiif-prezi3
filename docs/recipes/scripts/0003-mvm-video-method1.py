@@ -16,7 +16,6 @@ anno = Annotation(id=f"{base_url}/canvas/page/annotation",
 
 hwd = {"height": 360, "width": 480, "duration": 572.034}
 anno_body.set_hwd(**hwd)
-hwd["width"] = 640
 canvas.set_hwd(**hwd)
 
 anno_page.add_item(anno)
