@@ -938,6 +938,8 @@
 <h3 id="method-1-use-a-keyvaluestring-object-and-a-dictionary-to-create-language-maps">Method 1 - Use a <code>KeyValueString</code> object and a dictionary to create language maps.</h3>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">KeyValueString</span>
 
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0118-multivalue&quot;</span>
+
 <span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0118_multivalue/manifest.json&quot;</span><span class="p">,</span>
                     <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;fr&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Arrangement en gris et noir no 1&quot;</span><span class="p">]})</span>
 <span class="n">manifest</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">[</span>
