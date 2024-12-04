@@ -31,7 +31,7 @@ class AddThumbnail:
             **kwargs (): see ResourceItem.
 
         Returns:
-            list[ResourceItem]: The updated list of thumbnails, including the newly-created one.
+            new_thumbnail (ResourceItem): The updated list of thumbnails, including the newly-created one.
         """
         image_response = ResourceItem(id=url, type='Image')
         image_info = image_response.set_hwd_from_iiif(url)
