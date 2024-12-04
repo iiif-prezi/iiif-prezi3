@@ -66,3 +66,58 @@ class AddThumbnailTests(unittest.TestCase):
         # check thumbnail service
         self.assertEqual(thumbnail.service[0].profile, "level0")
         self.assertEqual(thumbnail.service[0].type, "ImageService3")
+
+    @patch('iiif_prezi3.helpers.set_hwd_from_iiif.requests.get')
+    def test_create_thumbnail_from_iiif_v2(self, mockrequest_get):
+        image_id = 'https://iiif.io/api/image/2.1/example/reference/918ecd18c2592080851777620de9bcb5-gottingen'
+        image_info_url = f'{image_id}/info.json'
+
+        # successful response with dimensions
+        mockresponse = Mock(status_code=200)
+        mockrequest_get.return_value = mockresponse
+        # set mock to return minimal image api response
+        mockresponse.json.return_value = {
+            "@context": "http://iiif.io/api/image/2/context.json",
+            "@id": "https://iiif.io/api/image/2.1/example/reference/918ecd18c2592080851777620de9bcb5-gottingen",
+            "height": 3024,
+            "profile": [
+                "http://iiif.io/api/image/2/level1.json",
+                {
+                    "formats": [
+                        "jpg",
+                        "png"
+                    ],
+                    "qualities": [
+                        "default",
+                        "color",
+                        "gray"
+                    ]
+                }
+            ],
+            "protocol": "http://iiif.io/api/image",
+            "tiles": [
+                {
+                    "height": 512,
+                    "scaleFactors": [
+                        1,
+                        2,
+                        4
+                    ],
+                    "width": 512
+                }
+            ],
+            "width": 4032
+        }
+
+        thumbnail = self.manifest.create_thumbnail_from_iiif(image_info_url)[0]
+
+        # check thumbnail matches preferred size
+        self.assertEqual(thumbnail.height, 3024)
+        self.assertEqual(thumbnail.width, 4032)
+
+        # Since info_json has no sizes, use full/full
+        self.assertEqual(thumbnail.id, "https://iiif.io/api/image/2.1/example/reference/918ecd18c2592080851777620de9bcb5-gottingen/full/full/0/default.jpg")
+
+        # check thumbnail service
+        self.assertEqual(thumbnail.service[0].profile, "http://iiif.io/api/image/2/level1.json")
+        self.assertEqual(thumbnail.service[0].type, "ImageService2")

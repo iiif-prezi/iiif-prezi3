@@ -1,7 +1,8 @@
 from ..loader import monkeypatch_schema
 from ..skeleton import (AccompanyingCanvas, Annotation, AnnotationCollection,
                         AnnotationPage, Canvas, Collection, Manifest,
-                        PlaceholderCanvas, Range, Reference, ResourceItem, ServiceItem, ServiceItem1)
+                        PlaceholderCanvas, Range, Reference, ResourceItem,
+                        ServiceItem, ServiceItem1)
 
 
 class AddThumbnail:
@@ -20,7 +21,7 @@ class AddThumbnail:
             self.thumbnail = list()
         self.thumbnail.append(new_thumbnail)
         return new_thumbnail
-    
+
     def create_thumbnail_from_iiif(self, url, preferred_width=500, **kwargs):
         """Adds an image thumbnail to a manifest or canvas based on a IIIF service.
 
@@ -70,6 +71,9 @@ class AddThumbnail:
         if 'sizes' in image_info:
             new_thumbnail.height = best_fit_size.get('height')
             new_thumbnail.width = best_fit_size.get('width')
+        elif 'height' in image_info and 'width' in image_info:
+            new_thumbnail.height = image_info['height']
+            new_thumbnail.width = image_info['width']
 
         if not hasattr(self, 'thumbnail') or self.thumbnail is None:
             self.thumbnail = []
