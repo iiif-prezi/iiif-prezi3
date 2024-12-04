@@ -24,7 +24,7 @@ canvas.add_item(anno_page)
 rendering = ExternalItem(id="https://fixtures.iiif.io/video/indiana/volleyball/volleyball.txt",
                          type="Text",
                          label="Transcript",
-                         format="text/txt")
+                         format="text/plain")
 
 canvas.rendering = [rendering]
 
