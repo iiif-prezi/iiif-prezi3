@@ -35,18 +35,17 @@ class AddThumbnail:
         image_response = ResourceItem(id=url, type='Image')
         image_info = image_response.set_hwd_from_iiif(url)
         context = image_info.get('@context', '')
-        if context == "http://iiif.io/api/image/2/context.json":
-            if 'sizes' not in image_info:
-                thumbnail_id = f"{url}/full/full/0/default.jpg"
-            else:
-                best_fit_size = min(
-                    image_info.get('sizes'), key=lambda d: abs(d["width"] - preferred_width)
-                )
-                thumbnail_id = f"{url}/full/{best_fit_size['width']},{best_fit_size['height']}/0/default.jpg"
-            profile = next(
-                (item for item in image_info.get('profile', []) if isinstance(item, str)),
-                ''
+
+        if 'sizes' in image_info:
+            best_fit_size = min(
+                image_info['sizes'], key=lambda size: abs(size["width"] - preferred_width)
             )
+            thumbnail_id = f"{url.replace('/info.json', '')}/full/{best_fit_size['width']},{best_fit_size['height']}/0/default.jpg"
+        else:
+            thumbnail_id = f"{url.replace('/info.json', '')}/full/full/0/default.jpg" if context == "http://iiif.io/api/image/2/context.json" else f"{url.replace('/info.json', '')}/full/max/0/default.jpg"
+
+        if context == "http://iiif.io/api/image/2/context.json":
+            profile = next((item for item in image_info.get('profile', []) if isinstance(item, str)), '')
             service = ServiceItem1(
                 id=image_info['@id'],
                 profile=profile,
@@ -54,45 +53,30 @@ class AddThumbnail:
                 format="image/jpeg"
             )
         else:
-            if 'sizes' not in image_info:
-                thumbnail_id = f"{url}/full/max/0/default.jpg"
             service = ServiceItem(
                 id=image_info['id'],
                 profile=image_info.get('profile', ''),
                 type=image_info.get('type', 'ImageService'),
                 format="image/jpeg"
             )
+
         new_thumbnail = ResourceItem(
             id=thumbnail_id,
             type='Image',
-            # height=best_fit_size['height'],
-            # width=best_fit_size['width'],
             format="image/jpeg",
             **kwargs
         )
+
+        if 'sizes' in image_info:
+            new_thumbnail.height = best_fit_size.get('height')
+            new_thumbnail.width = best_fit_size.get('width')
+
         if not hasattr(self, 'thumbnail') or self.thumbnail is None:
             self.thumbnail = []
-        context = image_info.get('@context', '')
-        if context == "http://iiif.io/api/image/2/context.json":
-            profile = next(
-                (item for item in image_info.get('profile', []) if isinstance(item, str)),
-                ''
-            )
-            service = ServiceItem1(
-                id=image_info['@id'],
-                profile=profile,
-                type="ImageService2",
-                format="image/jpeg"
-            )
-        else:
-            service = ServiceItem(
-                id=image_info['id'],
-                profile=image_info.get('profile', ''),
-                type=image_info.get('type', 'ImageService'),
-                format="image/jpeg"
-            )
+
         new_thumbnail.add_service(service)
         self.thumbnail.append(new_thumbnail)
+
         return self.thumbnail
 
 
