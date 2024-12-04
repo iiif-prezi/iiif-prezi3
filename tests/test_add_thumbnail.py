@@ -64,6 +64,5 @@ class AddThumbnailTests(unittest.TestCase):
         self.assertEqual(thumbnail.id, "https://fixtures.iiif.io/other/level0/Glen/photos/gottingen/full/504,378/0/default.jpg")
 
         # check thumbnail service
-        service = thumbnail.service[0]
-        self.assertEqual(service['profile'], "level0")
-        self.assertEqual(service['type'], "ImageService3")
+        self.assertEqual(thumbnail.service[0].profile, "level0")
+        self.assertEqual(thumbnail.service[0].type, "ImageService3")
