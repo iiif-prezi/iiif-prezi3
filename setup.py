@@ -13,28 +13,28 @@ else:
     VERSION = "0.0.0.dev0"
 
 REQUIREMENTS = [
-    "pydantic >= 1.9.2, <2.0.0",
+    "pydantic >= 1.9.2, <2.0.0", # potentially update to 3.0.0 https://github.com/pydantic/pydantic/releases
     "requests >=2.28.0, <3.0.0",
-    "Pillow >=9.1.1, <10.0.0"
+    "Pillow >=9.1.1, <=12.0.0"
 ]
 
 DOCS_REQUIREMENTS = [
     "mkdocs >=1.4.0, <2.0.0",
-    "mkdocs-material >=8.0.0, <9.0.0",
-    "mkdocstrings-python >=0.7.0, <1.0.0",
-    "griffe >=0.25.2, <1.0.0",
+    "mkdocs-material >=8.0.0, <10.0.0",
+    "mkdocstrings-python >=0.7.0, <2.0.0",
+    "griffe >=0.25.2, <2.0.0",
     "mkdocs-awesome-pages-plugin >=2.8.0, <3.0.0"
 ]
 
 DEV_REQUIREMENTS = [
-    "autopep8 >=1.6.0, <2.0.0",
+    "autopep8 >=1.6.0, <3.0.0",
     "isort >=5.10.1, <6.0.0",
-    "flake8 >=4.0.1, <5.0.0",
+    "flake8 >=4.0.1, <6.0.0",
     "flake8-docstrings >=1.6.0, <2.0.0",
-    "flake8-isort >=4.1.1, <5.0.0",
-    "tox >=3.25.0, <4.0.0",
-    "Pillow >=9.1.1, <10.0.0",
-    "deepdiff >=6.2.2, <7.0.0",
+    "flake8-isort >=4.1.1, <7.0.0",
+    "tox >=3.25.0, <5.0.0",
+    "Pillow >=9.1.1, <=12.0.0",  
+    "deepdiff >=6.2.2, <9.0.0",
     "datamodel-code-generator >=0.17.1, <1.0.0"
 ]
 
@@ -56,11 +56,11 @@ setup(
                  "Operating System :: OS Independent",  # is this true? know Linux & OS X ok
                  "Programming Language :: Python",
                  "Programming Language :: Python :: 3",
-                 "Programming Language :: Python :: 3.7",
-                 "Programming Language :: Python :: 3.8",
                  "Programming Language :: Python :: 3.9",
                  "Programming Language :: Python :: 3.10",
                  "Programming Language :: Python :: 3.11",
+                 "Programming Language :: Python :: 3.12",
+                 "Programming Language :: Python :: 3.13",
                  "Topic :: Internet :: WWW/HTTP",
                  "Topic :: Multimedia :: Graphics :: Graphics Conversion",
                  "Topic :: Software Development :: Libraries :: Python Modules",
