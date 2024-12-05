@@ -1,6 +1,8 @@
 from iiif_prezi3 import Manifest, ResourceItem, AnnotationPage, Annotation, config, HomepageItem
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "none"
+base_url = "https://iiif.io/api/cookbook/recipe/0047-homepage"
+
 homepage = HomepageItem(
     id="https://www.getty.edu/art/collection/object/103RQQ",
     type="Text",
@@ -9,12 +11,12 @@ homepage = HomepageItem(
     language="en",
 )
 manifest = Manifest(
-    id="https://iiif.io/api/cookbook/recipe/0047-homepage/manifest.json",
+    id=f"{base_url}/manifest.json",
     label="Laocöon",
     homepage=homepage,
 )
 canvas = manifest.make_canvas(
-    id="https://iiif.io/api/cookbook/recipe/0047-homepage/canvas/1",
+    id=f"{base_url}/canvas/1",
     label="Front"
 )
 anno_body = ResourceItem(
@@ -28,13 +30,13 @@ anno_body.make_service(
             profile="level1"
 )
 anno_page = AnnotationPage(
-    id="https://iiif.io/api/cookbook/recipe/0047-homepage/canvas/1/page/1"
+    id=f"{base_url}/canvas/1/page/1"
 )
 hw = {"height": 3000, "width": 2315}
 anno_body.set_hwd(**hw)
 canvas.set_hwd(**hw)
 anno = Annotation(
-    id="https://iiif.io/api/cookbook/recipe/0047-homepage/canvas/1/page/1/annotation/1",
+    id=f"{base_url}/canvas/1/page/1/annotation/1",
     motivation="painting",
     body=anno_body,
     target=canvas.id
