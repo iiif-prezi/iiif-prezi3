@@ -1,14 +1,16 @@
 from iiif_prezi3 import Manifest, ResourceItem, AnnotationPage, Annotation, config, AccompanyingCanvas
 
+base_url = "https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas"
+
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 accompanying_canvas = AccompanyingCanvas(
-    id="https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas/canvas/accompanying",
+    id=f"{base_url}/canvas/accompanying",
     label="First page of score for Gustav Mahler, Symphony No. 3",
     height=998,
     width=772,
 )
 manifest = Manifest(
-    id="https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas/manifest.json",
+    id=f"{base_url}/manifest.json",
     label="Partial audio recording of Gustav Mahler's _Symphony No. 3_",
 )
 ac_anno_body = ResourceItem(
@@ -24,18 +26,18 @@ ac_anno_body.make_service(
     profile="level1"
 )
 ac_anno_page = AnnotationPage(
-    id="https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas/canvas/accompanying/annotation/page"
+    id=f"{base_url}/canvas/accompanying/annotation/page"
 )
 ac_anno = Annotation(
-    id="https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas/canvas/accompanying/annotation/image",
+    id=f"{base_url}/canvas/accompanying/annotation/image",
     motivation="painting",
     body=ac_anno_body,
-    target="https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas/canvas/accompanying"
+    target=f"{base_url}/canvas/accompanying"
 )
 ac_anno_page.add_item(ac_anno)
 accompanying_canvas.add_item(ac_anno_page)
 canvas = manifest.make_canvas(
-    id="https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas/canvas/p1",
+    id=f"{base_url}/canvas/p1",
     label="Gustav Mahler, Symphony No. 3, CD 1",
     duration=1985.024,
     accompanyingCanvas=accompanying_canvas
@@ -47,10 +49,10 @@ anno_body = ResourceItem(
     duration=1985.024,
 )
 anno_page = AnnotationPage(
-    id="https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas/canvas/page/p1"
+    id=f"{base_url}/canvas/page/p1"
 )
 anno = Annotation(
-    id="https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas/canvas/page/annotation/segment1-audio",
+    id=f"{base_url}/canvas/page/annotation/segment1-audio",
     motivation="painting",
     body=anno_body,
     target=canvas.id
