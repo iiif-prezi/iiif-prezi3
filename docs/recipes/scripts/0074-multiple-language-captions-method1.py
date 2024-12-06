@@ -3,15 +3,6 @@ from iiif_prezi3 import Manifest, ResourceItem, AnnotationPage, Annotation, KeyV
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0074-multiple-language-captions"
 
-def create_caption(id, format, label, language):
-    return ResourceItem(
-        id=id,
-        type="Text",
-        format=format,
-        label=label,
-        language=language
-    )
-
 manifest = Manifest(
     id=f"{base_url}/manifest.json",
     label={"it": ["Per voi signore. Modelli francesi"]},
@@ -47,24 +38,26 @@ annotation_page = AnnotationPage(
 annotation_page.add_item(painting_annotation)
 canvas.add_item(annotation_page)
 
-italian_captions = create_caption(
-    id=f"{base_url}/Per_voi_signore_Modelli_francesi_it.vtt",
-    format="text/vtt",
-    label={"it": ["Sottotitoli in formato WebVTT"]},
-    language="it"
-)
-english_captions = create_caption(
-    id=f"{base_url}/Per_voi_signore_Modelli_francesi_en.vtt",
-    format="text/vtt",
-    label={"en": ["Captions in WebVTT format"]},
-    language="en"
-)
-
 anno_body = ResourceItem(
     id="https://fixtures.iiif.io/video/indiana/lunchroom_manners/high/lunchroom_manners_1024kb.mp4",
     type="Choice",
     format="video/mp4"
 )
+
+italian_captions = ResourceItem(
+    id=f"{base_url}/Per_voi_signore_Modelli_francesi_it.vtt",
+    type="Text",
+    format="text/vtt",
+    language="it",
+)
+italian_captions.add_label(language="it", value="Sottotitoli in formato WebVTT")
+english_captions = ResourceItem(
+    id=f"{base_url}/Per_voi_signore_Modelli_francesi_en.vtt",
+    type="Text",
+    format="text/vtt",
+    language="en"
+)
+english_captions.add_label(language="en", value="Captions in WebVTT format")
 
 caption_annotation = canvas.make_annotation(
     id=f"{base_url}/manifest.json/subtitles_captions-files-vtt",
