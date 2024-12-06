@@ -5,11 +5,11 @@ base_url = "https://iiif.io/api/cookbook/recipe/0074-multiple-language-captions"
 
 manifest = Manifest(
     id=f"{base_url}/manifest.json",
-    label={"it": ["Per voi signore. Modelli francesi"]},
+    label="For ladies. French models",
     rights="http://rightsstatements.org/vocab/InC/1.0/",
     requiredStatement=KeyValueString(label="Rights", value="All rights reserved Cinecittà Luce spa")
 )
-manifest.add_label(language="en", value="For ladies. French models")
+manifest.add_label(language="it", value="Per voi signore. Modelli francesi")
 
 canvas = manifest.make_canvas(
     id=f"{base_url}/canvas"
