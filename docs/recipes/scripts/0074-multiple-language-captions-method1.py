@@ -47,7 +47,6 @@ annotation_page = AnnotationPage(
 annotation_page.add_item(painting_annotation)
 canvas.add_item(annotation_page)
 
-# Create caption choices
 italian_captions = create_caption(
     id=f"{base_url}/Per_voi_signore_Modelli_francesi_it.vtt",
     format="text/vtt",
@@ -67,7 +66,6 @@ anno_body = ResourceItem(
     format="video/mp4"
 )
 
-# Add captions as a Choice annotation
 caption_annotation = canvas.make_annotation(
     id=f"{base_url}/manifest.json/subtitles_captions-files-vtt",
     motivation="supplementing",
