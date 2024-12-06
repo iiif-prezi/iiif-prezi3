@@ -1,21 +1,23 @@
 from iiif_prezi3 import Manifest, ResourceItem, AnnotationPage, Annotation, config
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
+base_url = "https://iiif.io/api/cookbook/recipe/0219-using-caption-file"
+
 manifest = Manifest(
-    id="https://iiif.io/api/cookbook/recipe/0219-using-caption-file/manifest.json",
+    id=f"{base_url}/manifest.json",
     label="Lunchroom Manners"
 )
-canvas = manifest.make_canvas(id="https://iiif.io/api/cookbook/recipe/0219-using-caption-file/canvas")
+canvas = manifest.make_canvas(id=f"{base_url}/canvas")
 painting_anno_body = ResourceItem(
     id="https://fixtures.iiif.io/video/indiana/lunchroom_manners/high/lunchroom_manners_1024kb.mp4",
     type="Video",
     format="video/mp4"
 )
 painting_anno_page = AnnotationPage(
-    id="https://iiif.io/api/cookbook/recipe/0219-using-caption-file/canvas/page"
+    id=f"{base_url}/canvas/page"
 )
 painting_anno = Annotation(
-    id="https://iiif.io/api/cookbook/recipe/0219-using-caption-file/canvas/page/annotation1",
+    id=f"{base_url}/canvas/page/annotation1",
     motivation="painting",
     body=painting_anno_body,
     target=canvas.id
@@ -26,7 +28,7 @@ canvas.set_hwd(**hwd)
 painting_anno_page.add_item(painting_anno)
 canvas.add_item(painting_anno_page)
 captions = canvas.make_annotation(
-    id="https://iiif.io/api/cookbook/recipe/0219-using-caption-file/canvas/page2/a1",
+    id=f"{base_url}/canvas/page2/a1",
     motivation="supplementing",
     body={
         "id": "https://fixtures.iiif.io/video/indiana/lunchroom_manners/lunchroom_manners.vtt",
@@ -39,7 +41,7 @@ captions = canvas.make_annotation(
             ]
         }
     },
-    target="https://iiif.io/api/cookbook/recipe/0219-using-caption-file/canvas",
-    anno_page_id="https://iiif.io/api/cookbook/recipe/0219-using-caption-file/canvas/page2"
+    target=f"{base_url}/canvas",
+    anno_page_id=f"{base_url}/canvas/page2"
 )
 print(manifest.json(indent=2))
