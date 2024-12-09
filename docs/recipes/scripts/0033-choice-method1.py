@@ -8,7 +8,7 @@ manifest = Manifest(
     label="John Dee performing an experiment before Queen Elizabeth I."
 )
 canvas = manifest.make_canvas(
-    id=f"{base_url}/page/p1/1",
+    id=f"{base_url}/canvas/p1",
     height=1271,
     width=2000
 )
