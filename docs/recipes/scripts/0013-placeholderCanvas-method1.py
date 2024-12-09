@@ -59,4 +59,4 @@ anno_page = AnnotationPage(
 anno_page.add_item(anno)
 canvas.add_item(anno_page)
 
-print(manifest.json())
+print(manifest.json(indent=2))
