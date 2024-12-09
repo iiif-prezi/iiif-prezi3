@@ -9,6 +9,8 @@ manifest = Manifest(
 )
 canvas = manifest.make_canvas(
     id=f"{base_url}/page/p1/1",
+    height=1271,
+    width=2000
 )
 
 natural_light = ResourceItem(
@@ -40,14 +42,16 @@ x_ray.make_service(
 choice = Choice(
     items=[natural_light, x_ray],
 )
-canvas.add_annotation(
-    anno_page_id=f"{base_url}/page/p1/1",
-    annotation=Annotation(
-        id=f"{base_url}/annotation/p0001-image",
-        motivation="painting",
-        body=choice,
-        target=f"{base_url}/canvas/p1"
-    ),
+anno_page = AnnotationPage(
+    id=f"{base_url}/page/p1/1",
 )
+anno = Annotation(
+    id=f"{base_url}/annotation/p0001-image",
+    motivation="painting",
+    body=choice,
+    target=canvas.id
+)
+canvas.add_item(anno_page)
+anno_page.add_item(anno)
 
 print(manifest.json(indent=2))

@@ -5,3 +5,6 @@
 | **JSON-LD:** | [https://iiif.io/api/cookbook/recipe/0033-choice/manifest.json](https://iiif.io/api/cookbook/recipe/0033-choice/manifest.json) |
 
 ### Method 1 - 
+```python
+--8<-- "docs/recipes/scripts/0033-choice-method1.py"
+```
