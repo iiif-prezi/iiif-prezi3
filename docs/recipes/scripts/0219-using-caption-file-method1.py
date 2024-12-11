@@ -27,20 +27,17 @@ painting_anno_body.set_hwd(**hwd)
 canvas.set_hwd(**hwd)
 painting_anno_page.add_item(painting_anno)
 canvas.add_item(painting_anno_page)
+caption_body = ResourceItem(
+    id="https://fixtures.iiif.io/video/indiana/lunchroom_manners/lunchroom_manners.vtt",
+    type="Text",
+    language="en",
+    format="text/vtt",
+    label="Captions"
+)
 captions = canvas.make_annotation(
     id=f"{base_url}/canvas/page2/a1",
     motivation="supplementing",
-    body={
-        "id": "https://fixtures.iiif.io/video/indiana/lunchroom_manners/lunchroom_manners.vtt",
-        "type": "Text",
-        "language": "en",
-        "format": "text/vtt",
-        "label": {
-            "en": [
-                "Captions in WebVTT format"
-            ]
-        }
-    },
+    body=caption_body,
     target=f"{base_url}/canvas",
     anno_page_id=f"{base_url}/canvas/page2"
 )
