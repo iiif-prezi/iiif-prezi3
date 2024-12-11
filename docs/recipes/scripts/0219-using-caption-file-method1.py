@@ -31,9 +31,9 @@ caption_body = ResourceItem(
     id="https://fixtures.iiif.io/video/indiana/lunchroom_manners/lunchroom_manners.vtt",
     type="Text",
     language="en",
-    format="text/vtt",
-    label="Captions"
+    format="text/vtt"
 )
+caption_body.add_label(language="en", value="Captions in WebVTT format")
 captions = canvas.make_annotation(
     id=f"{base_url}/canvas/page2/a1",
     motivation="supplementing",
