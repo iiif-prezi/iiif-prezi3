@@ -1,6 +1,6 @@
 from ..loader import monkeypatch_schema
 from ..skeleton import (AccompanyingCanvas, AnnotationPage, Canvas, Collection,
-                        Manifest, Range, Reference)
+                        Manifest, PlaceholderCanvas, Range, Reference)
 
 
 class AddItem:
@@ -37,5 +37,5 @@ class AddItemByReference:
         self.items = self.items  # Force Pydantic to validate?
 
 
-monkeypatch_schema([Collection, Manifest, Canvas, Range, AnnotationPage, Reference, AccompanyingCanvas], AddItem)
+monkeypatch_schema([Collection, Manifest, Canvas, Range, AnnotationPage, Reference, AccompanyingCanvas, PlaceholderCanvas], AddItem)
 monkeypatch_schema([Collection, Range, Canvas, AnnotationPage, AccompanyingCanvas], AddItemByReference)

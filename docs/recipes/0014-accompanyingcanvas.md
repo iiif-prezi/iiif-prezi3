@@ -1,4 +1,4 @@
-# "Audio Presentation with Accompanying Image"
+# Audio Presentation with Accompanying Image
 |              | **Cookbook URLs** |
 |--------------|-------------------|
 | **Recipe:**  | [https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas/](https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas/) |
