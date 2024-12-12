@@ -1,4 +1,4 @@
-# "Load a Preview Image Before the Main Content"
+# Load a Preview Image Before the Main Content
 |              | **Cookbook URLs** |
 |--------------|-------------------|
 | **Recipe:**  | [https://iiif.io/api/cookbook/recipe/0013-placeholderCanvas/](https://iiif.io/api/cookbook/recipe/0013-placeholderCanvas/) |
