@@ -15,12 +15,12 @@ canvas = manifest.make_canvas(
 
 natural_light = ResourceItem(
     id="https://iiif.io/api/image/3.0/example/reference/421e65be2ce95439b3ad6ef1f2ab87a9-dee-natural/full/max/0/default.jpg",
+    label="Natural Light",
     type="Image",
     format="image/jpeg",
     width=2000,
     height=1271,
 )
-natural_light.add_label(language="en", value="Natural Light")
 natural_light.make_service(
     id="https://iiif.io/api/image/3.0/example/reference/421e65be2ce95439b3ad6ef1f2ab87a9-dee-natural",
     type="ImageService3",
@@ -28,12 +28,12 @@ natural_light.make_service(
 )
 x_ray = ResourceItem(
     id="https://iiif.io/api/image/3.0/example/reference/421e65be2ce95439b3ad6ef1f2ab87a9-dee-xray/full/max/0/default.jpg",
+    label="X-Ray",
     type="Image",
     format="image/jpeg",
     width=2000,
     height=1271,
 )
-x_ray.add_label(language="en", value="X-Ray")
 x_ray.make_service(
     id="https://iiif.io/api/image/3.0/example/reference/421e65be2ce95439b3ad6ef1f2ab87a9-dee-xray",
     type="ImageService3",
