@@ -38,21 +38,30 @@ class AddThumbnail:
         context = image_info.get('@context', '')
 
         if 'sizes' in image_info:
-            best_fit_size = min(
-                image_info['sizes'], key=lambda size: abs(size["width"] - preferred_width)
+            best_fit_size = max(
+                (size for size in image_info['sizes'] if size["width"] <= preferred_width),
+                key=lambda size: size["width"]
             )
             thumbnail_id = f"{url.replace('/info.json', '')}/full/{best_fit_size['width']},{best_fit_size['height']}/0/default.jpg"
         else:
             thumbnail_id = f"{url.replace('/info.json', '')}/full/full/0/default.jpg" if context == "http://iiif.io/api/image/2/context.json" else f"{url.replace('/info.json', '')}/full/max/0/default.jpg"
 
         if context == "http://iiif.io/api/image/2/context.json":
-            profile = next((item for item in image_info.get('profile', []) if isinstance(item, str)), '')
+            profile_data = image_info.get('profile', [])
+            if isinstance(profile_data, str):
+                profile = profile_data
+            elif isinstance(profile_data, list):
+                profile = next((item for item in profile_data if isinstance(item, str)), '')
+            else:
+                profile = ''
             service = ServiceItem1(
                 id=image_info['@id'],
                 profile=profile,
                 type="ImageService2",
                 format="image/jpeg"
             )
+            if profile == "http://iiif.io/api/image/2/level0.json" and 'sizes' in image_info:
+                thumbnail_id = f"{url.replace('/info.json', '')}/full/{best_fit_size['width']},/0/default.jpg"
         else:
             service = ServiceItem(
                 id=image_info['id'],
@@ -67,7 +76,6 @@ class AddThumbnail:
             format="image/jpeg",
             **kwargs
         )
-
         if 'sizes' in image_info:
             new_thumbnail.height = best_fit_size.get('height')
             new_thumbnail.width = best_fit_size.get('width')
