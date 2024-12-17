@@ -40,7 +40,8 @@ class AddThumbnail:
         if 'sizes' in image_info:
             best_fit_size = max(
                 (size for size in image_info['sizes'] if size["width"] <= preferred_width),
-                key=lambda size: size["width"]
+                key=lambda size: size["width"],
+                default=image_info['sizes'][0]
             )
             thumbnail_id = f"{url.replace('/info.json', '')}/full/{best_fit_size['width']},{best_fit_size['height']}/0/default.jpg"
         else:
