@@ -180,7 +180,7 @@ alst = AutoList(alstcfg, name="General")
 allst = AutoList(allstcfg, name="Language")
 # Set up some obvious defaults
 ai.register_on_class(AnnotationPage, Class)
-al.register_on_class(KeyValueString, Class, Reference)
+al.register_on_class(KeyValueString, Class, Reference, ResourceItem)
 ait.register_on_class(Canvas, Range, AnnotationPage)
 alst.register_on_class(Class, AnnotationPage, ResourceItem, ServiceItem1, NavPlace, Reference, ProviderItem)
 allst.register_on_class(HomepageItem)
