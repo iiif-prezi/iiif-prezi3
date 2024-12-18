@@ -56,7 +56,7 @@ anno_page = AnnotationPage(
     id=f"{base_url}/page/p1/1"
 )
 anno = Annotation(
-    id=f"{base_url}/canvas/annotation/p0001-image",
+    id=f"{base_url}/annotation/p0001-image",
     motivation="painting",
     body=anno_body,
     target=f"{base_url}/canvas/p1"
