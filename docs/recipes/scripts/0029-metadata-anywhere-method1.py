@@ -1,7 +1,8 @@
-from iiif_prezi3 import Manifest, ResourceItem, AnnotationPage, Annotation, config, HomepageItem, KeyValueString
+from iiif_prezi3 import Manifest, ResourceItem, AnnotationPage, Annotation, config, KeyValueString
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0029-metadata-anywhere"
+
 manifest = Manifest(
     id=f"{base_url}/manifest.json",
     label = "John Dee performing an experiment before Queen Elizabeth I.",
@@ -55,7 +56,7 @@ anno_page = AnnotationPage(
     id=f"{base_url}/page/p1/1"
 )
 anno = Annotation(
-    id=f"{base_url}/canvas/accompanying/annotation/image",
+    id=f"{base_url}/canvas/annotation/p0001-image",
     motivation="painting",
     body=anno_body,
     target=f"{base_url}/canvas/p1"
@@ -95,4 +96,5 @@ anno2 = Annotation(
 )
 anno_page_2.add_item(anno2)
 canvas_2.add_item(anno_page_2)
+
 print(manifest.json(indent=2))
