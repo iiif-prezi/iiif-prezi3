@@ -16,17 +16,17 @@ class SetHwdFromIIIFTests(unittest.TestCase):
         image_id = 'http://iiif.example.org/images/1234abcd'
         image_info_url = f'{image_id}/info.json'
         # image api url without info.json
-        self.canvas.set_hwd_from_iiif(image_id)
+        self.canvas.set_hwd_from_iiif(image_id, use_cache=False)
         mockrequest_get.assert_called_with(image_info_url)
 
         # image api url with info.json
         mockrequest_get.reset_mock()
-        self.canvas.set_hwd_from_iiif(image_id)
+        self.canvas.set_hwd_from_iiif(image_id, use_cache=False)
         mockrequest_get.assert_called_with(image_info_url)
 
         # image url with trailing slash
         mockrequest_get.reset_mock()
-        self.canvas.set_hwd_from_iiif(image_id + "/")
+        self.canvas.set_hwd_from_iiif(image_id + "/", use_cache=False)
         mockrequest_get.assert_called_with(image_info_url)
 
         # non-200 response
@@ -37,7 +37,7 @@ class SetHwdFromIIIFTests(unittest.TestCase):
         mockresponse.raise_for_status.side_effect = requests.exceptions.HTTPError
         mockrequest_get.return_value = mockresponse
         with self.assertRaises(requests.exceptions.HTTPError):
-            self.canvas.set_hwd_from_iiif(image_id)
+            self.canvas.set_hwd_from_iiif(image_id, use_cache=False)
             # non-200 should raise exception for status
             mockresponse.raise_for_status.assert_called_once()
 
@@ -45,7 +45,7 @@ class SetHwdFromIIIFTests(unittest.TestCase):
         mockresponse.status_code = 200
         mockresponse.json.side_effect = requests.exceptions.JSONDecodeError("", "", 0)  # JSONDecodeError needs arguments
         with self.assertRaises(requests.exceptions.JSONDecodeError):
-            self.canvas.set_hwd_from_iiif(image_id)
+            self.canvas.set_hwd_from_iiif(image_id, use_cache=False)
 
         # successful response with dimensions
         mockresponse.json.side_effect = None
@@ -59,5 +59,11 @@ class SetHwdFromIIIFTests(unittest.TestCase):
         }
         # patch the method this helper calls so we can inspect
         with patch.object(Canvas, 'set_hwd') as mock_set_hwd:
-            self.canvas.set_hwd_from_iiif(image_id)
+            self.canvas.set_hwd_from_iiif(image_id, use_cache=False)
             mock_set_hwd.assert_called_with(6608, 4821)
+
+        # we test the caching mechanism
+        self.canvas.set_hwd_from_iiif(image_id, use_cache=True)  # will call get
+        mockrequest_get.reset_mock()
+        self.canvas.set_hwd_from_iiif(image_id, use_cache=True)  # should not
+        mockrequest_get.assert_not_called()
