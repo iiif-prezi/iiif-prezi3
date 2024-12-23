@@ -23,10 +23,11 @@ class AddThumbnail:
         return new_thumbnail
 
     def create_thumbnail_from_iiif(self, url, preferred_width=500, **kwargs):
-        """Adds an image thumbnail to a manifest or canvas based on a IIIF service. If there is a sizes property, it
-        returns the thumbnail that is closest to the preferred width but larger. If no sizes property exists and it's
-        not level zero image service, it returns a thumbnail with the exact preferred width. Else, it returns the level
-        `full/full` or `full/max`.
+        """Adds an image thumbnail to a manifest or canvas based on a IIIF service.
+
+        If there is a sizes property, it returns the thumbnail that is closest to the preferred width but larger. If no
+        sizes property exists and it's not level zero image service, it returns a thumbnail with the exact preferred
+        width. Else, it returns the level `full/full` or `full/max`.
 
         Args:
             url (str): An HTTP URL which points at a IIIF Image response.
