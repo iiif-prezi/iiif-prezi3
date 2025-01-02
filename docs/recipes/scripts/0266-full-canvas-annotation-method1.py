@@ -45,7 +45,8 @@ anno = canvas.make_annotation(
     id=f"{base_url}/canvas-1/annopage-2/anno-1",
     motivation="commenting",
     body=anno_body,
-    target=canvas.id
+    target=canvas.id,
+    anno_page_id=f"{base_url}/canvas-1/annopage-2"
 )
 
 print(manifest.json(indent=2))
