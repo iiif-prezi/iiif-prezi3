@@ -25,30 +25,44 @@ class AddRenderingTest(unittest.TestCase):
 
     def test_add_rendering_to_collection(self):
         self.collection.add_rendering(self.external_item)
+        self.assertEqual(self.collection.rendering, [self.external_item])
 
     def test_add_rendering_to_anno_collection(self):
         self.anno_collection.add_rendering(self.external_item)
+        self.assertEqual(self.anno_collection.rendering, [self.external_item])
 
     def test_add_rendering_to_annotation(self):
         self.annotation.add_rendering(self.external_item)
+        self.assertEqual(self.annotation.rendering, [self.external_item])
 
     def test_add_rendering_to_canvas(self):
         self.canvas.add_rendering(self.external_item)
+        self.assertEqual(self.canvas.rendering, [self.external_item])
 
     def test_add_rendering_to_annotation_page(self):
         self.anno_page.add_rendering(self.external_item)
-
-    def test_add_rendering_to_annotation(self):
-        self.annotation.add_rendering(self.external_item)
+        self.assertEqual(self.anno_page.rendering, [self.external_item])
 
     def test_add_rendering_to_ac_canvas(self):
         self.ac_canvas.add_rendering(self.external_item)
+        self.assertEqual(self.ac_canvas.rendering, [self.external_item])
 
     def test_add_rendering_to_ph_canvas(self):
         self.ph_canvas.add_rendering(self.external_item)
+        self.assertEqual(self.ph_canvas.rendering, [self.external_item])
 
     def test_add_rendering_to_resource(self):
         self.resource.add_rendering(self.external_item)
+        self.assertEqual(self.resource.rendering, [self.external_item])
 
     def test_add_rendering_to_manifest(self):
         self.manifest.add_rendering(self.external_item)
+        self.assertEqual(self.manifest.rendering, [self.external_item])
+
+    def test_add_rendering_to_range(self):
+        self.range.add_rendering(self.external_item)
+        self.assertEqual(self.range.rendering, [self.external_item])
+
+    def test_pass_invalid_instance_to_add_rendering(self):
+        with self.assertRaises(TypeError):
+            self.canvas.add_rendering(self.manifest)
