@@ -3,7 +3,7 @@ from .add_item import AddItem, AddItemByReference  # noqa: F401
 from .add_label import AddLabel  # noqa: F401
 from .add_metadata import AddMetadata  # noqa: F401
 from .add_range import AddRange  # noqa: F401
-from .add_rendering import AddRendering # noqa: F401
+from .add_rendering import AddRendering  # noqa: F401
 from .add_service import AddService  # noqa: F401
 from .add_thumbnail import AddThumbnail  # noqa: F401
 from .annotation_helpers import AnnotationHelpers  # noqa: F401

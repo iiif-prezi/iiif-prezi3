@@ -1,6 +1,7 @@
 from ..loader import monkeypatch_schema
-from ..skeleton import (ExternalItem, AnnotationPage, AccompanyingCanvas, Annotation, AnnotationCollection, Canvas,
-                        PlaceholderCanvas, Range, ResourceItem, Collection, Manifest)
+from ..skeleton import (AccompanyingCanvas, Annotation, AnnotationCollection,
+                        AnnotationPage, Canvas, Collection, ExternalItem,
+                        Manifest, PlaceholderCanvas, Range, ResourceItem)
 
 
 class AddRendering:
