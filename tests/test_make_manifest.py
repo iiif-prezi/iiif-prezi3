@@ -1,6 +1,6 @@
 import unittest
 
-from iiif_prezi3 import Collection, Reference, HomepageItem, config
+from iiif_prezi3 import Collection, HomepageItem, Reference, config
 
 
 class MakeManifestTest(unittest.TestCase):
@@ -26,4 +26,4 @@ class MakeManifestTest(unittest.TestCase):
         self.assertIsInstance(self.collection.items[0], Reference)
         self.assertEqual(manifest.label,
                          {'en': ['default label']})
-        self.assertEqual(manifest.homepage[0], homepage)
+        self.assertEqual(manifest.homepage, homepage)
