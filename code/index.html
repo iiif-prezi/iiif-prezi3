@@ -5383,17 +5383,19 @@ customize the resulting instance.</p>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MakeManifest</span><span class="p">:</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MakeManifest</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">make_manifest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a Manifest to a Collection.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a Manifest to a Collection as a ManifestRef.</span>
 
 <span class="sd">        Creates a new Manifest, adds a Reference to it to the</span>
 <span class="sd">        calling Collection items and returns the newly created Manifest.</span>
 <span class="sd">        Accepts keyword arguments to customize the resulting instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">manifest</span> <span class="o">=</span> <span class="n">ManifestRef</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">manifest</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="n">manifest</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -5421,7 +5423,7 @@ customize the resulting instance.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Add a Manifest to a Collection.</p>
+        <p>Add a Manifest to a Collection as a ManifestRef.</p>
 <p>Creates a new Manifest, adds a Reference to it to the
 calling Collection items and returns the newly created Manifest.
 Accepts keyword arguments to customize the resulting instance.</p>
@@ -5437,15 +5439,17 @@ Accepts keyword arguments to customize the resulting instance.</p>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">make_manifest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a Manifest to a Collection.</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">make_manifest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a Manifest to a Collection as a ManifestRef.</span>
 
 <span class="sd">    Creates a new Manifest, adds a Reference to it to the</span>
 <span class="sd">    calling Collection items and returns the newly created Manifest.</span>
 <span class="sd">    Accepts keyword arguments to customize the resulting instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">manifest</span> <span class="o">=</span> <span class="n">ManifestRef</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">manifest</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">manifest</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -9072,17 +9076,19 @@ customize the resulting instance.</p>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MakeManifest</span><span class="p">:</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MakeManifest</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">make_manifest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a Manifest to a Collection.</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Add a Manifest to a Collection as a ManifestRef.</span>
 
 <span class="sd">        Creates a new Manifest, adds a Reference to it to the</span>
 <span class="sd">        calling Collection items and returns the newly created Manifest.</span>
 <span class="sd">        Accepts keyword arguments to customize the resulting instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">manifest</span> <span class="o">=</span> <span class="n">ManifestRef</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">manifest</span><span class="p">)</span>
+
         <span class="k">return</span> <span class="n">manifest</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -9110,7 +9116,7 @@ customize the resulting instance.</p>
 
     <div class="doc doc-contents ">
 
-        <p>Add a Manifest to a Collection.</p>
+        <p>Add a Manifest to a Collection as a ManifestRef.</p>
 <p>Creates a new Manifest, adds a Reference to it to the
 calling Collection items and returns the newly created Manifest.
 Accepts keyword arguments to customize the resulting instance.</p>
@@ -9126,15 +9132,17 @@ Accepts keyword arguments to customize the resulting instance.</p>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">make_manifest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a Manifest to a Collection.</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">make_manifest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Add a Manifest to a Collection as a ManifestRef.</span>
 
 <span class="sd">    Creates a new Manifest, adds a Reference to it to the</span>
 <span class="sd">    calling Collection items and returns the newly created Manifest.</span>
 <span class="sd">    Accepts keyword arguments to customize the resulting instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">manifest</span> <span class="o">=</span> <span class="n">ManifestRef</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">manifest</span><span class="p">)</span>
+
     <span class="k">return</span> <span class="n">manifest</span>
 </code></pre></div></td></tr></table></div>
             </details>
