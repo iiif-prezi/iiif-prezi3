@@ -14,8 +14,8 @@ manifest = Manifest(
     label="Alternative Representations Through Rendering",
     summary="Playbill for \"Akiba gongen kaisen-banashi,\" \"Futatsu chōchō kuruwa nikki\" and \"Godairiki koi no fūjime\" performed at the Chikugo Theater in Osaka from the fifth month of Kaei 2 (May, 1849); main actors: Gadō Kataoka II, Ebizō Ichikawa VI, Kitō Sawamura II, Daigorō Mimasu IV and Karoku Nakamura I; on front cover: producer Mominosuke Ichikawa's crest.",
     viewingDirection="right-to-left",
+    rendering=rendering,
 )
-manifest.add_rendering(rendering)
 canvas_front = manifest.make_canvas_from_iiif(
     url="https://iiif.io/api/image/3.0/example/reference/4f92cceb12dd53b52433425ce44308c7-ucla_bib1987273_no001_rs_001",
     id=f"{base_url}/canvas/p1",
