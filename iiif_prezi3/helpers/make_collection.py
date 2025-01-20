@@ -11,9 +11,8 @@ class MakeCollection:
         and returns the newly created object. Accepts keyword arguments to
         customize the resulting instance.
         """
-        if 'items' not in kwargs:
-            child_collection = CollectionRef(**kwargs)
-        elif len(kwargs['items']) == 0:
+        if 'items' not in kwargs or not kwargs['items']:
+            kwargs.pop('items')
             child_collection = CollectionRef(**kwargs)
         else:
             child_collection = Collection(**kwargs)
