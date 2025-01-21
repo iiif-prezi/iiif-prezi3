@@ -10,7 +10,9 @@ class MakeCollectionTest(unittest.TestCase):
 
     def test_make_collection(self):
         child_collection = self.parent_collection.make_collection(
-            id='http://iiif.example.org/prezi/Manifest/0')
+            id='http://iiif.example.org/prezi/Manifest/0',
+            label="Example Collection"
+        )
         self.assertEqual(len(self.parent_collection.items), 1)
         self.assertEqual(child_collection.id,
                          'http://iiif.example.org/prezi/Manifest/0')
