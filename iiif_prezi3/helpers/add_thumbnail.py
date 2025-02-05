@@ -22,6 +22,59 @@ class AddThumbnail:
         self.thumbnail.append(new_thumbnail)
         return new_thumbnail
 
+    def handle_best_fit_size(self, url, image_info):
+        best_fit_size = None
+        context = image_info.get('@context', '')
+        if 'sizes' in image_info:
+            best_fit_size = min(
+                (size for size in image_info['sizes'] if size["width"] >= preferred_width),
+                key=lambda size: size["width"],
+                default=image_info['sizes'][-1]
+            )
+            if context == "http://iiif.io/api/image/2/context.json":
+                thumbnail_id = f"{url.replace('/info.json', '')}/full/{best_fit_size['width']},/0/default.jpg"
+            else:
+                thumbnail_id = f"{url.replace('/info.json', '')}/full/{best_fit_size['width']},{best_fit_size['height']}/0/default.jpg"
+        else:
+            thumbnail_id = f"{url.replace('/info.json', '')}/full/full/0/default.jpg" if context == "http://iiif.io/api/image/2/context.json" else f"{url.replace('/info.json', '')}/full/max/0/default.jpg"
+
+    def __get_best_fit_size(self, image_info, preferred_width):
+        if 'sizes' in image_info:
+            return min(
+                (size for size in image_info['sizes'] if size["width"] >= preferred_width),
+                key=lambda size: size["width"],
+                default=image_info['sizes'][-1]
+            )
+        else:
+            return None
+
+    def __get_thumbnail_id(self, url, image_info, best_fit, preferred_width, aspect_ratio):
+        context = image_info.get('@context', '')
+        profile_data = image_info.get('profile', [])
+        if isinstance(profile_data, list):
+            profile = next((item for item in profile_data if isinstance(item, str)), '')
+        else:
+            profile = profile_data
+        base_url = url.replace('/info.json', '')
+        if best_fit:
+            width = best_fit['width']
+            height = best_fit.get('height', '')
+            if context == "http://iiif.io/api/image/2/context.json":
+                return f"{base_url}/full/{width},/0/default.jpg"
+            else:
+                return f"{base_url}/full/{width},{height}/0/default.jpg"
+        level_0_profiles = {"http://iiif.io/api/image/2/level0.json", "level0"}
+        if profile not in level_0_profiles:
+            if context == "http://iiif.io/api/image/2/context.json":
+                return f"{base_url}/full/{preferred_width},/0/default.jpg"
+            else:
+                height = int(preferred_width / aspect_ratio)
+                return f"{base_url}/full/{preferred_width},{height}/0/default.jpg"
+        if context == "http://iiif.io/api/image/2/context.json":
+            return f"{base_url}/full/full/0/default.jpg"
+        else:
+            return f"{base_url}/full/max/0/default.jpg"
+
     def create_thumbnail_from_iiif(self, url, preferred_width=500, **kwargs):
         """Adds an image thumbnail to a manifest or canvas based on a IIIF service.
 
@@ -41,26 +94,26 @@ class AddThumbnail:
         image_info = image_response.set_hwd_from_iiif(url)
         context = image_info.get('@context', '')
         aspect_ratio = image_info.get('width') / image_info.get('height')
-        best_fit_size = None
-        if 'sizes' in image_info:
-            best_fit_size = min(
-                (size for size in image_info['sizes'] if size["width"] >= preferred_width),
-                key=lambda size: size["width"],
-                default=image_info['sizes'][-1]
-            )
-            if context == "http://iiif.io/api/image/2/context.json":
-                thumbnail_id = f"{url.replace('/info.json', '')}/full/{best_fit_size['width']},/0/default.jpg"
-            else:
-                thumbnail_id = f"{url.replace('/info.json', '')}/full/{best_fit_size['width']},{best_fit_size['height']}/0/default.jpg"
-        else:
-            thumbnail_id = f"{url.replace('/info.json', '')}/full/full/0/default.jpg" if context == "http://iiif.io/api/image/2/context.json" else f"{url.replace('/info.json', '')}/full/max/0/default.jpg"
-
         profile_data = image_info.get('profile', [])
         profile = (
             profile_data if isinstance(profile_data, str)
             else next((item for item in profile_data if isinstance(item, str)), '')
             if isinstance(profile_data, list) else ''
         )
+        best_fit_size = self.__get_best_fit_size(image_info, preferred_width)
+        thumbnail_id = self.__get_thumbnail_id(url, image_info, best_fit_size, preferred_width, aspect_ratio)
+
+        new_thumbnail = ResourceItem(id=thumbnail_id, type='Image', format="image/jpeg", **kwargs)
+        if best_fit_size:
+            new_thumbnail.width = best_fit_size['width']
+            new_thumbnail.height = best_fit_size['height']
+        else:
+            new_thumbnail.width = preferred_width
+            new_thumbnail.height = int(preferred_width / aspect_ratio)
+
+        if not hasattr(self, 'thumbnail') or self.thumbnail is None:
+            self.thumbnail = []
+
         service = (
             ServiceItem1(
                 id=image_info['@id'],
@@ -76,32 +129,8 @@ class AddThumbnail:
                 format="image/jpeg"
             )
         )
-
-        if not best_fit_size:
-            if profile != "http://iiif.io/api/image/2/level0.json" or profile != "level0":
-                if context == "http://iiif.io/api/image/2/context.json":
-                    thumbnail_id = f"{url.replace('/info.json', '')}/full/{preferred_width},/0/default.jpg"
-                else:
-                    thumbnail_id = f"{url.replace('/info.json', '')}/full/{preferred_width},{int(preferred_width / aspect_ratio)}/0/default.jpg"
-            elif context == "http://iiif.io/api/image/2/context.json":
-                thumbnail_id = f"{url.replace('/info.json', '')}/full/full/0/default.jpg"
-            else:
-                thumbnail_id = f"{url.replace('/info.json', '')}/full/max/0/default.jpg"
-
-        new_thumbnail = ResourceItem(id=thumbnail_id, type='Image', format="image/jpeg", **kwargs)
-        if best_fit_size:
-            new_thumbnail.width = best_fit_size['width']
-            new_thumbnail.height = best_fit_size['height']
-        else:
-            new_thumbnail.width = preferred_width
-            new_thumbnail.height = int(preferred_width / aspect_ratio)
-
-        if not hasattr(self, 'thumbnail') or self.thumbnail is None:
-            self.thumbnail = []
-
         new_thumbnail.add_service(service)
         self.thumbnail.append(new_thumbnail)
-
         return self.thumbnail
 
 
