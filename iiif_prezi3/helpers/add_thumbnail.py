@@ -32,13 +32,17 @@ class AddThumbnail:
         else:
             return None
 
-    def __get_thumbnail_id(self, url, image_info, best_fit, preferred_width, aspect_ratio):
-        context = image_info.get('@context', '')
+    def __get_profile(self, image_info):
         profile_data = image_info.get('profile', [])
         if isinstance(profile_data, list):
-            profile = next((item for item in profile_data if isinstance(item, str)), '')
+            return profile_data[0]
         else:
-            profile = profile_data
+            return profile_data
+
+
+    def __get_thumbnail_id(self, url, image_info, best_fit, preferred_width, aspect_ratio):
+        context = image_info.get('@context', '')
+        profile = self.__get_profile(image_info)
         base_url = url.replace('/info.json', '')
         if best_fit:
             width = best_fit['width']
@@ -77,12 +81,7 @@ class AddThumbnail:
         image_info = image_response.set_hwd_from_iiif(url)
         context = image_info.get('@context', '')
         aspect_ratio = image_info.get('width') / image_info.get('height')
-        profile_data = image_info.get('profile', [])
-        profile = (
-            profile_data if isinstance(profile_data, str)
-            else next((item for item in profile_data if isinstance(item, str)), '')
-            if isinstance(profile_data, list) else ''
-        )
+        profile = self.__get_profile(image_info)
         best_fit_size = self.__get_best_fit_size(image_info, preferred_width)
         thumbnail_id = self.__get_thumbnail_id(url, image_info, best_fit_size, preferred_width, aspect_ratio)
 
