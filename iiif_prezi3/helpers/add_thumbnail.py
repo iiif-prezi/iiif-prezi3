@@ -22,22 +22,6 @@ class AddThumbnail:
         self.thumbnail.append(new_thumbnail)
         return new_thumbnail
 
-    def handle_best_fit_size(self, url, image_info):
-        best_fit_size = None
-        context = image_info.get('@context', '')
-        if 'sizes' in image_info:
-            best_fit_size = min(
-                (size for size in image_info['sizes'] if size["width"] >= preferred_width),
-                key=lambda size: size["width"],
-                default=image_info['sizes'][-1]
-            )
-            if context == "http://iiif.io/api/image/2/context.json":
-                thumbnail_id = f"{url.replace('/info.json', '')}/full/{best_fit_size['width']},/0/default.jpg"
-            else:
-                thumbnail_id = f"{url.replace('/info.json', '')}/full/{best_fit_size['width']},{best_fit_size['height']}/0/default.jpg"
-        else:
-            thumbnail_id = f"{url.replace('/info.json', '')}/full/full/0/default.jpg" if context == "http://iiif.io/api/image/2/context.json" else f"{url.replace('/info.json', '')}/full/max/0/default.jpg"
-
     def __get_best_fit_size(self, image_info, preferred_width):
         if 'sizes' in image_info:
             return min(
