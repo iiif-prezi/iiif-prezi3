@@ -47,8 +47,7 @@ class AddThumbnail:
                 return f"{base_url}/full/{width},/0/default.jpg"
             else:
                 return f"{base_url}/full/{width},{height}/0/default.jpg"
-        level_0_profiles = {"http://iiif.io/api/image/2/level0.json", "level0"}
-        if profile not in level_0_profiles:
+        if profile not in ("http://iiif.io/api/image/2/level0.json", "level0"):
             if context == "http://iiif.io/api/image/2/context.json":
                 return f"{base_url}/full/{preferred_width},/0/default.jpg"
             else:
