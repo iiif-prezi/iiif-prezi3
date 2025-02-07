@@ -22,7 +22,8 @@ class AddThumbnail:
         self.thumbnail.append(new_thumbnail)
         return new_thumbnail
 
-    def __get_best_fit_size(self, image_info, preferred_width):
+    @staticmethod
+    def __get_best_fit_size(image_info, preferred_width):
         if 'sizes' in image_info:
             return min(
                 (size for size in image_info['sizes'] if size["width"] >= preferred_width),
@@ -32,8 +33,9 @@ class AddThumbnail:
         else:
             return None
 
-    def __get_profile(self, image_info):
-        profile_data = image_info.get('profile', [])
+    @staticmethod
+    def __get_profile(image_info):
+        profile_data = image_info.get('profile', [''])
         if isinstance(profile_data, list):
             return profile_data[0]
         else:
