@@ -16,3 +16,11 @@ class MakeCollectionTest(unittest.TestCase):
         self.assertEqual(len(self.parent_collection.items), 1)
         self.assertEqual(child_collection.id,
                          'http://iiif.example.org/prezi/Manifest/0')
+
+    def test_make_collection_ref(self):
+        child_collection = self.parent_collection.make_collection_ref(
+            id='http://iiif.example.org/prezi/Collection/0',
+            label="Example CollectionRef"
+        )
+        self.assertEqual(len(self.parent_collection.items), 1)
+        self.assertFalse(hasattr(child_collection, 'items'))
