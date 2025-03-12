@@ -11,9 +11,9 @@ class MakeManifest:
         calling Collection items and returns the newly created Manifest.
         Accepts keyword arguments to customize the resulting instance.
         """
+        kwargs.pop('items', None)
         manifest = ManifestRef(**kwargs)
         self.add_item(manifest)
-
         return manifest
 
 monkeypatch_schema(Collection, MakeManifest)
