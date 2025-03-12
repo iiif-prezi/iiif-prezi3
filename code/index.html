@@ -670,6 +670,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#iiif_prezi3.MakeCollection.make_collection_ref" class="md-nav__link">
+    <span class="md-ellipsis">
+      make_collection_ref
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1231,6 +1240,15 @@
   <a href="#iiif_prezi3.helpers.make_collection.MakeCollection.make_collection" class="md-nav__link">
     <span class="md-ellipsis">
       make_collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iiif_prezi3.helpers.make_collection.MakeCollection.make_collection_ref" class="md-nav__link">
+    <span class="md-ellipsis">
+      make_collection_ref
     </span>
   </a>
   
@@ -2509,6 +2527,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#iiif_prezi3.MakeCollection.make_collection_ref" class="md-nav__link">
+    <span class="md-ellipsis">
+      make_collection_ref
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3070,6 +3097,15 @@
   <a href="#iiif_prezi3.helpers.make_collection.MakeCollection.make_collection" class="md-nav__link">
     <span class="md-ellipsis">
       make_collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iiif_prezi3.helpers.make_collection.MakeCollection.make_collection_ref" class="md-nav__link">
+    <span class="md-ellipsis">
+      make_collection_ref
     </span>
   </a>
   
@@ -5793,7 +5829,18 @@ Accepts keyword arguments to customize the resulting instance.</p>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MakeCollection</span><span class="p">:</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MakeCollection</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">make_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Collection.</span>
@@ -5803,6 +5850,17 @@ Accepts keyword arguments to customize the resulting instance.</p>
 <span class="sd">        customize the resulting instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">child_collection</span> <span class="o">=</span> <span class="n">Collection</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">child_collection</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">child_collection</span>
+
+    <span class="k">def</span> <span class="nf">make_collection_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a CollectionRef.</span>
+
+<span class="sd">        Creates a new CollectionRef, adds it to the calling Collection `items`</span>
+<span class="sd">        and returns the newly created object. Accepts keyword arguments to</span>
+<span class="sd">        customize the resulting instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">child_collection</span> <span class="o">=</span> <span class="n">CollectionRef</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">child_collection</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">child_collection</span>
 </code></pre></div></td></tr></table></div>
@@ -5864,6 +5922,50 @@ customize the resulting instance.</p>
 
 </div>
 
+<div class="doc doc-object doc-function">
+
+
+<h3 id="iiif_prezi3.MakeCollection.make_collection_ref" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">make_collection_ref</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Creates a CollectionRef.</p>
+<p>Creates a new CollectionRef, adds it to the calling Collection <code>items</code>
+and returns the newly created object. Accepts keyword arguments to
+customize the resulting instance.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>iiif_prezi3/helpers/make_collection.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">make_collection_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a CollectionRef.</span>
+
+<span class="sd">    Creates a new CollectionRef, adds it to the calling Collection `items`</span>
+<span class="sd">    and returns the newly created object. Accepts keyword arguments to</span>
+<span class="sd">    customize the resulting instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">child_collection</span> <span class="o">=</span> <span class="n">CollectionRef</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">child_collection</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">child_collection</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
 
 
   </div>
@@ -5915,9 +6017,9 @@ customize the resulting instance.</p>
 <span class="sd">        calling Collection items and returns the newly created Manifest.</span>
 <span class="sd">        Accepts keyword arguments to customize the resulting instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;items&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">manifest</span> <span class="o">=</span> <span class="n">ManifestRef</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">manifest</span><span class="p">)</span>
-
         <span class="k">return</span> <span class="n">manifest</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -5970,9 +6072,9 @@ Accepts keyword arguments to customize the resulting instance.</p>
 <span class="sd">    calling Collection items and returns the newly created Manifest.</span>
 <span class="sd">    Accepts keyword arguments to customize the resulting instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;items&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">manifest</span> <span class="o">=</span> <span class="n">ManifestRef</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">manifest</span><span class="p">)</span>
-
     <span class="k">return</span> <span class="n">manifest</span>
 </code></pre></div></td></tr></table></div>
             </details>
@@ -9897,7 +9999,18 @@ Accepts keyword arguments to customize the resulting instance.</p>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MakeCollection</span><span class="p">:</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">MakeCollection</span><span class="p">:</span>
 
     <span class="k">def</span> <span class="nf">make_collection</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a Collection.</span>
@@ -9907,6 +10020,17 @@ Accepts keyword arguments to customize the resulting instance.</p>
 <span class="sd">        customize the resulting instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">child_collection</span> <span class="o">=</span> <span class="n">Collection</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">child_collection</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">child_collection</span>
+
+    <span class="k">def</span> <span class="nf">make_collection_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Creates a CollectionRef.</span>
+
+<span class="sd">        Creates a new CollectionRef, adds it to the calling Collection `items`</span>
+<span class="sd">        and returns the newly created object. Accepts keyword arguments to</span>
+<span class="sd">        customize the resulting instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">child_collection</span> <span class="o">=</span> <span class="n">CollectionRef</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">child_collection</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">child_collection</span>
 </code></pre></div></td></tr></table></div>
@@ -9960,6 +10084,50 @@ customize the resulting instance.</p>
 <span class="sd">    customize the resulting instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">child_collection</span> <span class="o">=</span> <span class="n">Collection</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">child_collection</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">child_collection</span>
+</code></pre></div></td></tr></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h5 id="iiif_prezi3.helpers.make_collection.MakeCollection.make_collection_ref" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">make_collection_ref</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+
+</h5>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Creates a CollectionRef.</p>
+<p>Creates a new CollectionRef, adds it to the calling Collection <code>items</code>
+and returns the newly created object. Accepts keyword arguments to
+customize the resulting instance.</p>
+
+
+            <details class="quote">
+              <summary>Source code in <code>iiif_prezi3/helpers/make_collection.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">make_collection_ref</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Creates a CollectionRef.</span>
+
+<span class="sd">    Creates a new CollectionRef, adds it to the calling Collection `items`</span>
+<span class="sd">    and returns the newly created object. Accepts keyword arguments to</span>
+<span class="sd">    customize the resulting instance.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">child_collection</span> <span class="o">=</span> <span class="n">CollectionRef</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">child_collection</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">child_collection</span>
 </code></pre></div></td></tr></table></div>
@@ -10057,9 +10225,9 @@ customize the resulting instance.</p>
 <span class="sd">        calling Collection items and returns the newly created Manifest.</span>
 <span class="sd">        Accepts keyword arguments to customize the resulting instance.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;items&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
         <span class="n">manifest</span> <span class="o">=</span> <span class="n">ManifestRef</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">manifest</span><span class="p">)</span>
-
         <span class="k">return</span> <span class="n">manifest</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -10112,9 +10280,9 @@ Accepts keyword arguments to customize the resulting instance.</p>
 <span class="sd">    calling Collection items and returns the newly created Manifest.</span>
 <span class="sd">    Accepts keyword arguments to customize the resulting instance.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;items&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
     <span class="n">manifest</span> <span class="o">=</span> <span class="n">ManifestRef</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">manifest</span><span class="p">)</span>
-
     <span class="k">return</span> <span class="n">manifest</span>
 </code></pre></div></td></tr></table></div>
             </details>
