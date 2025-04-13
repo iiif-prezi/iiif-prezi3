@@ -4,11 +4,9 @@ config.configs['helpers.auto_fields.AutoLang'].auto_lang = "it"
 base_url = "https://iiif.io/api/cookbook/recipe/0026-toc-opera"
 
 manifest = Manifest(
-    label = {
-        "it": ["L'Elisir D'Amore"],
-        "en": ["The Elixir of Love"]
-    }
+    label="L'Elisir D'Amore"
 )
+manifest.add_label("The Elixir of Love", "en")
 canvas = manifest.make_canvas(id=f"{base_url}/canvas/1")
 anno_body = ResourceItem(
     id="https://fixtures.iiif.io/video/indiana/donizetti-elixir/vae0637_accessH264_low.mp4",
@@ -27,6 +25,8 @@ canvas.set_hwd(**hwd)
 anno_body.set_hwd(**hwd)
 anno_page.add_item(anno)
 canvas.add_item(anno_page)
+
+# Create Ranges with Make Range and Add Item
 top_range = manifest.make_range(
     id=f"{base_url}/range/2",
     label="Atto Primo",
@@ -38,6 +38,29 @@ range_three = top_range.make_range(
 range_three.add_item(
     CanvasRef(
         id=f"{base_url}/canvas/1#t=0,302.05",
+        type="Canvas"
+    )
+)
+range_four = top_range.make_range(
+    id=f"{base_url}/range/4"
+)
+range_four.add_label(
+    "Remainder of Atto Primo",
+    "en"
+)
+range_four.add_item(
+    CanvasRef(
+        id=f"{base_url}/canvas/1#t=302.05,3971.24",
+        type="Canvas"
+    )
+)
+range_five = manifest.make_range(
+    id=f"{base_url}/range/5",
+    label="Atto Secondo",
+)
+range_five.add_item(
+    CanvasRef(
+        id=f"{base_url}/canvas/1#t=3971.24",
         type="Canvas"
     )
 )
