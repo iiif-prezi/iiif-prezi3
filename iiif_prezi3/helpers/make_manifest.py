@@ -16,4 +16,5 @@ class MakeManifest:
         self.add_item(manifest)
         return manifest
 
+
 monkeypatch_schema(Collection, MakeManifest)

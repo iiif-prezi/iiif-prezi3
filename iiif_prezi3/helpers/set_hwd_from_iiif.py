@@ -20,7 +20,7 @@ class SetHwdFromIIIF:
         # resource url may or may not end with info.json;
         # add if not present
         if not url.endswith("info.json"):
-            url = f"{ url.rstrip('/') }/info.json"
+            url = f"{url.rstrip('/')}/info.json"
 
         response = requests.get(url)
         # if response is not 200, raise exception
