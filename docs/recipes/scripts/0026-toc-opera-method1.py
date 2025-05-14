@@ -4,6 +4,7 @@ config.configs['helpers.auto_fields.AutoLang'].auto_lang = "it"
 base_url = "https://iiif.io/api/cookbook/recipe/0026-toc-opera"
 
 manifest = Manifest(
+    id=f"{base_url}/manifest.json",
     label="L'Elisir D'Amore"
 )
 manifest.add_label("The Elixir of Love", "en")
@@ -28,10 +29,14 @@ canvas.add_item(anno_page)
 
 # Create Ranges with Make Range and Add Item
 top_range = manifest.make_range(
+    id=f"{base_url}/range/1",
+    label="Gaetano Donizetti, L'Elisir D'Amore",
+)
+range_two = top_range.make_range(
     id=f"{base_url}/range/2",
     label="Atto Primo",
 )
-range_three = top_range.make_range(
+range_three = range_two.make_range(
     id=f"{base_url}/range/3",
     label="Preludio e Coro d'introduzione – Bel conforto al mietitore"
 )
@@ -41,7 +46,7 @@ range_three.add_item(
         type="Canvas"
     )
 )
-range_four = top_range.make_range(
+range_four = range_two.make_range(
     id=f"{base_url}/range/4"
 )
 range_four.add_label(
@@ -54,7 +59,7 @@ range_four.add_item(
         type="Canvas"
     )
 )
-range_five = manifest.make_range(
+range_five = top_range.make_range(
     id=f"{base_url}/range/5",
     label="Atto Secondo",
 )
