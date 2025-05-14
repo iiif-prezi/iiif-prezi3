@@ -8,7 +8,7 @@ class Base(BaseModel):
     class Config:
         validate_assignment = True
         validate_all = True
-        copy_on_model_validation = False
+        copy_on_model_validation = 'none'
         smart_union = True
         # Allow us to use the field name like service.id rather than service.@id
         allow_population_by_field_name = True
