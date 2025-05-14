@@ -120,9 +120,9 @@ class AutoLang(Auto):
     def manipulate_value(self, what, value=None):
         if not value:
             return None
-        elif type(value) == str:
+        elif isinstance(value, str):
             return {self.config.auto_lang: [value]}
-        elif type(value) == list:
+        elif isinstance(value, list):
             return {self.config.auto_lang: value}
         else:
             return None

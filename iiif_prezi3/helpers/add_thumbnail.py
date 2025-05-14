@@ -41,7 +41,6 @@ class AddThumbnail:
         else:
             return profile_data
 
-
     def __get_thumbnail_id(self, url, image_info, best_fit, preferred_width, aspect_ratio):
         context = image_info.get('@context', '')
         profile = self.__get_profile(image_info)

@@ -11,12 +11,12 @@ class MakeRange:
         Accepts keyword arguments to customize the resulting instance.
         """
         range = Range(**kwargs)
-        if type(self) == Manifest:
+        if isinstance(self, Manifest):
             if self.structures:
                 self.structures.append(range)
             else:
                 self.structures = [range]
-        elif type(self) == Range:
+        elif isinstance(self, Range):
             self.add_item(range)
         return range
 

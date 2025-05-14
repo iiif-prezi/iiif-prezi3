@@ -6,9 +6,9 @@ def load_bundled_extensions(extensions=None):
 
     extensions_to_load = []
 
-    if extensions and type(extensions) == list:
+    if extensions and isinstance(extensions, list):
         extensions_to_load = extensions
-    elif not extensions or (extensions and type(extensions) == str):
+    elif not extensions or (extensions and not isinstance(extensions, str)):
         if not extensions:
             extension_file = os.path.join(os.path.dirname(__file__), 'config', 'extensions.json')
         else:
@@ -33,10 +33,10 @@ def load_extension(path):
 
 
 def monkeypatch_schema(schema_classes, patch_classes):
-    if type(schema_classes) == list:
+    if isinstance(schema_classes, list):
         for schema_class in schema_classes:
             schema_bases = list(schema_class.__bases__)
-            if type(patch_classes) == list:
+            if isinstance(patch_classes, list):
                 for c in patch_classes:
                     schema_bases.append(c)
             else:
@@ -44,7 +44,7 @@ def monkeypatch_schema(schema_classes, patch_classes):
             schema_class.__bases__ = tuple(schema_bases)
     else:
         schema_bases = list(schema_classes.__bases__)
-        if type(patch_classes) == list:
+        if isinstance(patch_classes, list):
             for c in patch_classes:
                 schema_bases.append(c)
         else:

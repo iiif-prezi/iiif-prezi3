@@ -17,7 +17,7 @@ class AddLabel:
             if not language:
                 self.label = value
             else:
-                if type(value) != list:
+                if not isinstance(value, list):
                     value = [value]
                 self.label = {language: value}
         else:
@@ -28,7 +28,7 @@ class AddLabel:
             if language in curr:
                 curr[language].append(value)
             else:
-                if type(value) != list:
+                if not isinstance(value, list):
                     value = [value]
                 curr[language] = value
             self.label = curr
