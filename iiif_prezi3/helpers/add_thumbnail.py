@@ -1,8 +1,8 @@
 from ..loader import monkeypatch_schema
 from ..skeleton import (AccompanyingCanvas, Annotation, AnnotationCollection,
                         AnnotationPage, Canvas, Collection, Manifest,
-                        PlaceholderCanvas, Range, Reference, ResourceItem,
-                        ServiceItem, ServiceItem1)
+                        PlaceholderCanvas, Range, Reference, AnnotationBody,
+                        ServiceV3, ServiceV2)
 
 
 class AddThumbnail:
@@ -11,12 +11,12 @@ class AddThumbnail:
 
         Args:
             image_url (str): An HTTP URL which points to the thumbnail.
-            **kwargs (): see ResourceItem.
+            **kwargs (): see AnnotationBody.
 
         Returns:
-            new_thumbnail (ResourceItem): the newly-created thumbnail.
+            new_thumbnail (AnnotationBody): the newly-created thumbnail.
         """
-        new_thumbnail = ResourceItem(id=image_url, type='Image', **kwargs)
+        new_thumbnail = AnnotationBody(id=image_url, type='Image', **kwargs)
         if not self.thumbnail:
             self.thumbnail = list()
         self.thumbnail.append(new_thumbnail)
@@ -74,12 +74,12 @@ class AddThumbnail:
         Args:
             url (str): An HTTP URL which points at a IIIF Image response.
             preferred_width (int, optional): the preferred width of the thumbnail.
-            **kwargs (): see ResourceItem.
+            **kwargs (): see AnnotationBody.
 
         Returns:
-            new_thumbnail (ResourceItem): The updated list of thumbnails, including the newly-created one.
+            new_thumbnail (AnnotationBody): The updated list of thumbnails, including the newly-created one.
         """
-        image_response = ResourceItem(id=url, type='Image')
+        image_response = AnnotationBody(id=url, type='Image')
         image_info = image_response.set_hwd_from_iiif(url)
         context = image_info.get('@context', '')
         aspect_ratio = image_info.get('width') / image_info.get('height')
@@ -87,7 +87,7 @@ class AddThumbnail:
         best_fit_size = self.__get_best_fit_size(image_info, preferred_width)
         thumbnail_id = self.__get_thumbnail_id(url, image_info, best_fit_size, preferred_width, aspect_ratio)
 
-        new_thumbnail = ResourceItem(id=thumbnail_id, type='Image', format="image/jpeg", **kwargs)
+        new_thumbnail = AnnotationBody(id=thumbnail_id, type='Image', format="image/jpeg", **kwargs)
         if best_fit_size:
             new_thumbnail.width = best_fit_size['width']
             new_thumbnail.height = best_fit_size['height']
@@ -99,14 +99,14 @@ class AddThumbnail:
             self.thumbnail = []
 
         service = (
-            ServiceItem1(
+            ServiceV2(
                 id=image_info['@id'],
                 profile=profile,
                 type="ImageService2",
                 format="image/jpeg"
             )
             if context == "http://iiif.io/api/image/2/context.json"
-            else ServiceItem(
+            else ServiceV3(
                 id=image_info['id'],
                 profile=profile,
                 type=image_info.get('type', 'ImageService'),
@@ -120,6 +120,6 @@ class AddThumbnail:
 
 monkeypatch_schema(
     [Canvas, PlaceholderCanvas, AccompanyingCanvas, AnnotationPage, Collection, Manifest, Annotation,
-     Range, ResourceItem, AnnotationCollection, Reference],
+     Range, AnnotationBody, AnnotationCollection, Reference],
     AddThumbnail
 )

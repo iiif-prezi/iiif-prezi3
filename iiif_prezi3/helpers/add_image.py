@@ -1,6 +1,6 @@
 from ..loader import monkeypatch_schema
 from ..skeleton import (AccompanyingCanvas, Annotation, AnnotationPage, Canvas,
-                        PlaceholderCanvas, ResourceItem)
+                        PlaceholderCanvas, AnnotationBody)
 
 
 class AddImage:
@@ -14,9 +14,9 @@ class AddImage:
             anno_page_id (str): An HTTP URL for the annotation page to which the annotation will be attached.
 
         Returns:
-            anno_page (AnnotationPage): the AnnotationPage with an Annotation and ResourceItem attached.
+            anno_page (AnnotationPage): the AnnotationPage with an Annotation and AnnotationBody attached.
         """
-        body = ResourceItem(id=image_url, type='Image', **kwargs)
+        body = AnnotationBody(id=image_url, type='Image', **kwargs)
         annotation = Annotation(id=anno_id, body=body, target=self.id, motivation='painting', type='Annotation')
         anno_page = AnnotationPage(id=anno_page_id, type='AnnotationPage', items=[annotation])
         if not self.items:

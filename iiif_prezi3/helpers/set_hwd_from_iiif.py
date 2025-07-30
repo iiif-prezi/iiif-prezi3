@@ -1,7 +1,7 @@
 import requests
 
 from ..loader import monkeypatch_schema
-from ..skeleton import Canvas, Resource, ResourceItem
+from ..skeleton import Canvas, Resource, AnnotationBody
 
 
 class SetHwdFromIIIF:
@@ -35,4 +35,4 @@ class SetHwdFromIIIF:
         return resource_info
 
 
-monkeypatch_schema([Canvas, Resource, ResourceItem], SetHwdFromIIIF)
+monkeypatch_schema([Canvas, Resource, AnnotationBody], SetHwdFromIIIF)
