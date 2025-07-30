@@ -1,8 +1,8 @@
 import unittest
 
 from iiif_prezi3 import (Annotation, AnnotationCollection, AnnotationPage,
-                         Canvas, Collection, Manifest, Range, ResourceItem,
-                         ServiceItem, ServiceItem1)
+                         Canvas, Collection, Manifest, Range, AnnotationBody,
+                         ServiceV3, ServiceV2)
 
 
 class MakeServiceTest(unittest.TestCase):
@@ -18,9 +18,9 @@ class MakeServiceTest(unittest.TestCase):
         self.manifest = Manifest(label='test label')
         self.range = Range()
         self.annotationCollection = AnnotationCollection()
-        self.resourceItem = ResourceItem(id=self.serviceID, type=self.serviceType)
-        self.service3 = ServiceItem(id=self.serviceID, type=self.serviceType)
-        self.service2 = ServiceItem1(id=self.serviceID, type=self.serviceType)
+        self.AnnotationBody = AnnotationBody(id=self.serviceID, type=self.serviceType)
+        self.service3 = ServiceV3(id=self.serviceID, type=self.serviceType)
+        self.service2 = ServiceV2(id=self.serviceID, type=self.serviceType)
 
     def test_make_service_to_Collection(self):
         self.canvas.make_service(self.serviceID, self.serviceType)
@@ -44,8 +44,8 @@ class MakeServiceTest(unittest.TestCase):
     def test_make_service_to_AnnotationCollection(self):
         self.annotationCollection.make_service(self.serviceID, self.serviceType, version=2)
 
-    def test_make_service_to_ResourceItem(self):
-        self.resourceItem.make_service(self.serviceID, self.serviceType, version=2)
+    def test_make_service_to_AnnotationBody(self):
+        self.AnnotationBody.make_service(self.serviceID, self.serviceType, version=2)
 
     def test_service2_is_service2(self):
         service2 = self.canvas.make_service(self.serviceID, self.serviceType, version=2)

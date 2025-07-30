@@ -4,7 +4,7 @@ from pydantic import ValidationError
 
 from iiif_prezi3 import (AccompanyingCanvas, Annotation, AnnotationPage,
                          Canvas, Collection, CollectionRef, Manifest,
-                         ManifestRef, ResourceItem)
+                         ManifestRef, AnnotationBody)
 
 
 class AddItemTests(unittest.TestCase):
@@ -57,7 +57,7 @@ class AddItemTests(unittest.TestCase):
 
     def test_add_by_reference_with_thumbnail(self):
         """Test that an item added by Reference preserves the thumbnail where appropriate."""
-        self.m.thumbnail = [ResourceItem(id="https://example.org/img/thumb.jpg", type="Image", format="image/jpeg", width=300, height=300)]
+        self.m.thumbnail = [AnnotationBody(id="https://example.org/img/thumb.jpg", type="Image", format="image/jpeg", width=300, height=300)]
         self.c.add_item_by_reference(self.m)
         self.assertIsInstance(self.c.items[0], ManifestRef)
         self.assertEqual(self.c.items[0].thumbnail, self.m.thumbnail)

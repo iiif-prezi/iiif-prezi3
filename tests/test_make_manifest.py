@@ -1,6 +1,6 @@
 import unittest
 
-from iiif_prezi3 import Collection, HomepageItem, Reference, config
+from iiif_prezi3 import Collection, Homepage, Reference, config
 
 
 class MakeManifestTest(unittest.TestCase):
@@ -10,7 +10,7 @@ class MakeManifestTest(unittest.TestCase):
 
     def test_make_manifest(self):
         config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
-        homepage = HomepageItem(
+        homepage = Homepage(
             id="https://www.getty.edu/art/collection/object/103RQQ",
             type="Text",
             label="Home page at the Getty Museum Collection",
