@@ -1,7 +1,7 @@
 from ..config import configs
 from ..loader import monkeypatch_schema
 from ..skeleton import (Annotation, AnnotationPage, Canvas, Collection,
-                        Manifest, Range, ResourceItem)
+                        Manifest, Range, AnnotationBody)
 
 
 class AddLabel:
@@ -34,4 +34,4 @@ class AddLabel:
             self.label = curr
 
 
-monkeypatch_schema([Collection, Manifest, Canvas, Range, Annotation, AnnotationPage, ResourceItem], AddLabel)
+monkeypatch_schema([Collection, Manifest, Canvas, Range, Annotation, AnnotationPage, AnnotationBody], AddLabel)

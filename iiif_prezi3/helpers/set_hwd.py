@@ -1,5 +1,5 @@
 from ..loader import monkeypatch_schema
-from ..skeleton import Canvas, ResourceItem
+from ..skeleton import Canvas, AnnotationBody
 
 
 class SetHwd:
@@ -22,4 +22,4 @@ class SetHwd:
         self.duration = duration
 
 
-monkeypatch_schema([Canvas, ResourceItem], [SetHwd])
+monkeypatch_schema([Canvas, AnnotationBody], [SetHwd])
