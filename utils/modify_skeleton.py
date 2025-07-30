@@ -1,18 +1,20 @@
+import json
+
 CHANGES = [
-    {
-        "description": "Allow extra properties on ManifestRef",
-        "type": "insert",
-        "before": "class ManifestRef(Reference):\n    type: constr(regex=r'^Manifest$') = 'Manifest'\n",
-        "after": "\n\nclass CanvasRef(Reference):",
-        "data": "\n    class Config:\n        extra = Extra.allow\n"
-    },
-    {
-        "description": "Re-add RangeRef",
-        "type": "insert",
-        "before": "class CanvasRef(Reference):\n    type: Optional[constr(regex=r'^Canvas$')] = None\n",
-        "after": "\n\nModel.update_forward_refs()",
-        "data": "\n\nclass RangeRef(Reference):\n    type: Optional[constr(regex=r'^Range$')] = None\n"
-    }
+ #   {
+ #       "description": "Allow extra properties on ManifestRef",
+ #       "type": "insert",
+ #       "before": "class ManifestRef(Reference):\n    type: constr(regex=r'^Manifest$') = 'Manifest'\n",
+ #       "after": "\n\nclass CanvasRef(Reference):",
+ #       "data": "\n    class Config:\n        extra = Extra.allow\n"
+ #   },
+ #   {
+ #       "description": "Re-add RangeRef",
+ #       "type": "insert",
+ #       "before": "class CanvasRef(Reference):\n    type: Optional[constr(regex=r'^Canvas$')] = None\n",
+ #       "after": "\n\nModel.update_forward_refs()",
+ #       "data": "\n\nclass RangeRef(Reference):\n    type: Optional[constr(regex=r'^Range$')] = None\n"
+ #   }
 ]
 
 
@@ -52,6 +54,34 @@ def modify_skeleton():
     with open("../iiif_prezi3/skeleton.py", "w") as out:
         out.write(skeleton)
 
+def modify_schema(schema_filename):
+    with open(schema_filename, 'r') as file:
+        schema = json.load(file)
+
+    # Remove:
+    # "anyOf":[
+    #   { "required": ["width"] },
+    #   { "required": ["height"] },
+    #   { "required": ["duration"] }
+    # ],
+    # "dependencies": {
+    #   "width": ["height"],
+    #   "height": ["width"]
+    # }
+    # In canvas, placeholderCanvas and accompanyingCanvas
+    # classes
+
+    locations = ["canvas", "placeholderCanvas", "accompanyingCanvas"]
+    for location in locations:
+        container = schema["classes"][location]
+        for item in container["allOf"]:
+            if "properties" in item:
+                item.pop("anyOf")
+                item.pop("dependencies")
+
+
+    with open(schema_filename, 'w') as f:
+        json.dump(schema, f, indent=4)    
 
 if __name__ == "__main__":
     print("== Prezi3 Skeleton Fixer ==")
