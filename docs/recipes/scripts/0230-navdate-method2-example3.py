@@ -1,11 +1,11 @@
-from iiif_prezi3 import Collection, ManifestRef, ResourceItem, config
+from iiif_prezi3 import Collection, ManifestRef, AnnotationBody, config
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0230-navdate"
 
 collection = Collection(id=f"{base_url}/navdate-collection.json",
                         label="Chesapeake and Ohio Canal map and guide pamphlets")
-thumbnail = ResourceItem(id="https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-88695674/full/max/0/default.jpg",
+thumbnail = AnnotationBody(id="https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-88695674/full/max/0/default.jpg",
                          type="Image",
                          format="image/jpeg",
                          height=300,

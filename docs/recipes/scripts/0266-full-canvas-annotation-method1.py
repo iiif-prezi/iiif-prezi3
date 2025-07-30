@@ -1,4 +1,4 @@
-from iiif_prezi3 import Manifest, ResourceItem, ResourceItem1, AnnotationPage, Annotation, config
+from iiif_prezi3 import Manifest, AnnotationBody, TextualBody, AnnotationPage, Annotation, config
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0266-full-canvas-annotation"
@@ -11,7 +11,7 @@ manifest = Manifest(
 anno_page = AnnotationPage(
     id=f"{base_url}/canvas-1/annopage-1"
 )
-painting_body = ResourceItem(
+painting_body = AnnotationBody(
     id="https://iiif.io/api/image/3.0/example/reference/918ecd18c2592080851777620de9bcb5-gottingen/full/max/0/default.jpg",
     type="Image",
     format="image/jpeg",
@@ -35,7 +35,7 @@ canvas = manifest.make_canvas(
 painting_body.set_hwd(**hw)
 canvas.set_hwd(**hw)
 canvas.add_item(anno_page)
-anno_body = ResourceItem1(
+anno_body = TextualBody(
     type="TextualBody",
     language="de",
     format="text/plain",
