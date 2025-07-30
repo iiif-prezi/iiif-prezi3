@@ -1,4 +1,4 @@
-from iiif_prezi3 import Manifest, ResourceItem, AnnotationPage, Annotation, config, Choice
+from iiif_prezi3 import Manifest, AnnotationBody, AnnotationPage, Annotation, config, Choice
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0033-choice"
@@ -13,7 +13,7 @@ canvas = manifest.make_canvas(
     width=2000
 )
 
-natural_light = ResourceItem(
+natural_light = AnnotationBody(
     id="https://iiif.io/api/image/3.0/example/reference/421e65be2ce95439b3ad6ef1f2ab87a9-dee-natural/full/max/0/default.jpg",
     label="Natural Light",
     type="Image",
@@ -26,7 +26,7 @@ natural_light.make_service(
     type="ImageService3",
     profile="level1"
 )
-x_ray = ResourceItem(
+x_ray = AnnotationBody(
     id="https://iiif.io/api/image/3.0/example/reference/421e65be2ce95439b3ad6ef1f2ab87a9-dee-xray/full/max/0/default.jpg",
     label="X-Ray",
     type="Image",
