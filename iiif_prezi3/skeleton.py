@@ -5,32 +5,33 @@
 from __future__ import annotations
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional, Union
+from typing import Literal, Any, Dict, List, Optional, Union
 
-from pydantic import AnyUrl, Extra, Field, PositiveFloat, PositiveInt, constr
+from pydantic import StringConstraints, ConfigDict, AnyUrl, Field, PositiveFloat, PositiveInt
 
 from .base import Base
+from typing_extensions import Annotated
 
 
 class Behavior(Base):
     __root__: List[
         Union[
-            constr(regex=r'^auto-advance$'),
-            constr(regex=r'^no-auto-advance$'),
-            constr(regex=r'^repeat$'),
-            constr(regex=r'^no-repeat$'),
-            constr(regex=r'^unordered$'),
-            constr(regex=r'^individuals$'),
-            constr(regex=r'^continuous$'),
-            constr(regex=r'^paged$'),
-            constr(regex=r'^facing-pages$'),
-            constr(regex=r'^non-paged$'),
-            constr(regex=r'^multi-part$'),
-            constr(regex=r'^together$'),
-            constr(regex=r'^sequence$'),
-            constr(regex=r'^thumbnail-nav$'),
-            constr(regex=r'^no-nav$'),
-            constr(regex=r'^hidden$'),
+            Annotated[str, StringConstraints(pattern=r'^auto-advance$')],
+            Annotated[str, StringConstraints(pattern=r'^no-auto-advance$')],
+            Annotated[str, StringConstraints(pattern=r'^repeat$')],
+            Annotated[str, StringConstraints(pattern=r'^no-repeat$')],
+            Annotated[str, StringConstraints(pattern=r'^unordered$')],
+            Annotated[str, StringConstraints(pattern=r'^individuals$')],
+            Annotated[str, StringConstraints(pattern=r'^continuous$')],
+            Annotated[str, StringConstraints(pattern=r'^paged$')],
+            Annotated[str, StringConstraints(pattern=r'^facing-pages$')],
+            Annotated[str, StringConstraints(pattern=r'^non-paged$')],
+            Annotated[str, StringConstraints(pattern=r'^multi-part$')],
+            Annotated[str, StringConstraints(pattern=r'^together$')],
+            Annotated[str, StringConstraints(pattern=r'^sequence$')],
+            Annotated[str, StringConstraints(pattern=r'^thumbnail-nav$')],
+            Annotated[str, StringConstraints(pattern=r'^no-nav$')],
+            Annotated[str, StringConstraints(pattern=r'^hidden$')],
         ]
     ]
 
@@ -49,10 +50,10 @@ class Rights(Base):
 
 class ViewingDirection(Base):
     __root__: Union[
-        constr(regex=r'^left-to-right$'),
-        constr(regex=r'^right-to-left$'),
-        constr(regex=r'^top-to-bottom$'),
-        constr(regex=r'^bottom-to-top$'),
+        Annotated[str, StringConstraints(pattern=r'^left-to-right$')],
+        Annotated[str, StringConstraints(pattern=r'^right-to-left$')],
+        Annotated[str, StringConstraints(pattern=r'^top-to-bottom$')],
+        Annotated[str, StringConstraints(pattern=r'^bottom-to-top$')],
     ]
 
 
@@ -63,12 +64,11 @@ class Id(Base):
 
 
 class LngString(Base):
-    class Config:
-        extra = Extra.forbid
+    model_config = ConfigDict(extra="forbid")
 
     __root__: Union[
-        Dict[constr(regex=r'^[a-zA-Z-][a-zA-Z-]*$'), List[str]],
-        Dict[constr(regex=r'^none$'), List[str]],
+        Dict[Annotated[str, StringConstraints(pattern=r'^[a-zA-Z-][a-zA-Z-]*$')], List[str]],
+        Dict[Annotated[str, StringConstraints(pattern=r'^none$')], List[str]],
     ] = Field(
         ...,
         description='Language string, must have a language and value must be an array.',
@@ -77,12 +77,12 @@ class LngString(Base):
 
 
 class Choice(Base):
-    type: str = Field('Choice', const=True)
+    type: Literal['Choice'] = 'Choice'
     items: List
 
 
 class BCP47(Base):
-    __root__: Union[constr(regex=r'^[a-zA-Z-][a-zA-Z-]*$'), constr(regex=r'^none$')] = (
+    __root__: Union[Annotated[str, StringConstraints(pattern=r'^[a-zA-Z-][a-zA-Z-]*$')], Annotated[str, StringConstraints(pattern=r'^none$')]] = (
         Field(..., title='BCP47')
     )
 
@@ -96,29 +96,29 @@ class Duration(Base):
 
 
 class Format(Base):
-    __root__: constr(regex=r'^[a-z][a-z]*/.*$') = Field(..., title='format')
+    __root__: Annotated[str, StringConstraints(pattern=r'^[a-z][a-z]*/.*$')] = Field(..., title='format')
 
 
 class PointSelector(Base):
-    type: constr(regex=r'^PointSelector$') = 'PointSelector'
+    type: Annotated[str, StringConstraints(pattern=r'^PointSelector$')] = 'PointSelector'
     t: Optional[Duration] = None
     x: Optional[Dimension] = None
     y: Optional[Dimension] = None
 
 
 class FragmentSelector(Base):
-    type: constr(regex=r'^FragmentSelector$') = 'FragmentSelector'
+    type: Annotated[str, StringConstraints(pattern=r'^FragmentSelector$')] = 'FragmentSelector'
     conformsTo: AnyUrl = 'http://www.w3.org/TR/media-frags/'
-    value: Any
+    value: Any = None
 
 
 class SVGSelector(Base):
-    type: constr(regex=r'^SvgSelector$') = 'SvgSelector'
-    value: Any
+    type: Annotated[str, StringConstraints(pattern=r'^SvgSelector$')] = 'SvgSelector'
+    value: Any = None
 
 
 class ImageAPISelector(Base):
-    type: constr(regex=r'^ImageApiSelector$') = 'ImageApiSelector'
+    type: Annotated[str, StringConstraints(pattern=r'^ImageApiSelector$')] = 'ImageApiSelector'
     region: Optional[Any] = None
     size: Optional[Any] = None
     rotation: Optional[Any] = None
@@ -140,7 +140,7 @@ class NavPlace(Base):
 
 class TextualBody(Base):
     id: Optional[Id] = None
-    type: constr(regex=r'^TextualBody$') = 'TextualBody'
+    type: Annotated[str, StringConstraints(pattern=r'^TextualBody$')] = 'TextualBody'
     value: str
     format: Optional[Format] = None
     language: Optional[str] = None
@@ -168,7 +168,7 @@ class KeyValueString(Base):
 
 class SpecificResource(Base):
     id: Optional[Id] = None
-    type: constr(regex=r'^SpecificResource$') = 'SpecificResource'
+    type: Annotated[str, StringConstraints(pattern=r'^SpecificResource$')] = 'SpecificResource'
     format: Optional[Format] = None
     accessibility: Optional[str] = None
     source: Union[Id, Class]
@@ -208,7 +208,7 @@ class AbstractIIIFResource(Base):
 
 
 class AnnotationCollection(Class):
-    type: constr(regex=r'^AnnotationCollection$') = 'AnnotationCollection'
+    type: Annotated[str, StringConstraints(pattern=r'^AnnotationCollection$')] = 'AnnotationCollection'
     rendering: Optional[LinkedResources] = None
     partOf: Optional[PartOf] = None
     next: Optional[AnnotationPageRef] = None
@@ -223,7 +223,7 @@ class AnnotationCollection(Class):
 class AnnotationPage(Class):
     context: Optional[Union[List[AnyUrl], str]] = Field(None, alias='@context')
     id: Id
-    type: constr(regex=r'^AnnotationPage$') = 'AnnotationPage'
+    type: Annotated[str, StringConstraints(pattern=r'^AnnotationPage$')] = 'AnnotationPage'
     rendering: Optional[LinkedResources] = None
     label: Optional[LngString] = None
     service: Optional[Service] = None
@@ -237,7 +237,7 @@ class AnnotationPage(Class):
 
 
 class Collection(Class):
-    type: constr(regex=r'^Collection') = Field(
+    type: Annotated[str, StringConstraints(pattern=r'^Collection')] = Field(
         'Collection',
         description='If you are validating a manifest, you may get this error if there are errors in the manifest. The validator first validates it as a manifest and if that fails it will try and validate it using the other types.',
         title='Collection',
@@ -267,7 +267,7 @@ class Manifest(Class):
     context: Optional[Union[List[AnyUrl], str]] = Field(None, alias='@context')
     id: Id
     label: LngString
-    type: constr(regex=r'^Manifest') = 'Manifest'
+    type: Annotated[str, StringConstraints(pattern=r'^Manifest')] = 'Manifest'
     metadata: Optional[Metadata] = None
     summary: Optional[LngString] = None
     requiredStatement: Optional[KeyValueString] = None
@@ -293,7 +293,7 @@ class Manifest(Class):
 
 
 class AccompanyingCanvas(Class):
-    type: constr(regex=r'^Canvas$') = 'Canvas'
+    type: Annotated[str, StringConstraints(pattern=r'^Canvas$')] = 'Canvas'
     height: Optional[Dimension] = None
     width: Optional[Dimension] = None
     duration: Optional[Duration] = None
@@ -320,7 +320,7 @@ class Body(Choice):
 
 
 class Annotation(Class):
-    type: constr(regex=r'^Annotation$') = 'Annotation'
+    type: Annotated[str, StringConstraints(pattern=r'^Annotation$')] = 'Annotation'
     service: Optional[Service] = None
     rendering: Optional[LinkedResources] = None
     thumbnail: Optional[List[Resource]] = None
@@ -338,7 +338,7 @@ class AnnotationPageRef(Base):
 
 
 class Canvas(Class):
-    type: constr(regex=r'^Canvas$') = 'Canvas'
+    type: Annotated[str, StringConstraints(pattern=r'^Canvas$')] = 'Canvas'
     height: Optional[Dimension] = None
     width: Optional[Dimension] = None
     duration: Optional[Duration] = None
@@ -363,7 +363,7 @@ class Canvas(Class):
 
 
 class PlaceholderCanvas(Class):
-    type: constr(regex=r'^Canvas$') = 'Canvas'
+    type: Annotated[str, StringConstraints(pattern=r'^Canvas$')] = 'Canvas'
     height: Optional[Dimension] = None
     width: Optional[Dimension] = None
     duration: Optional[Duration] = None
@@ -386,7 +386,7 @@ class PlaceholderCanvas(Class):
 
 
 class Provider(Class):
-    type: constr(regex=r'^Agent$') = 'Agent'
+    type: Annotated[str, StringConstraints(pattern=r'^Agent$')] = 'Agent'
     homepage: Optional[Homepages] = None
     logo: Optional[List[Resource]] = None
     seeAlso: Optional[SeeAlso] = None
@@ -397,7 +397,7 @@ class Providers(Base):
 
 
 class Range(Class):
-    type: constr(regex=r'^Range$') = 'Range'
+    type: Annotated[str, StringConstraints(pattern=r'^Range$')] = 'Range'
     rendering: Optional[LinkedResources] = None
     supplementary: Optional[Union[AnnotationCollection, AnnotationCollectionRef]] = None
     service: Optional[Service] = None
@@ -444,41 +444,40 @@ class Service(Base):
 
 
 class Reference(Base):
-    class Config:
-        extra = Extra.allow
+    model_config = ConfigDict(extra="allow")
 
     id: Id
     label: Optional[LngString] = None
-    type: constr(
-        regex=r'^Manifest$|^AnnotationPage$|^Collection$|^AnnotationCollection$|^Canvas$|^Range$'
-    )
+    type: Annotated[str, StringConstraints(
+        pattern=r'^Manifest$|^AnnotationPage$|^Collection$|^AnnotationCollection$|^Canvas$|^Range$'
+    )]
     thumbnail: Optional[List[Resource]] = None
 
 
 class AnnotationCollectionRefExtended(Reference):
-    type: Optional[constr(regex=r'^AnnotationCollection$')] = None
+    type: Optional[Annotated[str, StringConstraints(pattern=r'^AnnotationCollection$')]] = None
 
 
 class AnnotationPageRefExtended(Reference):
-    type: Optional[constr(regex=r'^AnnotationPage$')] = None
+    type: Optional[Annotated[str, StringConstraints(pattern=r'^AnnotationPage$')]] = None
 
 
 class CollectionRef(Reference):
-    type: Optional[constr(regex=r'^Collection$')] = None
+    type: Optional[Annotated[str, StringConstraints(pattern=r'^Collection$')]] = None
     label: LngString
 
 
 class ManifestRef(Reference):
-    type: constr(regex=r'^Manifest$') = 'Manifest'
+    type: Annotated[str, StringConstraints(pattern=r'^Manifest$')] = 'Manifest'
     label: LngString
 
 
 class CanvasRef(Reference):
-    type: Optional[constr(regex=r'^Canvas$')] = None
+    type: Optional[Annotated[str, StringConstraints(pattern=r'^Canvas$')]] = None
 
 
 class RangeRef(Reference):
-    type: Optional[constr(regex=r'^Range$')] = None
+    type: Optional[Annotated[str, StringConstraints(pattern=r'^Range$')]] = None
 
 
 AbstractIIIFResource.update_forward_refs()

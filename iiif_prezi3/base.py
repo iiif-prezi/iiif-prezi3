@@ -1,17 +1,17 @@
 import json
 
-from pydantic import AnyUrl, BaseModel
+from pydantic import ConfigDict, AnyUrl, BaseModel
 from pydantic.json import pydantic_encoder
 
 
 class Base(BaseModel):
-    class Config:
-        validate_assignment = True
-        validate_all = True
-        copy_on_model_validation = 'none'
-        smart_union = True
-        # Allow us to use the field name like service.id rather than service.@id
-        allow_population_by_field_name = True
+    # TODO[pydantic]: The following keys were removed: `copy_on_model_validation`, `smart_union`.
+    # Check https://docs.pydantic.dev/dev-v2/migration/#changes-to-config for more information.
+    model_config = ConfigDict(
+        validate_assignment=True, 
+        validate_default=True, 
+        populate_by_name=True
+    )
 
     def __getattribute__(self, prop):
         try:
