@@ -1,6 +1,6 @@
 import unittest
 
-from iiif_prezi3 import AnnotationPage, Canvas, ResourceItem
+from iiif_prezi3 import AnnotationPage, Canvas, AnnotationBody
 
 
 class CanvasHelpersTests(unittest.TestCase):
@@ -23,7 +23,7 @@ class CanvasHelpersTests(unittest.TestCase):
         canvas = self.canvas.add_thumbnail(
             'http://iiif.example.org/prezi/Image/0',
             height=200)
-        self.assertTrue(isinstance(canvas, ResourceItem), '`add_thumbnail` should return a ResourceItem')
+        self.assertTrue(isinstance(canvas, AnnotationBody), '`add_thumbnail` should return a AnnotationBody')
         self.assertEqual(len(self.canvas.thumbnail), 1)
         self.assertEqual(self.canvas.thumbnail[0].id, 'http://iiif.example.org/prezi/Image/0')
         self.assertEqual(self.canvas.thumbnail[0].type, 'Image')

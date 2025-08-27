@@ -1,7 +1,7 @@
 from ..loader import monkeypatch_schema
 from ..skeleton import (Annotation, AnnotationCollection, AnnotationPage,
                         Canvas, Collection, Manifest, Range, Resource,
-                        ResourceItem, ServiceItem, ServiceItem1)
+                        AnnotationBody, ServiceV3, ServiceV2)
 
 
 class MakeService:
@@ -18,11 +18,11 @@ class MakeService:
             ValueError: If an invalid IIIF API version is provided.
 
         Returns:
-           service (Union[ServiceItem, ServiceItem1]): A service instance of the selected version.
+           service (Union[ServiceV3, ServiceV2]): A service instance of the selected version.
         """
         serviceversions = {
-            2: ServiceItem1,
-            3: ServiceItem
+            2: ServiceV2,
+            3: ServiceV3
         }
         if version not in serviceversions:
             raise ValueError(f"Version: {version} is not a valid IIIF API service version.")
@@ -31,4 +31,4 @@ class MakeService:
         return service
 
 
-monkeypatch_schema([Collection, Manifest, Canvas, Range, Annotation, AnnotationPage, AnnotationCollection, Resource, ResourceItem], MakeService)
+monkeypatch_schema([Collection, Manifest, Canvas, Range, Annotation, AnnotationPage, AnnotationCollection, Resource, AnnotationBody], MakeService)

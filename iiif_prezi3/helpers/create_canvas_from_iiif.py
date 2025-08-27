@@ -1,7 +1,7 @@
 
 from ..loader import monkeypatch_schema
 from ..skeleton import (Annotation, AnnotationPage, Canvas, Manifest,
-                        ResourceItem, ServiceItem, ServiceItem1)
+                        AnnotationBody, ServiceV3, ServiceV2)
 
 
 class CreateCanvasFromIIIF:
@@ -24,7 +24,7 @@ class CreateCanvasFromIIIF:
         """
         canvas = Canvas(**kwargs)
 
-        body = ResourceItem(id="http://example.com", type="Image")
+        body = AnnotationBody(id="http://example.com", type="Image")
         infoJson = body.set_hwd_from_iiif(url)
 
         # Will need to handle IIIF 2...
@@ -38,12 +38,12 @@ class CreateCanvasFromIIIF:
                     profile = item
                     break
 
-            service = ServiceItem1(id=infoJson['@id'], profile=profile, type="ImageService2")
+            service = ServiceV2(id=infoJson['@id'], profile=profile, type="ImageService2")
             body.service = [service]
             body.id = f'{infoJson["@id"]}/full/full/0/default.jpg'
             body.format = "image/jpeg"
         else:
-            service = ServiceItem(id=infoJson['id'], profile=infoJson['profile'], type=infoJson['type'])
+            service = ServiceV3(id=infoJson['id'], profile=infoJson['profile'], type=infoJson['type'])
             body.service = [service]
             body.id = f'{infoJson["id"]}/full/max/0/default.jpg'
             body.format = "image/jpeg"

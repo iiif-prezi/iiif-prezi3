@@ -1,4 +1,4 @@
-from iiif_prezi3 import Manifest, ExternalItem, ResourceItem, AnnotationPage, Annotation, config
+from iiif_prezi3 import Manifest, LinkedResource, AnnotationBody, AnnotationPage, Annotation, config
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0017-transcription-av"
@@ -7,7 +7,7 @@ manifest = Manifest(id=f"{base_url}/manifest.json",
                     label="Volleyball for Boys")
 
 canvas = manifest.make_canvas(id=f"{base_url}/canvas")
-anno_body = ResourceItem(id="https://fixtures.iiif.io/video/indiana/volleyball/high/volleyball-for-boys.mp4",
+anno_body = AnnotationBody(id="https://fixtures.iiif.io/video/indiana/volleyball/high/volleyball-for-boys.mp4",
                          type="Video",
                          format="video/mp4")
 anno_page = AnnotationPage(id=f"{base_url}/canvas/page")
@@ -23,7 +23,7 @@ canvas.set_hwd(**hwd)
 anno_page.add_item(anno)
 canvas.add_item(anno_page)
 
-rendering = ExternalItem(id="https://fixtures.iiif.io/video/indiana/volleyball/volleyball.txt",
+rendering = LinkedResource(id="https://fixtures.iiif.io/video/indiana/volleyball/volleyball.txt",
                          type="Text",
                          label="Transcript",
                          format="text/plain")

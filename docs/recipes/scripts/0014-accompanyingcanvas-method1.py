@@ -1,4 +1,4 @@
-from iiif_prezi3 import Manifest, ResourceItem, AnnotationPage, Annotation, config, AccompanyingCanvas
+from iiif_prezi3 import Manifest, AnnotationBody, AnnotationPage, Annotation, config, AccompanyingCanvas
 
 base_url = "https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas"
 
@@ -13,7 +13,7 @@ manifest = Manifest(
     id=f"{base_url}/manifest.json",
     label="Partial audio recording of Gustav Mahler's _Symphony No. 3_",
 )
-ac_anno_body = ResourceItem(
+ac_anno_body = AnnotationBody(
     id="https://iiif.io/api/image/3.0/example/reference/4b45bba3ea612ee46f5371ce84dbcd89-mahler-0/full/,998/0/default.jpg",
     type="Image",
     format="image/jpeg",
@@ -42,7 +42,7 @@ canvas = manifest.make_canvas(
     duration=1985.024,
     accompanyingCanvas=accompanying_canvas
 )
-anno_body = ResourceItem(
+anno_body = AnnotationBody(
     id="https://fixtures.iiif.io/audio/indiana/mahler-symphony-3/CD1/medium/128Kbps.mp4",
     type="Sound",
     format="video/mp4",

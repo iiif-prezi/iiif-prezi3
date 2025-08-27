@@ -1,4 +1,4 @@
-from iiif_prezi3 import Manifest, ResourceItem, AnnotationPage, Annotation, config, PlaceholderCanvas
+from iiif_prezi3 import Manifest, AnnotationBody, AnnotationPage, Annotation, config, PlaceholderCanvas
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0013-placeholderCanvas"
@@ -15,7 +15,7 @@ placeholder_canvas = PlaceholderCanvas(
 pc_anno_page = AnnotationPage(
     id=f"{base_url}/canvas/donizetti/placeholder/1"
 )
-pc_anno_body = ResourceItem(
+pc_anno_body = AnnotationBody(
     id="https://fixtures.iiif.io/video/indiana/donizetti-elixir/act1-thumbnail.png",
     type="Image",
     format="image/png",
@@ -39,7 +39,7 @@ canvas = manifest.make_canvas(
     placeholderCanvas=placeholder_canvas,
 )
 
-anno_body = ResourceItem(
+anno_body = AnnotationBody(
     id="https://fixtures.iiif.io/video/indiana/donizetti-elixir/vae0637_accessH264_low.mp4",
     type="Video",
     duration=7278.466,
