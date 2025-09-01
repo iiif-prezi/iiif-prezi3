@@ -9,7 +9,7 @@ class TestSchema(unittest.TestCase):
     base_url = "http://example.com"
 
     def test_mandatory_items(self):
-        """if a manifest has items it should be a Manifest object, if not it should be a ManifestRef."""
+        """If a manifest has items it should be a Manifest object, if not it should be a ManifestRef."""
         manifest = Manifest(id=f"{self.base_url}/manifest.json", label="Single Image Example")
 
         with self.assertRaises(ValidationError):
@@ -17,8 +17,7 @@ class TestSchema(unittest.TestCase):
 
 
     def test_extra_annotation_fields(self):
-        """
-        Annotation class should allow extra fields for Web Annotation Data Model.
+        """Annotation class should allow extra fields for Web Annotation Data Model.
 
         https://github.com/iiif-prezi/iiif-prezi3/issues/223
         """
@@ -45,8 +44,7 @@ class TestSchema(unittest.TestCase):
         self.assertTrue(hasattr(annotation, "modified"), "Modified should have made it into the annotation json")
 
     def test_extra_servicev3_fields(self):
-        """
-        Allow extra fields on a service.
+        """Allow extra fields on a service.
 
         https://github.com/iiif-prezi/iiif-prezi3/issues/204
         """    
@@ -73,9 +71,8 @@ class TestSchema(unittest.TestCase):
         self.assertTrue(hasattr(service, "profile"), "Profile should be in service")
 
     def test_extra_servicev2_fields(self):
-        """
-        Allow extra fields on a service.
-        
+        """Allow extra fields on a service.
+
         https://github.com/iiif-prezi/iiif-prezi3/issues/204
         """    
         service = ServiceV2(id="https://fixtures.iiif.io/other/level0/Glen/photos/gottingen", type="ImageService2", profile="level0")
