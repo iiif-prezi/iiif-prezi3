@@ -50,7 +50,7 @@ if __name__ == "__main__":
     subprocess.run(shlex.split(DATAMODEL_COMMAND), check=True)
 
     print("Running Skeleton modifications...")
-    modify_skeleton()
+    modify_skeleton(skeleton_file)
 
     print("Cleaning up Schema file...")
     os.remove(LOCAL_SCHEMA)

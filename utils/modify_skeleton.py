@@ -42,16 +42,16 @@ def process_change(skeleton, change):
     return skeleton
 
 
-def modify_skeleton():
+def modify_skeleton(skeleton_file):
     print("Opening Skeleton file...")
-    skeleton = open("../iiif_prezi3/skeleton.py").read()
+    skeleton = open(skeleton_file).read()
 
     print(f"Processing {len(CHANGES)} changes")
     for change in CHANGES:
         skeleton = process_change(skeleton, change)
 
     print("Changes processed, writing out fixed Skeleton")
-    with open("../iiif_prezi3/skeleton.py", "w") as out:
+    with open(skeleton_file, "w") as out:
         out.write(skeleton)
 
 def modify_schema(schema_filename):
