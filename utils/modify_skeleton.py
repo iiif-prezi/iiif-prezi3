@@ -1,13 +1,13 @@
 import json
 
 CHANGES = [
- #   {
- #       "description": "Allow extra properties on ManifestRef",
- #       "type": "insert",
- #       "before": "class ManifestRef(Reference):\n    type: constr(regex=r'^Manifest$') = 'Manifest'\n",
- #       "after": "\n\nclass CanvasRef(Reference):",
- #       "data": "\n    class Config:\n        extra = Extra.allow\n"
- #   },
+   {
+        "description": "Allow extra properties on Annotations",
+        "type": "replace",
+        "find": "\n\nclass Annotation(Class):",
+        "replace": "\n\nclass Annotation(Class):\n    class Config:\n        extra = Extra.allow\n"
+   }
+
  #   {
  #       "description": "Re-add RangeRef",
  #       "type": "insert",
