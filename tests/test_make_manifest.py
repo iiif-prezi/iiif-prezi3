@@ -26,4 +26,5 @@ class MakeManifestTest(unittest.TestCase):
         self.assertIsInstance(self.collection.items[0], Reference)
         self.assertEqual(manifest.label,
                          {'en': ['default label']})
-        self.assertEqual(manifest.homepage, homepage)
+
+        self.assertEqual(manifest.homepage[0], homepage)
