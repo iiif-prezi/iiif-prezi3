@@ -174,7 +174,7 @@ class AutoItems(Auto):
 class AutoListConfig(Config):
     def __init__(self):
         self.properties = ['behavior', 'service', 'services', 'features', 'thumbnail', 'logo', 'rendering', 'homepage', 'metadata',
-                           'partOf', 'provider', 'seeAlso']
+                           'partOf', 'provider', 'seeAlso', 'annotations']
 
 
 class AutoList(Auto):
