@@ -1,21 +1,15 @@
-import json
-import sys
 import unittest
 
 from pydantic import ValidationError
 
-from iiif_prezi3 import Canvas, Manifest, Annotation, AnnotationBody, ServiceV3, ServiceV2
+from iiif_prezi3 import Manifest, Annotation, AnnotationBody, ServiceV3, ServiceV2
 
 class TestSchema(unittest.TestCase):
-    """
-        Ensure schema changes have made it to iiif_prezi3
-    """
+    """Ensure schema changes have made it to iiif_prezi3."""
     base_url = "http://example.com"
 
     def test_mandatory_items(self):
-        """
-            if a manifest has items it should be a Manifest object, if not it should be a ManifestRef
-        """
+        """if a manifest has items it should be a Manifest object, if not it should be a ManifestRef."""
         manifest = Manifest(id=f"{self.base_url}/manifest.json", label="Single Image Example")
 
         with self.assertRaises(ValidationError):
@@ -24,8 +18,9 @@ class TestSchema(unittest.TestCase):
 
     def test_extra_annotation_fields(self):
         """
-            Annotation class should allow extra fields for Web Annotation Data Model
-            https://github.com/iiif-prezi/iiif-prezi3/issues/223
+        Annotation class should allow extra fields for Web Annotation Data Model.
+
+        https://github.com/iiif-prezi/iiif-prezi3/issues/223
         """
         body = AnnotationBody(
             id="https://iiif.io/api/cookbook/recipe/0266-full-canvas-annotation/canvas-1/annopage-2/anno-1/body",
@@ -51,8 +46,9 @@ class TestSchema(unittest.TestCase):
 
     def test_extra_servicev3_fields(self):
         """
-            Allow extra fields on a service
-            https://github.com/iiif-prezi/iiif-prezi3/issues/204
+        Allow extra fields on a service.
+
+        https://github.com/iiif-prezi/iiif-prezi3/issues/204
         """    
         service = ServiceV3(id="https://fixtures.iiif.io/other/level0/Glen/photos/gottingen", type="ImageService3", profile="level0")
 
@@ -78,8 +74,9 @@ class TestSchema(unittest.TestCase):
 
     def test_extra_servicev2_fields(self):
         """
-            Allow extra fields on a service
-            https://github.com/iiif-prezi/iiif-prezi3/issues/204
+        Allow extra fields on a service.
+        
+        https://github.com/iiif-prezi/iiif-prezi3/issues/204
         """    
         service = ServiceV2(id="https://fixtures.iiif.io/other/level0/Glen/photos/gottingen", type="ImageService2", profile="level0")
 
