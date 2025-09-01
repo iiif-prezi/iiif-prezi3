@@ -97,7 +97,7 @@ class TestSchema(unittest.TestCase):
 
         self.assertTrue(hasattr(service, "profile"), "Profile should be in service")    
 
-    def test_optional_selector(self):
+    def test_specific_resource_body(self):
         selector = ImageAPISelector(rotation=90)
 
         image_source = AnnotationBody(
