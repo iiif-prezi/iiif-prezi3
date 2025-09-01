@@ -49,8 +49,6 @@ class TestSchema(unittest.TestCase):
         self.assertTrue(hasattr(annotation, "created"), "Created should have made it into the annotation json")
         self.assertTrue(hasattr(annotation, "modified"), "Modified should have made it into the annotation json")
 
-        print(annotation.json(indent=2))
-
     def test_extra_servicev3_fields(self):
         """
             Allow extra fields on a service
