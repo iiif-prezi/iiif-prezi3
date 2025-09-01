@@ -122,7 +122,7 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         self.assertFalse(self._defaulter_in_object(Annotation, "AutoItems"), "Annotations should not have AutoItems")
         self.assertTrue(self._defaulter_in_object(Manifest, "AutoItems"), f"Expected Manifest to have AutoItems. It had: {Manifest._defaulters}")
 
-        m = Manifest(label="string")
+        Manifest(label="string")
 
         self.assertTrue(self._defaulter_in_object(Manifest, "AutoItems"), f"Expected second call to create Manifest to also have AutoItems. It had: {Manifest._defaulters}")
 
