@@ -3,6 +3,16 @@ import json
 from pydantic import AnyUrl, BaseModel
 from pydantic.json import pydantic_encoder
 
+def _inherit_defaulters(cls):
+    # Merge bases→derived, dedup while preserving first occurrence
+    seen, defaulters = set(), []
+    for base in reversed(cls.__mro__):  # bases first
+        for df in base.__dict__.get('_defaulters', []):
+            if df not in seen:
+                seen.add(df)
+                defaulters.append(df)
+
+    return defaulters
 
 class Base(BaseModel):
     class Config:
@@ -35,25 +45,22 @@ class Base(BaseModel):
             return val
 
     def __init__(self, **kw):
-        # Manipulate kw via defaulter helpers
-        if hasattr(self.__class__, '_defaulters'):
-            for df in self.__class__._defaulters:
-                update = df.generate_defaults(self, **kw)
-                if update:
-                    kw.update(update)
-        else:
-            self.__class__._defaulters = []
+        # Manipulate kw via defaulter helpers (merged from MRO)
+        for df in _inherit_defaulters(self.__class__):
+            update = df.generate_defaults(self, **kw)
+            if update:
+                kw.update(update)
+
         super().__init__(**kw)
 
     def __setattr__(self, key, value):
-        # look for a defaulter to manipulate the value
-        if hasattr(self.__class__, '_defaulters'):
-            for df in self.__class__._defaulters:
-                if df.manipulates(key):
-                    new = df.manipulate_value(self, value)
-                    if new:
-                        value = new
-                        break
+         # let defaulters manipulate the value before pydantic sets it
+        for df in _inherit_defaulters(self.__class__):
+            if df.manipulates(key):
+                new = df.manipulate_value(self, value)
+                if new:
+                    value = new
+                    break
 
         # and now pass upwards for pydantic to validate and set
         super().__setattr__(key, value)
