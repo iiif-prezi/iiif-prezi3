@@ -2,7 +2,8 @@ import unittest
 
 from pydantic import ValidationError
 
-from iiif_prezi3 import Manifest, Annotation, AnnotationBody, ServiceV3, ServiceV2
+from iiif_prezi3 import Manifest, Annotation, AnnotationBody, ServiceV3, ServiceV2, Range
+import json
 
 class TestSchema(unittest.TestCase):
     """Ensure schema changes have made it to iiif_prezi3."""
@@ -96,3 +97,16 @@ class TestSchema(unittest.TestCase):
         self.assertEqual(len(service.sizes), 3, "Service should be an array of 3 items.")
 
         self.assertTrue(hasattr(service, "profile"), "Profile should be in service")    
+
+    def test_range_behavior(self):
+        """Allow behavior on a range
+
+        https://github.com/iiif-prezi/iiif-prezi3/issues/255
+        """      
+
+        range = Range(id="https://example.com/range/1")
+        range.label = {"en": ["Thumbnail Navigation"]}
+        range.behavior = "thumbnail-nav"
+
+        data = json.loads(range.json())
+        self.assertEqual("thumbnail-nav", data["behavior"][0], "Range behavior should be retained.")
