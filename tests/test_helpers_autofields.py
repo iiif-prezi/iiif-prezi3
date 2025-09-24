@@ -1,6 +1,6 @@
 import unittest
 
-from iiif_prezi3 import Collection, Manifest, config
+from iiif_prezi3 import Collection, Manifest, config, Annotation, AccompanyingCanvas, AnnotationCollection, PlaceholderCanvas
 
 
 class AutoFieldsHelpersTests(unittest.TestCase):
@@ -111,3 +111,21 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         self.assertIsInstance(m.provider, list)
         self.assertIsInstance(m.provider[0].logo, list)
         self.assertIsInstance(m.provider[0].logo[0].service, list)
+
+    def _defaulter_in_object(self, cls, defaulter):
+        for defaulter_class in cls._defaulters:
+            if defaulter_class.__class__.__name__ == defaulter:
+                return True
+        return False    
+
+    def test_auto_present(self):
+        self.assertFalse(self._defaulter_in_object(Annotation, "AutoItems"), "Annotations should not have AutoItems")
+        self.assertTrue(self._defaulter_in_object(Manifest, "AutoItems"), f"Expected Manifest to have AutoItems. It had: {Manifest._defaulters}")
+
+        Manifest(label="string")
+
+        self.assertTrue(self._defaulter_in_object(Manifest, "AutoItems"), f"Expected second call to create Manifest to also have AutoItems. It had: {Manifest._defaulters}")
+
+        self.assertTrue(self._defaulter_in_object(AccompanyingCanvas, "AutoItems"), f"Expected AccompanyingCanvas to have AutoItems. It had: {AccompanyingCanvas._defaulters}")
+        self.assertTrue(self._defaulter_in_object(PlaceholderCanvas, "AutoItems"), f"Expected PlaceholderCanvas to have AutoItems. It had: {PlaceholderCanvas._defaulters}")
+        self.assertTrue(self._defaulter_in_object(AnnotationCollection, "AutoItems"), f"Expected AnnotationCollection to have AutoItems. It had: {AnnotationCollection._defaulters}")

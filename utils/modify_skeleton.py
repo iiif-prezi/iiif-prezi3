@@ -1,13 +1,21 @@
 import json
 
 CHANGES = [
- #   {
- #       "description": "Allow extra properties on ManifestRef",
- #       "type": "insert",
- #       "before": "class ManifestRef(Reference):\n    type: constr(regex=r'^Manifest$') = 'Manifest'\n",
- #       "after": "\n\nclass CanvasRef(Reference):",
- #       "data": "\n    class Config:\n        extra = Extra.allow\n"
- #   },
+   {
+        # For some reason adding "additionalProperties": true to the schema doesn't add this...
+        "description": "Allow extra properties on Annotations",
+        "type": "replace",
+        "find": "\n\nclass Annotation(Class):",
+        "replace": "\n\nclass Annotation(Class):\n    class Config:\n        extra = Extra.allow\n"
+   },
+   {
+        # For some reason adding "additionalProperties": true to the schema doesn't add this...
+        "description": "Allow extra properties on ServiceV3",
+        "type": "replace",
+        "find": "\n\nclass ServiceV3(Class):",
+        "replace": "\n\nclass ServiceV3(Class):\n    class Config:\n        extra = Extra.allow\n"
+   }
+
  #   {
  #       "description": "Re-add RangeRef",
  #       "type": "insert",
@@ -42,16 +50,16 @@ def process_change(skeleton, change):
     return skeleton
 
 
-def modify_skeleton():
+def modify_skeleton(skeleton_file):
     print("Opening Skeleton file...")
-    skeleton = open("../iiif_prezi3/skeleton.py").read()
+    skeleton = open(skeleton_file).read()
 
     print(f"Processing {len(CHANGES)} changes")
     for change in CHANGES:
         skeleton = process_change(skeleton, change)
 
     print("Changes processed, writing out fixed Skeleton")
-    with open("../iiif_prezi3/skeleton.py", "w") as out:
+    with open(skeleton_file, "w") as out:
         out.write(skeleton)
 
 def modify_schema(schema_filename):

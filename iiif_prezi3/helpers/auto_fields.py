@@ -3,7 +3,20 @@ import uuid
 from ..config.config import Config, register_config
 from ..skeleton import (AnnotationPage, Canvas, Class, Homepage,
                         KeyValueString, ManifestRef, NavPlace, Provider,
-                        Range, Reference, AnnotationBody, ServiceV2)
+                        Range, Reference, AnnotationBody, ServiceV2, Manifest,
+                        AnnotationCollection, AccompanyingCanvas, PlaceholderCanvas,
+                        Collection)
+
+def _find_subclasses(cls):
+    seen = set()
+    stack = [cls]
+    while stack:
+        c = stack.pop()
+        if c in seen:
+            continue
+        seen.add(c)
+        yield c
+        stack.extend(c.__subclasses__())
 
 
 class AutoConfig(Config):
@@ -25,12 +38,26 @@ class Auto(object):
         cfg.helper = self
         register_config(self, name, cfg)
 
-    def register_on_class(self, *classes):
+    def register_on_class(self, *classes, include_subclasses=True):
+        """Register the _defaulters class variable on the specific class.
+        
+        If include_subclasses=True, attach to all *existing* subclasses too.
+        Otherwise, only attach to the classes passed in.
+        """
+        targets = []
         for c in classes:
-            if not hasattr(c, '_defaulters'):
-                c._defaulters = []
-            if self not in c._defaulters:
-                c._defaulters.append(self)
+            if include_subclasses:
+                targets.extend(_find_subclasses(c))
+            else:
+                targets.append(c)
+
+        for t in targets:
+            # Give the *class itself* its own list (no inherited aliasing).
+            if '_defaulters' not in t.__dict__:
+                t._defaulters = []  # owned by this class only
+
+            if self not in t._defaulters:
+                t._defaulters.append(self)
 
     def unregister_from_class(self, *classes):
         for c in classes:
@@ -181,6 +208,6 @@ allst = AutoList(allstcfg, name="Language")
 # Set up some obvious defaults
 ai.register_on_class(AnnotationPage, Class, ManifestRef)
 al.register_on_class(KeyValueString, Class, Reference, AnnotationBody, ManifestRef)
-ait.register_on_class(Canvas, Range, AnnotationPage)
+ait.register_on_class(Canvas, PlaceholderCanvas, AccompanyingCanvas, Range, AnnotationCollection, AnnotationPage, Manifest, Collection)
 alst.register_on_class(Class, AnnotationPage, AnnotationBody, ServiceV2, NavPlace, Reference, Provider)
 allst.register_on_class(Homepage)
