@@ -99,7 +99,7 @@ class TestSchema(unittest.TestCase):
         self.assertTrue(hasattr(service, "profile"), "Profile should be in service")    
 
     def test_range_behavior(self):
-        """Allow behavior on a range
+        """Allow behavior on a range.
 
         https://github.com/iiif-prezi/iiif-prezi3/issues/255
         """      
