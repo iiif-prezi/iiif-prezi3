@@ -125,3 +125,13 @@ class TestSchema(unittest.TestCase):
         annotation = Annotation(id="https://example.com", motivation="painting", body=body, target="https://iiif.io/api/cookbook/recipe/0040-image-rotation-service/canvas/p1")    
 
         self.assertTrue(hasattr(annotation, "body"))
+
+    def test_optional_selector(self):    
+        resource = SpecificResource(
+            type="SpecificResource", 
+            source="http://www.wikidata.org/entity/Q18624915", 
+        )
+
+        self.assertIsNone(resource.id, "Expected ID to be none as it hasn't been set. ")
+        self.assertTrue(hasattr(resource, "type"))
+        self.assertTrue(hasattr(resource, "source"))
