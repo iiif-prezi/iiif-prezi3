@@ -7,13 +7,6 @@ CHANGES = [
         "type": "replace",
         "find": "\n\nclass Annotation(Class):",
         "replace": "\n\nclass Annotation(Class):\n    class Config:\n        extra = Extra.allow\n"
-   },
-   {
-        # For some reason adding "additionalProperties": true to the schema doesn't add this...
-        "description": "Allow extra properties on ServiceV3",
-        "type": "replace",
-        "find": "\n\nclass ServiceV3(Class):",
-        "replace": "\n\nclass ServiceV3(Class):\n    class Config:\n        extra = Extra.allow\n"
    }
 
  #   {

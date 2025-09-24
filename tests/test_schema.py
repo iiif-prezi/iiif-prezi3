@@ -2,7 +2,7 @@ import unittest
 
 from pydantic import ValidationError
 
-from iiif_prezi3 import Manifest, Annotation, AnnotationBody, ServiceV3, ServiceV2
+from iiif_prezi3 import Manifest, Annotation, AnnotationBody, ServiceV3, ServiceV2, ImageAPISelector, SpecificResource
 
 class TestSchema(unittest.TestCase):
     """Ensure schema changes have made it to iiif_prezi3."""
@@ -96,3 +96,32 @@ class TestSchema(unittest.TestCase):
         self.assertEqual(len(service.sizes), 3, "Service should be an array of 3 items.")
 
         self.assertTrue(hasattr(service, "profile"), "Profile should be in service")    
+
+    def test_specific_resource_body(self):
+        selector = ImageAPISelector(rotation=90)
+
+        image_source = AnnotationBody(
+            id="https://iiif.io/api/image/3.0/example/reference/4ce82cef49fb16798f4c2440307c3d6f-newspaper-p2/full/max/0/default.jpg",
+            type="Image",
+            format="image/jpeg",
+            height=4999,
+            width=3536,
+        )
+
+        image_source.make_service(
+            id="https://iiif.io/api/image/3.0/example/reference/4ce82cef49fb16798f4c2440307c3d6f-newspaper-p2",
+            type="ImageService3",
+            profile="level1"
+        )
+        body = SpecificResource(
+            id="https://iiif.io/api/cookbook/recipe/0040-image-rotation-service/body/v0001-image",
+            type="SpecificResource", 
+            source=image_source, 
+            selector=selector)
+
+        self.assertTrue(hasattr(body, "source"))
+        self.assertTrue(hasattr(body, "selector"))
+
+        annotation = Annotation(id="https://example.com", motivation="painting", body=body, target="https://iiif.io/api/cookbook/recipe/0040-image-rotation-service/canvas/p1")    
+
+        self.assertTrue(hasattr(annotation, "body"))
