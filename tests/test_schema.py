@@ -2,7 +2,7 @@ import unittest
 
 from pydantic import ValidationError
 
-from iiif_prezi3 import Manifest, Annotation, AnnotationBody, ServiceV3, ServiceV2, Range
+from iiif_prezi3 import Manifest, Annotation, AnnotationBody, ServiceV3, ServiceV2, Range, ImageAPISelector, SpecificResource
 import json
 
 class TestSchema(unittest.TestCase):
@@ -110,3 +110,42 @@ class TestSchema(unittest.TestCase):
 
         data = json.loads(range.json())
         self.assertEqual("thumbnail-nav", data["behavior"][0], "Range behavior should be retained.")
+        
+    def test_specific_resource_body(self):
+        selector = ImageAPISelector(rotation=90)
+
+        image_source = AnnotationBody(
+            id="https://iiif.io/api/image/3.0/example/reference/4ce82cef49fb16798f4c2440307c3d6f-newspaper-p2/full/max/0/default.jpg",
+            type="Image",
+            format="image/jpeg",
+            height=4999,
+            width=3536,
+        )
+
+        image_source.make_service(
+            id="https://iiif.io/api/image/3.0/example/reference/4ce82cef49fb16798f4c2440307c3d6f-newspaper-p2",
+            type="ImageService3",
+            profile="level1"
+        )
+        body = SpecificResource(
+            id="https://iiif.io/api/cookbook/recipe/0040-image-rotation-service/body/v0001-image",
+            type="SpecificResource", 
+            source=image_source, 
+            selector=selector)
+
+        self.assertTrue(hasattr(body, "source"))
+        self.assertTrue(hasattr(body, "selector"))
+
+        annotation = Annotation(id="https://example.com", motivation="painting", body=body, target="https://iiif.io/api/cookbook/recipe/0040-image-rotation-service/canvas/p1")    
+
+        self.assertTrue(hasattr(annotation, "body"))
+
+    def test_optional_selector(self):    
+        resource = SpecificResource(
+            type="SpecificResource", 
+            source="http://www.wikidata.org/entity/Q18624915", 
+        )
+
+        self.assertIsNone(resource.id, "Expected ID to be none as it hasn't been set. ")
+        self.assertTrue(hasattr(resource, "type"))
+        self.assertTrue(hasattr(resource, "source"))
