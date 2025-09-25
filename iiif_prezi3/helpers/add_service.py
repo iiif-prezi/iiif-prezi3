@@ -1,7 +1,7 @@
 from ..loader import monkeypatch_schema
 from ..skeleton import (Annotation, AnnotationCollection, AnnotationPage,
                         Canvas, Collection, Manifest, Range, Resource,
-                        ResourceItem, ServiceItem, ServiceItem1)
+                        AnnotationBody, ServiceV3, ServiceV2)
 
 
 class AddService:
@@ -9,9 +9,9 @@ class AddService:
         """Add a IIIF Prezi service to the service list.
 
         Args:
-            service (ServiceItem,ServiceItem1,Service): A iiif-prezi ServiceItem.
+            service (ServiceV3,ServiceV2,Service): A iiif-prezi ServiceV3.
         """
-        if isinstance(service, (ServiceItem, ServiceItem1)):
+        if isinstance(service, (ServiceV3, ServiceV2)):
             if not self.service:
                 self.service = []
             self.service.append(service)
@@ -20,4 +20,4 @@ class AddService:
             raise TypeError("Not a valid IIIF service.")
 
 
-monkeypatch_schema([Collection, Manifest, Canvas, Range, Annotation, AnnotationPage, AnnotationCollection, Resource, ResourceItem], AddService)
+monkeypatch_schema([Collection, Manifest, Canvas, Range, Annotation, AnnotationPage, AnnotationCollection, Resource, AnnotationBody], AddService)

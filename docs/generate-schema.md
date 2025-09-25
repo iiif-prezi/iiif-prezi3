@@ -6,10 +6,25 @@ Install the datamodl-codegen program which will convert a JSON schema into pytho
 pip install datamodel-code-generator
 ```
 
-Then in the iiif-prezi3 code directory run:
+Then run:
 
 ```
-datamodel-codegen --input ../../iiif/presentation-validator/schema/iiif_3_0.json --input-file-type jsonschema --use-default --base-class base.Base  --output skeleton.py
+python utils/regenerate_skeleton.py 
 ```
 
-Replacing the path to your iiif schema file with where ever you have downloaded the [iiif_3_0.json](https://github.com/IIIF/presentation-validator/blob/master/schema/iiif_3_0.json) file.
+This will replace the [skeleton.py](https://github.com/iiif-prezi/iiif-prezi3/blob/main/iiif_prezi3/skeleton.py) file with a newly generated one. Use this script rather than running datamodel_code_gen directly because this regenreate_skeleton code makes some changes to the schema before converting and also adds some fixes to skeleton json.  
+
+The options for regenerate_skeleton.py can be seen below:
+
+```
+python utils/regenerate_skeleton.py -h
+usage: regenerate_skeleton.py [-h] [--branch BRANCH] [--yes]
+
+Prezi3 Skeleton regeneration
+
+options:
+  -h, --help       show this help message and exit
+  --branch BRANCH  IIIF presentation-validator branch to get the schema from
+  --yes, -y        Skip warning about replacing Skeleton
+```
+

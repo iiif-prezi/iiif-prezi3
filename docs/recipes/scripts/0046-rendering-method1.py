@@ -1,9 +1,9 @@
-from iiif_prezi3 import Manifest, ExternalItem, config
+from iiif_prezi3 import Manifest, LinkedResource, config
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0046-rendering"
 
-rendering = ExternalItem(
+rendering = LinkedResource(
     id="https://fixtures.iiif.io/other/UCLA/kabuki_ezukushi_rtl.pdf",
     type="Text",
     label="PDF version",

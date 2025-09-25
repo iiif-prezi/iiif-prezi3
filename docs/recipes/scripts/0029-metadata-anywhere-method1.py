@@ -1,4 +1,4 @@
-from iiif_prezi3 import Manifest, ResourceItem, AnnotationPage, Annotation, config, KeyValueString
+from iiif_prezi3 import Manifest, AnnotationBody, AnnotationPage, Annotation, config, KeyValueString
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0029-metadata-anywhere"
@@ -41,7 +41,7 @@ canvas = manifest.make_canvas(
     ]
 )
 canvas.set_hwd(**hw)
-anno_body = ResourceItem(
+anno_body = AnnotationBody(
     id="https://iiif.io/api/image/3.0/example/reference/421e65be2ce95439b3ad6ef1f2ab87a9-dee-natural/full/max/0/default.jpg",
     type="Image",
     format="image/jpeg",
@@ -74,7 +74,7 @@ canvas_2 = manifest.make_canvas(
     ]
 )
 canvas_2.set_hwd(**hw)
-anno_body_2 = ResourceItem(
+anno_body_2 = AnnotationBody(
     id="https://iiif.io/api/image/3.0/example/reference/421e65be2ce95439b3ad6ef1f2ab87a9-dee-xray/full/max/0/default.jpg",
     type="Image",
     format="image/jpeg",

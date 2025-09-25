@@ -79,6 +79,12 @@ def run_test(python_file, json_file):
             print("===Differences===")
             print(result)
             print("=================")
+
+            if args.verbose >= 2:
+                print ("Cookbook json:")
+                print (json.dumps(target, indent=4))
+                print("iiif-prezi3 json:")
+                print (json.dumps(j, indent=4))
         return False
 
 
