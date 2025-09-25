@@ -1,4 +1,4 @@
-from iiif_prezi3 import Manifest, ResourceItem, config, Annotation, AnnotationPage, CanvasRef
+from iiif_prezi3 import Manifest, AnnotationBody, config, Annotation, AnnotationPage, CanvasRef
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "it"
 base_url = "https://iiif.io/api/cookbook/recipe/0026-toc-opera"
@@ -9,7 +9,7 @@ manifest = Manifest(
 )
 manifest.add_label("The Elixir of Love", "en")
 canvas = manifest.make_canvas(id=f"{base_url}/canvas/1")
-anno_body = ResourceItem(
+anno_body = AnnotationBody(
     id="https://fixtures.iiif.io/video/indiana/donizetti-elixir/vae0637_accessH264_low.mp4",
     type="Video",
     format="video/mp4"

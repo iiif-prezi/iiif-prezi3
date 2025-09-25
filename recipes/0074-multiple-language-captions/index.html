@@ -1252,7 +1252,7 @@
 </tbody>
 </table>
 <h3 id="method-1-construct-supplementing-annotation-using-the-make_annotation-helper-and-a-dictionary-of-the-body-properties">Method 1 - Construct Supplementing Annotation Using the <code>make_annotation</code> helper and a dictionary of the <code>body</code> properties</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">ResourceItem</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">KeyValueString</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">Choice</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">AnnotationBody</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">KeyValueString</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">Choice</span>
 
 <span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
 <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0074-multiple-language-captions&quot;</span>
@@ -1268,7 +1268,7 @@
 <span class="n">canvas</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas&quot;</span>
 <span class="p">)</span>
-<span class="n">video_resource</span> <span class="o">=</span> <span class="n">ResourceItem</span><span class="p">(</span>
+<span class="n">video_resource</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://fixtures.iiif.io/video/europeana/Per_voi_signore_Modelli_francesi.mp4&quot;</span><span class="p">,</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Video&quot;</span><span class="p">,</span>
     <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;video/mp4&quot;</span>
@@ -1288,14 +1288,14 @@
 <span class="n">annotation_page</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">painting_annotation</span><span class="p">)</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">annotation_page</span><span class="p">)</span>
 
-<span class="n">italian_captions</span> <span class="o">=</span> <span class="n">ResourceItem</span><span class="p">(</span>
+<span class="n">italian_captions</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/Per_voi_signore_Modelli_francesi_it.vtt&quot;</span><span class="p">,</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Text&quot;</span><span class="p">,</span>
     <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;text/vtt&quot;</span><span class="p">,</span>
     <span class="n">language</span><span class="o">=</span><span class="s2">&quot;it&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">italian_captions</span><span class="o">.</span><span class="n">add_label</span><span class="p">(</span><span class="n">language</span><span class="o">=</span><span class="s2">&quot;it&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Sottotitoli in formato WebVTT&quot;</span><span class="p">)</span>
-<span class="n">english_captions</span> <span class="o">=</span> <span class="n">ResourceItem</span><span class="p">(</span>
+<span class="n">english_captions</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/Per_voi_signore_Modelli_francesi_en.vtt&quot;</span><span class="p">,</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Text&quot;</span><span class="p">,</span>
     <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;text/vtt&quot;</span><span class="p">,</span>

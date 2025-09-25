@@ -1252,7 +1252,7 @@
 </tbody>
 </table>
 <h3 id="method-1-using-make_range-and-add_item-helpers">Method 1 - Using <code>make_range</code> and <code>add_item</code> helpers</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">ResourceItem</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">CanvasRef</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">AnnotationBody</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">CanvasRef</span>
 
 <span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;it&quot;</span>
 <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0026-toc-opera&quot;</span>
@@ -1263,7 +1263,7 @@
 <span class="p">)</span>
 <span class="n">manifest</span><span class="o">.</span><span class="n">add_label</span><span class="p">(</span><span class="s2">&quot;The Elixir of Love&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">)</span>
 <span class="n">canvas</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/1&quot;</span><span class="p">)</span>
-<span class="n">anno_body</span> <span class="o">=</span> <span class="n">ResourceItem</span><span class="p">(</span>
+<span class="n">anno_body</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://fixtures.iiif.io/video/indiana/donizetti-elixir/vae0637_accessH264_low.mp4&quot;</span><span class="p">,</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Video&quot;</span><span class="p">,</span>
     <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;video/mp4&quot;</span>

@@ -1252,7 +1252,7 @@
 </tbody>
 </table>
 <h3 id="method-1-use-choice-and-add_item-helper">Method 1 - Use Choice and add_item() helper</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">ResourceItem</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">Choice</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">AnnotationBody</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">Choice</span>
 
 <span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
 <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0033-choice&quot;</span>
@@ -1267,7 +1267,7 @@
     <span class="n">width</span><span class="o">=</span><span class="mi">2000</span>
 <span class="p">)</span>
 
-<span class="n">natural_light</span> <span class="o">=</span> <span class="n">ResourceItem</span><span class="p">(</span>
+<span class="n">natural_light</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/421e65be2ce95439b3ad6ef1f2ab87a9-dee-natural/full/max/0/default.jpg&quot;</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Natural Light&quot;</span><span class="p">,</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span>
@@ -1280,7 +1280,7 @@
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;ImageService3&quot;</span><span class="p">,</span>
     <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;level1&quot;</span>
 <span class="p">)</span>
-<span class="n">x_ray</span> <span class="o">=</span> <span class="n">ResourceItem</span><span class="p">(</span>
+<span class="n">x_ray</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/421e65be2ce95439b3ad6ef1f2ab87a9-dee-xray/full/max/0/default.jpg&quot;</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;X-Ray&quot;</span><span class="p">,</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span>

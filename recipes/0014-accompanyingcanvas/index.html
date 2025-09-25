@@ -1252,7 +1252,7 @@
 </tbody>
 </table>
 <h3 id="method-1-use-accompanyingcanvas-and-add_item-helper">Method 1 - Use AccompanyingCanvas and add_item() helper</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">ResourceItem</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">AccompanyingCanvas</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">AnnotationBody</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">AccompanyingCanvas</span>
 
 <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0014-accompanyingcanvas&quot;</span>
 
@@ -1267,7 +1267,7 @@
     <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json&quot;</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Partial audio recording of Gustav Mahler&#39;s _Symphony No. 3_&quot;</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">ac_anno_body</span> <span class="o">=</span> <span class="n">ResourceItem</span><span class="p">(</span>
+<span class="n">ac_anno_body</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/4b45bba3ea612ee46f5371ce84dbcd89-mahler-0/full/,998/0/default.jpg&quot;</span><span class="p">,</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span>
     <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span>
@@ -1296,7 +1296,7 @@
     <span class="n">duration</span><span class="o">=</span><span class="mf">1985.024</span><span class="p">,</span>
     <span class="n">accompanyingCanvas</span><span class="o">=</span><span class="n">accompanying_canvas</span>
 <span class="p">)</span>
-<span class="n">anno_body</span> <span class="o">=</span> <span class="n">ResourceItem</span><span class="p">(</span>
+<span class="n">anno_body</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://fixtures.iiif.io/audio/indiana/mahler-symphony-3/CD1/medium/128Kbps.mp4&quot;</span><span class="p">,</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Sound&quot;</span><span class="p">,</span>
     <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;video/mp4&quot;</span><span class="p">,</span>

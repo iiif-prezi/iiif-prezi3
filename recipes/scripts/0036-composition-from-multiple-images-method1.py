@@ -1,4 +1,4 @@
-from iiif_prezi3 import Manifest, ResourceItem, AnnotationPage, Annotation, config
+from iiif_prezi3 import Manifest, AnnotationBody, AnnotationPage, Annotation, config
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0036-composition-from-multiple-images"
@@ -14,7 +14,7 @@ canvas = manifest.make_canvas(
 )
 canvas.add_label(language="none", value="f. 033v-034r [Chilpéric Ier tue Galswinthe, se remarie et est assassiné]")
 
-anno_body_a = ResourceItem(
+anno_body_a = AnnotationBody(
     id="https://iiif.io/api/image/3.0/example/reference/899da506920824588764bc12b10fc800-bnf_chateauroux/full/max/0/default.jpg",
     type="Image",
     format="image/jpeg",
@@ -36,7 +36,7 @@ annotation_a = Annotation(
     target=canvas.id
 )
 
-anno_body_b = ResourceItem(
+anno_body_b = AnnotationBody(
     id="https://iiif.io/api/image/3.0/example/reference/899da506920824588764bc12b10fc800-bnf_chateauroux_miniature/full/max/0/default.jpg",
     type="Image",
     format="image/jpeg",

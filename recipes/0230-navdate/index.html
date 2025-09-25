@@ -1456,7 +1456,7 @@
 </code></pre></div>
 <h4 id="example-3-collection">Example 3 - Collection</h4>
 <p>Here we can make use of the fact that <code>iiif-prezi3</code> will automatically turn a Manifest into a reference when it is added to a Collection object.
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Collection</span><span class="p">,</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">ResourceItem</span><span class="p">,</span> <span class="n">config</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Collection</span><span class="p">,</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">AnnotationBody</span><span class="p">,</span> <span class="n">config</span>
 <span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
 
 <span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
@@ -1483,7 +1483,7 @@
 
 <span class="n">collection</span> <span class="o">=</span> <span class="n">Collection</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/navdate-collection.json&quot;</span><span class="p">,</span>
                         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Chesapeake and Ohio Canal map and guide pamphlets&quot;</span><span class="p">)</span>
-<span class="n">thumbnail</span> <span class="o">=</span> <span class="n">ResourceItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-88695674/full/max/0/default.jpg&quot;</span><span class="p">,</span>
+<span class="n">thumbnail</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-88695674/full/max/0/default.jpg&quot;</span><span class="p">,</span>
                          <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span>
                          <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span>
                          <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
@@ -1544,14 +1544,14 @@
 </code></pre></div>
 <h4 id="example-3-collection_1">Example 3 - Collection</h4>
 <p>To show the different possible approaches, here we will build the Collection object manually using the <code>ManifestRef</code> class.
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Collection</span><span class="p">,</span> <span class="n">ManifestRef</span><span class="p">,</span> <span class="n">ResourceItem</span><span class="p">,</span> <span class="n">config</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Collection</span><span class="p">,</span> <span class="n">ManifestRef</span><span class="p">,</span> <span class="n">AnnotationBody</span><span class="p">,</span> <span class="n">config</span>
 
 <span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
 <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0230-navdate&quot;</span>
 
 <span class="n">collection</span> <span class="o">=</span> <span class="n">Collection</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/navdate-collection.json&quot;</span><span class="p">,</span>
                         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Chesapeake and Ohio Canal map and guide pamphlets&quot;</span><span class="p">)</span>
-<span class="n">thumbnail</span> <span class="o">=</span> <span class="n">ResourceItem</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-88695674/full/max/0/default.jpg&quot;</span><span class="p">,</span>
+<span class="n">thumbnail</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-88695674/full/max/0/default.jpg&quot;</span><span class="p">,</span>
                          <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span>
                          <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span>
                          <span class="n">height</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>

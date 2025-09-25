@@ -1252,12 +1252,12 @@
 </tbody>
 </table>
 <h3 id="method-1-add-external-item-with-add_rendering_helper">Method 1 - Add External Item with add_rendering_helper</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">ExternalItem</span><span class="p">,</span> <span class="n">config</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">LinkedResource</span><span class="p">,</span> <span class="n">config</span>
 
 <span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
 <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0046-rendering&quot;</span>
 
-<span class="n">rendering</span> <span class="o">=</span> <span class="n">ExternalItem</span><span class="p">(</span>
+<span class="n">rendering</span> <span class="o">=</span> <span class="n">LinkedResource</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://fixtures.iiif.io/other/UCLA/kabuki_ezukushi_rtl.pdf&quot;</span><span class="p">,</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Text&quot;</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;PDF version&quot;</span><span class="p">,</span>

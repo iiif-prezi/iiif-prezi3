@@ -1252,12 +1252,12 @@
 </tbody>
 </table>
 <h3 id="method-1-add-homepage-as-homepageitem">Method 1 - Add Homepage as HomepageItem</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">ResourceItem</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">HomepageItem</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">AnnotationBody</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">Homepage</span>
 
 <span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span>
 <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0047-homepage&quot;</span>
 
-<span class="n">homepage</span> <span class="o">=</span> <span class="n">HomepageItem</span><span class="p">(</span>
+<span class="n">homepage</span> <span class="o">=</span> <span class="n">Homepage</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://www.getty.edu/art/collection/object/103RQQ&quot;</span><span class="p">,</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Text&quot;</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Home page at the Getty Museum Collection&quot;</span><span class="p">]},</span>
@@ -1273,7 +1273,7 @@
     <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/1&quot;</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Front&quot;</span>
 <span class="p">)</span>
-<span class="n">anno_body</span> <span class="o">=</span> <span class="n">ResourceItem</span><span class="p">(</span>
+<span class="n">anno_body</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/28473c77da3deebe4375c3a50572d9d3-laocoon/full/!500,500/0/default.jpg&quot;</span><span class="p">,</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span>
     <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/jpeg&quot;</span>

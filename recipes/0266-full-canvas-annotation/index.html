@@ -1250,7 +1250,7 @@
 </tbody>
 </table>
 <h3 id="method-1-use-make_annotation-helper">Method 1 - Use make_annotation() helper</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">ResourceItem</span><span class="p">,</span> <span class="n">ResourceItem1</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">config</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">AnnotationBody</span><span class="p">,</span> <span class="n">TextualBody</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">config</span>
 
 <span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
 <span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0266-full-canvas-annotation&quot;</span>
@@ -1263,7 +1263,7 @@
 <span class="n">anno_page</span> <span class="o">=</span> <span class="n">AnnotationPage</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas-1/annopage-1&quot;</span>
 <span class="p">)</span>
-<span class="n">painting_body</span> <span class="o">=</span> <span class="n">ResourceItem</span><span class="p">(</span>
+<span class="n">painting_body</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span>
     <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/918ecd18c2592080851777620de9bcb5-gottingen/full/max/0/default.jpg&quot;</span><span class="p">,</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span>
     <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span>
@@ -1287,7 +1287,7 @@
 <span class="n">painting_body</span><span class="o">.</span><span class="n">set_hwd</span><span class="p">(</span><span class="o">**</span><span class="n">hw</span><span class="p">)</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">set_hwd</span><span class="p">(</span><span class="o">**</span><span class="n">hw</span><span class="p">)</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">anno_page</span><span class="p">)</span>
-<span class="n">anno_body</span> <span class="o">=</span> <span class="n">ResourceItem1</span><span class="p">(</span>
+<span class="n">anno_body</span> <span class="o">=</span> <span class="n">TextualBody</span><span class="p">(</span>
     <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;TextualBody&quot;</span><span class="p">,</span>
     <span class="n">language</span><span class="o">=</span><span class="s2">&quot;de&quot;</span><span class="p">,</span>
     <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>

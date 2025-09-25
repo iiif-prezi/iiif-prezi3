@@ -1,9 +1,9 @@
-from iiif_prezi3 import Manifest, ResourceItem, AnnotationPage, Annotation, config, HomepageItem
+from iiif_prezi3 import Manifest, AnnotationBody, AnnotationPage, Annotation, config, Homepage
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "none"
 base_url = "https://iiif.io/api/cookbook/recipe/0047-homepage"
 
-homepage = HomepageItem(
+homepage = Homepage(
     id="https://www.getty.edu/art/collection/object/103RQQ",
     type="Text",
     label={"en": ["Home page at the Getty Museum Collection"]},
@@ -19,7 +19,7 @@ canvas = manifest.make_canvas(
     id=f"{base_url}/canvas/1",
     label="Front"
 )
-anno_body = ResourceItem(
+anno_body = AnnotationBody(
     id="https://iiif.io/api/image/3.0/example/reference/28473c77da3deebe4375c3a50572d9d3-laocoon/full/!500,500/0/default.jpg",
     type="Image",
     format="image/jpeg"
