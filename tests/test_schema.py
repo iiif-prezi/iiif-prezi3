@@ -1,8 +1,12 @@
+import json
 import unittest
 
 from pydantic import ValidationError
 
-from iiif_prezi3 import Manifest, Annotation, AnnotationBody, ServiceV3, ServiceV2, ImageAPISelector, SpecificResource
+from iiif_prezi3 import (Annotation, AnnotationBody, ImageAPISelector,
+                         Manifest, Range, ServiceV2, ServiceV3,
+                         SpecificResource)
+
 
 class TestSchema(unittest.TestCase):
     """Ensure schema changes have made it to iiif_prezi3."""
@@ -14,7 +18,6 @@ class TestSchema(unittest.TestCase):
 
         with self.assertRaises(ValidationError):
             manifest.items = None
-
 
     def test_extra_annotation_fields(self):
         """Annotation class should allow extra fields for Web Annotation Data Model.
@@ -47,7 +50,7 @@ class TestSchema(unittest.TestCase):
         """Allow extra fields on a service.
 
         https://github.com/iiif-prezi/iiif-prezi3/issues/204
-        """    
+        """
         service = ServiceV3(id="https://fixtures.iiif.io/other/level0/Glen/photos/gottingen", type="ImageService3", profile="level0")
 
         service.sizes = [
@@ -64,17 +67,14 @@ class TestSchema(unittest.TestCase):
                 "height": 378
             }
         ]
-    
+
         self.assertTrue(hasattr(service, "sizes"), "Service should retain sizes for an image service")
         self.assertEqual(len(service.sizes), 3, "Service should be an array of 3 items.")
 
         self.assertTrue(hasattr(service, "profile"), "Profile should be in service")
 
     def test_extra_servicev2_fields(self):
-        """Allow extra fields on a service.
-
-        https://github.com/iiif-prezi/iiif-prezi3/issues/204
-        """    
+        """Allow extra fields on a service."""
         service = ServiceV2(id="https://fixtures.iiif.io/other/level0/Glen/photos/gottingen", type="ImageService2", profile="level0")
 
         service.sizes = [
@@ -91,11 +91,20 @@ class TestSchema(unittest.TestCase):
                 "height": 378
             }
         ]
-    
+
         self.assertTrue(hasattr(service, "sizes"), "Service should retain sizes for an image service")
         self.assertEqual(len(service.sizes), 3, "Service should be an array of 3 items.")
 
-        self.assertTrue(hasattr(service, "profile"), "Profile should be in service")    
+        self.assertTrue(hasattr(service, "profile"), "Profile should be in service")
+
+    def test_range_behavior(self):
+        """Allow behavior on a range."""
+        range = Range(id="https://example.com/range/1")
+        range.label = {"en": ["Thumbnail Navigation"]}
+        range.behavior = "thumbnail-nav"
+
+        data = json.loads(range.json())
+        self.assertEqual("thumbnail-nav", data["behavior"][0], "Range behavior should be retained.")
 
     def test_specific_resource_body(self):
         selector = ImageAPISelector(rotation=90)
@@ -115,21 +124,21 @@ class TestSchema(unittest.TestCase):
         )
         body = SpecificResource(
             id="https://iiif.io/api/cookbook/recipe/0040-image-rotation-service/body/v0001-image",
-            type="SpecificResource", 
-            source=image_source, 
+            type="SpecificResource",
+            source=image_source,
             selector=selector)
 
         self.assertTrue(hasattr(body, "source"))
         self.assertTrue(hasattr(body, "selector"))
 
-        annotation = Annotation(id="https://example.com", motivation="painting", body=body, target="https://iiif.io/api/cookbook/recipe/0040-image-rotation-service/canvas/p1")    
+        annotation = Annotation(id="https://example.com", motivation="painting", body=body, target="https://iiif.io/api/cookbook/recipe/0040-image-rotation-service/canvas/p1")
 
         self.assertTrue(hasattr(annotation, "body"))
 
-    def test_optional_selector(self):    
+    def test_optional_selector(self):
         resource = SpecificResource(
-            type="SpecificResource", 
-            source="http://www.wikidata.org/entity/Q18624915", 
+            type="SpecificResource",
+            source="http://www.wikidata.org/entity/Q18624915",
         )
 
         self.assertIsNone(resource.id, "Expected ID to be none as it hasn't been set. ")
