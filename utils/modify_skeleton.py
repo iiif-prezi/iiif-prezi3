@@ -1,15 +1,32 @@
 import json
 
 CHANGES = [
-   {
-        # For some reason adding "additionalProperties": true to the schema doesn't add this...
+    {
         "description": "Allow extra properties on Annotations",
         "type": "replace",
         "find": "\n\nclass Annotation(Class):",
-        "replace": "\n\nclass Annotation(Class):\n    class Config:\n        extra = Extra.allow\n"
-   }
+        "replace": "\n\nclass Annotation(Class):\n    model_config = ConfigDict(extra='allow')\n"
+    },
+    {
+        "description": "Allow extra properties on ServiceV3",
+        "type": "replace",
+        "find": "\n\nclass ServiceV3(Class):",
+        "replace": "\n\nclass ServiceV3(Class):\n    model_config = ConfigDict(extra='allow')\n"
+    },
+    {
+        "description": "Allow extra properties on ServiceV2",
+        "type": "replace",
+        "find": "\n\nclass ServiceV2(Base):",
+        "replace": "\n\nclass ServiceV2(Base):\n    model_config = ConfigDict(extra='allow')\n"
+    },
+    {
+        "description": "Allow extra properties on Reference",
+        "type": "replace",
+        "find": "\n\nclass Reference(Base):",
+        "replace": "\n\nclass Reference(Base):\n    model_config = ConfigDict(extra='allow')\n"
+    }
 
- #   {
+    #   {
  #       "description": "Re-add RangeRef",
  #       "type": "insert",
  #       "before": "class CanvasRef(Reference):\n    type: Optional[constr(regex=r'^Canvas$')] = None\n",
