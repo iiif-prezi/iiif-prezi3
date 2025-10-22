@@ -1,6 +1,6 @@
 import unittest
 
-from iiif_prezi3 import AnnotationPage, Canvas, AnnotationBody
+from iiif_prezi3 import AnnotationBody, AnnotationPage, Canvas
 
 
 class CanvasHelpersTests(unittest.TestCase):
@@ -16,8 +16,8 @@ class CanvasHelpersTests(unittest.TestCase):
         self.assertEqual(len(self.canvas.items), 1)
         self.assertEqual(anno_page.items[0].id, 'http://iiif.example.org/prezi/Annotation/0')
         self.assertEqual(anno_page.items[0].target, 'http://iiif.example.org/prezi/Canvas/0')
-        self.assertEqual(anno_page.items[0].dict()["body"]["id"], 'http://iiif.example.org/prezi/Image/0')
-        self.assertEqual(anno_page.items[0].dict()["body"]["height"], 400)
+        self.assertEqual(anno_page.items[0].model_dump(mode="json")["body"]["id"], 'http://iiif.example.org/prezi/Image/0')
+        self.assertEqual(anno_page.items[0].model_dump(mode="json")["body"]["height"], 400)
 
     def test_add_thumbnail(self):
         canvas = self.canvas.add_thumbnail(
