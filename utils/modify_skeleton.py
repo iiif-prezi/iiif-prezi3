@@ -4,7 +4,7 @@ CHANGES = [
     {
         "description": "Fix Annotation model_config",
         "type": "replace",
-        "find": "class Annotation(Class):\n    model_config = ConfigDict(extra='allow')\n\n    type:",
+        "find": "class Annotation(Class):\n    type:",
         "replace": "class Annotation(Class):\n    model_config = ConfigDict(extra='allow', populate_by_name=True)\n\n    type:"
     },
     {

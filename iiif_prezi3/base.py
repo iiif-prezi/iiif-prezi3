@@ -27,7 +27,16 @@ class Base(BaseModel):
         try:
             val = super(Base, self).__getattribute__(prop)
         except AttributeError:
-            super_fields = super(Base, self).__getattribute__("model_fields")
+            # Check if it's in __pydantic_extra__ before giving up
+            try:
+                pydantic_extra = super(Base, self).__getattribute__('__pydantic_extra__')
+                if pydantic_extra and prop in pydantic_extra:
+                    return pydantic_extra[prop]
+            except (AttributeError, KeyError):
+                pass
+
+                # Try the __root__ fallback for v1 compatibility
+            super_fields = self.__class__.model_fields
             if "__root__" in super_fields:
                 obj = super(Base, self).__getattribute__("__root__")
                 val = super(Base, obj).__getattribute__(prop)
