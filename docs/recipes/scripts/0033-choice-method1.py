@@ -1,4 +1,4 @@
-from iiif_prezi3 import Manifest, AnnotationBody, AnnotationPage, Annotation, config, Choice
+from iiif_prezi3 import Manifest, AnnotationBody, AnnotationPage, Annotation, config, Body
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0033-choice"
@@ -39,8 +39,9 @@ x_ray.make_service(
     type="ImageService3",
     profile="level1"
 )
-choice = Choice(
+choice = Body(
     items=[natural_light, x_ray],
+    type="Choice"
 )
 anno_page = AnnotationPage(
     id=f"{base_url}/page/p1/1",
