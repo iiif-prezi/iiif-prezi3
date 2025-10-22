@@ -24,6 +24,12 @@ CHANGES = [
         "type": "replace",
         "find": "class Reference(Base):\n    model_config = ConfigDict(extra='allow')\n\n    model_config = ConfigDict(\n        extra='allow',\n    )",
         "replace": "class Reference(Base):\n    model_config = ConfigDict(extra='allow', populate_by_name=True)"
+    },
+    {
+        "description": "Add validation_alias to ServiceV2 fields",
+        "type": "replace",
+        "find": "    id: Id = Field(..., alias='@id')\n    type: str = Field(..., alias='@type')",
+        "replace": "    id: Id = Field(..., alias='@id', validation_alias='id')\n    type: str = Field(..., alias='@type', validation_alias='type')"
     }
 ]
 
