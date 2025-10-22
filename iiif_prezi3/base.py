@@ -14,20 +14,20 @@ def _inherit_defaulters(cls):
 
     return defaulters
 
+
 class Base(BaseModel):
-    class Base(BaseModel):
-        model_config = ConfigDict(
-            validate_assignment=True,
-            validate_default=True,
-            strict=True,
-            populate_by_name=True,
-        )
+    model_config = ConfigDict(
+        validate_assignment=True,
+        validate_default=True,
+        strict=True,
+        populate_by_name=True,
+    )
 
     def __getattribute__(self, prop):
         try:
             val = super(Base, self).__getattribute__(prop)
         except AttributeError:
-            super_fields = super(Base, self).__getattribute__("model_fields")  # Changed from __fields__
+            super_fields = super(Base, self).__getattribute__("model_fields")
             if "__root__" in super_fields:
                 obj = super(Base, self).__getattribute__("__root__")
                 val = super(Base, obj).__getattribute__(prop)
@@ -43,7 +43,7 @@ class Base(BaseModel):
             else:
                 return root_val
 
-                # Handle Pydantic v1 __root__ (for backwards compatibility during migration)
+                # Handle Pydantic v1 __root__ (for backwards compatibility)
         if hasattr(val, '__root__'):
             if type(val.__root__) in [AnyUrl]:
                 return str(val.__root__)
@@ -61,7 +61,7 @@ class Base(BaseModel):
         super().__init__(**kw)
 
     def __setattr__(self, key, value):
-         # let defaulters manipulate the value before pydantic sets it
+        # let defaulters manipulate the value before pydantic sets it
         for df in _inherit_defaulters(self.__class__):
             if df.manipulates(key):
                 new = df.manipulate_value(self, value)
@@ -69,7 +69,7 @@ class Base(BaseModel):
                     value = new
                     break
 
-        # and now pass upwards for pydantic to validate and set
+                    # and now pass upwards for pydantic to validate and set
         super().__setattr__(key, value)
 
     def json(self, exclude_context=False, **kwargs):
