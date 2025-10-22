@@ -1,11 +1,12 @@
 import uuid
 
 from ..config.config import Config, register_config
-from ..skeleton import (AnnotationPage, Canvas, Class, Homepage,
-                        KeyValueString, ManifestRef, NavPlace, Provider,
-                        Range, Reference, AnnotationBody, ServiceV2, Manifest,
-                        AnnotationCollection, AccompanyingCanvas, PlaceholderCanvas,
-                        Collection)
+from ..skeleton import (AccompanyingCanvas, AnnotationBody,
+                        AnnotationCollection, AnnotationPage, Canvas, Class,
+                        Collection, Homepage, KeyValueString, Manifest,
+                        ManifestRef, NavPlace, PlaceholderCanvas, Provider,
+                        Range, Reference, ServiceV2)
+
 
 def _find_subclasses(cls):
     seen = set()

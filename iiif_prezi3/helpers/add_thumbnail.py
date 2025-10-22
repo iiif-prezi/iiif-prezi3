@@ -1,8 +1,8 @@
 from ..loader import monkeypatch_schema
-from ..skeleton import (AccompanyingCanvas, Annotation, AnnotationCollection,
-                        AnnotationPage, Canvas, Collection, Manifest,
-                        PlaceholderCanvas, Range, Reference, AnnotationBody,
-                        ServiceV3, ServiceV2)
+from ..skeleton import (AccompanyingCanvas, Annotation, AnnotationBody,
+                        AnnotationCollection, AnnotationPage, Canvas,
+                        Collection, Manifest, PlaceholderCanvas, Range,
+                        Reference, ServiceV2, ServiceV3)
 
 
 class AddThumbnail:
