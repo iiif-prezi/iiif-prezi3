@@ -1,8 +1,8 @@
 import unittest
 
-from iiif_prezi3 import (Annotation, AnnotationCollection, AnnotationPage,
-                         Canvas, Collection, Manifest, Range, AnnotationBody,
-                         ServiceV3, ServiceV2)
+from iiif_prezi3 import (Annotation, AnnotationBody, AnnotationCollection,
+                         AnnotationPage, Canvas, Collection, Manifest, Range,
+                         ServiceV2, ServiceV3)
 
 
 class MakeServiceTest(unittest.TestCase):
