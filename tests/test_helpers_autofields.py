@@ -1,6 +1,9 @@
 import unittest
 
-from iiif_prezi3 import Collection, Manifest, config, Annotation, AccompanyingCanvas, AnnotationCollection, PlaceholderCanvas, Canvas, AnnotationBody, AnnotationPage
+from iiif_prezi3 import (AccompanyingCanvas, Annotation, AnnotationBody,
+                         AnnotationCollection, AnnotationPage, Canvas,
+                         Collection, Manifest, PlaceholderCanvas, config)
+
 
 class AutoFieldsHelpersTests(unittest.TestCase):
 
@@ -109,7 +112,7 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         m = Manifest(label="Nested Autolist Test", provider={"logo": {"id": "https://example.org/logo", "type": "Image", "format": "image/png", "service": {"type": "ImageService3", "profile": "level2"}}})
         self.assertIsInstance(m.provider, list)
         self.assertIsInstance(m.provider[0].logo, list)
-        self.assertIsInstance(m.provider[0].logo[0].service, list)
+        self.assertIsInstance(m.provider[0].logo[0].root.service, list)
 
     def _defaulter_in_object(self, cls, defaulter):
         for defaulter_class in cls._defaulters:
