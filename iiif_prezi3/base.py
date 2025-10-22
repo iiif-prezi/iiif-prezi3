@@ -2,6 +2,7 @@ import json
 
 from pydantic import AnyUrl, BaseModel, ConfigDict
 
+
 def _inherit_defaulters(cls):
     # Merge bases→derived, dedup while preserving first occurrence
     seen, defaulters = set(), []
@@ -17,10 +18,9 @@ class Base(BaseModel):
     class Base(BaseModel):
         model_config = ConfigDict(
             validate_assignment=True,
-            # validate_all removed in v2 - now default behavior
-            # copy_on_model_validation removed in v2
-            # smart_union removed in v2 - now default behavior
-            populate_by_name=True,  # replaces allow_population_by_field_name
+            validate_default=True,
+            strict=True,
+            populate_by_name=True,
         )
 
     def __getattribute__(self, prop):
@@ -34,7 +34,16 @@ class Base(BaseModel):
             else:
                 raise
 
-                # __root__ handling remains similar
+                # Handle Pydantic v2 RootModel
+        from pydantic import RootModel
+        if isinstance(val, RootModel):
+            root_val = val.root
+            if isinstance(root_val, AnyUrl):
+                return str(root_val)
+            else:
+                return root_val
+
+                # Handle Pydantic v1 __root__ (for backwards compatibility during migration)
         if hasattr(val, '__root__'):
             if type(val.__root__) in [AnyUrl]:
                 return str(val.__root__)

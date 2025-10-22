@@ -1,10 +1,10 @@
+import argparse
 import os
 import shlex
 import subprocess
-import argparse
 
 import requests
-from modify_skeleton import modify_skeleton, modify_schema
+from modify_skeleton import modify_schema, modify_skeleton
 
 # Using a version from the branch 
 LOCAL_SCHEMA="iiif_3_0.json"
@@ -33,7 +33,6 @@ if __name__ == "__main__":
             exit()
 
     SCHEMA_LOCATION = f"https://raw.githubusercontent.com/IIIF/presentation-validator/refs/heads/{args.branch}/schema/iiif_3_0.json"
-    # DATAMODEL_COMMAND = f"datamodel-codegen --input {LOCAL_SCHEMA} --input-file-type jsonschema --use-default --remove-special-field-name-prefix --strict-nullable --base-class .base.Base --use-title-as-name --output {skeleton_file}"
     DATAMODEL_COMMAND = f"datamodel-codegen --input {LOCAL_SCHEMA} --input-file-type jsonschema --use-default --remove-special-field-name-prefix --strict-nullable --base-class .base.Base --use-title-as-name --output-model-type pydantic_v2.BaseModel --output {skeleton_file}"
 
     print(f"Downloading latest JSON Schema from the {args.branch} branch...")
