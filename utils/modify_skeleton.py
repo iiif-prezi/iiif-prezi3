@@ -2,53 +2,30 @@ import json
 
 CHANGES = [
     {
-        "description": "Ensure from __future__ import annotations is present",
-        "type": "insert",
-        "before": "from datetime import datetime",
-        "after": "from datetime import datetime",
-        "data": "from __future__ import annotations\n\n"
+        "description": "Fix Annotation model_config",
+        "type": "replace",
+        "find": "class Annotation(Class):\n    model_config = ConfigDict(extra='allow')\n\n    type:",
+        "replace": "class Annotation(Class):\n    model_config = ConfigDict(extra='allow', populate_by_name=True)\n\n    type:"
     },
     {
-        "description": "Allow extra properties on Annotations",
+        "description": "Fix ServiceV3 duplicate model_config",
         "type": "replace",
-        "find": "\n\nclass Annotation(Class):",
-        "replace": "\n\nclass Annotation(Class):\n    model_config = ConfigDict(extra='allow')\n"
+        "find": "class ServiceV3(Class):\n    model_config = ConfigDict(extra='allow')\n\n    model_config = ConfigDict(\n        extra='allow',\n    )",
+        "replace": "class ServiceV3(Class):\n    model_config = ConfigDict(extra='allow', populate_by_name=True)"
     },
     {
-        "description": "Allow extra properties on ServiceV3",
+        "description": "Fix ServiceV2 duplicate model_config",
         "type": "replace",
-        "find": "\n\nclass ServiceV3(Class):",
-        "replace": "\n\nclass ServiceV3(Class):\n    model_config = ConfigDict(extra='allow')\n"
+        "find": "class ServiceV2(Base):\n    model_config = ConfigDict(extra='allow')\n\n    model_config = ConfigDict(\n        extra='allow',\n    )",
+        "replace": "class ServiceV2(Base):\n    model_config = ConfigDict(extra='allow', populate_by_name=True)"
     },
     {
-        "description": "Allow extra properties on ServiceV2",
+        "description": "Fix Reference duplicate model_config",
         "type": "replace",
-        "find": "\n\nclass ServiceV2(Base):",
-        "replace": "\n\nclass ServiceV2(Base):\n    model_config = ConfigDict(extra='allow')\n"
-    },
-    {
-        "description": "Allow extra properties on Reference",
-        "type": "replace",
-        "find": "\n\nclass Reference(Base):",
-        "replace": "\n\nclass Reference(Base):\n    model_config = ConfigDict(extra='allow')\n"
-    },
-    {
-        "description": "Quote forward references in AbstractIIIFResource",
-        "type": "replace",
-        "find": "class AbstractIIIFResource(RootModel[Union[Manifest, Collection, AnnotationCollection, AnnotationPage]]):",
-        "replace": "class AbstractIIIFResource(RootModel[Union['Manifest', 'Collection', 'AnnotationCollection', 'AnnotationPage']]):"
+        "find": "class Reference(Base):\n    model_config = ConfigDict(extra='allow')\n\n    model_config = ConfigDict(\n        extra='allow',\n    )",
+        "replace": "class Reference(Base):\n    model_config = ConfigDict(extra='allow', populate_by_name=True)"
     }
-
-
-    #   {
- #       "description": "Re-add RangeRef",
- #       "type": "insert",
- #       "before": "class CanvasRef(Reference):\n    type: Optional[constr(regex=r'^Canvas$')] = None\n",
- #       "after": "\n\nModel.update_forward_refs()",
- #       "data": "\n\nclass RangeRef(Reference):\n    type: Optional[constr(regex=r'^Range$')] = None\n"
- #   }
 ]
-
 
 def process_change(skeleton, change):
     print(f"Processing change: {change['description']} (Type: {change['type']})")
