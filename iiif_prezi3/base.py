@@ -1,6 +1,6 @@
 import json
 
-from pydantic import AnyUrl, BaseModel, ConfigDict
+from pydantic import AnyUrl, BaseModel, ConfigDict, RootModel
 
 
 def _inherit_defaulters(cls):
@@ -35,16 +35,11 @@ class Base(BaseModel):
             except (AttributeError, KeyError):
                 pass
 
-                # Try the __root__ fallback for v1 compatibility
+            # Try the __root__ fallback for v1 compatibility
             super_fields = self.__class__.model_fields
-            if "__root__" in super_fields:
-                obj = super(Base, self).__getattribute__("__root__")
-                val = super(Base, obj).__getattribute__(prop)
-            else:
-                raise
+            obj, val = self.__add_super_fields__(super_fields, prop)
 
-                # Handle Pydantic v2 RootModel
-        from pydantic import RootModel
+        # Handle Pydantic v2 RootModel
         if isinstance(val, RootModel):
             root_val = val.root
             if isinstance(root_val, AnyUrl):
@@ -52,7 +47,7 @@ class Base(BaseModel):
             else:
                 return root_val
 
-                # Handle Pydantic v1 __root__ (for backwards compatibility)
+        # Handle Pydantic v1 __root__ (for backwards compatibility)
         if hasattr(val, '__root__'):
             if type(val.__root__) in [AnyUrl]:
                 return str(val.__root__)
@@ -60,6 +55,14 @@ class Base(BaseModel):
                 return val.__root__
         else:
             return val
+
+    def __add_super_fields__(self, fields, property):
+        if "__root__" in fields:
+            obj = super(Base, self).__getattribute__("__root__")
+            val = super(Base, obj).__getattribute__(property)
+            return obj, val
+        else:
+            raise
 
     def __init__(self, **kw):
         for df in _inherit_defaulters(self.__class__):
