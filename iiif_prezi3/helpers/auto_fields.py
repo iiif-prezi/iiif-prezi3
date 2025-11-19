@@ -41,7 +41,7 @@ class Auto(object):
 
     def register_on_class(self, *classes, include_subclasses=True):
         """Register the _defaulters class variable on the specific class.
-        
+
         If include_subclasses=True, attach to all *existing* subclasses too.
         Otherwise, only attach to the classes passed in.
         """
