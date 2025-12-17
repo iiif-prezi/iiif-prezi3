@@ -112,13 +112,13 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         m = Manifest(label="Nested Autolist Test", provider={"logo": {"id": "https://example.org/logo", "type": "Image", "format": "image/png", "service": {"type": "ImageService3", "profile": "level2"}}})
         self.assertIsInstance(m.provider, list)
         self.assertIsInstance(m.provider[0].logo, list)
-        self.assertIsInstance(m.provider[0].logo[0].root.service, list)
+        self.assertIsInstance(m.provider[0].logo[0].service, list)
 
     def _defaulter_in_object(self, cls, defaulter):
         for defaulter_class in cls._defaulters:
             if defaulter_class.__class__.__name__ == defaulter:
                 return True
-        return False    
+        return False
 
     def test_auto_present(self):
         self.assertFalse(self._defaulter_in_object(Annotation, "AutoItems"), "Annotations should not have AutoItems")
@@ -138,10 +138,9 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         body = AnnotationBody(id="http://example.com", type="Image")
         annotation = Annotation(motivation='painting', body=body, target=canvas.id)
 
-
         annotationPage = AnnotationPage()
         annotationPage.add_item(annotation)
 
-        canvas.annotations = annotationPage 
+        canvas.annotations = annotationPage
 
         self.assertIsInstance(canvas.annotations, list, "Expected canvas.annotations to be a list")
