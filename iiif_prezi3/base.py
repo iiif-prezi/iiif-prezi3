@@ -3,6 +3,23 @@ import json
 from pydantic import AnyUrl, BaseModel, ConfigDict, RootModel
 
 
+class UnwrappingList(list):
+    """A subclass of list that will automagically unwrap RootModel instances when accessed.
+
+    This is almost identical to list but __getitem__ will unwrap RootModel instances automatically.
+    """
+
+    def __getitem__(self, key):
+        val = super().__getitem__(key)
+        if isinstance(val, RootModel):
+            root_val = val.root
+            if isinstance(root_val, AnyUrl):
+                return str(root_val)
+            else:
+                return root_val
+        return val
+
+
 def _inherit_defaulters(cls):
     # Merge bases→derived, dedup while preserving first occurrence
     seen, defaulters = set(), []
@@ -22,6 +39,18 @@ class Base(BaseModel):
         strict=True,
         populate_by_name=True
     )
+
+    def __init__(self, **kw):
+        # We need to manually set an internal attribute early, using object.__setattr__, to avoid triggering our own
+        # custom __setattr__ before the object is fully initialized.
+        object.__setattr__(self, '_list_wrappers', {})
+
+        for df in _inherit_defaulters(self.__class__):
+            update = df.generate_defaults(self, **kw)
+            if update:
+                kw.update(update)
+
+        super().__init__(**kw)
 
     def __getattribute__(self, prop):
         try:
@@ -53,8 +82,14 @@ class Base(BaseModel):
                 return str(val.__root__)
             else:
                 return val.__root__
-        else:
-            return val
+
+        # Wrap lists in UnwrappingList only if they contain RootModel instances
+        if isinstance(val, list) and not isinstance(val, UnwrappingList):
+            # Check if the list contains any RootModel instances
+            if any(isinstance(item, RootModel) for item in val):
+                return UnwrappingList(val)
+
+        return val
 
     def __add_super_fields__(self, fields, property):
         if "__root__" in fields:
@@ -64,15 +99,12 @@ class Base(BaseModel):
         else:
             raise
 
-    def __init__(self, **kw):
-        for df in _inherit_defaulters(self.__class__):
-            update = df.generate_defaults(self, **kw)
-            if update:
-                kw.update(update)
-
-        super().__init__(**kw)
-
     def __setattr__(self, key, value):
+        # If someone is setting an UnwrappingList, convert it to a regular list
+        # so Pydantic stores a plain list, not the wrapper
+        if isinstance(value, UnwrappingList):
+            value = list(value)
+
         # let defaulters manipulate the value before pydantic sets it
         for df in _inherit_defaulters(self.__class__):
             if df.manipulates(key):
