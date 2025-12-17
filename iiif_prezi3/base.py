@@ -32,6 +32,28 @@ def _inherit_defaulters(cls):
     return defaulters
 
 
+def _unwrap_rootmodel(val):
+    """Unwrap a RootModel or v1 __root__ value if needed."""
+    # Handle Pydantic v2 RootModel
+    if isinstance(val, RootModel):
+        root_val = val.root
+        return str(root_val) if isinstance(root_val, AnyUrl) else root_val
+
+    # Handle Pydantic v1 __root__ (for backwards compatibility)
+    if hasattr(val, '__root__'):
+        return str(val.__root__) if type(val.__root__) in [AnyUrl] else val.__root__
+
+    return val
+
+
+def _wrap_list_if_needed(val):
+    """Wrap list in UnwrappingList if it contains RootModel instances."""
+    if isinstance(val, list) and not isinstance(val, UnwrappingList):
+        if any(isinstance(item, RootModel) for item in val):
+            return UnwrappingList(val)
+    return val
+
+
 class Base(BaseModel):
     model_config = ConfigDict(
         validate_assignment=True,
@@ -65,31 +87,11 @@ class Base(BaseModel):
                 pass
 
             # Try the __root__ fallback for v1 compatibility
-            super_fields = self.__class__.model_fields
-            obj, val = self.__add_super_fields__(super_fields, prop)
+            super_fields = object.__getattribute__(self, '__class__').model_fields
+            obj, val = object.__getattribute__(self, '__add_super_fields__')(super_fields, prop)
 
-        # Handle Pydantic v2 RootModel
-        if isinstance(val, RootModel):
-            root_val = val.root
-            if isinstance(root_val, AnyUrl):
-                return str(root_val)
-            else:
-                return root_val
-
-        # Handle Pydantic v1 __root__ (for backwards compatibility)
-        if hasattr(val, '__root__'):
-            if type(val.__root__) in [AnyUrl]:
-                return str(val.__root__)
-            else:
-                return val.__root__
-
-        # Wrap lists in UnwrappingList only if they contain RootModel instances
-        if isinstance(val, list) and not isinstance(val, UnwrappingList):
-            # Check if the list contains any RootModel instances
-            if any(isinstance(item, RootModel) for item in val):
-                return UnwrappingList(val)
-
-        return val
+        val = _unwrap_rootmodel(val)
+        return _wrap_list_if_needed(val)
 
     def __add_super_fields__(self, fields, property):
         if "__root__" in fields:
