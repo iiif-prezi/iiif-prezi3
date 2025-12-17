@@ -1,4 +1,4 @@
-from iiif_prezi3 import Manifest, AnnotationBody, AnnotationPage, Annotation, KeyValueString, config, Body
+from iiif_prezi3 import Manifest, AnnotationBody, AnnotationPage, Annotation, KeyValueString, config, Choice
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0074-multiple-language-captions"
@@ -48,9 +48,8 @@ english_captions = AnnotationBody(
     language="en"
 )
 english_captions.add_label(language="en", value="Captions in WebVTT format")
-choice = Body(
+choice = Choice(
     items=[english_captions, italian_captions],
-    type="Choice"
 )
 
 caption_annotation = canvas.make_annotation(
