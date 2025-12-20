@@ -75,7 +75,11 @@ class TestSchema(unittest.TestCase):
 
     def test_extra_servicev2_fields(self):
         """Allow extra fields on a service."""
-        service = ServiceV2(id="https://fixtures.iiif.io/other/level0/Glen/photos/gottingen", type="ImageService2", profile="level0")
+        service = ServiceV2(
+            id="https://fixtures.iiif.io/other/level0/Glen/photos/gottingen",
+            type="ImageService2",
+            profile="level0"
+        )
 
         service.sizes = [
             {

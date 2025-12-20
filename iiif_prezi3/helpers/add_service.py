@@ -1,7 +1,7 @@
 from ..loader import monkeypatch_schema
-from ..skeleton import (Annotation, AnnotationCollection, AnnotationPage,
-                        Canvas, Collection, Manifest, Range, Resource,
-                        AnnotationBody, ServiceV3, ServiceV2)
+from ..skeleton import (Annotation, AnnotationBody, AnnotationCollection,
+                        AnnotationPage, Canvas, Collection, Manifest, Range,
+                        Resource, ServiceV2, ServiceV3)
 
 
 class AddService:

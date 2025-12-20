@@ -1,7 +1,7 @@
 from ..config import configs
 from ..loader import monkeypatch_schema
-from ..skeleton import (Annotation, AnnotationPage, Canvas, Collection,
-                        Manifest, Range, AnnotationBody)
+from ..skeleton import (Annotation, AnnotationBody, AnnotationPage, Canvas,
+                        Collection, Manifest, Range)
 
 
 class AddLabel:

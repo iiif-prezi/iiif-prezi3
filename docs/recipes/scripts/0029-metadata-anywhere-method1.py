@@ -5,7 +5,7 @@ base_url = "https://iiif.io/api/cookbook/recipe/0029-metadata-anywhere"
 
 manifest = Manifest(
     id=f"{base_url}/manifest.json",
-    label = "John Dee performing an experiment before Queen Elizabeth I.",
+    label="John Dee performing an experiment before Queen Elizabeth I.",
     metadata=[
         KeyValueString(
             label="Creator",

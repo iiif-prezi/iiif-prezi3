@@ -26,10 +26,10 @@ canvas1987 = manifest1987.make_canvas_from_iiif(url="https://iiif.io/api/image/3
 collection = Collection(id=f"{base_url}/navdate-collection.json",
                         label="Chesapeake and Ohio Canal map and guide pamphlets")
 thumbnail = AnnotationBody(id="https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-88695674/full/max/0/default.jpg",
-                         type="Image",
-                         format="image/jpeg",
-                         height=300,
-                         width=221)
+                           type="Image",
+                           format="image/jpeg",
+                           height=300,
+                           width=221)
 thumbnail.make_service(id="https://iiif.io/api/image/3.0/example/reference/43153e2ec7531f14dd1c9b2fc401678a-88695674",
                        type="ImageService3",
                        profile="level1")

@@ -1,5 +1,5 @@
 from ..loader import monkeypatch_schema
-from ..skeleton import Canvas, AnnotationBody
+from ..skeleton import AnnotationBody, Canvas
 
 
 class SetHwd:

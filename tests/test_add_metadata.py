@@ -22,8 +22,8 @@ class AddMetadataTest(unittest.TestCase):
         assert self.collection.metadata[-1].value == {'en': ['value']}
 
     def test_add_metadata_lngstring(self):
-        label = LngString(__root__={'en': ['label']})
-        value = LngString(__root__={'en': ['value']})
+        label = LngString({'en': ['label']})
+        value = LngString({'en': ['value']})
         self.collection.add_metadata(label, value)
         assert isinstance(self.collection.metadata, list)
         assert self.collection.metadata[-1].label == {'en': ['label']}

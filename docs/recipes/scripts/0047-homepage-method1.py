@@ -26,8 +26,8 @@ anno_body = AnnotationBody(
 )
 anno_body.make_service(
     id="https://iiif.io/api/image/3.0/example/reference/28473c77da3deebe4375c3a50572d9d3-laocoon",
-            type="ImageService3",
-            profile="level1"
+    type="ImageService3",
+    profile="level1"
 )
 anno_page = AnnotationPage(
     id=f"{base_url}/canvas/1/page/1"

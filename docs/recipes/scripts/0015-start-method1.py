@@ -12,9 +12,9 @@ manifest = Manifest(id=f"{base_url}/manifest.json",
 
 canvas = manifest.make_canvas(id=f"{base_url}/canvas/segment1", duration=1801.055)
 anno_body = AnnotationBody(id="https://fixtures.iiif.io/video/indiana/30-minute-clock/medium/30-minute-clock.mp4",
-                         type="Video",
-                         format="video/mp4",
-                         duration=1801.055)
+                           type="Video",
+                           format="video/mp4",
+                           duration=1801.055)
 anno_page = AnnotationPage(id=f"{base_url}/annotation/segment1/page")
 anno = Annotation(id=f"{base_url}/annotation/segment1-video",
                   motivation="painting",

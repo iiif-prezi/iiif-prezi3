@@ -8,8 +8,8 @@ manifest = Manifest(id=f"{base_url}/manifest.json",
 
 canvas = manifest.make_canvas(id=f"{base_url}/canvas")
 anno_body = AnnotationBody(id="https://fixtures.iiif.io/video/indiana/volleyball/high/volleyball-for-boys.mp4",
-                         type="Video",
-                         format="video/mp4")
+                           type="Video",
+                           format="video/mp4")
 anno_page = AnnotationPage(id=f"{base_url}/canvas/page")
 anno = Annotation(id=f"{base_url}/canvas/page/annotation",
                   motivation="painting",
@@ -24,9 +24,9 @@ anno_page.add_item(anno)
 canvas.add_item(anno_page)
 
 rendering = LinkedResource(id="https://fixtures.iiif.io/video/indiana/volleyball/volleyball.txt",
-                         type="Text",
-                         label="Transcript",
-                         format="text/plain")
+                           type="Text",
+                           label="Transcript",
+                           format="text/plain")
 
 canvas.rendering = [rendering]
 
