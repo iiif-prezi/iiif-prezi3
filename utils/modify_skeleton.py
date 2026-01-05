@@ -29,7 +29,7 @@ CHANGES = [
         "description": "Add validation_alias to ServiceV2 fields",
         "type": "replace",
         "find": "    id: Id = Field(..., alias='@id')\n    type: str = Field(..., alias='@type')",
-        "replace": "    id: Id = Field(..., alias='@id', validation_alias='id')\n    type: str = Field(..., alias='@type', validation_alias='type')"
+        "replace": "    id: Id = Field(..., alias='@id', validation_alias='@id')\n    type: str = Field(..., alias='@type', validation_alias='@type')"
     }
 ]
 
