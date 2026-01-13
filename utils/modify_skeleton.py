@@ -1,37 +1,8 @@
 import json
 
 CHANGES = [
-    {
-        "description": "Fix Annotation model_config",
-        "type": "replace",
-        "find": "class Annotation(Class):\n    type:",
-        "replace": "class Annotation(Class):\n    model_config = ConfigDict(extra='allow', populate_by_name=True)\n\n    type:"
-    },
-    {
-        "description": "Fix ServiceV3 duplicate model_config",
-        "type": "replace",
-        "find": "class ServiceV3(Class):\n    model_config = ConfigDict(extra='allow')\n\n    model_config = ConfigDict(\n        extra='allow',\n    )",
-        "replace": "class ServiceV3(Class):\n    model_config = ConfigDict(extra='allow', populate_by_name=True)"
-    },
-    {
-        "description": "Fix ServiceV2 duplicate model_config",
-        "type": "replace",
-        "find": "class ServiceV2(Base):\n    model_config = ConfigDict(extra='allow')\n\n    model_config = ConfigDict(\n        extra='allow',\n    )",
-        "replace": "class ServiceV2(Base):\n    model_config = ConfigDict(extra='allow', populate_by_name=True)"
-    },
-    {
-        "description": "Fix Reference duplicate model_config",
-        "type": "replace",
-        "find": "class Reference(Base):\n    model_config = ConfigDict(extra='allow')\n\n    model_config = ConfigDict(\n        extra='allow',\n    )",
-        "replace": "class Reference(Base):\n    model_config = ConfigDict(extra='allow', populate_by_name=True)"
-    },
-    {
-        "description": "Add validation_alias to ServiceV2 fields",
-        "type": "replace",
-        "find": "    id: Id = Field(..., alias='@id')\n    type: str = Field(..., alias='@type')",
-        "replace": "    id: Id = Field(..., alias='@id', validation_alias='@id')\n    type: str = Field(..., alias='@type', validation_alias='@type')"
-    }
 ]
+
 
 def process_change(skeleton, change):
     print(f"Processing change: {change['description']} (Type: {change['type']})")
@@ -121,6 +92,7 @@ def modify_schema(schema_filename):
 
     with open(schema_filename, 'w') as f:
         json.dump(schema, f, indent=4)
+
 
 if __name__ == "__main__":
     print("== Prezi3 Skeleton Fixer ==")
