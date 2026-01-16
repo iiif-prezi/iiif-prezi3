@@ -49,7 +49,7 @@ english_captions = AnnotationBody(
 )
 english_captions.add_label(language="en", value="Captions in WebVTT format")
 choice = Choice(
-    items=[english_captions, italian_captions]
+    items=[english_captions, italian_captions],
 )
 
 caption_annotation = canvas.make_annotation(
