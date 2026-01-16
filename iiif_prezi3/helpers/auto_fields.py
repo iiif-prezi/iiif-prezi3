@@ -1,11 +1,12 @@
 import uuid
 
 from ..config.config import Config, register_config
-from ..skeleton import (AnnotationPage, Canvas, Class, Homepage,
-                        KeyValueString, ManifestRef, NavPlace, Provider,
-                        Range, Reference, AnnotationBody, ServiceV2, Manifest,
-                        AnnotationCollection, AccompanyingCanvas, PlaceholderCanvas,
-                        Collection)
+from ..skeleton import (AccompanyingCanvas, AnnotationBody,
+                        AnnotationCollection, AnnotationPage, Canvas, Class,
+                        Collection, Homepage, KeyValueString, Manifest,
+                        ManifestRef, NavPlace, PlaceholderCanvas, Provider,
+                        Range, Reference, ServiceV2)
+
 
 def _find_subclasses(cls):
     seen = set()
@@ -40,7 +41,7 @@ class Auto(object):
 
     def register_on_class(self, *classes, include_subclasses=True):
         """Register the _defaulters class variable on the specific class.
-        
+
         If include_subclasses=True, attach to all *existing* subclasses too.
         Otherwise, only attach to the classes passed in.
         """

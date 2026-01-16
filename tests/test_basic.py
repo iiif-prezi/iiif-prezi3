@@ -42,6 +42,23 @@ class BasicTest(unittest.TestCase):
             # Method from canvas_sizes.MaxHelper.widest_canvas should be avilable
             self.assertEqual(m.widest_canvas(), "Maximum canvas width: 640")
 
+    def testLoadManifestWithV2Service(self):
+        """Test loading a manifest with V2 Image services."""
+        with open('tests/fixtures/mcinnis-39-v3.json') as json_file:
+            data = json.load(json_file)
+
+            m = Manifest(**data)
+
+            # Verify manifest loaded correctly
+            self.assertEqual(str(m.__class__), "<class 'iiif_prezi3.skeleton.Manifest'>")
+
+            # Test specific features of this manifest
+            self.assertEqual(len(m.metadata), 4, "Expected 4 metadata entries")
+            self.assertEqual(len(m.thumbnail), 1, "Expected 1 thumbnail")
+            self.assertEqual(len(m.items), 1, "Expected 1 canvas")
+            self.assertEqual(m.items[0].height, 4214)
+            self.assertEqual(m.items[0].width, 3191)
+
     def testNewManifest(self):
         """Testing if the creation of a Manifest in python carries through to the JSON output."""
         manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': ['default label']})

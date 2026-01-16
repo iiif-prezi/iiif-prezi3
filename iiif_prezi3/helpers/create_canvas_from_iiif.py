@@ -1,7 +1,7 @@
 
 from ..loader import monkeypatch_schema
-from ..skeleton import (Annotation, AnnotationPage, Canvas, Manifest,
-                        AnnotationBody, ServiceV3, ServiceV2)
+from ..skeleton import (Annotation, AnnotationBody, AnnotationPage, Canvas,
+                        Manifest, ServiceV2, ServiceV3)
 
 
 class CreateCanvasFromIIIF:

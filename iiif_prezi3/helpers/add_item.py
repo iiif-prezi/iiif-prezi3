@@ -18,7 +18,13 @@ class AddItem:
             item = item.to_reference()
 
         self.items.append(item)
-        self.items = self.items  # Force Pydantic to validate?
+        # Force validation by reassigning through Pydantic
+        try:
+            self.items = self.items
+        except Exception:
+            # If validation fails, remove the item we just added
+            self.items.pop()
+            raise
 
 
 class AddItemByReference:

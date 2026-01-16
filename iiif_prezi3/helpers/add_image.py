@@ -1,6 +1,6 @@
 from ..loader import monkeypatch_schema
-from ..skeleton import (AccompanyingCanvas, Annotation, AnnotationPage, Canvas,
-                        PlaceholderCanvas, AnnotationBody)
+from ..skeleton import (AccompanyingCanvas, Annotation, AnnotationBody,
+                        AnnotationPage, Canvas, PlaceholderCanvas)
 
 
 class AddImage:
