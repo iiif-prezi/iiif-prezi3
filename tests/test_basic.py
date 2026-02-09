@@ -4,7 +4,7 @@ import unittest
 
 from pydantic import ValidationError
 
-from iiif_prezi3 import Canvas, Manifest, NavPlace
+from iiif_prezi3 import Canvas, Manifest
 
 sys.path.insert(1, '.')
 
