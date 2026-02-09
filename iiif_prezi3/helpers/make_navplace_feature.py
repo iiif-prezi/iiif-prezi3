@@ -4,7 +4,7 @@ from ..skeleton import (AccompanyingCanvas, Canvas, Collection, Manifest,
 
 
 class MakeNavPlaceFeature:
-    def make_feature(self, id=None, label=None, geometry=None, properties=None):
+    def make_feature(self, id=None, label=None, geometry=None, properties=None) -> dict:
         """Build a GeoJSON Feature dict and append it to this NavPlace's features.
 
         Args:
@@ -37,7 +37,7 @@ class MakeNavPlaceFeature:
 
 class AddNavPlaceFeature:
     def add_navplace_feature(self, id=None, label=None, geometry=None,
-                             properties=None, feature_collection_id=None):
+                             properties=None, feature_collection_id=None) -> dict:
         """Create a NavPlace (if needed) and add a GeoJSON Feature to it.
 
         Args:
