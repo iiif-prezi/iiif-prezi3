@@ -1,3 +1,4 @@
+from .add_context import AddContext  # noqa: F401
 from .add_image import AddImage  # noqa: F401
 from .add_item import AddItem, AddItemByReference  # noqa: F401
 from .add_label import AddLabel  # noqa: F401
