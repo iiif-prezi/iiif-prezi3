@@ -4,7 +4,7 @@ import unittest
 
 from pydantic import ValidationError
 
-from iiif_prezi3 import Canvas, Manifest
+from iiif_prezi3 import Canvas, Manifest, NavPlace
 
 sys.path.insert(1, '.')
 
@@ -131,6 +131,27 @@ class BasicTest(unittest.TestCase):
         manifest_json = manifest.jsonld(exclude_context=True)
 
         self.assertEqual(manifest_json[:61], '{"@context": "http://iiif.io/api/presentation/3/context.json"')
+
+    def test_add_context_single(self):
+        """Test that add_context creates a list with the extension context before the default."""
+        manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': ['default label']})
+        manifest.add_context("http://iiif.io/api/extension/navplace/context.json")
+        data = json.loads(manifest.json())
+        self.assertIsInstance(data["@context"], list)
+        self.assertEqual(data["@context"][0], "http://iiif.io/api/extension/navplace/context.json")
+        self.assertEqual(data["@context"][-1], "http://iiif.io/api/presentation/3/context.json")
+
+    def test_add_context_multiple(self):
+        """Test that multiple add_context calls maintain order with default always last."""
+        manifest = Manifest(id='http://iiif.example.org/prezi/Manifest/0', type='Manifest', label={'en': ['default label']})
+        manifest.add_context("http://iiif.io/api/extension/navplace/context.json")
+        manifest.add_context("http://iiif.io/api/extension/georef/1/context.json")
+        data = json.loads(manifest.json())
+        self.assertIsInstance(data["@context"], list)
+        self.assertEqual(len(data["@context"]), 3)
+        self.assertEqual(data["@context"][0], "http://iiif.io/api/extension/navplace/context.json")
+        self.assertEqual(data["@context"][1], "http://iiif.io/api/extension/georef/1/context.json")
+        self.assertEqual(data["@context"][-1], "http://iiif.io/api/presentation/3/context.json")
 
 
 if __name__ == '__main__':
