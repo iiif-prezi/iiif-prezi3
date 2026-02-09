@@ -53,7 +53,7 @@ class AddNavPlaceFeature:
         if self.navPlace is None:
             self.navPlace = NavPlace(id=feature_collection_id)
         return self.navPlace.make_feature(id=id, label=label, geometry=geometry,
-                                         properties=properties)
+                                          properties=properties)
 
 
 monkeypatch_schema(NavPlace, MakeNavPlaceFeature)

@@ -11,9 +11,10 @@ from .auto_fields import *  # noqa: F401,F403
 from .canvas_sizes import MaxHelper, MinHelper  # noqa: F401
 from .create_canvas_from_iiif import CreateCanvasFromIIIF  # noqa: F401
 from .make_canvas import MakeCanvas  # noqa: F401
-from .make_navplace_feature import MakeNavPlaceFeature, AddNavPlaceFeature  # noqa: F401
 from .make_collection import MakeCollection  # noqa: F401
 from .make_manifest import MakeManifest  # noqa: F401
+from .make_navplace_feature import (AddNavPlaceFeature,  # noqa: F401
+                                    MakeNavPlaceFeature)
 from .make_range import MakeRange  # noqa: F401
 from .make_service import MakeService  # noqa: F401
 from .set_hwd import SetHwd  # noqa: F401
