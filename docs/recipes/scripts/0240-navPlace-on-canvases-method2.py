@@ -38,7 +38,9 @@ canvas2 = manifest.make_canvas_from_iiif(
 )
 canvas2.add_navplace_feature(
     id=f"{base_url}/feature/2",
-    label="Current Location of Painting",
+    label={
+        "en": ["Current Location of Painting"],
+    },
     geometry={
         "type": "Point",
         "coordinates": [-77.0199025, 38.8920717],
