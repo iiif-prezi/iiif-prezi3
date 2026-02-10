@@ -1,5 +1,5 @@
 from iiif_prezi3 import (Manifest, Provider, Homepage, LinkedResource,
-                        AnnotationBody, config)
+                         AnnotationBody, config)
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0234-provider"
@@ -24,25 +24,21 @@ logo.make_service(
 provider = Provider(
     id="https://id.loc.gov/authorities/n79055331",
     label="UCLA Library",
-    homepage=
-        Homepage(
-            id="https://digital.library.ucla.edu/",
-            type="Text",
-            label="UCLA Library Digital Collections",
-            format="text/html",
-            language="en",
-        )
-    ,
+    homepage=Homepage(
+        id="https://digital.library.ucla.edu/",
+        type="Text",
+        label="UCLA Library Digital Collections",
+        format="text/html",
+        language="en",
+    ),
     logo=logo,
-    seeAlso=
-        LinkedResource(
-            id="https://id.loc.gov/authorities/names/n79055331.madsxml.xml",
-            type="Dataset",
-            label="US Library of Congress data about the UCLA Library",
-            format="application/xml",
-            profile="http://www.loc.gov/mads/v2",
-        )
-    ,
+    seeAlso=LinkedResource(
+        id="https://id.loc.gov/authorities/names/n79055331.madsxml.xml",
+        type="Dataset",
+        label="US Library of Congress data about the UCLA Library",
+        format="application/xml",
+        profile="http://www.loc.gov/mads/v2",
+    ),
 )
 
 manifest = Manifest(
