@@ -44,17 +44,13 @@ provider = Provider(
 manifest = Manifest(
     id=f"{base_url}/manifest.json",
     label="Playbill Cover",
-    summary={
-        "en": [
-            'Cover of playbill for "Akiba gongen kaisen-banashi," '
-            '"Futatsu chōchō kuruwa nikki" and '
+    summary='Cover of playbill for "Akiba gongen kaisen-banashi," '
+    '"Futatsu chōchō kuruwa nikki" and '
             '"Godairiki koi no fūjime" performed at the Chikugo Theater '
             "in Osaka from the fifth month of Kaei 2 (May, 1849); "
             "main actors: Gadō Kataoka II, Ebizō Ichikawa VI, "
             "Kitō Sawamura II, Daigorō Mimasu IV, and Karoku Nakamura I; "
-            "on front cover: producer Mominosuke Ichikawa's crest."
-        ]
-    },
+            "on front cover: producer Mominosuke Ichikawa's crest.",
     provider=provider,
 )
 
