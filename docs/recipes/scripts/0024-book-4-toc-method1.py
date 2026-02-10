@@ -38,16 +38,15 @@ toc = manifest.make_range(
 
 r1 = toc.make_range(
     id=f"{base_url}/range/r1",
-    label={"gez": ["Tabiba Tabiban [\u1320\u1262\u1260 \u1320\u1262\u1263\u1295]"]},
 )
+r1.add_label("Tabiba Tabiban [ጠቢበ ጠቢባን]", "gez")
 r1.add_item(CanvasRef(id=f"{base_url}/canvas/p1", type="Canvas"))
 r1.add_item(CanvasRef(id=f"{base_url}/canvas/p2", type="Canvas"))
 
 r2 = toc.make_range(
     id=f"{base_url}/range/r2",
-    label={"gez": ["Arede'et [\u12A0\u122D\u12F5\u12D5\u1275]"]},
 )
-
+r2.add_label("Arede'et [አርድዕት]", "gez")
 r2_monday = r2.make_range(
     id=f"{base_url}/range/r2/1",
     label="Monday",
