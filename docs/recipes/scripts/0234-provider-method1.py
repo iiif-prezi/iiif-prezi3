@@ -23,26 +23,26 @@ logo.make_service(
 
 provider = Provider(
     id="https://id.loc.gov/authorities/n79055331",
-    label={"en": ["UCLA Library"]},
-    homepage=[
+    label="UCLA Library",
+    homepage=
         Homepage(
             id="https://digital.library.ucla.edu/",
             type="Text",
-            label={"en": ["UCLA Library Digital Collections"]},
+            label="UCLA Library Digital Collections",
             format="text/html",
-            language=["en"],
+            language="en",
         )
-    ],
-    logo=[logo],
-    seeAlso=[
+    ,
+    logo=logo,
+    seeAlso=
         LinkedResource(
             id="https://id.loc.gov/authorities/names/n79055331.madsxml.xml",
             type="Dataset",
-            label={"en": ["US Library of Congress data about the UCLA Library"]},
+            label="US Library of Congress data about the UCLA Library",
             format="application/xml",
             profile="http://www.loc.gov/mads/v2",
         )
-    ],
+    ,
 )
 
 manifest = Manifest(
@@ -59,7 +59,7 @@ manifest = Manifest(
             "on front cover: producer Mominosuke Ichikawa's crest."
         ]
     },
-    provider=[provider],
+    provider=provider,
 )
 
 canvas = manifest.make_canvas_from_iiif(
