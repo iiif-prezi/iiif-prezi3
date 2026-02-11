@@ -1,7 +1,7 @@
 import requests
 
 from ..loader import monkeypatch_schema
-from ..skeleton import Canvas, Resource, AnnotationBody
+from ..skeleton import AnnotationBody, Canvas, Resource
 
 
 class SetHwdFromIIIF:

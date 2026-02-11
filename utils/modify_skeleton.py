@@ -1,21 +1,6 @@
 import json
 
 CHANGES = [
-   {
-        # For some reason adding "additionalProperties": true to the schema doesn't add this...
-        "description": "Allow extra properties on Annotations",
-        "type": "replace",
-        "find": "\n\nclass Annotation(Class):",
-        "replace": "\n\nclass Annotation(Class):\n    class Config:\n        extra = Extra.allow\n"
-   }
-
- #   {
- #       "description": "Re-add RangeRef",
- #       "type": "insert",
- #       "before": "class CanvasRef(Reference):\n    type: Optional[constr(regex=r'^Canvas$')] = None\n",
- #       "after": "\n\nModel.update_forward_refs()",
- #       "data": "\n\nclass RangeRef(Reference):\n    type: Optional[constr(regex=r'^Range$')] = None\n"
- #   }
 ]
 
 
@@ -47,6 +32,28 @@ def modify_skeleton(skeleton_file):
     print("Opening Skeleton file...")
     skeleton = open(skeleton_file).read()
 
+    # Check if __future__ import is missing and add it
+    if "from __future__ import annotations" not in skeleton:
+        print("Adding missing __future__ import...")
+        # Find the first import line after the header
+        import_pos = skeleton.find("from datetime import datetime")
+        if import_pos != -1:
+            skeleton = skeleton[:import_pos] + "from __future__ import annotations\n\n" + skeleton[import_pos:]
+
+            # Quote ALL forward references in RootModel[Union[...]] patterns
+    import re
+    print("Quoting forward references in RootModel types...")
+    content = re.sub(
+        r'RootModel\[Union\[([^\]]+)\]\]',
+        lambda m: 'RootModel[Union[' + ', '.join(
+            f"'{item.strip()}'" if item.strip() and not item.strip().startswith("'") and item.strip()[0].isupper()
+            else item.strip()
+            for item in m.group(1).split(',')
+        ) + ']]',
+        skeleton
+    )
+    skeleton = content
+
     print(f"Processing {len(CHANGES)} changes")
     for change in CHANGES:
         skeleton = process_change(skeleton, change)
@@ -55,34 +62,37 @@ def modify_skeleton(skeleton_file):
     with open(skeleton_file, "w") as out:
         out.write(skeleton)
 
+
 def modify_schema(schema_filename):
     with open(schema_filename, 'r') as file:
         schema = json.load(file)
 
-    # Remove:
-    # "anyOf":[
-    #   { "required": ["width"] },
-    #   { "required": ["height"] },
-    #   { "required": ["duration"] }
-    # ],
-    # "dependencies": {
-    #   "width": ["height"],
-    #   "height": ["width"]
-    # }
-    # In canvas, placeholderCanvas and accompanyingCanvas
-    # classes
-
+        # Remove width/height coupling constraints
     locations = ["canvas", "placeholderCanvas", "accompanyingCanvas"]
     for location in locations:
         container = schema["classes"][location]
         for item in container["allOf"]:
             if "properties" in item:
-                item.pop("anyOf")
-                item.pop("dependencies")
+                item.pop("anyOf", None)
+                item.pop("dependencies", None)
 
+                # Remove problematic exclusiveMaximum/exclusiveMinimum that cause datamodel-code-generator errors
+
+    def clean_schema_recursive(obj):
+        if isinstance(obj, dict):
+            obj.pop("exclusiveMaximum", None)
+            obj.pop("exclusiveMinimum", None)
+            for value in obj.values():
+                clean_schema_recursive(value)
+        elif isinstance(obj, list):
+            for item in obj:
+                clean_schema_recursive(item)
+
+    clean_schema_recursive(schema)
 
     with open(schema_filename, 'w') as f:
-        json.dump(schema, f, indent=4)    
+        json.dump(schema, f, indent=4)
+
 
 if __name__ == "__main__":
     print("== Prezi3 Skeleton Fixer ==")

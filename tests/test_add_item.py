@@ -2,9 +2,9 @@ import unittest
 
 from pydantic import ValidationError
 
-from iiif_prezi3 import (AccompanyingCanvas, Annotation, AnnotationPage,
-                         Canvas, Collection, CollectionRef, Manifest,
-                         ManifestRef, AnnotationBody)
+from iiif_prezi3 import (AccompanyingCanvas, Annotation, AnnotationBody,
+                         AnnotationPage, Canvas, Collection, CollectionRef,
+                         Manifest, ManifestRef)
 
 
 class AddItemTests(unittest.TestCase):

@@ -1,0 +1,107 @@
+{
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://markpbaggett.github.io/iiif-paleography/fixtures/mcinnis-39-v3.json",
+  "type": "Manifest",
+  "label": {
+    "none": [
+      "Letter to Louis L. McInnis from J. D. Lee, February 15, 1883"
+    ]
+  },
+  "metadata": [
+    {
+      "label": {
+        "none": [
+          "date"
+        ]
+      },
+      "value": {
+        "none": [
+          "1883-02-15"
+        ]
+      }
+    },
+    {
+      "label": {
+        "none": [
+          "title"
+        ]
+      },
+      "value": {
+        "none": [
+          "Letter to Louis L. McInnis from J. D. Lee, February 15, 1883"
+        ]
+      }
+    },
+    {
+      "label": {
+        "none": [
+          "isPartOf"
+        ]
+      },
+      "value": {
+        "none": [
+          "Box 1 Louis L. McInnis Papers/Box 1 Folder 13 Louis L. McInnis Papers"
+        ]
+      }
+    },
+    {
+      "label": {
+        "none": [
+          "context"
+        ]
+      },
+      "value": {
+        "none": [
+          "bb/97/f2/3e/bb97f23e-803a-4bd6-8406-06802623554c/mcinnis_objects/39"
+        ]
+      }
+    }
+  ],
+  "thumbnail": [
+    {
+      "id": "https://api-pre.library.tamu.edu/iiif/2/558c93e3-7fd3-388c-8114-08d20a9e47b0/full/!100,100/0/default.jpg",
+      "type": "Image"
+    }
+  ],
+  "items": [
+    {
+      "id": "https://api-pre.library.tamu.edu/iiif-service/fedora/canvas/bb/97/f2/3e/bb97f23e-803a-4bd6-8406-06802623554c/mcinnis_objects/39/pages/page_0",
+      "type": "Canvas",
+      "label": {
+        "none": [
+          "fedora:bb/97/f2/3e/bb97f23e-803a-4bd6-8406-06802623554c/mcinnis_objects/39/pages/page_0"
+        ]
+      },
+      "height": 4214,
+      "width": 3191,
+      "items": [
+        {
+          "id": "http://example.org/iiif/2",
+          "type": "AnnotationPage",
+          "items": [
+            {
+              "id": "http://example.org/iiif/1",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://api-pre.library.tamu.edu/iiif/2/558c93e3-7fd3-388c-8114-08d20a9e47b0/full/full/0/default.jpg",
+                "type": "Image",
+                "height": 4214,
+                "width": 3191,
+                "service": [
+                  {
+                    "@id": "https://api-pre.library.tamu.edu/iiif/2/558c93e3-7fd3-388c-8114-08d20a9e47b0",
+                    "@type": "ImageService2",
+                    "profile": "http://iiif.io/api/image/2/level2.json"
+                  }
+                ],
+                "format": "image/jpeg"
+              },
+              "target": "https://api-pre.library.tamu.edu/iiif-service/fedora/canvas/bb/97/f2/3e/bb97f23e-803a-4bd6-8406-06802623554c/mcinnis_objects/39/pages/page_0"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

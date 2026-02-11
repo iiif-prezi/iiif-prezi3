@@ -1,6 +1,8 @@
 import unittest
 
-from iiif_prezi3 import Collection, Manifest, config, Annotation, AccompanyingCanvas, AnnotationCollection, PlaceholderCanvas, Canvas, AnnotationBody, AnnotationPage, AnnotationPageRefExtended
+from iiif_prezi3 import (AccompanyingCanvas, Annotation, AnnotationBody,
+                         AnnotationCollection, AnnotationPage, AnnotationPageRefExtended,
+                         Canvas, Collection, Manifest, PlaceholderCanvas, config)
 
 class AutoFieldsHelpersTests(unittest.TestCase):
 
@@ -115,7 +117,7 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         for defaulter_class in cls._defaulters:
             if defaulter_class.__class__.__name__ == defaulter:
                 return True
-        return False    
+        return False
 
     def test_auto_present(self):
         self.assertFalse(self._defaulter_in_object(Annotation, "AutoItems"), "Annotations should not have AutoItems")
@@ -135,14 +137,12 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         body = AnnotationBody(id="http://example.com", type="Image")
         annotation = Annotation(motivation='painting', body=body, target=canvas.id)
 
-
         annotationPage = AnnotationPage()
         annotationPage.add_item(annotation)
 
-        canvas.annotations = annotationPage 
+        canvas.annotations = annotationPage
 
         self.assertIsInstance(canvas.annotations, list, "Expected canvas.annotations to be a list")
-
 
     def test_no_auto_list_annotation_page_ref(self):
         canvas = Canvas(label="test")    

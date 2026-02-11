@@ -6,8 +6,8 @@ base_url = "https://iiif.io/api/cookbook/recipe/0004-canvas-size"
 manifest = Manifest(id=f"{base_url}/manifest.json", label="Still image from an opera performance at Indiana University")
 canvas = manifest.make_canvas(id=f"{base_url}/canvas/p1")
 anno_body = AnnotationBody(id="https://fixtures.iiif.io/video/indiana/donizetti-elixir/act1-thumbnail.png",
-                         type="Image",
-                         format="image/png")
+                           type="Image",
+                           format="image/png")
 anno_page = AnnotationPage(id=f"{base_url}/page/p1/1")
 anno = Annotation(id=f"{base_url}/annotation/p0001-image",
                   motivation="painting",
