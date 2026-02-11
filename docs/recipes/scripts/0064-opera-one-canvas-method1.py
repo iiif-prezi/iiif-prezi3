@@ -72,18 +72,18 @@ manifest.add_item(canvas)
 # Structures
 top_range = manifest.make_range(
     id=f"{base_url}/range/1",
-    label={"it": ["Gaetano Donizetti, L'Elisir D'Amore"]},
 )
+top_range.add_label("Gaetano Donizetti, L'Elisir D'Amore", "it")
 
 range_atto1 = top_range.make_range(
     id=f"{base_url}/range/2",
-    label={"it": ["Atto Primo"]},
 )
+range_atto1.add_label("Atto Primo", "it")
 
 range_preludio = range_atto1.make_range(
     id=f"{base_url}/range/3",
-    label={"it": ["Preludio e Coro d'introduzione \u2013 Bel conforto al mietitore"]},
 )
+range_preludio.add_label("Preludio e Coro d'introduzione \u2013 Bel conforto al mietitore", "it")
 range_preludio.add_item(
     CanvasRef(id=f"{base_url}/canvas/1#t=0,302.05", type="Canvas")
 )
@@ -98,8 +98,8 @@ range_remainder.add_item(
 
 range_atto2 = top_range.make_range(
     id=f"{base_url}/range/5",
-    label={"it": ["Atto Secondo"]},
 )
+range_atto2.add_label("Atto Secondo", "it")
 range_atto2.add_item(
     CanvasRef(id=f"{base_url}/canvas/1#t=3971.24,7278.422", type="Canvas")
 )
