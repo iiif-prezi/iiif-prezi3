@@ -1,19 +1,12 @@
 from iiif_prezi3 import (Manifest, AnnotationBody, AnnotationPage, Annotation,
                         SpecificResource, CssStylesheet, config)
 
-config.configs['helpers.auto_fields.AutoLang'].auto_lang = "none"
+config.configs['helpers.auto_fields.AutoLang'].auto_lang = "ca"
 base_url = "https://iiif.io/api/cookbook/recipe/0040-image-rotation-service"
 
 manifest = Manifest(
     id=f"{base_url}/manifest-css.json",
-    label={
-        "ca": [
-            "[Conoximent de las orines] Ihesus, Ihesus. En nom de Deu et dela "
-            "beneyeta sa mare e de tots los angels i archangels e de tots los "
-            "sants e santes de paradis yo micer Johannes comense aquest libre "
-            "de reseptes en l\u2019ayn Mi 466."
-        ]
-    },
+    label="[Conoximent de las orines] Ihesus, Ihesus. En nom de Deu et dela beneyeta sa mare e de tots los angels i archangels e de tots los sants e santes de paradis yo micer Johannes comense aquest libre de reseptes en l’ayn Mi 466."
 )
 
 image_source = AnnotationBody(
@@ -37,7 +30,7 @@ painting_body = SpecificResource(
 
 canvas = manifest.make_canvas(id=f"{base_url}/canvas/p1")
 canvas.set_hwd(width=2105, height=1523)
-canvas.label = {"en": ["inside cover; 1r"]}
+canvas.add_label("inside cover; 1r", "en")
 
 anno_page = AnnotationPage(id=f"{base_url}/p1/1")
 anno_page.add_item(
