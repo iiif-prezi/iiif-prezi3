@@ -4,7 +4,7 @@ IIIF Presentation API 3 Python Library
 [![PyPI version](https://badge.fury.io/py/iiif-prezi3.svg)](https://badge.fury.io/py/iiif-prezi3)
 ![PyPI — Python versions](https://img.shields.io/pypi/pyversions/iiif-prezi3)
 ![PyPI - License](https://img.shields.io/pypi/l/iiif-prezi3)
-[![CI](https://github.com/iiif-prezi/iiif-prezi3/actions/workflows/ci.yml/badge.svg)](https://github.com/iiif-prezi/iiif-prezi3/actions/workflows/ci.yml)
+[![CI](https://github.com/iiif-prezi/iiif-prezi3/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/iiif-prezi/iiif-prezi3/actions/workflows/ci.yml?query=branch%3Amain)
 
 ## Installation
 ### PyPI
