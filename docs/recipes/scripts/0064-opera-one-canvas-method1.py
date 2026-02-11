@@ -9,12 +9,12 @@ manifest = Manifest(
     label="The Elixir of Love",
     metadata=[
         KeyValueString(
-            label={"en": ["Date Issued"]},
-            value={"en": ["2019"]},
+            label="Date Issued",
+            value="2019",
         ),
         KeyValueString(
-            label={"en": ["Publisher"]},
-            value={"en": ["Indiana University Jacobs School of Music"]},
+            label="Publisher",
+            value="Indiana University Jacobs School of Music",
         ),
     ],
 )
