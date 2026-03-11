@@ -44,7 +44,7 @@ def modify_skeleton(skeleton_file):
     import re
     print("Quoting forward references in RootModel types...")
     content = re.sub(
-        r'RootModel\[Union\[([^\]]+)\]\]',
+        r'RootModel\[\s*Union\[([^\]]+)\]\s*\]',
         lambda m: 'RootModel[Union[' + ', '.join(
             f"'{item.strip()}'" if item.strip() and not item.strip().startswith("'") and item.strip()[0].isupper()
             else item.strip()
