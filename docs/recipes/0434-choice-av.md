@@ -1,4 +1,4 @@
-# Addressing a Spatial Region
+# Rendering Multiple Media Types on a Time-Based Canvas
 |              | **Cookbook URLs**                                                                                                                    |
 |--------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | **Recipe:**  | [https://iiif.io/api/cookbook/recipe/0434-choice-av/](https://iiif.io/api/cookbook/recipe/0434-choice-av/)                           |
