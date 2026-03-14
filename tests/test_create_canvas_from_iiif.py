@@ -9,7 +9,7 @@ class CreateCanvasFromIIIFTests(unittest.TestCase):
     def setUp(self):
         self.manifest = Manifest(label={'en': ['Manifest label']})
 
-    @patch('iiif_prezi3.helpers.set_hwd_from_iiif.requests.get')
+    @patch('iiif_prezi3.helpers.set_hwd_from_iiif.Session.get')
     def test_create_canvas_from_iiif_v3(self, mockrequest_get):
         image_id = 'https://iiif.io/api/image/3.0/example/reference/918ecd18c2592080851777620de9bcb5-gottingen'
         image_info_url = f'{image_id}/info.json'
@@ -65,7 +65,7 @@ class CreateCanvasFromIIIFTests(unittest.TestCase):
         self.assertEqual(service.profile, "level1")
         self.assertEqual(service.type, "ImageService3")
 
-    @patch('iiif_prezi3.helpers.set_hwd_from_iiif.requests.get')
+    @patch('iiif_prezi3.helpers.set_hwd_from_iiif.Session.get')
     def test_create_canvas_from_iiif_v2(self, mockrequest_get):
         image_id = 'https://iiif.io/api/image/2.1/example/reference/918ecd18c2592080851777620de9bcb5-gottingen'
         image_info_url = f'{image_id}/info.json'

@@ -1,4 +1,7 @@
 
+from requests import Session
+
+from ..config.http import DEFAULT_SESSION
 from ..loader import monkeypatch_schema
 from ..skeleton import (Annotation, AnnotationBody, AnnotationPage, Canvas,
                         Manifest, ServiceV2, ServiceV3)
@@ -7,7 +10,7 @@ from ..skeleton import (Annotation, AnnotationBody, AnnotationPage, Canvas,
 class CreateCanvasFromIIIF:
     # should probably be added to canvas helpers
 
-    def create_canvas_from_iiif(self, url, anno_id=None, anno_page_id=None, **kwargs):
+    def create_canvas_from_iiif(self, url, anno_id=None, anno_page_id=None, iiif_session: Session = None, **kwargs):
         """Create a canvas from a IIIF Image URL.
 
         Creates a canvas from a IIIF Image service passing any kwargs to the Canvas.
@@ -16,16 +19,18 @@ class CreateCanvasFromIIIF:
             url (str): An HTTP URL at which at a IIIF Image is available.
             anno_id (str): An HTTP URL for the annotation to which the image will be attached.
             anno_page_id (str): An HTTP URL for the annotation page to which the annotation will be attached.
+            iiif_session (Session): A requests Session object to use for the HTTP requests.
             **kwargs (): see Canvas
 
         Returns:
             canvas (Canvas): the Canvas created from the IIIF Image.
-
         """
+        iiif_session = iiif_session or DEFAULT_SESSION
+
         canvas = Canvas(**kwargs)
 
         body = AnnotationBody(id="http://example.com", type="Image")
-        infoJson = body.set_hwd_from_iiif(url)
+        infoJson = body.set_hwd_from_iiif(url, session=iiif_session)
 
         # Will need to handle IIIF 2...
         if 'type' not in infoJson:

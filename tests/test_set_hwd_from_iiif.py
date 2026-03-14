@@ -11,7 +11,7 @@ class SetHwdFromIIIFTests(unittest.TestCase):
     def setUp(self):
         self.canvas = Canvas(id='http://iiif.example.org/prezi/Canvas/0')
 
-    @patch('iiif_prezi3.helpers.set_hwd_from_iiif.requests.get')
+    @patch('iiif_prezi3.helpers.set_hwd_from_iiif.Session.get')
     def test_set_hwd_from_iiif(self, mockrequest_get):
         image_id = 'http://iiif.example.org/images/1234abcd'
         image_info_url = f'{image_id}/info.json'
