@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
@@ -6444,10 +6444,7 @@
 
               <details class="mkdocstrings-source">
                 <summary>Source code in <code>iiif_prezi3/helpers/add_thumbnail.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 11</span>
 <span class="normal"> 12</span>
 <span class="normal"> 13</span>
 <span class="normal"> 14</span>
@@ -6553,7 +6550,13 @@
 <span class="normal">114</span>
 <span class="normal">115</span>
 <span class="normal">116</span>
-<span class="normal">117</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AddThumbnail</span><span class="p">:</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AddThumbnail</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">add_thumbnail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a thumbnail to an existing canvas.</span>
 
@@ -6611,7 +6614,7 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/full/max/0/default.jpg&quot;</span>
 
-    <span class="k">def</span> <span class="nf">create_thumbnail_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">preferred_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_thumbnail_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">preferred_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">iiif_session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds an image thumbnail to a manifest or canvas based on a IIIF service.</span>
 
 <span class="sd">        If there is a sizes property, it returns the thumbnail that is closest to the preferred width but larger. If no</span>
@@ -6621,13 +6624,16 @@
 <span class="sd">        Args:</span>
 <span class="sd">            url (str): An HTTP URL which points at a IIIF Image response.</span>
 <span class="sd">            preferred_width (int, optional): the preferred width of the thumbnail.</span>
+<span class="sd">            iiif_session (Session, optional): A requests Session object to use for the HTTP requests.</span>
 <span class="sd">            **kwargs (): see AnnotationBody.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            new_thumbnail (AnnotationBody): The updated list of thumbnails, including the newly-created one.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">iiif_session</span> <span class="o">=</span> <span class="n">iiif_session</span> <span class="ow">or</span> <span class="n">DEFAULT_SESSION</span>
+
         <span class="n">image_response</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Image&#39;</span><span class="p">)</span>
-        <span class="n">image_info</span> <span class="o">=</span> <span class="n">image_response</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">image_info</span> <span class="o">=</span> <span class="n">image_response</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">iiif_session</span><span class="p">)</span>
         <span class="n">context</span> <span class="o">=</span> <span class="n">image_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;@context&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
         <span class="n">aspect_ratio</span> <span class="o">=</span> <span class="n">image_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">image_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
         <span class="n">profile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_profile</span><span class="p">(</span><span class="n">image_info</span><span class="p">)</span>
@@ -6764,10 +6770,7 @@
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>iiif_prezi3/helpers/add_thumbnail.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
@@ -6778,7 +6781,10 @@
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_thumbnail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_thumbnail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a thumbnail to an existing canvas.</span>
 
 <span class="sd">    Args:</span>
@@ -6803,7 +6809,7 @@
 
 
 <h3 id="iiif_prezi3.AddThumbnail.create_thumbnail_from_iiif" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">create_thumbnail_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">preferred_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">create_thumbnail_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">preferred_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">iiif_session</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
 </h3>
 
@@ -6861,6 +6867,22 @@ width. Else, it returns the level <code>full/full</code> or <code>full/max</code
           </tr>
           <tr class="doc-section-item">
             <td>
+                <code>iiif_session</code>
+            </td>
+            <td>
+                  <code><span title="requests.Session">Session</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A requests Session object to use for the HTTP requests.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
                 <code>**kwargs</code>
             </td>
             <td>
@@ -6903,10 +6925,7 @@ width. Else, it returns the level <code>full/full</code> or <code>full/max</code
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>iiif_prezi3/helpers/add_thumbnail.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 69</span>
 <span class="normal"> 70</span>
 <span class="normal"> 71</span>
 <span class="normal"> 72</span>
@@ -6954,7 +6973,13 @@ width. Else, it returns the level <code>full/full</code> or <code>full/max</code
 <span class="normal">114</span>
 <span class="normal">115</span>
 <span class="normal">116</span>
-<span class="normal">117</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_thumbnail_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">preferred_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_thumbnail_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">preferred_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">iiif_session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds an image thumbnail to a manifest or canvas based on a IIIF service.</span>
 
 <span class="sd">    If there is a sizes property, it returns the thumbnail that is closest to the preferred width but larger. If no</span>
@@ -6964,13 +6989,16 @@ width. Else, it returns the level <code>full/full</code> or <code>full/max</code
 <span class="sd">    Args:</span>
 <span class="sd">        url (str): An HTTP URL which points at a IIIF Image response.</span>
 <span class="sd">        preferred_width (int, optional): the preferred width of the thumbnail.</span>
+<span class="sd">        iiif_session (Session, optional): A requests Session object to use for the HTTP requests.</span>
 <span class="sd">        **kwargs (): see AnnotationBody.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        new_thumbnail (AnnotationBody): The updated list of thumbnails, including the newly-created one.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">iiif_session</span> <span class="o">=</span> <span class="n">iiif_session</span> <span class="ow">or</span> <span class="n">DEFAULT_SESSION</span>
+
     <span class="n">image_response</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Image&#39;</span><span class="p">)</span>
-    <span class="n">image_info</span> <span class="o">=</span> <span class="n">image_response</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">image_info</span> <span class="o">=</span> <span class="n">image_response</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">iiif_session</span><span class="p">)</span>
     <span class="n">context</span> <span class="o">=</span> <span class="n">image_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;@context&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="n">aspect_ratio</span> <span class="o">=</span> <span class="n">image_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">image_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
     <span class="n">profile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_profile</span><span class="p">(</span><span class="n">image_info</span><span class="p">)</span>
@@ -7612,10 +7640,7 @@ Otherwise, only attach to the classes passed in.</p>
 
               <details class="mkdocstrings-source">
                 <summary>Source code in <code>iiif_prezi3/helpers/create_canvas_from_iiif.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
@@ -7670,10 +7695,15 @@ Otherwise, only attach to the classes passed in.</p>
 <span class="normal">62</span>
 <span class="normal">63</span>
 <span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">CreateCanvasFromIIIF</span><span class="p">:</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">CreateCanvasFromIIIF</span><span class="p">:</span>
     <span class="c1"># should probably be added to canvas helpers</span>
 
-    <span class="k">def</span> <span class="nf">create_canvas_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">anno_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anno_page_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_canvas_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">anno_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anno_page_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">iiif_session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a canvas from a IIIF Image URL.</span>
 
 <span class="sd">        Creates a canvas from a IIIF Image service passing any kwargs to the Canvas.</span>
@@ -7682,16 +7712,18 @@ Otherwise, only attach to the classes passed in.</p>
 <span class="sd">            url (str): An HTTP URL at which at a IIIF Image is available.</span>
 <span class="sd">            anno_id (str): An HTTP URL for the annotation to which the image will be attached.</span>
 <span class="sd">            anno_page_id (str): An HTTP URL for the annotation page to which the annotation will be attached.</span>
+<span class="sd">            iiif_session (Session): A requests Session object to use for the HTTP requests.</span>
 <span class="sd">            **kwargs (): see Canvas</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            canvas (Canvas): the Canvas created from the IIIF Image.</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">iiif_session</span> <span class="o">=</span> <span class="n">iiif_session</span> <span class="ow">or</span> <span class="n">DEFAULT_SESSION</span>
+
         <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="n">body</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;http://example.com&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">)</span>
-        <span class="n">infoJson</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">infoJson</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">iiif_session</span><span class="p">)</span>
 
         <span class="c1"># Will need to handle IIIF 2...</span>
         <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">infoJson</span><span class="p">:</span>
@@ -7749,7 +7781,7 @@ Otherwise, only attach to the classes passed in.</p>
 
 
 <h3 id="iiif_prezi3.CreateCanvasFromIIIF.create_canvas_from_iiif" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">create_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">anno_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anno_page_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">create_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">anno_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anno_page_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">iiif_session</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
 </h3>
 
@@ -7821,6 +7853,22 @@ Otherwise, only attach to the classes passed in.</p>
           </tr>
           <tr class="doc-section-item">
             <td>
+                <code>iiif_session</code>
+            </td>
+            <td>
+                  <code><span title="requests.Session">Session</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A requests Session object to use for the HTTP requests.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
                 <code>**kwargs</code>
             </td>
             <td>
@@ -7863,10 +7911,7 @@ Otherwise, only attach to the classes passed in.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>iiif_prezi3/helpers/create_canvas_from_iiif.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
@@ -7912,7 +7957,12 @@ Otherwise, only attach to the classes passed in.</p>
 <span class="normal">56</span>
 <span class="normal">57</span>
 <span class="normal">58</span>
-<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_canvas_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">anno_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anno_page_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_canvas_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">anno_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anno_page_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">iiif_session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a canvas from a IIIF Image URL.</span>
 
 <span class="sd">    Creates a canvas from a IIIF Image service passing any kwargs to the Canvas.</span>
@@ -7921,16 +7971,18 @@ Otherwise, only attach to the classes passed in.</p>
 <span class="sd">        url (str): An HTTP URL at which at a IIIF Image is available.</span>
 <span class="sd">        anno_id (str): An HTTP URL for the annotation to which the image will be attached.</span>
 <span class="sd">        anno_page_id (str): An HTTP URL for the annotation page to which the annotation will be attached.</span>
+<span class="sd">        iiif_session (Session): A requests Session object to use for the HTTP requests.</span>
 <span class="sd">        **kwargs (): see Canvas</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        canvas (Canvas): the Canvas created from the IIIF Image.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">iiif_session</span> <span class="o">=</span> <span class="n">iiif_session</span> <span class="ow">or</span> <span class="n">DEFAULT_SESSION</span>
+
     <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="n">body</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;http://example.com&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">)</span>
-    <span class="n">infoJson</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">infoJson</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">iiif_session</span><span class="p">)</span>
 
     <span class="c1"># Will need to handle IIIF 2...</span>
     <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">infoJson</span><span class="p">:</span>
@@ -9489,9 +9541,7 @@ Accepts keyword arguments to customize the resulting instance.</p>
 
               <details class="mkdocstrings-source">
                 <summary>Source code in <code>iiif_prezi3/helpers/set_hwd_from_iiif.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
@@ -9517,10 +9567,15 @@ Accepts keyword arguments to customize the resulting instance.</p>
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SetHwdFromIIIF</span><span class="p">:</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SetHwdFromIIIF</span><span class="p">:</span>
     <span class="c1"># should probably be added to canvas helpers</span>
 
-    <span class="k">def</span> <span class="nf">set_hwd_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_hwd_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set height and width on a Canvas object.</span>
 
 <span class="sd">        Requests IIIF Image information remotely for an</span>
@@ -9529,13 +9584,16 @@ Accepts keyword arguments to customize the resulting instance.</p>
 
 <span class="sd">        Args:</span>
 <span class="sd">            url (str): An HTTP URL for the IIIF image endpoint.</span>
+<span class="sd">            session (Session): A requests Session object to use for the HTTP requests.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">session</span> <span class="ow">or</span> <span class="n">DEFAULT_SESSION</span>
+
         <span class="c1"># resource url may or may not end with info.json;</span>
         <span class="c1"># add if not present</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;info.json&quot;</span><span class="p">):</span>
             <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">/info.json&quot;</span>
 
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
         <span class="c1"># if response is not 200, raise exception</span>
         <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="n">requests</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
             <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
@@ -9566,7 +9624,7 @@ Accepts keyword arguments to customize the resulting instance.</p>
 
 
 <h3 id="iiif_prezi3.SetHwdFromIIIF.set_hwd_from_iiif" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h3>
 
@@ -9606,15 +9664,29 @@ This method will return the info.json</p>
                 <em>required</em>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>session</code>
+            </td>
+            <td>
+                  <code><span title="requests.Session">Session</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A requests Session object to use for the HTTP requests.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>iiif_prezi3/helpers/set_hwd_from_iiif.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
@@ -9637,7 +9709,12 @@ This method will return the info.json</p>
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_hwd_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_hwd_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Set height and width on a Canvas object.</span>
 
 <span class="sd">    Requests IIIF Image information remotely for an</span>
@@ -9646,13 +9723,16 @@ This method will return the info.json</p>
 
 <span class="sd">    Args:</span>
 <span class="sd">        url (str): An HTTP URL for the IIIF image endpoint.</span>
+<span class="sd">        session (Session): A requests Session object to use for the HTTP requests.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">session</span> <span class="ow">or</span> <span class="n">DEFAULT_SESSION</span>
+
     <span class="c1"># resource url may or may not end with info.json;</span>
     <span class="c1"># add if not present</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;info.json&quot;</span><span class="p">):</span>
         <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">/info.json&quot;</span>
 
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
     <span class="c1"># if response is not 200, raise exception</span>
     <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="n">requests</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
         <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
@@ -11578,10 +11658,7 @@ Otherwise, only attach to the classes passed in.</p>
 
               <details class="mkdocstrings-source">
                 <summary>Source code in <code>iiif_prezi3/helpers/add_thumbnail.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  8</span>
-<span class="normal">  9</span>
-<span class="normal"> 10</span>
-<span class="normal"> 11</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 11</span>
 <span class="normal"> 12</span>
 <span class="normal"> 13</span>
 <span class="normal"> 14</span>
@@ -11687,7 +11764,13 @@ Otherwise, only attach to the classes passed in.</p>
 <span class="normal">114</span>
 <span class="normal">115</span>
 <span class="normal">116</span>
-<span class="normal">117</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AddThumbnail</span><span class="p">:</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">AddThumbnail</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">add_thumbnail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds a thumbnail to an existing canvas.</span>
 
@@ -11745,7 +11828,7 @@ Otherwise, only attach to the classes passed in.</p>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/full/max/0/default.jpg&quot;</span>
 
-    <span class="k">def</span> <span class="nf">create_thumbnail_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">preferred_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_thumbnail_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">preferred_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">iiif_session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds an image thumbnail to a manifest or canvas based on a IIIF service.</span>
 
 <span class="sd">        If there is a sizes property, it returns the thumbnail that is closest to the preferred width but larger. If no</span>
@@ -11755,13 +11838,16 @@ Otherwise, only attach to the classes passed in.</p>
 <span class="sd">        Args:</span>
 <span class="sd">            url (str): An HTTP URL which points at a IIIF Image response.</span>
 <span class="sd">            preferred_width (int, optional): the preferred width of the thumbnail.</span>
+<span class="sd">            iiif_session (Session, optional): A requests Session object to use for the HTTP requests.</span>
 <span class="sd">            **kwargs (): see AnnotationBody.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            new_thumbnail (AnnotationBody): The updated list of thumbnails, including the newly-created one.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">iiif_session</span> <span class="o">=</span> <span class="n">iiif_session</span> <span class="ow">or</span> <span class="n">DEFAULT_SESSION</span>
+
         <span class="n">image_response</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Image&#39;</span><span class="p">)</span>
-        <span class="n">image_info</span> <span class="o">=</span> <span class="n">image_response</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">image_info</span> <span class="o">=</span> <span class="n">image_response</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">iiif_session</span><span class="p">)</span>
         <span class="n">context</span> <span class="o">=</span> <span class="n">image_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;@context&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
         <span class="n">aspect_ratio</span> <span class="o">=</span> <span class="n">image_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">image_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
         <span class="n">profile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_profile</span><span class="p">(</span><span class="n">image_info</span><span class="p">)</span>
@@ -11898,10 +11984,7 @@ Otherwise, only attach to the classes passed in.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>iiif_prezi3/helpers/add_thumbnail.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
@@ -11912,7 +11995,10 @@ Otherwise, only attach to the classes passed in.</p>
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_thumbnail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">add_thumbnail</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds a thumbnail to an existing canvas.</span>
 
 <span class="sd">    Args:</span>
@@ -11937,7 +12023,7 @@ Otherwise, only attach to the classes passed in.</p>
 
 
 <h5 id="iiif_prezi3.helpers.add_thumbnail.AddThumbnail.create_thumbnail_from_iiif" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">create_thumbnail_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">preferred_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">create_thumbnail_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">preferred_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">iiif_session</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
 </h5>
 
@@ -11995,6 +12081,22 @@ width. Else, it returns the level <code>full/full</code> or <code>full/max</code
           </tr>
           <tr class="doc-section-item">
             <td>
+                <code>iiif_session</code>
+            </td>
+            <td>
+                  <code><span title="requests.Session">Session</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A requests Session object to use for the HTTP requests.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
                 <code>**kwargs</code>
             </td>
             <td>
@@ -12037,10 +12139,7 @@ width. Else, it returns the level <code>full/full</code> or <code>full/max</code
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>iiif_prezi3/helpers/add_thumbnail.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 69</span>
 <span class="normal"> 70</span>
 <span class="normal"> 71</span>
 <span class="normal"> 72</span>
@@ -12088,7 +12187,13 @@ width. Else, it returns the level <code>full/full</code> or <code>full/max</code
 <span class="normal">114</span>
 <span class="normal">115</span>
 <span class="normal">116</span>
-<span class="normal">117</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_thumbnail_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">preferred_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_thumbnail_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">preferred_width</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">iiif_session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Adds an image thumbnail to a manifest or canvas based on a IIIF service.</span>
 
 <span class="sd">    If there is a sizes property, it returns the thumbnail that is closest to the preferred width but larger. If no</span>
@@ -12098,13 +12203,16 @@ width. Else, it returns the level <code>full/full</code> or <code>full/max</code
 <span class="sd">    Args:</span>
 <span class="sd">        url (str): An HTTP URL which points at a IIIF Image response.</span>
 <span class="sd">        preferred_width (int, optional): the preferred width of the thumbnail.</span>
+<span class="sd">        iiif_session (Session, optional): A requests Session object to use for the HTTP requests.</span>
 <span class="sd">        **kwargs (): see AnnotationBody.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        new_thumbnail (AnnotationBody): The updated list of thumbnails, including the newly-created one.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">iiif_session</span> <span class="o">=</span> <span class="n">iiif_session</span> <span class="ow">or</span> <span class="n">DEFAULT_SESSION</span>
+
     <span class="n">image_response</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;Image&#39;</span><span class="p">)</span>
-    <span class="n">image_info</span> <span class="o">=</span> <span class="n">image_response</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">image_info</span> <span class="o">=</span> <span class="n">image_response</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">iiif_session</span><span class="p">)</span>
     <span class="n">context</span> <span class="o">=</span> <span class="n">image_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;@context&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="n">aspect_ratio</span> <span class="o">=</span> <span class="n">image_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;width&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">image_info</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;height&#39;</span><span class="p">)</span>
     <span class="n">profile</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__get_profile</span><span class="p">(</span><span class="n">image_info</span><span class="p">)</span>
@@ -12866,10 +12974,7 @@ Otherwise, only attach to the classes passed in.</p>
 
               <details class="mkdocstrings-source">
                 <summary>Source code in <code>iiif_prezi3/helpers/create_canvas_from_iiif.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
 <span class="normal">13</span>
@@ -12924,10 +13029,15 @@ Otherwise, only attach to the classes passed in.</p>
 <span class="normal">62</span>
 <span class="normal">63</span>
 <span class="normal">64</span>
-<span class="normal">65</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">CreateCanvasFromIIIF</span><span class="p">:</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">CreateCanvasFromIIIF</span><span class="p">:</span>
     <span class="c1"># should probably be added to canvas helpers</span>
 
-    <span class="k">def</span> <span class="nf">create_canvas_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">anno_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anno_page_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_canvas_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">anno_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anno_page_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">iiif_session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Create a canvas from a IIIF Image URL.</span>
 
 <span class="sd">        Creates a canvas from a IIIF Image service passing any kwargs to the Canvas.</span>
@@ -12936,16 +13046,18 @@ Otherwise, only attach to the classes passed in.</p>
 <span class="sd">            url (str): An HTTP URL at which at a IIIF Image is available.</span>
 <span class="sd">            anno_id (str): An HTTP URL for the annotation to which the image will be attached.</span>
 <span class="sd">            anno_page_id (str): An HTTP URL for the annotation page to which the annotation will be attached.</span>
+<span class="sd">            iiif_session (Session): A requests Session object to use for the HTTP requests.</span>
 <span class="sd">            **kwargs (): see Canvas</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            canvas (Canvas): the Canvas created from the IIIF Image.</span>
-
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">iiif_session</span> <span class="o">=</span> <span class="n">iiif_session</span> <span class="ow">or</span> <span class="n">DEFAULT_SESSION</span>
+
         <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
         <span class="n">body</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;http://example.com&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">)</span>
-        <span class="n">infoJson</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">infoJson</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">iiif_session</span><span class="p">)</span>
 
         <span class="c1"># Will need to handle IIIF 2...</span>
         <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">infoJson</span><span class="p">:</span>
@@ -13003,7 +13115,7 @@ Otherwise, only attach to the classes passed in.</p>
 
 
 <h5 id="iiif_prezi3.helpers.create_canvas_from_iiif.CreateCanvasFromIIIF.create_canvas_from_iiif" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">create_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">anno_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anno_page_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">create_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">anno_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anno_page_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">iiif_session</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
 </h5>
 
@@ -13075,6 +13187,22 @@ Otherwise, only attach to the classes passed in.</p>
           </tr>
           <tr class="doc-section-item">
             <td>
+                <code>iiif_session</code>
+            </td>
+            <td>
+                  <code><span title="requests.Session">Session</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A requests Session object to use for the HTTP requests.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
                 <code>**kwargs</code>
             </td>
             <td>
@@ -13117,10 +13245,7 @@ Otherwise, only attach to the classes passed in.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>iiif_prezi3/helpers/create_canvas_from_iiif.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
@@ -13166,7 +13291,12 @@ Otherwise, only attach to the classes passed in.</p>
 <span class="normal">56</span>
 <span class="normal">57</span>
 <span class="normal">58</span>
-<span class="normal">59</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_canvas_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">anno_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anno_page_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">create_canvas_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">anno_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">anno_page_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">iiif_session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Create a canvas from a IIIF Image URL.</span>
 
 <span class="sd">    Creates a canvas from a IIIF Image service passing any kwargs to the Canvas.</span>
@@ -13175,16 +13305,18 @@ Otherwise, only attach to the classes passed in.</p>
 <span class="sd">        url (str): An HTTP URL at which at a IIIF Image is available.</span>
 <span class="sd">        anno_id (str): An HTTP URL for the annotation to which the image will be attached.</span>
 <span class="sd">        anno_page_id (str): An HTTP URL for the annotation page to which the annotation will be attached.</span>
+<span class="sd">        iiif_session (Session): A requests Session object to use for the HTTP requests.</span>
 <span class="sd">        **kwargs (): see Canvas</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        canvas (Canvas): the Canvas created from the IIIF Image.</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">iiif_session</span> <span class="o">=</span> <span class="n">iiif_session</span> <span class="ow">or</span> <span class="n">DEFAULT_SESSION</span>
+
     <span class="n">canvas</span> <span class="o">=</span> <span class="n">Canvas</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="n">body</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;http://example.com&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">)</span>
-    <span class="n">infoJson</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">infoJson</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="n">iiif_session</span><span class="p">)</span>
 
     <span class="c1"># Will need to handle IIIF 2...</span>
     <span class="k">if</span> <span class="s1">&#39;type&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">infoJson</span><span class="p">:</span>
@@ -15363,9 +15495,7 @@ Accepts keyword arguments to customize the resulting instance.</p>
 
               <details class="mkdocstrings-source">
                 <summary>Source code in <code>iiif_prezi3/helpers/set_hwd_from_iiif.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
@@ -15391,10 +15521,15 @@ Accepts keyword arguments to customize the resulting instance.</p>
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SetHwdFromIIIF</span><span class="p">:</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SetHwdFromIIIF</span><span class="p">:</span>
     <span class="c1"># should probably be added to canvas helpers</span>
 
-    <span class="k">def</span> <span class="nf">set_hwd_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">set_hwd_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Set height and width on a Canvas object.</span>
 
 <span class="sd">        Requests IIIF Image information remotely for an</span>
@@ -15403,13 +15538,16 @@ Accepts keyword arguments to customize the resulting instance.</p>
 
 <span class="sd">        Args:</span>
 <span class="sd">            url (str): An HTTP URL for the IIIF image endpoint.</span>
+<span class="sd">            session (Session): A requests Session object to use for the HTTP requests.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">session</span> <span class="o">=</span> <span class="n">session</span> <span class="ow">or</span> <span class="n">DEFAULT_SESSION</span>
+
         <span class="c1"># resource url may or may not end with info.json;</span>
         <span class="c1"># add if not present</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;info.json&quot;</span><span class="p">):</span>
             <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">/info.json&quot;</span>
 
-        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
         <span class="c1"># if response is not 200, raise exception</span>
         <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="n">requests</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
             <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
@@ -15440,7 +15578,7 @@ Accepts keyword arguments to customize the resulting instance.</p>
 
 
 <h5 id="iiif_prezi3.helpers.set_hwd_from_iiif.SetHwdFromIIIF.set_hwd_from_iiif" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">set_hwd_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h5>
 
@@ -15480,15 +15618,29 @@ This method will return the info.json</p>
                 <em>required</em>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>session</code>
+            </td>
+            <td>
+                  <code><span title="requests.Session">Session</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>A requests Session object to use for the HTTP requests.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>iiif_prezi3/helpers/set_hwd_from_iiif.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
@@ -15511,7 +15663,12 @@ This method will return the info.json</p>
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span>
-<span class="normal">35</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_hwd_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">):</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">set_hwd_from_iiif</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">session</span><span class="p">:</span> <span class="n">Session</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Set height and width on a Canvas object.</span>
 
 <span class="sd">    Requests IIIF Image information remotely for an</span>
@@ -15520,13 +15677,16 @@ This method will return the info.json</p>
 
 <span class="sd">    Args:</span>
 <span class="sd">        url (str): An HTTP URL for the IIIF image endpoint.</span>
+<span class="sd">        session (Session): A requests Session object to use for the HTTP requests.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">session</span> <span class="ow">or</span> <span class="n">DEFAULT_SESSION</span>
+
     <span class="c1"># resource url may or may not end with info.json;</span>
     <span class="c1"># add if not present</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">url</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;info.json&quot;</span><span class="p">):</span>
         <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">/info.json&quot;</span>
 
-    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
     <span class="c1"># if response is not 200, raise exception</span>
     <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="n">requests</span><span class="o">.</span><span class="n">codes</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
         <span class="n">response</span><span class="o">.</span><span class="n">raise_for_status</span><span class="p">()</span>
