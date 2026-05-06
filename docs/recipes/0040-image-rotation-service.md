@@ -5,7 +5,7 @@
 | **JSON-LD Example 1:** | [https://iiif.io/api/cookbook/recipe/0040-image-rotation-service/manifest-service.json](https://iiif.io/api/cookbook/recipe/0040-image-rotation-service/manifest-service.json) |
 | **JSON-LD Example 2:** | [https://iiif.io/api/cookbook/recipe/0040-image-rotation-service/manifest-css.json](https://iiif.io/api/cookbook/recipe/0040-image-rotation-service/manifest-css.json) |
 
-### Method 1 
+### Method 1
 
 #### Example 1
 ```python
