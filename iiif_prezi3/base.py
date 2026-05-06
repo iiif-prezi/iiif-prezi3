@@ -128,6 +128,18 @@ class Base(BaseModel):
             mode='json'  # v2 requires explicit mode
         )
 
+        # Pydantic v2 serializes datetime.timezone.utc as Z, but IIIF uses +00:00
+        def fix_datetime_format(obj):
+            if isinstance(obj, dict):
+                return {k: fix_datetime_format(v) for k, v in obj.items()}
+            elif isinstance(obj, list):
+                return [fix_datetime_format(item) for item in obj]
+            elif isinstance(obj, str) and obj.endswith('Z') and 'T' in obj:
+                return obj[:-1] + '+00:00'
+            return obj
+
+        dict_out = fix_datetime_format(dict_out)
+
         if not exclude_context:
             dict_out = {
                 "@context": "http://iiif.io/api/presentation/3/context.json",
