@@ -13,6 +13,9 @@ logo = AnnotationBody(
 )
 
 collection = Collection(
+    **{"@context": [
+        "http://iiif.io/api/presentation/3/context.json",
+    ]},
     id=f"{base_url}/newspaper_title-collection.json",
     label={"de": ["Berliner Tageblatt"]},
     metadata=[
