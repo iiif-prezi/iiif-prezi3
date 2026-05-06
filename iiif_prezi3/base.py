@@ -128,14 +128,14 @@ class Base(BaseModel):
             mode='json'  # v2 requires explicit mode
         )
 
-        # Adding this to ensure Recipe 0230 still works since Pydantic 2 date serialization is different
+        # Force use Z
         def fix_datetime_format(obj):
             if isinstance(obj, dict):
                 return {k: fix_datetime_format(v) for k, v in obj.items()}
             elif isinstance(obj, list):
                 return [fix_datetime_format(item) for item in obj]
-            elif isinstance(obj, str) and obj.endswith('Z'):
-                return obj[:-1] + '+00:00'
+            elif isinstance(obj, str) and obj.endswith('+00:00') and 'T' in obj:
+                return obj[:-6] + 'Z'
             return obj
 
         dict_out = fix_datetime_format(dict_out)
