@@ -128,14 +128,14 @@ class Base(BaseModel):
             mode='json'  # v2 requires explicit mode
         )
 
-        # Pydantic v2 serializes datetime.timezone.utc as Z, but IIIF uses +00:00
+        # Force use Z
         def fix_datetime_format(obj):
             if isinstance(obj, dict):
                 return {k: fix_datetime_format(v) for k, v in obj.items()}
             elif isinstance(obj, list):
                 return [fix_datetime_format(item) for item in obj]
-            elif isinstance(obj, str) and obj.endswith('Z') and 'T' in obj:
-                return obj[:-1] + '+00:00'
+            elif isinstance(obj, str) and obj.endswith('+00:00') and 'T' in obj:
+                return obj[:-6] + 'Z'
             return obj
 
         dict_out = fix_datetime_format(dict_out)
