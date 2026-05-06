@@ -30,7 +30,7 @@ painting_body = SpecificResource(
 
 canvas = manifest.make_canvas(id=f"{base_url}/canvas/p1")
 canvas.set_hwd(width=2105, height=1523)
-canvas.label = "inside cover; 1r"
+canvas.label = {"en": ["inside cover; 1r"]}
 
 anno_page = AnnotationPage(id=f"{base_url}/p1/1")
 anno_page.add_item(
