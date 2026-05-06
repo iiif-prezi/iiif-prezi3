@@ -1,7 +1,7 @@
 import uuid
 
 from ..config.config import Config, register_config
-from ..skeleton import (AccompanyingCanvas, AnnotationBody,
+from ..skeleton import (AccompanyingCanvas, Annotation, AnnotationBody,
                         AnnotationCollection, AnnotationPage, Canvas, Class,
                         Collection, Homepage, KeyValueString, Manifest,
                         ManifestRef, NavPlace, PlaceholderCanvas, Provider,
@@ -207,8 +207,8 @@ ait = AutoItems(aitcfg)
 alst = AutoList(alstcfg, name="General")
 allst = AutoList(allstcfg, name="Language")
 # Set up some obvious defaults
-ai.register_on_class(AnnotationPage, Class, ManifestRef)
+ai.register_on_class(AnnotationPage, Class, ManifestRef, Annotation)
 al.register_on_class(KeyValueString, Class, Reference, AnnotationBody, ManifestRef)
 ait.register_on_class(Canvas, PlaceholderCanvas, AccompanyingCanvas, Range, AnnotationCollection, AnnotationPage, Manifest, Collection)
-alst.register_on_class(Class, AnnotationPage, AnnotationBody, ServiceV2, NavPlace, Reference, Provider)
+alst.register_on_class(Class, AnnotationPage, AnnotationBody, ServiceV2, NavPlace, Reference, Provider, Annotation)
 allst.register_on_class(Homepage)
