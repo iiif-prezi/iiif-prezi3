@@ -85,14 +85,7 @@ class Stylesheet(RootModel[Union['AnyUrl', 'CssStylesheet']]):
 
 
 class ViewingDirection(
-    RootModel[
-        Union[
-            constr(pattern=r'^left-to-right$'),
-            constr(pattern=r'^right-to-left$'),
-            constr(pattern=r'^top-to-bottom$'),
-            constr(pattern=r'^bottom-to-top$'),
-        ]
-    ]
+    RootModel[Union[constr(pattern=r'^left-to-right$'), constr(pattern=r'^right-to-left$'), constr(pattern=r'^top-to-bottom$'), constr(pattern=r'^bottom-to-top$'), ]]
 ):
     root: Union[
         constr(pattern=r'^left-to-right$'),
@@ -320,9 +313,7 @@ class SeeAlso(RootModel[LinkedResources]):
 
 
 class AbstractIIIFResource(
-    RootModel[
-        Union[Manifest, Collection, AnnotationCollection, AnnotationPage, Annotation]
-    ]
+    RootModel[Union['Manifest', 'Collection', 'AnnotationCollection', 'AnnotationPage', 'Annotation']]
 ):
     root: Union[
         Manifest, Collection, AnnotationCollection, AnnotationPage, Annotation
@@ -566,9 +557,7 @@ class AnnotationBody(Base):
 
 
 class Resource(
-    RootModel[
-        Union[AnnotationBody, TextualBody, SpecificResource, Choice, GeoJSONFeature]
-    ]
+    RootModel[Union['AnnotationBody', 'TextualBody', 'SpecificResource', 'Choice', 'GeoJSONFeature']]
 ):
     root: Union[AnnotationBody, TextualBody, SpecificResource, Choice, GeoJSONFeature]
 
@@ -627,21 +616,7 @@ class RangeSelector(Base):
 
 
 class Selector(
-    RootModel[
-        Union[
-            AnyUrl,
-            PointSelector,
-            FragmentSelector,
-            SVGSelector,
-            ImageAPISelector,
-            XPathSelector,
-            CssSelector,
-            TextQuoteSelector,
-            TextPositionSelector,
-            DataPositionSelector,
-            RangeSelector,
-        ]
-    ]
+    RootModel[Union['AnyUrl', 'PointSelector', 'FragmentSelector', 'SVGSelector', 'ImageAPISelector', 'XPathSelector', 'CssSelector', 'TextQuoteSelector', 'TextPositionSelector', 'DataPositionSelector', 'RangeSelector', ]]
 ):
     root: Union[
         AnyUrl,
