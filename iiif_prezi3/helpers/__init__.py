@@ -1,3 +1,4 @@
+from .add_context import AddContext  # noqa: F401
 from .add_image import AddImage  # noqa: F401
 from .add_item import AddItem, AddItemByReference  # noqa: F401
 from .add_label import AddLabel  # noqa: F401
@@ -12,6 +13,8 @@ from .create_canvas_from_iiif import CreateCanvasFromIIIF  # noqa: F401
 from .make_canvas import MakeCanvas  # noqa: F401
 from .make_collection import MakeCollection  # noqa: F401
 from .make_manifest import MakeManifest  # noqa: F401
+from .make_navplace_feature import AddNavPlaceFeature  # noqa: F401
+from .make_navplace_feature import MakeNavPlaceFeature  # noqa: F401
 from .make_range import MakeRange  # noqa: F401
 from .make_service import MakeService  # noqa: F401
 from .set_hwd import SetHwd  # noqa: F401

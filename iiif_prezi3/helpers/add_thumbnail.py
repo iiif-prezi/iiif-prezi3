@@ -1,3 +1,6 @@
+from requests import Session
+
+from ..config.http import DEFAULT_SESSION
 from ..loader import monkeypatch_schema
 from ..skeleton import (AccompanyingCanvas, Annotation, AnnotationBody,
                         AnnotationCollection, AnnotationPage, Canvas,
@@ -63,7 +66,7 @@ class AddThumbnail:
         else:
             return f"{base_url}/full/max/0/default.jpg"
 
-    def create_thumbnail_from_iiif(self, url, preferred_width=500, **kwargs):
+    def create_thumbnail_from_iiif(self, url, preferred_width=500, iiif_session: Session = None, **kwargs):
         """Adds an image thumbnail to a manifest or canvas based on a IIIF service.
 
         If there is a sizes property, it returns the thumbnail that is closest to the preferred width but larger. If no
@@ -73,13 +76,16 @@ class AddThumbnail:
         Args:
             url (str): An HTTP URL which points at a IIIF Image response.
             preferred_width (int, optional): the preferred width of the thumbnail.
+            iiif_session (Session, optional): A requests Session object to use for the HTTP requests.
             **kwargs (): see AnnotationBody.
 
         Returns:
             new_thumbnail (AnnotationBody): The updated list of thumbnails, including the newly-created one.
         """
+        iiif_session = iiif_session or DEFAULT_SESSION
+
         image_response = AnnotationBody(id=url, type='Image')
-        image_info = image_response.set_hwd_from_iiif(url)
+        image_info = image_response.set_hwd_from_iiif(url, session=iiif_session)
         context = image_info.get('@context', '')
         aspect_ratio = image_info.get('width') / image_info.get('height')
         profile = self.__get_profile(image_info)

@@ -1,5 +1,7 @@
 import requests
+from requests import Session
 
+from ..config.http import DEFAULT_SESSION
 from ..loader import monkeypatch_schema
 from ..skeleton import AnnotationBody, Canvas, Resource
 
@@ -7,7 +9,7 @@ from ..skeleton import AnnotationBody, Canvas, Resource
 class SetHwdFromIIIF:
     # should probably be added to canvas helpers
 
-    def set_hwd_from_iiif(self, url):
+    def set_hwd_from_iiif(self, url, session: Session = None):
         """Set height and width on a Canvas object.
 
         Requests IIIF Image information remotely for an
@@ -16,13 +18,16 @@ class SetHwdFromIIIF:
 
         Args:
             url (str): An HTTP URL for the IIIF image endpoint.
+            session (Session): A requests Session object to use for the HTTP requests.
         """
+        session = session or DEFAULT_SESSION
+
         # resource url may or may not end with info.json;
         # add if not present
         if not url.endswith("info.json"):
             url = f"{url.rstrip('/')}/info.json"
 
-        response = requests.get(url)
+        response = session.get(url)
         # if response is not 200, raise exception
         if response.status_code != requests.codes.ok:
             response.raise_for_status()
