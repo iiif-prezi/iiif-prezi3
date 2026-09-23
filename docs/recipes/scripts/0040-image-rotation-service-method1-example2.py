@@ -38,7 +38,7 @@ anno_page.add_item(
         id=f"{base_url}/annotation/v0001-image",
         motivation="painting",
         stylesheet=CssStylesheet(
-            value=".rotated { transform-origin: 761px 1344px; transform: rotate(270deg) translateY(-582px); }",
+            value=".rotated { transform-origin: 761px 1344px; transform: rotate(90deg) translateY(-582px); }",
         ),
         body=painting_body,
         target=canvas.id,

@@ -25,7 +25,7 @@ image_source.make_service(
 painting_body = SpecificResource(
     id=f"{base_url}/body/v0001-image",
     source=image_source,
-    selector={"type": "ImageApiSelector", "rotation": "270"},
+    selector={"type": "ImageApiSelector", "rotation": "90"},
 )
 
 canvas = manifest.make_canvas(id=f"{base_url}/canvas/p1")
