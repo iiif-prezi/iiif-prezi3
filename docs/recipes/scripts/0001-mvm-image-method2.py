@@ -5,7 +5,7 @@ base_url = "https://iiif.io/api/cookbook/recipe/0001-mvm-image"
 
 manifest = Manifest(id=f"{base_url}/manifest.json", label="Single Image Example")
 canvas = Canvas(id=f"{base_url}/canvas/p1", height=1800, width=1200)
-anno_body = AnnotationBody(id="http://iiif.io/api/presentation/2.1/example/fixtures/resources/page1-full.png",
+anno_body = AnnotationBody(id="https://iiif.io/api/presentation/2.1/example/fixtures/resources/page1-full.png",
                            type="Image",
                            format="image/png",
                            height=1800,
