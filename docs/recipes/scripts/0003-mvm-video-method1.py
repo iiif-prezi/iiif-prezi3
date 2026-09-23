@@ -3,7 +3,7 @@ from iiif_prezi3 import Manifest, AnnotationPage, Annotation, AnnotationBody, co
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0003-mvm-video"
 
-manifest = Manifest(id=f"{base_url}/manifest.json", label="Video Example 3")
+manifest = Manifest(id=f"{base_url}/manifest.json", label="Simplest Video Example (IIIF Presentation 3)")
 canvas = manifest.make_canvas(id=f"{base_url}/canvas")
 anno_body = AnnotationBody(id="https://fixtures.iiif.io/video/indiana/lunchroom_manners/high/lunchroom_manners_1024kb.mp4",
                            type="Video",
