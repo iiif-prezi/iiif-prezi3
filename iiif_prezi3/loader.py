@@ -8,7 +8,7 @@ def load_bundled_extensions(extensions=None):
 
     if extensions and isinstance(extensions, list):
         extensions_to_load = extensions
-    elif not extensions or (extensions and not isinstance(extensions, str)):
+    else:
         if not extensions:
             extension_file = os.path.join(os.path.dirname(__file__), 'config', 'extensions.json')
         else:
