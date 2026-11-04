@@ -56,7 +56,6 @@ setup(
                  "Operating System :: OS Independent",  # is this true? know Linux & OS X ok
                  "Programming Language :: Python",
                  "Programming Language :: Python :: 3",
-                 "Programming Language :: Python :: 3.9",
                  "Programming Language :: Python :: 3.10",
                  "Programming Language :: Python :: 3.11",
                  "Programming Language :: Python :: 3.12",
@@ -65,7 +64,7 @@ setup(
                  "Topic :: Multimedia :: Graphics :: Graphics Conversion",
                  "Topic :: Software Development :: Libraries :: Python Modules",
                  "Environment :: Web Environment"],
-    python_requires='>=3',
+    python_requires='>=3.10',
     url='https://github.com/iiif-prezi/iiif-prezi3',
     license='Apache License, Version 2.0',
     install_requires=REQUIREMENTS,
