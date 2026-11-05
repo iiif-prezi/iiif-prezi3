@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -1886,46 +1886,46 @@
 </tbody>
 </table>
 <h3 id="method-1-">Method 1 -</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">AnnotationBody</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">SpecificResource</span><span class="p">,</span> <span class="n">config</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">iiif_prezi3</span><span class="w"> </span><span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">AnnotationBody</span><span class="p">,</span> <span class="n">AnnotationPage</span><span class="p">,</span> <span class="n">Annotation</span><span class="p">,</span> <span class="n">SpecificResource</span><span class="p">,</span> <span class="n">config</span>
 
-<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
-<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0299-region&quot;</span>
+<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">'helpers.auto_fields.AutoLang'</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">"en"</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">"https://iiif.io/api/cookbook/recipe/0299-region"</span>
 
 <span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Berliner Tageblatt article, &#39;Ein neuer Sicherungsplan?&#39;&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Berliner Tageblatt article, 'Ein neuer Sicherungsplan?'"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">image_source</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/4ce82cef49fb16798f4c2440307c3d6f-newspaper-p2/full/max/0/default.jpg&quot;</span><span class="p">,</span>
-    <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/jpeg&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="s2">"https://iiif.io/api/image/3.0/example/reference/4ce82cef49fb16798f4c2440307c3d6f-newspaper-p2/full/max/0/default.jpg"</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s2">"Image"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"image/jpeg"</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">4999</span><span class="p">,</span>
     <span class="n">width</span><span class="o">=</span><span class="mi">3536</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">image_source</span><span class="o">.</span><span class="n">make_service</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/4ce82cef49fb16798f4c2440307c3d6f-newspaper-p2&quot;</span><span class="p">,</span>
-    <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;ImageService3&quot;</span><span class="p">,</span>
-    <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;level1&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="s2">"https://iiif.io/api/image/3.0/example/reference/4ce82cef49fb16798f4c2440307c3d6f-newspaper-p2"</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s2">"ImageService3"</span><span class="p">,</span>
+    <span class="n">profile</span><span class="o">=</span><span class="s2">"level1"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">painting_body</span> <span class="o">=</span> <span class="n">SpecificResource</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/body/b1&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/body/b1"</span><span class="p">,</span>
     <span class="n">source</span><span class="o">=</span><span class="n">image_source</span><span class="p">,</span>
-    <span class="n">selector</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ImageApiSelector&quot;</span><span class="p">,</span> <span class="s2">&quot;region&quot;</span><span class="p">:</span> <span class="s2">&quot;1768,2423,1768,2080&quot;</span><span class="p">},</span>
+    <span class="n">selector</span><span class="o">=</span><span class="p">{</span><span class="s2">"type"</span><span class="p">:</span> <span class="s2">"ImageApiSelector"</span><span class="p">,</span> <span class="s2">"region"</span><span class="p">:</span> <span class="s2">"1768,2423,1768,2080"</span><span class="p">},</span>
 <span class="p">)</span>
 
-<span class="n">anno_page</span> <span class="o">=</span> <span class="n">AnnotationPage</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p1/1&quot;</span><span class="p">)</span>
+<span class="n">anno_page</span> <span class="o">=</span> <span class="n">AnnotationPage</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p1/1"</span><span class="p">)</span>
 <span class="n">anno_page</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span>
     <span class="n">Annotation</span><span class="p">(</span>
-        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0001-image&quot;</span><span class="p">,</span>
-        <span class="n">motivation</span><span class="o">=</span><span class="s2">&quot;painting&quot;</span><span class="p">,</span>
+        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0001-image"</span><span class="p">,</span>
+        <span class="n">motivation</span><span class="o">=</span><span class="s2">"painting"</span><span class="p">,</span>
         <span class="n">body</span><span class="o">=</span><span class="n">painting_body</span><span class="p">,</span>
-        <span class="n">target</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p1&quot;</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p1"</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
 
-<span class="n">canvas</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p1&quot;</span><span class="p">)</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p1"</span><span class="p">)</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">set_hwd</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">2080</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">1768</span><span class="p">)</span>
 <span class="n">canvas</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">anno_page</span><span class="p">)</span>
 
@@ -1980,10 +1980,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

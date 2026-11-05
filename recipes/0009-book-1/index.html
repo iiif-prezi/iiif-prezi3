@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -1886,43 +1886,43 @@
 </tbody>
 </table>
 <h3 id="method-1-setting-the-behavior-property-during-object-construction">Method 1 - Setting the <code>behavior</code> property during object construction</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">config</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">iiif_prezi3</span><span class="w"> </span><span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">config</span>
 
-<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
-<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0009-book-1&quot;</span>
+<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">'helpers.auto_fields.AutoLang'</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">"en"</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">"https://iiif.io/api/cookbook/recipe/0009-book-1"</span>
 
-<span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json&quot;</span><span class="p">,</span>
-                    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Simple Manifest - Book&quot;</span><span class="p">,</span>
-                    <span class="n">behavior</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;paged&quot;</span><span class="p">])</span>
-<span class="n">canvas1</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/59d09e6773341f28ea166e9f3c1e674f-gallica_ark_12148_bpt6k1526005v_f18&quot;</span><span class="p">,</span>
-                                         <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p1&quot;</span><span class="p">,</span>
-                                         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Blank page&quot;</span><span class="p">,</span>
-                                         <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0001-image&quot;</span><span class="p">,</span>
-                                         <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p1/1&quot;</span><span class="p">)</span>
+<span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json"</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="s2">"Simple Manifest - Book"</span><span class="p">,</span>
+                    <span class="n">behavior</span><span class="o">=</span><span class="p">[</span><span class="s2">"paged"</span><span class="p">])</span>
+<span class="n">canvas1</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">"https://iiif.io/api/image/3.0/example/reference/59d09e6773341f28ea166e9f3c1e674f-gallica_ark_12148_bpt6k1526005v_f18"</span><span class="p">,</span>
+                                         <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p1"</span><span class="p">,</span>
+                                         <span class="n">label</span><span class="o">=</span><span class="s2">"Blank page"</span><span class="p">,</span>
+                                         <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0001-image"</span><span class="p">,</span>
+                                         <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p1/1"</span><span class="p">)</span>
 
-<span class="n">canvas2</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/59d09e6773341f28ea166e9f3c1e674f-gallica_ark_12148_bpt6k1526005v_f19&quot;</span><span class="p">,</span>
-                                         <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p2&quot;</span><span class="p">,</span>
-                                         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Frontispiece&quot;</span><span class="p">,</span>
-                                         <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0002-image&quot;</span><span class="p">,</span>
-                                         <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p2/1&quot;</span><span class="p">)</span>
+<span class="n">canvas2</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">"https://iiif.io/api/image/3.0/example/reference/59d09e6773341f28ea166e9f3c1e674f-gallica_ark_12148_bpt6k1526005v_f19"</span><span class="p">,</span>
+                                         <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p2"</span><span class="p">,</span>
+                                         <span class="n">label</span><span class="o">=</span><span class="s2">"Frontispiece"</span><span class="p">,</span>
+                                         <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0002-image"</span><span class="p">,</span>
+                                         <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p2/1"</span><span class="p">)</span>
 
-<span class="n">canvas3</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/59d09e6773341f28ea166e9f3c1e674f-gallica_ark_12148_bpt6k1526005v_f20&quot;</span><span class="p">,</span>
-                                         <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p3&quot;</span><span class="p">,</span>
-                                         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Title page&quot;</span><span class="p">,</span>
-                                         <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0003-image&quot;</span><span class="p">,</span>
-                                         <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p3/1&quot;</span><span class="p">)</span>
+<span class="n">canvas3</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">"https://iiif.io/api/image/3.0/example/reference/59d09e6773341f28ea166e9f3c1e674f-gallica_ark_12148_bpt6k1526005v_f20"</span><span class="p">,</span>
+                                         <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p3"</span><span class="p">,</span>
+                                         <span class="n">label</span><span class="o">=</span><span class="s2">"Title page"</span><span class="p">,</span>
+                                         <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0003-image"</span><span class="p">,</span>
+                                         <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p3/1"</span><span class="p">)</span>
 
-<span class="n">canvas4</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/59d09e6773341f28ea166e9f3c1e674f-gallica_ark_12148_bpt6k1526005v_f21&quot;</span><span class="p">,</span>
-                                         <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p4&quot;</span><span class="p">,</span>
-                                         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Blank page&quot;</span><span class="p">,</span>
-                                         <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0004-image&quot;</span><span class="p">,</span>
-                                         <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p4/1&quot;</span><span class="p">)</span>
+<span class="n">canvas4</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">"https://iiif.io/api/image/3.0/example/reference/59d09e6773341f28ea166e9f3c1e674f-gallica_ark_12148_bpt6k1526005v_f21"</span><span class="p">,</span>
+                                         <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p4"</span><span class="p">,</span>
+                                         <span class="n">label</span><span class="o">=</span><span class="s2">"Blank page"</span><span class="p">,</span>
+                                         <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0004-image"</span><span class="p">,</span>
+                                         <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p4/1"</span><span class="p">)</span>
 
-<span class="n">canvas5</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/59d09e6773341f28ea166e9f3c1e674f-gallica_ark_12148_bpt6k1526005v_f22&quot;</span><span class="p">,</span>
-                                         <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p5&quot;</span><span class="p">,</span>
-                                         <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Bookplate&quot;</span><span class="p">,</span>
-                                         <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0005-image&quot;</span><span class="p">,</span>
-                                         <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p5/1&quot;</span><span class="p">)</span>
+<span class="n">canvas5</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">"https://iiif.io/api/image/3.0/example/reference/59d09e6773341f28ea166e9f3c1e674f-gallica_ark_12148_bpt6k1526005v_f22"</span><span class="p">,</span>
+                                         <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p5"</span><span class="p">,</span>
+                                         <span class="n">label</span><span class="o">=</span><span class="s2">"Bookplate"</span><span class="p">,</span>
+                                         <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0005-image"</span><span class="p">,</span>
+                                         <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p5/1"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">manifest</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 </code></pre></div>
@@ -1975,10 +1975,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

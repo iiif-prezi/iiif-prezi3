@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -1886,26 +1886,26 @@
 </tbody>
 </table>
 <h3 id="method-1-construct-the-language-dictionaries-during-object-creation">Method 1 - Construct the language dictionaries during object creation</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">KeyValueString</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">iiif_prezi3</span><span class="w"> </span><span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">KeyValueString</span>
 
-<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0006-text-language&quot;</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">"https://iiif.io/api/cookbook/recipe/0006-text-language"</span>
 
-<span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json&quot;</span><span class="p">,</span>
-                    <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Whistler&#39;s Mother&quot;</span><span class="p">],</span> <span class="s2">&quot;fr&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;La Mère de Whistler&quot;</span><span class="p">]})</span>
+<span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json"</span><span class="p">,</span>
+                    <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Whistler's Mother"</span><span class="p">],</span> <span class="s2">"fr"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"La Mère de Whistler"</span><span class="p">]})</span>
 <span class="n">manifest</span><span class="o">.</span><span class="n">metadata</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="n">KeyValueString</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Creator&quot;</span><span class="p">],</span> <span class="s2">&quot;fr&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Auteur&quot;</span><span class="p">]},</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Whistler, James Abbott McNeill&quot;</span><span class="p">),</span>
-    <span class="n">KeyValueString</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Subject&quot;</span><span class="p">],</span> <span class="s2">&quot;fr&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Sujet&quot;</span><span class="p">]},</span>
-                   <span class="n">value</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;McNeill Anna Matilda, mother of Whistler (1804-1881)&quot;</span><span class="p">],</span>
-                          <span class="s2">&quot;fr&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;McNeill Anna Matilda, mère de Whistler (1804-1881)&quot;</span><span class="p">]})</span>
+    <span class="n">KeyValueString</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Creator"</span><span class="p">],</span> <span class="s2">"fr"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Auteur"</span><span class="p">]},</span> <span class="n">value</span><span class="o">=</span><span class="s2">"Whistler, James Abbott McNeill"</span><span class="p">),</span>
+    <span class="n">KeyValueString</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Subject"</span><span class="p">],</span> <span class="s2">"fr"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Sujet"</span><span class="p">]},</span>
+                   <span class="n">value</span><span class="o">=</span><span class="p">{</span><span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"McNeill Anna Matilda, mother of Whistler (1804-1881)"</span><span class="p">],</span>
+                          <span class="s2">"fr"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"McNeill Anna Matilda, mère de Whistler (1804-1881)"</span><span class="p">]})</span>
 <span class="p">]</span>
-<span class="n">manifest</span><span class="o">.</span><span class="n">summary</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Arrangement in Grey and Black No. 1, also called Portrait of the Artist&#39;s Mother.&quot;</span><span class="p">],</span>
-                    <span class="s2">&quot;fr&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Arrangement en gris et noir n°1, also called Portrait de la mère de l&#39;artiste.&quot;</span><span class="p">]}</span>
-<span class="n">manifest</span><span class="o">.</span><span class="n">requiredStatement</span> <span class="o">=</span> <span class="n">KeyValueString</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Held By&quot;</span><span class="p">],</span> <span class="s2">&quot;fr&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Détenu par&quot;</span><span class="p">]},</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Musée d&#39;Orsay, Paris, France&quot;</span><span class="p">)</span>
+<span class="n">manifest</span><span class="o">.</span><span class="n">summary</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Arrangement in Grey and Black No. 1, also called Portrait of the Artist's Mother."</span><span class="p">],</span>
+                    <span class="s2">"fr"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Arrangement en gris et noir n°1, also called Portrait de la mère de l'artiste."</span><span class="p">]}</span>
+<span class="n">manifest</span><span class="o">.</span><span class="n">requiredStatement</span> <span class="o">=</span> <span class="n">KeyValueString</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Held By"</span><span class="p">],</span> <span class="s2">"fr"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Détenu par"</span><span class="p">]},</span> <span class="n">value</span><span class="o">=</span><span class="s2">"Musée d'Orsay, Paris, France"</span><span class="p">)</span>
 
-<span class="n">canvas</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/329817fc8a251a01c393f517d8a17d87-Whistlers_Mother&quot;</span><span class="p">,</span>
-                                        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p1&quot;</span><span class="p">,</span>
-                                        <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0001-image&quot;</span><span class="p">,</span>
-                                        <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p1/1&quot;</span><span class="p">)</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="s2">"https://iiif.io/api/image/3.0/example/reference/329817fc8a251a01c393f517d8a17d87-Whistlers_Mother"</span><span class="p">,</span>
+                                        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p1"</span><span class="p">,</span>
+                                        <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/p0001-image"</span><span class="p">,</span>
+                                        <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/p1/1"</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">manifest</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 </code></pre></div>
@@ -1958,10 +1958,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

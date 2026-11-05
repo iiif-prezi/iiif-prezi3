@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -1886,68 +1886,68 @@
 </tbody>
 </table>
 <h3 id="method-1-">Method 1 -</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">CanvasRef</span><span class="p">,</span> <span class="n">config</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">iiif_prezi3</span><span class="w"> </span><span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">CanvasRef</span><span class="p">,</span> <span class="n">config</span>
 
-<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
-<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0024-book-4-toc&quot;</span>
+<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">'helpers.auto_fields.AutoLang'</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">"en"</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">"https://iiif.io/api/cookbook/recipe/0024-book-4-toc"</span>
 
-<span class="n">image_base</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/d3bbf5397c6df6b894c5991195c912ab&quot;</span>
+<span class="n">image_base</span> <span class="o">=</span> <span class="s2">"https://iiif.io/api/image/3.0/example/reference/d3bbf5397c6df6b894c5991195c912ab"</span>
 
 <span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ethiopic Ms 10&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Ethiopic Ms 10"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">canvases</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">canvas_data</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s2">&quot;p1&quot;</span><span class="p">,</span> <span class="s2">&quot;f. 1r&quot;</span><span class="p">,</span> <span class="s2">&quot;1-21198-zz001d8m41_774608_master&quot;</span><span class="p">,</span> <span class="s2">&quot;p0001&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p2&quot;</span><span class="p">,</span> <span class="s2">&quot;f. 1v&quot;</span><span class="p">,</span> <span class="s2">&quot;2-21198-zz001d8m5j_774612_master&quot;</span><span class="p">,</span> <span class="s2">&quot;p0002&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p3&quot;</span><span class="p">,</span> <span class="s2">&quot;f. 2r&quot;</span><span class="p">,</span> <span class="s2">&quot;3-21198-zz001d8tm5_775004_master&quot;</span><span class="p">,</span> <span class="s2">&quot;p0003&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p4&quot;</span><span class="p">,</span> <span class="s2">&quot;f. 2v&quot;</span><span class="p">,</span> <span class="s2">&quot;4-21198-zz001d8tnp_775007_master&quot;</span><span class="p">,</span> <span class="s2">&quot;p0004&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p5&quot;</span><span class="p">,</span> <span class="s2">&quot;f. 3r&quot;</span><span class="p">,</span> <span class="s2">&quot;5-21198-zz001d8v6f_775077_master&quot;</span><span class="p">,</span> <span class="s2">&quot;p0005&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p6&quot;</span><span class="p">,</span> <span class="s2">&quot;f. 3v&quot;</span><span class="p">,</span> <span class="s2">&quot;6-21198-zz001d8v7z_775085_master&quot;</span><span class="p">,</span> <span class="s2">&quot;p0006&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p1"</span><span class="p">,</span> <span class="s2">"f. 1r"</span><span class="p">,</span> <span class="s2">"1-21198-zz001d8m41_774608_master"</span><span class="p">,</span> <span class="s2">"p0001"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p2"</span><span class="p">,</span> <span class="s2">"f. 1v"</span><span class="p">,</span> <span class="s2">"2-21198-zz001d8m5j_774612_master"</span><span class="p">,</span> <span class="s2">"p0002"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p3"</span><span class="p">,</span> <span class="s2">"f. 2r"</span><span class="p">,</span> <span class="s2">"3-21198-zz001d8tm5_775004_master"</span><span class="p">,</span> <span class="s2">"p0003"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p4"</span><span class="p">,</span> <span class="s2">"f. 2v"</span><span class="p">,</span> <span class="s2">"4-21198-zz001d8tnp_775007_master"</span><span class="p">,</span> <span class="s2">"p0004"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p5"</span><span class="p">,</span> <span class="s2">"f. 3r"</span><span class="p">,</span> <span class="s2">"5-21198-zz001d8v6f_775077_master"</span><span class="p">,</span> <span class="s2">"p0005"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p6"</span><span class="p">,</span> <span class="s2">"f. 3v"</span><span class="p">,</span> <span class="s2">"6-21198-zz001d8v7z_775085_master"</span><span class="p">,</span> <span class="s2">"p0006"</span><span class="p">),</span>
 <span class="p">]</span>
 
 <span class="k">for</span> <span class="n">canvas_id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">image_id</span><span class="p">,</span> <span class="n">anno_num</span> <span class="ow">in</span> <span class="n">canvas_data</span><span class="p">:</span>
     <span class="n">canvas</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span>
-        <span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">image_base</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/</span><span class="si">{</span><span class="n">canvas_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_base</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/</span><span class="si">{</span><span class="n">canvas_id</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
         <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
-        <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/</span><span class="si">{</span><span class="n">anno_num</span><span class="si">}</span><span class="s2">-image&quot;</span><span class="p">,</span>
-        <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/</span><span class="si">{</span><span class="n">canvas_id</span><span class="si">}</span><span class="s2">/1&quot;</span><span class="p">,</span>
+        <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/</span><span class="si">{</span><span class="n">anno_num</span><span class="si">}</span><span class="s2">-image"</span><span class="p">,</span>
+        <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/</span><span class="si">{</span><span class="n">canvas_id</span><span class="si">}</span><span class="s2">/1"</span><span class="p">,</span>
     <span class="p">)</span>
     <span class="n">canvases</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">canvas</span><span class="p">)</span>
 
 <span class="c1"># Table of Contents (structures)</span>
 <span class="n">toc</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_range</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r0&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Table of Contents&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r0"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Table of Contents"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">r1</span> <span class="o">=</span> <span class="n">toc</span><span class="o">.</span><span class="n">make_range</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r1&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r1"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">r1</span><span class="o">.</span><span class="n">add_label</span><span class="p">(</span><span class="s2">&quot;Tabiba Tabiban [ጠቢበ ጠቢባን]&quot;</span><span class="p">,</span> <span class="s2">&quot;gez&quot;</span><span class="p">)</span>
-<span class="n">r1</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p1&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Canvas&quot;</span><span class="p">))</span>
-<span class="n">r1</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p2&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Canvas&quot;</span><span class="p">))</span>
+<span class="n">r1</span><span class="o">.</span><span class="n">add_label</span><span class="p">(</span><span class="s2">"Tabiba Tabiban [ጠቢበ ጠቢባን]"</span><span class="p">,</span> <span class="s2">"gez"</span><span class="p">)</span>
+<span class="n">r1</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p1"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"Canvas"</span><span class="p">))</span>
+<span class="n">r1</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p2"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"Canvas"</span><span class="p">))</span>
 
 <span class="n">r2</span> <span class="o">=</span> <span class="n">toc</span><span class="o">.</span><span class="n">make_range</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r2&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r2"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">r2</span><span class="o">.</span><span class="n">add_label</span><span class="p">(</span><span class="s2">&quot;Arede&#39;et [አርድዕት]&quot;</span><span class="p">,</span> <span class="s2">&quot;gez&quot;</span><span class="p">)</span>
+<span class="n">r2</span><span class="o">.</span><span class="n">add_label</span><span class="p">(</span><span class="s2">"Arede'et [አርድዕት]"</span><span class="p">,</span> <span class="s2">"gez"</span><span class="p">)</span>
 <span class="n">r2_monday</span> <span class="o">=</span> <span class="n">r2</span><span class="o">.</span><span class="n">make_range</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r2/1&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Monday&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r2/1"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Monday"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">r2_monday</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p3&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Canvas&quot;</span><span class="p">))</span>
-<span class="n">r2_monday</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p4&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Canvas&quot;</span><span class="p">))</span>
+<span class="n">r2_monday</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p3"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"Canvas"</span><span class="p">))</span>
+<span class="n">r2_monday</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p4"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"Canvas"</span><span class="p">))</span>
 
 <span class="n">r2_tuesday</span> <span class="o">=</span> <span class="n">r2</span><span class="o">.</span><span class="n">make_range</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r2/2&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Tuesday&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r2/2"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Tuesday"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">r2_tuesday</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p5&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Canvas&quot;</span><span class="p">))</span>
-<span class="n">r2_tuesday</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p6&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Canvas&quot;</span><span class="p">))</span>
+<span class="n">r2_tuesday</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p5"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"Canvas"</span><span class="p">))</span>
+<span class="n">r2_tuesday</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p6"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"Canvas"</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">manifest</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 </code></pre></div>
@@ -2000,10 +2000,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

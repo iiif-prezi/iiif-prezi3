@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -1886,42 +1886,42 @@
 </tbody>
 </table>
 <h3 id="method-1">Method 1</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">LinkedResource</span><span class="p">,</span> <span class="n">config</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">iiif_prezi3</span><span class="w"> </span><span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">LinkedResource</span><span class="p">,</span> <span class="n">config</span>
 
-<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
-<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0053-seeAlso&quot;</span>
-<span class="n">image_base</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/4f92cceb12dd53b52433425ce44308c7-ucla_bib1987273_no001_rs&quot;</span>
+<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">'helpers.auto_fields.AutoLang'</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">"en"</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">"https://iiif.io/api/cookbook/recipe/0053-seeAlso"</span>
+<span class="n">image_base</span> <span class="o">=</span> <span class="s2">"https://iiif.io/api/image/3.0/example/reference/4f92cceb12dd53b52433425ce44308c7-ucla_bib1987273_no001_rs"</span>
 
 <span class="n">linked_resource</span> <span class="o">=</span> <span class="n">LinkedResource</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://fixtures.iiif.io/other/UCLA/ezukushi_mods.xml&quot;</span><span class="p">,</span>
-    <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MODS metadata&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;text/xml&quot;</span><span class="p">,</span>
-    <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;http://www.loc.gov/mods/v3&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="s2">"https://fixtures.iiif.io/other/UCLA/ezukushi_mods.xml"</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s2">"Dataset"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"MODS metadata"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"text/xml"</span><span class="p">,</span>
+    <span class="n">profile</span><span class="o">=</span><span class="s2">"http://www.loc.gov/mods/v3"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Linking to Structured Metadata&quot;</span><span class="p">,</span>
-    <span class="n">summary</span><span class="o">=</span><span class="s2">&quot;Playbill for </span><span class="se">\&quot;</span><span class="s2">Akiba gongen kaisen-banashi,</span><span class="se">\&quot;</span><span class="s2"> </span><span class="se">\&quot;</span><span class="s2">Futatsu chōchō kuruwa nikki</span><span class="se">\&quot;</span><span class="s2"> and </span><span class="se">\&quot;</span><span class="s2">Godairiki koi no fūjime</span><span class="se">\&quot;</span><span class="s2"> performed at the Chikugo Theater in Osaka from the fifth month of Kaei 2 (May, 1849); main actors: Gadō Kataoka II, Ebizō Ichikawa VI, Kitō Sawamura II, Daigorō Mimasu IV and Karoku Nakamura I; on front cover: producer Mominosuke Ichikawa&#39;s crest.&quot;</span><span class="p">,</span>
-    <span class="n">viewingDirection</span><span class="o">=</span><span class="s2">&quot;right-to-left&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Linking to Structured Metadata"</span><span class="p">,</span>
+    <span class="n">summary</span><span class="o">=</span><span class="s2">"Playbill for </span><span class="se">\"</span><span class="s2">Akiba gongen kaisen-banashi,</span><span class="se">\"</span><span class="s2"> </span><span class="se">\"</span><span class="s2">Futatsu chōchō kuruwa nikki</span><span class="se">\"</span><span class="s2"> and </span><span class="se">\"</span><span class="s2">Godairiki koi no fūjime</span><span class="se">\"</span><span class="s2"> performed at the Chikugo Theater in Osaka from the fifth month of Kaei 2 (May, 1849); main actors: Gadō Kataoka II, Ebizō Ichikawa VI, Kitō Sawamura II, Daigorō Mimasu IV and Karoku Nakamura I; on front cover: producer Mominosuke Ichikawa's crest."</span><span class="p">,</span>
+    <span class="n">viewingDirection</span><span class="o">=</span><span class="s2">"right-to-left"</span><span class="p">,</span>
     <span class="n">seeAlso</span><span class="o">=</span><span class="n">linked_resource</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">canvas_data</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s2">&quot;p1&quot;</span><span class="p">,</span> <span class="s2">&quot;front cover&quot;</span><span class="p">,</span> <span class="s2">&quot;001&quot;</span><span class="p">,</span> <span class="s2">&quot;p0001&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p2&quot;</span><span class="p">,</span> <span class="s2">&quot;pages 1</span><span class="se">\u2013</span><span class="s2">2&quot;</span><span class="p">,</span> <span class="s2">&quot;002&quot;</span><span class="p">,</span> <span class="s2">&quot;p0002&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p3&quot;</span><span class="p">,</span> <span class="s2">&quot;pages 3</span><span class="se">\u2013</span><span class="s2">4&quot;</span><span class="p">,</span> <span class="s2">&quot;003&quot;</span><span class="p">,</span> <span class="s2">&quot;p0003&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p4&quot;</span><span class="p">,</span> <span class="s2">&quot;pages 5</span><span class="se">\u2013</span><span class="s2">6&quot;</span><span class="p">,</span> <span class="s2">&quot;004&quot;</span><span class="p">,</span> <span class="s2">&quot;p0004&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p5&quot;</span><span class="p">,</span> <span class="s2">&quot;back cover&quot;</span><span class="p">,</span> <span class="s2">&quot;005&quot;</span><span class="p">,</span> <span class="s2">&quot;p0005&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p1"</span><span class="p">,</span> <span class="s2">"front cover"</span><span class="p">,</span> <span class="s2">"001"</span><span class="p">,</span> <span class="s2">"p0001"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p2"</span><span class="p">,</span> <span class="s2">"pages 1</span><span class="se">\u2013</span><span class="s2">2"</span><span class="p">,</span> <span class="s2">"002"</span><span class="p">,</span> <span class="s2">"p0002"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p3"</span><span class="p">,</span> <span class="s2">"pages 3</span><span class="se">\u2013</span><span class="s2">4"</span><span class="p">,</span> <span class="s2">"003"</span><span class="p">,</span> <span class="s2">"p0003"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p4"</span><span class="p">,</span> <span class="s2">"pages 5</span><span class="se">\u2013</span><span class="s2">6"</span><span class="p">,</span> <span class="s2">"004"</span><span class="p">,</span> <span class="s2">"p0004"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p5"</span><span class="p">,</span> <span class="s2">"back cover"</span><span class="p">,</span> <span class="s2">"005"</span><span class="p">,</span> <span class="s2">"p0005"</span><span class="p">),</span>
 <span class="p">]</span>
 
 <span class="k">for</span> <span class="n">canvas_id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">image_num</span><span class="p">,</span> <span class="n">anno_num</span> <span class="ow">in</span> <span class="n">canvas_data</span><span class="p">:</span>
     <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span>
-        <span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">image_base</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">image_num</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/</span><span class="si">{</span><span class="n">canvas_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_base</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">image_num</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/</span><span class="si">{</span><span class="n">canvas_id</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
         <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
-        <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/</span><span class="si">{</span><span class="n">anno_num</span><span class="si">}</span><span class="s2">-image&quot;</span><span class="p">,</span>
-        <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/</span><span class="si">{</span><span class="n">canvas_id</span><span class="si">}</span><span class="s2">/1&quot;</span><span class="p">,</span>
+        <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/</span><span class="si">{</span><span class="n">anno_num</span><span class="si">}</span><span class="s2">-image"</span><span class="p">,</span>
+        <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/</span><span class="si">{</span><span class="n">canvas_id</span><span class="si">}</span><span class="s2">/1"</span><span class="p">,</span>
     <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">manifest</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
@@ -1975,10 +1975,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

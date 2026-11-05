@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -1886,63 +1886,63 @@
 </tbody>
 </table>
 <h3 id="method-1-">Method 1 -</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">unicodedata</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">unicodedata</span>
 
-<span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">CanvasRef</span><span class="p">,</span> <span class="n">config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">iiif_prezi3</span><span class="w"> </span><span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">CanvasRef</span><span class="p">,</span> <span class="n">config</span>
 
-<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;de&quot;</span>
-<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0031-bound-multivolume&quot;</span>
-<span class="n">image_base</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/15f769d62ca9a3a2deca390efed75d73&quot;</span>
+<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">'helpers.auto_fields.AutoLang'</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">"de"</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">"https://iiif.io/api/cookbook/recipe/0031-bound-multivolume"</span>
+<span class="n">image_base</span> <span class="o">=</span> <span class="s2">"https://iiif.io/api/image/3.0/example/reference/15f769d62ca9a3a2deca390efed75d73"</span>
 
-<span class="k">def</span> <span class="nf">normalize_nfd_unicode</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s1">&#39;NFD&#39;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">normalize_nfd_unicode</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">normalize</span><span class="p">(</span><span class="s1">'NFD'</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
 
 <span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="n">normalize_nfd_unicode</span><span class="p">(</span><span class="s2">&quot;Gottesdienstliche Ceremonien, Oder H. Kirchen-Gebräuche Und Religions-Pflichten Der Christen&quot;</span><span class="p">),</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="n">normalize_nfd_unicode</span><span class="p">(</span><span class="s2">"Gottesdienstliche Ceremonien, Oder H. Kirchen-Gebräuche Und Religions-Pflichten Der Christen"</span><span class="p">),</span>
 <span class="p">)</span>
 
 <span class="n">canvases</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">(</span><span class="s2">&quot;p1&quot;</span><span class="p">,</span> <span class="s2">&quot;Front cover&quot;</span><span class="p">,</span>               <span class="s2">&quot;1_frontcover&quot;</span><span class="p">,</span>          <span class="s2">&quot;p0001&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p2&quot;</span><span class="p">,</span> <span class="s2">&quot;Inside front cover&quot;</span><span class="p">,</span>        <span class="s2">&quot;2_insidefrontcover&quot;</span><span class="p">,</span>    <span class="s2">&quot;p0002&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p3&quot;</span><span class="p">,</span> <span class="s2">&quot;Vol. 1 title page&quot;</span><span class="p">,</span>         <span class="s2">&quot;3_titlepage1&quot;</span><span class="p">,</span>          <span class="s2">&quot;p0003&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p4&quot;</span><span class="p">,</span> <span class="s2">&quot;Vol. 1 title page (verso)&quot;</span><span class="p">,</span> <span class="s2">&quot;4_titlepage1_verso&quot;</span><span class="p">,</span>    <span class="s2">&quot;p0004&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p5&quot;</span><span class="p">,</span> <span class="s2">&quot;Vol. 2 title page&quot;</span><span class="p">,</span>         <span class="s2">&quot;5_titlepage2&quot;</span><span class="p">,</span>          <span class="s2">&quot;p0005&quot;</span><span class="p">),</span>
-    <span class="p">(</span><span class="s2">&quot;p6&quot;</span><span class="p">,</span> <span class="s2">&quot;Vol. 2 title page (verso)&quot;</span><span class="p">,</span> <span class="s2">&quot;6_titlepage2_verso&quot;</span><span class="p">,</span>    <span class="s2">&quot;p0006&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p1"</span><span class="p">,</span> <span class="s2">"Front cover"</span><span class="p">,</span>               <span class="s2">"1_frontcover"</span><span class="p">,</span>          <span class="s2">"p0001"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p2"</span><span class="p">,</span> <span class="s2">"Inside front cover"</span><span class="p">,</span>        <span class="s2">"2_insidefrontcover"</span><span class="p">,</span>    <span class="s2">"p0002"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p3"</span><span class="p">,</span> <span class="s2">"Vol. 1 title page"</span><span class="p">,</span>         <span class="s2">"3_titlepage1"</span><span class="p">,</span>          <span class="s2">"p0003"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p4"</span><span class="p">,</span> <span class="s2">"Vol. 1 title page (verso)"</span><span class="p">,</span> <span class="s2">"4_titlepage1_verso"</span><span class="p">,</span>    <span class="s2">"p0004"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p5"</span><span class="p">,</span> <span class="s2">"Vol. 2 title page"</span><span class="p">,</span>         <span class="s2">"5_titlepage2"</span><span class="p">,</span>          <span class="s2">"p0005"</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"p6"</span><span class="p">,</span> <span class="s2">"Vol. 2 title page (verso)"</span><span class="p">,</span> <span class="s2">"6_titlepage2_verso"</span><span class="p">,</span>    <span class="s2">"p0006"</span><span class="p">),</span>
 <span class="p">]</span>
 
 <span class="k">for</span> <span class="n">canvas_id</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">image_id</span><span class="p">,</span> <span class="n">anno_num</span> <span class="ow">in</span> <span class="n">canvases</span><span class="p">:</span>
     <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span>
-        <span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">image_base</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/</span><span class="si">{</span><span class="n">canvas_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">label</span><span class="p">]},</span>
-        <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/</span><span class="si">{</span><span class="n">anno_num</span><span class="si">}</span><span class="s2">-image&quot;</span><span class="p">,</span>
-        <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/</span><span class="si">{</span><span class="n">canvas_id</span><span class="si">}</span><span class="s2">/1&quot;</span><span class="p">,</span>
+        <span class="n">url</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">image_base</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">image_id</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/</span><span class="si">{</span><span class="n">canvas_id</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="n">label</span><span class="p">]},</span>
+        <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/annotation/</span><span class="si">{</span><span class="n">anno_num</span><span class="si">}</span><span class="s2">-image"</span><span class="p">,</span>
+        <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/page/</span><span class="si">{</span><span class="n">canvas_id</span><span class="si">}</span><span class="s2">/1"</span><span class="p">,</span>
     <span class="p">)</span>
 
 <span class="n">toc</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_range</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r0&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="n">normalize_nfd_unicode</span><span class="p">(</span><span class="s2">&quot;Gottesdienstliche Ceremonien, Oder H. Kirchen-Gebräuche Und Religions-Pflichten Der Christen&quot;</span><span class="p">),</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r0"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="n">normalize_nfd_unicode</span><span class="p">(</span><span class="s2">"Gottesdienstliche Ceremonien, Oder H. Kirchen-Gebräuche Und Religions-Pflichten Der Christen"</span><span class="p">),</span>
 <span class="p">)</span>
 
-<span class="n">r1</span> <span class="o">=</span> <span class="n">toc</span><span class="o">.</span><span class="n">make_range</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r1&quot;</span><span class="p">)</span>
-<span class="n">r1</span><span class="o">.</span><span class="n">add_label</span><span class="p">(</span><span class="s2">&quot;Front Matter&quot;</span><span class="p">,</span> <span class="s2">&quot;en&quot;</span><span class="p">)</span>
-<span class="n">r1</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p1&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Canvas&quot;</span><span class="p">))</span>
-<span class="n">r1</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p2&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Canvas&quot;</span><span class="p">))</span>
+<span class="n">r1</span> <span class="o">=</span> <span class="n">toc</span><span class="o">.</span><span class="n">make_range</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r1"</span><span class="p">)</span>
+<span class="n">r1</span><span class="o">.</span><span class="n">add_label</span><span class="p">(</span><span class="s2">"Front Matter"</span><span class="p">,</span> <span class="s2">"en"</span><span class="p">)</span>
+<span class="n">r1</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p1"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"Canvas"</span><span class="p">))</span>
+<span class="n">r1</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p2"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"Canvas"</span><span class="p">))</span>
 
 <span class="n">r2</span> <span class="o">=</span> <span class="n">toc</span><span class="o">.</span><span class="n">make_range</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r2&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Erste Ausgabe. Begreift die Ceremonien der Lutheraner von der Augspurgischen Confession, der Reformirten, der Holländischen u. a. Kirchen&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r2"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Erste Ausgabe. Begreift die Ceremonien der Lutheraner von der Augspurgischen Confession, der Reformirten, der Holländischen u. a. Kirchen"</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">r2</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p3&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Canvas&quot;</span><span class="p">))</span>
-<span class="n">r2</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p4&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Canvas&quot;</span><span class="p">))</span>
+<span class="n">r2</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p3"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"Canvas"</span><span class="p">))</span>
+<span class="n">r2</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p4"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"Canvas"</span><span class="p">))</span>
 
 <span class="n">r3</span> <span class="o">=</span> <span class="n">toc</span><span class="o">.</span><span class="n">make_range</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r3&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Zweyte Ausgabe. Begreift die Ceremonien der Engl. hohen Kirche : Der Quacker, der Anabaptisten, der Adamiten, der Flagellanten, der Frey-Maurer, der Rhinsbürger...&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/range/r3"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Zweyte Ausgabe. Begreift die Ceremonien der Engl. hohen Kirche : Der Quacker, der Anabaptisten, der Adamiten, der Flagellanten, der Frey-Maurer, der Rhinsbürger..."</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">r3</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p5&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Canvas&quot;</span><span class="p">))</span>
-<span class="n">r3</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p6&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Canvas&quot;</span><span class="p">))</span>
+<span class="n">r3</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p5"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"Canvas"</span><span class="p">))</span>
+<span class="n">r3</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span><span class="n">CanvasRef</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/p6"</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">"Canvas"</span><span class="p">))</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">manifest</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 </code></pre></div>
@@ -1995,10 +1995,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

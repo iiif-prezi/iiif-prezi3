@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -1886,88 +1886,88 @@
 </tbody>
 </table>
 <h3 id="method-1">Method 1</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="p">(</span><span class="n">Collection</span><span class="p">,</span> <span class="n">ManifestRef</span><span class="p">,</span> <span class="n">Provider</span><span class="p">,</span> <span class="n">AnnotationBody</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">iiif_prezi3</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">Collection</span><span class="p">,</span> <span class="n">ManifestRef</span><span class="p">,</span> <span class="n">Provider</span><span class="p">,</span> <span class="n">AnnotationBody</span><span class="p">,</span>
                         <span class="n">LinkedResource</span><span class="p">,</span> <span class="n">KeyValueString</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
 
-<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;none&quot;</span>
-<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0068-newspaper&quot;</span>
+<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">'helpers.auto_fields.AutoLang'</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">"none"</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">"https://iiif.io/api/cookbook/recipe/0068-newspaper"</span>
 
 <span class="n">logo</span> <span class="o">=</span> <span class="n">AnnotationBody</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://style.europeana.eu/images/europeana-logo-default.png&quot;</span><span class="p">,</span>
-    <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Image&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;image/png&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="s2">"https://style.europeana.eu/images/europeana-logo-default.png"</span><span class="p">,</span>
+    <span class="nb">type</span><span class="o">=</span><span class="s2">"Image"</span><span class="p">,</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s2">"image/png"</span><span class="p">,</span>
     <span class="n">height</span><span class="o">=</span><span class="mi">310</span><span class="p">,</span>
     <span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">collection</span> <span class="o">=</span> <span class="n">Collection</span><span class="p">(</span>
-    <span class="o">**</span><span class="p">{</span><span class="s2">&quot;@context&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;http://iiif.io/api/presentation/3/context.json&quot;</span><span class="p">,</span>
+    <span class="o">**</span><span class="p">{</span><span class="s2">"@context"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"http://iiif.io/api/presentation/3/context.json"</span><span class="p">,</span>
     <span class="p">]},</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/newspaper_title-collection.json&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;de&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Berliner Tageblatt&quot;</span><span class="p">]},</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/newspaper_title-collection.json"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">"de"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Berliner Tageblatt"</span><span class="p">]},</span>
     <span class="n">metadata</span><span class="o">=</span><span class="p">[</span>
         <span class="n">KeyValueString</span><span class="p">(</span>
-            <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]},</span>
+            <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"type"</span><span class="p">]},</span>
             <span class="n">value</span><span class="o">=</span><span class="p">{</span>
-                <span class="s2">&quot;none&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;http://data.europeana.eu/concept/base/18&quot;</span><span class="p">],</span>
-                <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Newspaper Title&quot;</span><span class="p">,</span> <span class="s2">&quot;Serial&quot;</span><span class="p">],</span>
+                <span class="s2">"none"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"http://data.europeana.eu/concept/base/18"</span><span class="p">],</span>
+                <span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Newspaper Title"</span><span class="p">,</span> <span class="s2">"Serial"</span><span class="p">],</span>
             <span class="p">},</span>
         <span class="p">),</span>
         <span class="n">KeyValueString</span><span class="p">(</span>
-            <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;language&quot;</span><span class="p">]},</span>
+            <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"language"</span><span class="p">]},</span>
             <span class="n">value</span><span class="o">=</span><span class="p">{</span>
-                <span class="s2">&quot;none&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;de&quot;</span><span class="p">],</span>
-                <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;German&quot;</span><span class="p">],</span>
+                <span class="s2">"none"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"de"</span><span class="p">],</span>
+                <span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"German"</span><span class="p">],</span>
             <span class="p">},</span>
         <span class="p">),</span>
     <span class="p">],</span>
-    <span class="n">rights</span><span class="o">=</span><span class="s2">&quot;http://creativecommons.org/publicdomain/mark/1.0/&quot;</span><span class="p">,</span>
+    <span class="n">rights</span><span class="o">=</span><span class="s2">"http://creativecommons.org/publicdomain/mark/1.0/"</span><span class="p">,</span>
     <span class="n">requiredStatement</span><span class="o">=</span><span class="n">KeyValueString</span><span class="p">(</span>
-        <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Attribution&quot;</span><span class="p">]},</span>
+        <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Attribution"</span><span class="p">]},</span>
         <span class="n">value</span><span class="o">=</span><span class="p">{</span>
-            <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span>
-                <span class="s2">&quot;&lt;p&gt;&lt;a href=&#39;https://www.europeana.eu/portal/record/&quot;</span>
-                <span class="s2">&quot;9200355/BibliographicResource_3000096302605.html&#39;&gt;&quot;</span>
-                <span class="s2">&quot;Berliner Tageblatt&lt;/a&gt; - Staatsbibliothek zu Berlin&quot;</span>
-                <span class="s2">&quot; - Preu</span><span class="se">\u00df</span><span class="s2">ischer Kulturbesitz. Public Domain Mark&quot;</span>
-                <span class="s2">&quot; - http://creativecommons.org/publicdomain/mark/1.0/&lt;/p&gt;&quot;</span>
+            <span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">"&lt;p&gt;&lt;a href='https://www.europeana.eu/portal/record/"</span>
+                <span class="s2">"9200355/BibliographicResource_3000096302605.html'&gt;"</span>
+                <span class="s2">"Berliner Tageblatt&lt;/a&gt; - Staatsbibliothek zu Berlin"</span>
+                <span class="s2">" - Preu</span><span class="se">\u00df</span><span class="s2">ischer Kulturbesitz. Public Domain Mark"</span>
+                <span class="s2">" - http://creativecommons.org/publicdomain/mark/1.0/&lt;/p&gt;"</span>
             <span class="p">]</span>
         <span class="p">},</span>
     <span class="p">),</span>
     <span class="n">provider</span><span class="o">=</span><span class="p">[</span>
         <span class="n">Provider</span><span class="p">(</span>
-            <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://www.europeana.eu/&quot;</span><span class="p">,</span>
-            <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Europeana&quot;</span><span class="p">]},</span>
+            <span class="nb">id</span><span class="o">=</span><span class="s2">"https://www.europeana.eu/"</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Europeana"</span><span class="p">]},</span>
             <span class="n">logo</span><span class="o">=</span><span class="p">[</span><span class="n">logo</span><span class="p">],</span>
         <span class="p">)</span>
     <span class="p">],</span>
     <span class="n">seeAlso</span><span class="o">=</span><span class="p">[</span>
         <span class="n">LinkedResource</span><span class="p">(</span>
-            <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;https://www.europeana.eu/api/v2/record/9200355/&quot;</span>
-               <span class="s2">&quot;BibliographicResource_3000096302605.json-ld&quot;</span><span class="p">,</span>
-            <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Dataset&quot;</span><span class="p">,</span>
-            <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;application/ld+json&quot;</span><span class="p">,</span>
-            <span class="n">profile</span><span class="o">=</span><span class="s2">&quot;http://www.europeana.eu/schemas/edm/&quot;</span><span class="p">,</span>
+            <span class="nb">id</span><span class="o">=</span><span class="s2">"https://www.europeana.eu/api/v2/record/9200355/"</span>
+               <span class="s2">"BibliographicResource_3000096302605.json-ld"</span><span class="p">,</span>
+            <span class="nb">type</span><span class="o">=</span><span class="s2">"Dataset"</span><span class="p">,</span>
+            <span class="nb">format</span><span class="o">=</span><span class="s2">"application/ld+json"</span><span class="p">,</span>
+            <span class="n">profile</span><span class="o">=</span><span class="s2">"http://www.europeana.eu/schemas/edm/"</span><span class="p">,</span>
         <span class="p">)</span>
     <span class="p">],</span>
 <span class="p">)</span>
 
 <span class="n">collection</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span>
     <span class="n">ManifestRef</span><span class="p">(</span>
-        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/newspaper_issue_1-manifest.json&quot;</span><span class="p">,</span>
-        <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Manifest&quot;</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;de&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Berliner Tageblatt - 1925-02-16&quot;</span><span class="p">]},</span>
-        <span class="n">navDate</span><span class="o">=</span><span class="s2">&quot;1925-02-16T00:00:00Z&quot;</span><span class="p">,</span>
+        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/newspaper_issue_1-manifest.json"</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="s2">"Manifest"</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">"de"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Berliner Tageblatt - 1925-02-16"</span><span class="p">]},</span>
+        <span class="n">navDate</span><span class="o">=</span><span class="s2">"1925-02-16T00:00:00Z"</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">collection</span><span class="o">.</span><span class="n">add_item</span><span class="p">(</span>
     <span class="n">ManifestRef</span><span class="p">(</span>
-        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/newspaper_issue_2-manifest.json&quot;</span><span class="p">,</span>
-        <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;Manifest&quot;</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;de&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Berliner Tageblatt - 1925-03-13&quot;</span><span class="p">]},</span>
-        <span class="n">navDate</span><span class="o">=</span><span class="s2">&quot;1925-03-13T00:00:00Z&quot;</span><span class="p">,</span>
+        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/newspaper_issue_2-manifest.json"</span><span class="p">,</span>
+        <span class="nb">type</span><span class="o">=</span><span class="s2">"Manifest"</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="p">{</span><span class="s2">"de"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Berliner Tageblatt - 1925-03-13"</span><span class="p">]},</span>
+        <span class="n">navDate</span><span class="o">=</span><span class="s2">"1925-03-13T00:00:00Z"</span><span class="p">,</span>
     <span class="p">)</span>
 <span class="p">)</span>
 
@@ -2022,10 +2022,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

@@ -17,7 +17,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -25,7 +25,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -2132,15 +2132,15 @@ python setup.py install
 <p>You can now import the library or individual classes from within Python and start creating your IIIF Presentation 3 objects:</p>
 <h3 id="directly-creating-a-manifest">Directly creating a Manifest</h3>
 <div class="highlight"><pre><span></span><code>&gt;&gt;&gt; from iiif_prezi3 import Manifest
-&gt;&gt;&gt; m = Manifest(id=&quot;https://example.com/iiif/manifest.json&quot;, label={&quot;en&quot;:[&quot;Example Manifest&quot;]})
+&gt;&gt;&gt; m = Manifest(id="https://example.com/iiif/manifest.json", label={"en":["Example Manifest"]})
 &gt;&gt;&gt; print(m.json(indent=2))
 {
-  &quot;@context&quot;: &quot;http://iiif.io/api/presentation/3/context.json&quot;,
-  &quot;id&quot;: &quot;https://example.com/iiif/manifest.json&quot;,
-  &quot;type&quot;: &quot;Manifest&quot;,
-  &quot;label&quot;: {
-    &quot;en&quot;: [
-      &quot;Example Manifest&quot;
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://example.com/iiif/manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Example Manifest"
     ]
   }
 }
@@ -2149,43 +2149,43 @@ python setup.py install
 <p>If you have an existing IIIF Presentation v3 Manifest, you can load it via the built-in <code>json</code> module and create the objects:
 <div class="highlight"><pre><span></span><code>&gt;&gt;&gt; from iiif_prezi3 import Manifest
 &gt;&gt;&gt; import json
-&gt;&gt;&gt; manifest_json = json.load(open(&quot;example.json&quot;))
+&gt;&gt;&gt; manifest_json = json.load(open("example.json"))
 &gt;&gt;&gt; m = Manifest(**manifest_json)
 &gt;&gt;&gt; print(m.json(indent=2))
 {
-  &quot;@context&quot;: &quot;http://iiif.io/api/presentation/3/context.json&quot;,
-  &quot;id&quot;: &quot;https://iiif.io/api/cookbook/recipe/0003-mvm-video/manifest.json&quot;,
-  &quot;type&quot;: &quot;Manifest&quot;,
-  &quot;label&quot;: {
-    &quot;en&quot;: [
-      &quot;Video Example 3&quot;
+  "@context": "http://iiif.io/api/presentation/3/context.json",
+  "id": "https://iiif.io/api/cookbook/recipe/0003-mvm-video/manifest.json",
+  "type": "Manifest",
+  "label": {
+    "en": [
+      "Video Example 3"
     ]
   },
-  &quot;items&quot;: [
+  "items": [
     {
-      &quot;id&quot;: &quot;https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas&quot;,
-      &quot;type&quot;: &quot;Canvas&quot;,
-      &quot;height&quot;: 360,
-      &quot;width&quot;: 640,
-      &quot;duration&quot;: 572.034,
-      &quot;items&quot;: [
+      "id": "https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas",
+      "type": "Canvas",
+      "height": 360,
+      "width": 640,
+      "duration": 572.034,
+      "items": [
         {
-          &quot;id&quot;: &quot;https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas/page&quot;,
-          &quot;type&quot;: &quot;AnnotationPage&quot;,
-          &quot;items&quot;: [
+          "id": "https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas/page",
+          "type": "AnnotationPage",
+          "items": [
             {
-              &quot;id&quot;: &quot;https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas/page/annotation&quot;,
-              &quot;type&quot;: &quot;Annotation&quot;,
-              &quot;motivation&quot;: &quot;painting&quot;,
-              &quot;body&quot;: {
-                &quot;id&quot;: &quot;https://fixtures.iiif.io/video/indiana/lunchroom_manners/high/lunchroom_manners_1024kb.mp4&quot;,
-                &quot;type&quot;: &quot;Video&quot;,
-                &quot;height&quot;: 360,
-                &quot;width&quot;: 480,
-                &quot;duration&quot;: 572.034,
-                &quot;format&quot;: &quot;video/mp4&quot;
+              "id": "https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas/page/annotation",
+              "type": "Annotation",
+              "motivation": "painting",
+              "body": {
+                "id": "https://fixtures.iiif.io/video/indiana/lunchroom_manners/high/lunchroom_manners_1024kb.mp4",
+                "type": "Video",
+                "height": 360,
+                "width": 480,
+                "duration": 572.034,
+                "format": "video/mp4"
               },
-              &quot;target&quot;: &quot;https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas&quot;
+              "target": "https://iiif.io/api/cookbook/recipe/0003-mvm-video/canvas"
             }
           ]
         }
@@ -2199,10 +2199,10 @@ python setup.py install
 <p>Published extensions from the <a href="https://iiif.io/api/extension/">IIIF Registry of Extensions</a> are included with the package, and can be loaded using the <code>iiif_prezi3.load_bundled_extensions()</code> method.</p>
 <p>Called without argument, this method will load all bundled extensions listed in the  <a href="https://github.com/iiif-prezi/iiif-prezi3/blob/main/iiif_prezi3/config/extensions.json">iiif_prezi3/config/extensions.json</a> file. If you wish to only load selected extensions from those available bundled with the library, you can pass either the path to a JSON file, or a list of extension names as an argument to the function:
 <div class="highlight"><pre><span></span><code>&gt;&gt;&gt; import iiif_prezi3
-&gt;&gt;&gt; iiif_prezi3.load_bundled_extensions(extensions=&quot;/path/to/chosen_extensions.json&quot;)
+&gt;&gt;&gt; iiif_prezi3.load_bundled_extensions(extensions="/path/to/chosen_extensions.json")
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>&gt;&gt;&gt; import iiif_prezi3
-&gt;&gt;&gt; iiif_prezi3.load_bundled_extensions(extensions=[&#39;example_extension&#39;])
+&gt;&gt;&gt; iiif_prezi3.load_bundled_extensions(extensions=['example_extension'])
 </code></pre></div></p>
 <p>Extensions work in much the same way as helper methods, and are monkeypatched into the relevant objects in the <code>iiif_prezi3.skeleton</code> class, from which everything is loaded.
 For a simple example, please see the <code>extensions/example_extension.py</code> file, and the <a href="https://github.com/iiif-prezi/iiif-prezi3/blob/main/docs/write-helper-method.md">documentation on writing a helper method</a>.</p>
@@ -2267,10 +2267,10 @@ pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </s
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": [], "search": "assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>

@@ -19,7 +19,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -27,7 +27,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
       
 
@@ -1908,64 +1908,64 @@
 </tbody>
 </table>
 <h3 id="method-1-without-helpers">Method 1 - Without Helpers</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">NavPlace</span><span class="p">,</span> <span class="n">config</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">iiif_prezi3</span><span class="w"> </span><span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">NavPlace</span><span class="p">,</span> <span class="n">config</span>
 
-<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
-<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0240-navPlace-on-canvases&quot;</span>
+<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">'helpers.auto_fields.AutoLang'</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">"en"</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">"https://iiif.io/api/cookbook/recipe/0240-navPlace-on-canvases"</span>
 
 <span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Laocöon, geolocated sculpture and painting.&quot;</span><span class="p">,</span>
-    <span class="o">**</span><span class="p">{</span><span class="s2">&quot;@context&quot;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="s2">&quot;http://iiif.io/api/extension/navplace/context.json&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;http://iiif.io/api/presentation/3/context.json&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Laocöon, geolocated sculpture and painting."</span><span class="p">,</span>
+    <span class="o">**</span><span class="p">{</span><span class="s2">"@context"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="s2">"http://iiif.io/api/extension/navplace/context.json"</span><span class="p">,</span>
+        <span class="s2">"http://iiif.io/api/presentation/3/context.json"</span><span class="p">,</span>
     <span class="p">]},</span>
 <span class="p">)</span>
 
 <span class="n">canvas1</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/28473c77da3deebe4375c3a50572d9d3-laocoon&quot;</span><span class="p">,</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/1&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Front of Bronze&quot;</span><span class="p">,</span>
-    <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno/1&quot;</span><span class="p">,</span>
-    <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno-page/1&quot;</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">"https://iiif.io/api/image/3.0/example/reference/28473c77da3deebe4375c3a50572d9d3-laocoon"</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/1"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Front of Bronze"</span><span class="p">,</span>
+    <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno/1"</span><span class="p">,</span>
+    <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno-page/1"</span><span class="p">,</span>
     <span class="n">navPlace</span><span class="o">=</span><span class="n">NavPlace</span><span class="p">(</span>
-        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature-collection/1&quot;</span><span class="p">,</span>
+        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature-collection/1"</span><span class="p">,</span>
         <span class="n">features</span><span class="o">=</span><span class="p">[{</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature/1&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Current Location of the Laocoön Bronze&quot;</span><span class="p">],</span>
-                    <span class="s2">&quot;it&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Ubicazione attuale del Bronzo Laocoonte e i suoi figli&quot;</span><span class="p">],</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature/1"</span><span class="p">,</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Feature"</span><span class="p">,</span>
+            <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"label"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Current Location of the Laocoön Bronze"</span><span class="p">],</span>
+                    <span class="s2">"it"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Ubicazione attuale del Bronzo Laocoonte e i suoi figli"</span><span class="p">],</span>
                 <span class="p">}</span>
             <span class="p">},</span>
-            <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">118.4745559</span><span class="p">,</span> <span class="mf">34.0776376</span><span class="p">],</span>
+            <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Point"</span><span class="p">,</span>
+                <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">118.4745559</span><span class="p">,</span> <span class="mf">34.0776376</span><span class="p">],</span>
             <span class="p">},</span>
         <span class="p">}],</span>
     <span class="p">),</span>
 <span class="p">)</span>
 
 <span class="n">canvas2</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/58763298b61c2a99f78ff94d8364c639-laocoon_1946_18_1&quot;</span><span class="p">,</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/2&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Painting&quot;</span><span class="p">,</span>
-    <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno/2&quot;</span><span class="p">,</span>
-    <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno-page/2&quot;</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">"https://iiif.io/api/image/3.0/example/reference/58763298b61c2a99f78ff94d8364c639-laocoon_1946_18_1"</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/2"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Painting"</span><span class="p">,</span>
+    <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno/2"</span><span class="p">,</span>
+    <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno-page/2"</span><span class="p">,</span>
     <span class="n">navPlace</span><span class="o">=</span><span class="n">NavPlace</span><span class="p">(</span>
-        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature-collection/2&quot;</span><span class="p">,</span>
+        <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature-collection/2"</span><span class="p">,</span>
         <span class="n">features</span><span class="o">=</span><span class="p">[{</span>
-            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature/2&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Current Location of Painting&quot;</span><span class="p">],</span>
+            <span class="s2">"id"</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature/2"</span><span class="p">,</span>
+            <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Feature"</span><span class="p">,</span>
+            <span class="s2">"properties"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"label"</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Current Location of Painting"</span><span class="p">],</span>
                 <span class="p">}</span>
             <span class="p">},</span>
-            <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
-                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span>
-                <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">77.0199025</span><span class="p">,</span> <span class="mf">38.8920717</span><span class="p">],</span>
+            <span class="s2">"geometry"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Point"</span><span class="p">,</span>
+                <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">77.0199025</span><span class="p">,</span> <span class="mf">38.8920717</span><span class="p">],</span>
             <span class="p">},</span>
         <span class="p">}],</span>
     <span class="p">),</span>
@@ -1974,54 +1974,54 @@
 <span class="nb">print</span><span class="p">(</span><span class="n">manifest</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
 </code></pre></div>
 <h3 id="method-2-with-helpers">Method 2 - With Helpers</h3>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">iiif_prezi3</span> <span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">config</span>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">iiif_prezi3</span><span class="w"> </span><span class="kn">import</span> <span class="n">Manifest</span><span class="p">,</span> <span class="n">config</span>
 
-<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">&#39;helpers.auto_fields.AutoLang&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">&quot;en&quot;</span>
-<span class="n">base_url</span> <span class="o">=</span> <span class="s2">&quot;https://iiif.io/api/cookbook/recipe/0240-navPlace-on-canvases&quot;</span>
+<span class="n">config</span><span class="o">.</span><span class="n">configs</span><span class="p">[</span><span class="s1">'helpers.auto_fields.AutoLang'</span><span class="p">]</span><span class="o">.</span><span class="n">auto_lang</span> <span class="o">=</span> <span class="s2">"en"</span>
+<span class="n">base_url</span> <span class="o">=</span> <span class="s2">"https://iiif.io/api/cookbook/recipe/0240-navPlace-on-canvases"</span>
 
 <span class="n">manifest</span> <span class="o">=</span> <span class="n">Manifest</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Laocöon, geolocated sculpture and painting.&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/manifest.json"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Laocöon, geolocated sculpture and painting."</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">manifest</span><span class="o">.</span><span class="n">add_context</span><span class="p">(</span><span class="s2">&quot;http://iiif.io/api/extension/navplace/context.json&quot;</span><span class="p">)</span>
+<span class="n">manifest</span><span class="o">.</span><span class="n">add_context</span><span class="p">(</span><span class="s2">"http://iiif.io/api/extension/navplace/context.json"</span><span class="p">)</span>
 
 <span class="n">canvas1</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/28473c77da3deebe4375c3a50572d9d3-laocoon&quot;</span><span class="p">,</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/1&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Front of Bronze&quot;</span><span class="p">,</span>
-    <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno/1&quot;</span><span class="p">,</span>
-    <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno-page/1&quot;</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">"https://iiif.io/api/image/3.0/example/reference/28473c77da3deebe4375c3a50572d9d3-laocoon"</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/1"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Front of Bronze"</span><span class="p">,</span>
+    <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno/1"</span><span class="p">,</span>
+    <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno-page/1"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">canvas1</span><span class="o">.</span><span class="n">add_navplace_feature</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature/1&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature/1"</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Current Location of the Laocoön Bronze&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;it&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Ubicazione attuale del Bronzo Laocoonte e i suoi figli&quot;</span><span class="p">],</span>
+        <span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Current Location of the Laocoön Bronze"</span><span class="p">],</span>
+        <span class="s2">"it"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Ubicazione attuale del Bronzo Laocoonte e i suoi figli"</span><span class="p">],</span>
     <span class="p">},</span>
     <span class="n">geometry</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">118.4745559</span><span class="p">,</span> <span class="mf">34.0776376</span><span class="p">],</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Point"</span><span class="p">,</span>
+        <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">118.4745559</span><span class="p">,</span> <span class="mf">34.0776376</span><span class="p">],</span>
     <span class="p">},</span>
-    <span class="n">feature_collection_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature-collection/1&quot;</span><span class="p">,</span>
+    <span class="n">feature_collection_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature-collection/1"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="n">canvas2</span> <span class="o">=</span> <span class="n">manifest</span><span class="o">.</span><span class="n">make_canvas_from_iiif</span><span class="p">(</span>
-    <span class="n">url</span><span class="o">=</span><span class="s2">&quot;https://iiif.io/api/image/3.0/example/reference/58763298b61c2a99f78ff94d8364c639-laocoon_1946_18_1&quot;</span><span class="p">,</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/2&quot;</span><span class="p">,</span>
-    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Painting&quot;</span><span class="p">,</span>
-    <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno/2&quot;</span><span class="p">,</span>
-    <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno-page/2&quot;</span><span class="p">,</span>
+    <span class="n">url</span><span class="o">=</span><span class="s2">"https://iiif.io/api/image/3.0/example/reference/58763298b61c2a99f78ff94d8364c639-laocoon_1946_18_1"</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/canvas/2"</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">"Painting"</span><span class="p">,</span>
+    <span class="n">anno_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno/2"</span><span class="p">,</span>
+    <span class="n">anno_page_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/anno-page/2"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">canvas2</span><span class="o">.</span><span class="n">add_navplace_feature</span><span class="p">(</span>
-    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature/2&quot;</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature/2"</span><span class="p">,</span>
     <span class="n">label</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;en&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;Current Location of Painting&quot;</span><span class="p">],</span>
+        <span class="s2">"en"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"Current Location of Painting"</span><span class="p">],</span>
     <span class="p">},</span>
     <span class="n">geometry</span><span class="o">=</span><span class="p">{</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Point&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">77.0199025</span><span class="p">,</span> <span class="mf">38.8920717</span><span class="p">],</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"Point"</span><span class="p">,</span>
+        <span class="s2">"coordinates"</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">77.0199025</span><span class="p">,</span> <span class="mf">38.8920717</span><span class="p">],</span>
     <span class="p">},</span>
-    <span class="n">feature_collection_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature-collection/2&quot;</span><span class="p">,</span>
+    <span class="n">feature_collection_id</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">/feature-collection/2"</span><span class="p">,</span>
 <span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">manifest</span><span class="o">.</span><span class="n">json</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
@@ -2075,10 +2075,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
     
   </body>
