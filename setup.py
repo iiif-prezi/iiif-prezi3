@@ -15,7 +15,7 @@ else:
 REQUIREMENTS = [
     "pydantic >= 2.0.0, <3.0.0",
     "requests >=2.28.0, <3.0.0",
-    "Pillow >=9.1.1, <=12.3.0"
+    "Pillow >=9.1.1, <14"
 ]
 
 DOCS_REQUIREMENTS = [
@@ -33,7 +33,7 @@ DEV_REQUIREMENTS = [
     "flake8-docstrings >=1.6.0, <2.0.0",
     "flake8-isort >=4.1.1, <7.0.0",
     "tox >=3.25.0, <5.0.0",
-    "Pillow >=9.1.1, <=12.3.0",
+    "Pillow >=9.1.1, <14",
     "deepdiff >=6.2.2, <9.0.0",
     "datamodel-code-generator >=0.17.1, <1.0.0"
 ]
@@ -56,7 +56,6 @@ setup(
                  "Operating System :: OS Independent",  # is this true? know Linux & OS X ok
                  "Programming Language :: Python",
                  "Programming Language :: Python :: 3",
-                 "Programming Language :: Python :: 3.9",
                  "Programming Language :: Python :: 3.10",
                  "Programming Language :: Python :: 3.11",
                  "Programming Language :: Python :: 3.12",
@@ -65,7 +64,7 @@ setup(
                  "Topic :: Multimedia :: Graphics :: Graphics Conversion",
                  "Topic :: Software Development :: Libraries :: Python Modules",
                  "Environment :: Web Environment"],
-    python_requires='>=3',
+    python_requires='>=3.10',
     url='https://github.com/iiif-prezi/iiif-prezi3',
     license='Apache License, Version 2.0',
     install_requires=REQUIREMENTS,
