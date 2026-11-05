@@ -1,5 +1,5 @@
 from iiif_prezi3 import (Manifest, Canvas, AnnotationBody, AnnotationPage,
-                        Annotation, CanvasRef, KeyValueString, config)
+                         Annotation, CanvasRef, KeyValueString, config)
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"
 base_url = "https://iiif.io/api/cookbook/recipe/0065-opera-multiple-canvases"

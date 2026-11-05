@@ -6,8 +6,10 @@ config.configs['helpers.auto_fields.AutoLang'].auto_lang = "de"
 base_url = "https://iiif.io/api/cookbook/recipe/0031-bound-multivolume"
 image_base = "https://iiif.io/api/image/3.0/example/reference/15f769d62ca9a3a2deca390efed75d73"
 
+
 def normalize_nfd_unicode(s):
     return unicodedata.normalize('NFD', s)
+
 
 manifest = Manifest(
     id=f"{base_url}/manifest.json",
@@ -15,12 +17,12 @@ manifest = Manifest(
 )
 
 canvases = [
-    ("p1", "Front cover",               "1_frontcover",          "p0001"),
-    ("p2", "Inside front cover",        "2_insidefrontcover",    "p0002"),
-    ("p3", "Vol. 1 title page",         "3_titlepage1",          "p0003"),
-    ("p4", "Vol. 1 title page (verso)", "4_titlepage1_verso",    "p0004"),
-    ("p5", "Vol. 2 title page",         "5_titlepage2",          "p0005"),
-    ("p6", "Vol. 2 title page (verso)", "6_titlepage2_verso",    "p0006"),
+    ("p1", "Front cover", "1_frontcover", "p0001"),
+    ("p2", "Inside front cover", "2_insidefrontcover", "p0002"),
+    ("p3", "Vol. 1 title page", "3_titlepage1", "p0003"),
+    ("p4", "Vol. 1 title page (verso)", "4_titlepage1_verso", "p0004"),
+    ("p5", "Vol. 2 title page", "5_titlepage2", "p0005"),
+    ("p6", "Vol. 2 title page (verso)", "6_titlepage2_verso", "p0006"),
 ]
 
 for canvas_id, label, image_id, anno_num in canvases:

@@ -40,19 +40,21 @@ def modify_skeleton(skeleton_file):
         if import_pos != -1:
             skeleton = skeleton[:import_pos] + "from __future__ import annotations\n\n" + skeleton[import_pos:]
 
-            # Quote ALL forward references in RootModel[Union[...]] patterns
+    # Quote ALL forward references in RootModel[Union[...]] patterns.
+    # Base-class subscripts are evaluated at class definition time (the
+    # __future__ import doesn't defer them), so unquoted names defined later
+    # in the file raise NameError. Allow whitespace/newlines as newer
+    # datamodel-codegen versions wrap these across lines; exclude nested
+    # brackets so only flat Union[...] lists are rewritten.
     import re
     print("Quoting forward references in RootModel types...")
-    content = re.sub(
-        r'RootModel\[Union\[([^\]]+)\]\]',
-        lambda m: 'RootModel[Union[' + ', '.join(
-            f"'{item.strip()}'" if item.strip() and not item.strip().startswith("'") and item.strip()[0].isupper()
-            else item.strip()
-            for item in m.group(1).split(',')
-        ) + ']]',
-        skeleton
-    )
-    skeleton = content
+
+    def quote_items(m):
+        items = [i.strip() for i in m.group(1).split(',') if i.strip()]
+        quoted = [f"'{i}'" if i[0].isupper() and not i.startswith("'") else i for i in items]
+        return 'RootModel[Union[' + ', '.join(quoted) + ']]'
+
+    skeleton = re.sub(r'RootModel\[\s*Union\[([^\[\]]+)\]\s*\]', quote_items, skeleton)
 
     print(f"Processing {len(CHANGES)} changes")
     for change in CHANGES:
