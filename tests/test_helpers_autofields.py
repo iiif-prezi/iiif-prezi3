@@ -1,8 +1,10 @@
 import unittest
 
 from iiif_prezi3 import (AccompanyingCanvas, Annotation, AnnotationBody,
-                         AnnotationCollection, AnnotationPage, AnnotationPageRefExtended,
-                         Canvas, Collection, Manifest, PlaceholderCanvas, config)
+                         AnnotationCollection, AnnotationPage,
+                         AnnotationPageRefExtended, Canvas, Collection,
+                         Manifest, PlaceholderCanvas, config)
+
 
 class AutoFieldsHelpersTests(unittest.TestCase):
 
@@ -145,11 +147,11 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         self.assertIsInstance(canvas.annotations, list, "Expected canvas.annotations to be a list")
 
     def test_no_auto_list_annotation_page_ref(self):
-        canvas = Canvas(label="test")    
+        canvas = Canvas(label="test")
 
         annotationPageRef = AnnotationPageRefExtended(id="http://example.com/annos.json", type="AnnotationPage")
-        print (f"AnnotationPageType: {type(annotationPageRef).__name__}")
+        print(f"AnnotationPageType: {type(annotationPageRef).__name__}")
         canvas.annotations = [annotationPageRef]
-        print (f"canvas.annotations: {type(canvas.annotations[0]).__name__}")
+        print(f"canvas.annotations: {type(canvas.annotations[0]).__name__}")
 
         self.assertFalse("items" in canvas.annotations[0].jsonld(), f"Expected referenced annotation page to not have items: {canvas.annotations[0].jsonld()}")

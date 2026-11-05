@@ -16,7 +16,7 @@ PYTHON_RE = re.compile(r'--8<-- "(?P<loc>.*-(?P<method>method\d+)-?(?P<type>\w*)
 def build_json_dict(matches):
     result = {}
     for match in matches:
-        flat = f"{match.group('type').replace(' ','').lower()}{match.group('number')}"
+        flat = f"{match.group('type').replace(' ', '').lower()}{match.group('number')}"
         if flat == "":
             flat = "general"
         if flat in result:

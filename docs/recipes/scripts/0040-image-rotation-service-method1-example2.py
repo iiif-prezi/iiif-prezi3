@@ -1,5 +1,5 @@
 from iiif_prezi3 import (Manifest, AnnotationBody, AnnotationPage, Annotation,
-                        SpecificResource, CssStylesheet, config)
+                         SpecificResource, CssStylesheet, config)
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "ca"
 base_url = "https://iiif.io/api/cookbook/recipe/0040-image-rotation-service"

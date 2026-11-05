@@ -1,5 +1,5 @@
 from iiif_prezi3 import (Collection, ManifestRef, Provider, AnnotationBody,
-                        LinkedResource, KeyValueString, config)
+                         LinkedResource, KeyValueString, config)
 
 config.configs['helpers.auto_fields.AutoLang'].auto_lang = "none"
 base_url = "https://iiif.io/api/cookbook/recipe/0068-newspaper"
