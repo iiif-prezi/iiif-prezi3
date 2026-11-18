@@ -6,7 +6,7 @@ from iiif_prezi3 import Collection, Homepage, Reference, config
 class MakeManifestTest(unittest.TestCase):
 
     def setUp(self):
-        self.collection = Collection()
+        self.collection = Collection(label="Test Collection")
 
     def test_make_manifest(self):
         config.configs['helpers.auto_fields.AutoLang'].auto_lang = "en"

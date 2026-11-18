@@ -55,7 +55,7 @@ class AutoFieldsHelpersTests(unittest.TestCase):
         self.assertEqual('http://example.org/iiif/Manifest/0', m.id)
         m2 = Manifest(label="autoint2")
         self.assertEqual('http://example.org/iiif/Manifest/1', m2.id)
-        c = Collection()
+        c = Collection(label="Test collection")
         self.assertEqual('http://example.org/iiif/Collection/0', c.id)
         config.configs['helpers.auto_fields.AutoId'].auto_type = curr
 

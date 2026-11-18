@@ -6,7 +6,7 @@ from iiif_prezi3 import Collection
 class MakeCollectionTest(unittest.TestCase):
 
     def setUp(self):
-        self.parent_collection = Collection()
+        self.parent_collection = Collection(label="Test Collection")
 
     def test_make_collection(self):
         child_collection = self.parent_collection.make_collection(
