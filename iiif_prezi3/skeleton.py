@@ -7,7 +7,8 @@ from __future__ import annotations
 from enum import Enum
 from typing import Any, Literal
 
-from pydantic import AnyUrl, AwareDatetime, ConfigDict, Field, RootModel, constr
+from pydantic import (AnyUrl, AwareDatetime, ConfigDict, Field, RootModel,
+                      constr)
 
 from .base import Base
 

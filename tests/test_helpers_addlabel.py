@@ -1,6 +1,6 @@
 import unittest
 
-from iiif_prezi3 import Canvas, Annotation, config
+from iiif_prezi3 import Annotation, Canvas, config
 
 
 class AddLabelHelperTests(unittest.TestCase):
@@ -37,5 +37,3 @@ class AddLabelHelperTests(unittest.TestCase):
         a = Annotation()
         a.add_label("test")
         self.assertEqual(a.label, {default: ["test"]})
-
-
