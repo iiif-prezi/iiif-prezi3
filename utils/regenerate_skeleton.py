@@ -36,7 +36,7 @@ if __name__ == "__main__":
 
     REMOTE_SCHEMA_LOCATION = f"https://raw.githubusercontent.com/IIIF/presentation-validator/refs/heads/{args.branch}/schema/iiif_3_0.json"
     LOCAL_SCHEMA_PATH = os.path.join(project_dir, "current_schema.json")
-    DATAMODEL_COMMAND = f"datamodel-codegen --input {LOCAL_SCHEMA} --input-file-type jsonschema --use-default --remove-special-field-name-prefix --strict-nullable --base-class .base.Base --use-title-as-name --output-model-type pydantic_v2.BaseModel --output {skeleton_file}"
+    DATAMODEL_COMMAND = f"datamodel-codegen --input {LOCAL_SCHEMA} --input-file-type jsonschema --use-default --keep-defaults-of-inherited-required-fields --remove-special-field-name-prefix --strict-nullable --base-class iiif_prezi3.base.Base --use-title-as-name --output-model-type pydantic_v2.BaseModel --output {skeleton_file} --output-datetime-class AwareDatetime "
 
     if args.local:
         print(f"Using local schema file: {LOCAL_SCHEMA_PATH}")

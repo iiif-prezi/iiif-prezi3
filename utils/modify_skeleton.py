@@ -40,6 +40,10 @@ def modify_skeleton(skeleton_file):
         if import_pos != -1:
             skeleton = skeleton[:import_pos] + "from __future__ import annotations\n\n" + skeleton[import_pos:]
 
+    # datamodel-codegen >= 0.89 rejects relative --base-class paths, so the
+    # skeleton is generated with iiif_prezi3.base.Base; restore the relative import.
+    skeleton = skeleton.replace("from iiif_prezi3.base import Base", "from .base import Base")
+
     # Quote ALL forward references in RootModel[Union[...]] patterns.
     # Base-class subscripts are evaluated at class definition time (the
     # __future__ import doesn't defer them), so unquoted names defined later
