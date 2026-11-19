@@ -5,7 +5,7 @@ from iiif_prezi3 import Collection, LngString
 
 class AddMetadataTest(unittest.TestCase):
     def setUp(self):
-        self.collection = Collection()
+        self.collection = Collection(label="Test Collection")
 
     def test_add_metadata_string(self):
         self.collection.add_metadata("label", "value")

@@ -12,7 +12,7 @@ class MakeServiceTest(unittest.TestCase):
         self.serviceID = 'https://example.org/service'
         self.serviceType = 'ImageService3'
         self.canvas = Canvas()
-        self.collection = Collection()
+        self.collection = Collection(label="Test collection")
         self.annotation = Annotation(target='https://example.org/iiif/book1/page1')
         self.annotationPage = AnnotationPage()
         self.manifest = Manifest(label='test label')

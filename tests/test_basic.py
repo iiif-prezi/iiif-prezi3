@@ -4,7 +4,7 @@ import unittest
 
 from pydantic import ValidationError
 
-from iiif_prezi3 import Canvas, Manifest
+from iiif_prezi3 import Annotation, Canvas, CanvasRef, Collection, Manifest
 
 sys.path.insert(1, '.')
 
@@ -152,6 +152,42 @@ class BasicTest(unittest.TestCase):
         self.assertEqual(data["@context"][0], "http://iiif.io/api/extension/navplace/context.json")
         self.assertEqual(data["@context"][1], "http://iiif.io/api/extension/georef/1/context.json")
         self.assertEqual(data["@context"][-1], "http://iiif.io/api/presentation/3/context.json")
+
+    def test_collection_type(self):
+        """Testing collection type.
+
+        From: https://github.com/iiif-prezi/iiif-prezi3/issues/295
+
+        When a collection is created it should have a type
+        """
+        c = Collection(label="Label is required")
+
+        self.assertEqual(c.type, "Collection")
+
+    def test_content_state(self):
+        canvas = CanvasRef(
+            id="https://iiif.io/api/cookbook/recipe/0009-book-1/canvas/p2#xywh=1528,3024,344,408",
+            type="Canvas",
+            partOf=[
+                {
+                    "id": "https://iiif.io/api/cookbook/recipe/0009-book-1/manifest.json",
+                    "type": "Manifest"
+                }
+            ]
+        )
+
+        annotation = Annotation(
+            id="https://example.org/import/1",
+            motivation="contentState",
+            type="Annotation",
+            target=canvas
+        )
+
+        data = json.loads(annotation.json())
+
+        self.assertEqual(data["target"]["id"], "https://iiif.io/api/cookbook/recipe/0009-book-1/canvas/p2#xywh=1528,3024,344,408")
+        self.assertEqual(data["target"]["type"], "Canvas")
+        self.assertEqual(data["target"]["partOf"][0]["id"], "https://iiif.io/api/cookbook/recipe/0009-book-1/manifest.json")
 
 
 if __name__ == '__main__':
