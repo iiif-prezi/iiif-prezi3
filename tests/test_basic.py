@@ -4,7 +4,7 @@ import unittest
 
 from pydantic import ValidationError
 
-from iiif_prezi3 import Canvas, Manifest
+from iiif_prezi3 import Canvas, Collection, Manifest
 
 sys.path.insert(1, '.')
 
@@ -152,6 +152,17 @@ class BasicTest(unittest.TestCase):
         self.assertEqual(data["@context"][0], "http://iiif.io/api/extension/navplace/context.json")
         self.assertEqual(data["@context"][1], "http://iiif.io/api/extension/georef/1/context.json")
         self.assertEqual(data["@context"][-1], "http://iiif.io/api/presentation/3/context.json")
+
+    def test_collection_type(self):
+        """Testing collection type.
+
+        From: https://github.com/iiif-prezi/iiif-prezi3/issues/295
+
+        When a collection is created it should have a type
+        """
+        c = Collection(label="Label is required")
+
+        self.assertEqual(c.type, "Collection")
 
 
 if __name__ == '__main__':
